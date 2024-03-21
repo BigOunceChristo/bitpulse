@@ -1,9 +1,9 @@
-// Copyright (c) 2011-2021 The Bitcoin Core developers
+// Copyright (c) 2011-2021 The Bitpulse Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_BITCOINUNITS_H
-#define BITCOIN_QT_BITCOINUNITS_H
+#ifndef bitpulse_QT_bitpulseUNITS_H
+#define bitpulse_QT_bitpulseUNITS_H
 
 #include <consensus/amount.h>
 
@@ -26,23 +26,23 @@
 #define THIN_SP_UTF8 REAL_THIN_SP_UTF8
 #define THIN_SP_HTML HTML_HACK_SP
 
-/** Bitcoin unit definitions. Encapsulates parsing and formatting
+/** Bitpulse unit definitions. Encapsulates parsing and formatting
    and serves as list model for drop-down selection boxes.
 */
-class BitcoinUnits: public QAbstractListModel
+class BitpulseUnits: public QAbstractListModel
 {
     Q_OBJECT
 
 public:
-    explicit BitcoinUnits(QObject *parent);
+    explicit BitpulseUnits(QObject *parent);
 
-    /** Bitcoin units.
+    /** Bitpulse units.
       @note Source: https://en.bitcoin.it/wiki/Units . Please add only sensible ones
      */
     enum class Unit {
-        BTC,
-        mBTC,
-        uBTC,
+        BTP,
+        mBTP,
+        uBTP,
         SAT
     };
     Q_ENUM(Unit)
@@ -108,9 +108,9 @@ public:
 private:
     QList<Unit> unitlist;
 };
-typedef BitcoinUnits::Unit BitcoinUnit;
+typedef BitpulseUnits::Unit BitpulseUnit;
 
-QDataStream& operator<<(QDataStream& out, const BitcoinUnit& unit);
-QDataStream& operator>>(QDataStream& in, BitcoinUnit& unit);
+QDataStream& operator<<(QDataStream& out, const BitpulseUnit& unit);
+QDataStream& operator>>(QDataStream& in, BitpulseUnit& unit);
 
-#endif // BITCOIN_QT_BITCOINUNITS_H
+#endif // bitpulse_QT_bitpulseUNITS_H

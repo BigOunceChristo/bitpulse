@@ -1,15 +1,15 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2021 The Bitcoin Core developers
+// Copyright (c) 2009-2021 The Bitpulse Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_SCRIPT_BITCOINCONSENSUS_H
-#define BITCOIN_SCRIPT_BITCOINCONSENSUS_H
+#ifndef bitpulse_SCRIPT_bitpulseCONSENSUS_H
+#define bitpulse_SCRIPT_bitpulseCONSENSUS_H
 
 #include <stdint.h>
 
-#if defined(BUILD_BITCOIN_INTERNAL) && defined(HAVE_CONFIG_H)
-#include <config/bitcoin-config.h>
+#if defined(BUILD_bitpulse_INTERNAL) && defined(HAVE_CONFIG_H)
+#include <config/bitpulse-config.h>
   #if defined(_WIN32)
     #if defined(HAVE_DLLEXPORT_ATTRIBUTE)
       #define EXPORT_SYMBOL __declspec(dllexport)
@@ -19,7 +19,7 @@
   #elif defined(HAVE_DEFAULT_VISIBILITY_ATTRIBUTE)
     #define EXPORT_SYMBOL __attribute__ ((visibility ("default")))
   #endif
-#elif defined(MSC_VER) && !defined(STATIC_LIBBITCOINCONSENSUS)
+#elif defined(MSC_VER) && !defined(STATIC_LIBbitpulseCONSENSUS)
   #define EXPORT_SYMBOL __declspec(dllimport)
 #endif
 
@@ -31,35 +31,35 @@
 extern "C" {
 #endif
 
-#define BITCOINCONSENSUS_API_VER 2
+#define bitpulseCONSENSUS_API_VER 2
 
-typedef enum bitcoinconsensus_error_t
+typedef enum bitpulseconsensus_error_t
 {
-    bitcoinconsensus_ERR_OK = 0,
-    bitcoinconsensus_ERR_TX_INDEX,
-    bitcoinconsensus_ERR_TX_SIZE_MISMATCH,
-    bitcoinconsensus_ERR_TX_DESERIALIZE,
-    bitcoinconsensus_ERR_AMOUNT_REQUIRED,
-    bitcoinconsensus_ERR_INVALID_FLAGS,
-    bitcoinconsensus_ERR_SPENT_OUTPUTS_REQUIRED,
-    bitcoinconsensus_ERR_SPENT_OUTPUTS_MISMATCH
-} bitcoinconsensus_error;
+    bitpulseconsensus_ERR_OK = 0,
+    bitpulseconsensus_ERR_TX_INDEX,
+    bitpulseconsensus_ERR_TX_SIZE_MISMATCH,
+    bitpulseconsensus_ERR_TX_DESERIALIZE,
+    bitpulseconsensus_ERR_AMOUNT_REQUIRED,
+    bitpulseconsensus_ERR_INVALID_FLAGS,
+    bitpulseconsensus_ERR_SPENT_OUTPUTS_REQUIRED,
+    bitpulseconsensus_ERR_SPENT_OUTPUTS_MISMATCH
+} bitpulseconsensus_error;
 
 /** Script verification flags */
 enum
 {
-    bitcoinconsensus_SCRIPT_FLAGS_VERIFY_NONE                = 0,
-    bitcoinconsensus_SCRIPT_FLAGS_VERIFY_P2SH                = (1U << 0), // evaluate P2SH (BIP16) subscripts
-    bitcoinconsensus_SCRIPT_FLAGS_VERIFY_DERSIG              = (1U << 2), // enforce strict DER (BIP66) compliance
-    bitcoinconsensus_SCRIPT_FLAGS_VERIFY_NULLDUMMY           = (1U << 4), // enforce NULLDUMMY (BIP147)
-    bitcoinconsensus_SCRIPT_FLAGS_VERIFY_CHECKLOCKTIMEVERIFY = (1U << 9), // enable CHECKLOCKTIMEVERIFY (BIP65)
-    bitcoinconsensus_SCRIPT_FLAGS_VERIFY_CHECKSEQUENCEVERIFY = (1U << 10), // enable CHECKSEQUENCEVERIFY (BIP112)
-    bitcoinconsensus_SCRIPT_FLAGS_VERIFY_WITNESS             = (1U << 11), // enable WITNESS (BIP141)
-    bitcoinconsensus_SCRIPT_FLAGS_VERIFY_TAPROOT             = (1U << 17), // enable TAPROOT (BIPs 341 & 342)
-    bitcoinconsensus_SCRIPT_FLAGS_VERIFY_ALL                 = bitcoinconsensus_SCRIPT_FLAGS_VERIFY_P2SH | bitcoinconsensus_SCRIPT_FLAGS_VERIFY_DERSIG |
-                                                               bitcoinconsensus_SCRIPT_FLAGS_VERIFY_NULLDUMMY | bitcoinconsensus_SCRIPT_FLAGS_VERIFY_CHECKLOCKTIMEVERIFY |
-                                                               bitcoinconsensus_SCRIPT_FLAGS_VERIFY_CHECKSEQUENCEVERIFY | bitcoinconsensus_SCRIPT_FLAGS_VERIFY_WITNESS |
-                                                               bitcoinconsensus_SCRIPT_FLAGS_VERIFY_TAPROOT
+    bitpulseconsensus_SCRIPT_FLAGS_VERIFY_NONE                = 0,
+    bitpulseconsensus_SCRIPT_FLAGS_VERIFY_P2SH                = (1U << 0), // evaluate P2SH (BIP16) subscripts
+    bitpulseconsensus_SCRIPT_FLAGS_VERIFY_DERSIG              = (1U << 2), // enforce strict DER (BIP66) compliance
+    bitpulseconsensus_SCRIPT_FLAGS_VERIFY_NULLDUMMY           = (1U << 4), // enforce NULLDUMMY (BIP147)
+    bitpulseconsensus_SCRIPT_FLAGS_VERIFY_CHECKLOCKTIMEVERIFY = (1U << 9), // enable CHECKLOCKTIMEVERIFY (BIP65)
+    bitpulseconsensus_SCRIPT_FLAGS_VERIFY_CHECKSEQUENCEVERIFY = (1U << 10), // enable CHECKSEQUENCEVERIFY (BIP112)
+    bitpulseconsensus_SCRIPT_FLAGS_VERIFY_WITNESS             = (1U << 11), // enable WITNESS (BIP141)
+    bitpulseconsensus_SCRIPT_FLAGS_VERIFY_TAPROOT             = (1U << 17), // enable TAPROOT (BIPs 341 & 342)
+    bitpulseconsensus_SCRIPT_FLAGS_VERIFY_ALL                 = bitpulseconsensus_SCRIPT_FLAGS_VERIFY_P2SH | bitpulseconsensus_SCRIPT_FLAGS_VERIFY_DERSIG |
+                                                               bitpulseconsensus_SCRIPT_FLAGS_VERIFY_NULLDUMMY | bitpulseconsensus_SCRIPT_FLAGS_VERIFY_CHECKLOCKTIMEVERIFY |
+                                                               bitpulseconsensus_SCRIPT_FLAGS_VERIFY_CHECKSEQUENCEVERIFY | bitpulseconsensus_SCRIPT_FLAGS_VERIFY_WITNESS |
+                                                               bitpulseconsensus_SCRIPT_FLAGS_VERIFY_TAPROOT
 };
 
 typedef struct {
@@ -72,20 +72,20 @@ typedef struct {
 /// txTo correctly spends the scriptPubKey pointed to by scriptPubKey under
 /// the additional constraints specified by flags.
 /// If not nullptr, err will contain an error/success code for the operation
-EXPORT_SYMBOL int bitcoinconsensus_verify_script(const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen,
+EXPORT_SYMBOL int bitpulseconsensus_verify_script(const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen,
                                                  const unsigned char *txTo        , unsigned int txToLen,
-                                                 unsigned int nIn, unsigned int flags, bitcoinconsensus_error* err);
+                                                 unsigned int nIn, unsigned int flags, bitpulseconsensus_error* err);
 
-EXPORT_SYMBOL int bitcoinconsensus_verify_script_with_amount(const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen, int64_t amount,
+EXPORT_SYMBOL int bitpulseconsensus_verify_script_with_amount(const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen, int64_t amount,
                                     const unsigned char *txTo        , unsigned int txToLen,
-                                    unsigned int nIn, unsigned int flags, bitcoinconsensus_error* err);
+                                    unsigned int nIn, unsigned int flags, bitpulseconsensus_error* err);
 
-EXPORT_SYMBOL int bitcoinconsensus_verify_script_with_spent_outputs(const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen, int64_t amount,
+EXPORT_SYMBOL int bitpulseconsensus_verify_script_with_spent_outputs(const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen, int64_t amount,
                                     const unsigned char *txTo        , unsigned int txToLen,
                                     const UTXO *spentOutputs, unsigned int spentOutputsLen,
-                                    unsigned int nIn, unsigned int flags, bitcoinconsensus_error* err);
+                                    unsigned int nIn, unsigned int flags, bitpulseconsensus_error* err);
 
-EXPORT_SYMBOL unsigned int bitcoinconsensus_version();
+EXPORT_SYMBOL unsigned int bitpulseconsensus_version();
 
 #ifdef __cplusplus
 } // extern "C"
@@ -93,4 +93,4 @@ EXPORT_SYMBOL unsigned int bitcoinconsensus_version();
 
 #undef EXPORT_SYMBOL
 
-#endif // BITCOIN_SCRIPT_BITCOINCONSENSUS_H
+#endif // bitpulse_SCRIPT_bitpulseCONSENSUS_H

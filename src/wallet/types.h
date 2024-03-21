@@ -1,5 +1,5 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2021 The Bitcoin Core developers
+// Copyright (c) 2009-2021 The Bitpulse Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -10,8 +10,8 @@
 //! separate header files. More complicated wallet public types like
 //! CCoinControl that are used externally can have separate headers.
 
-#ifndef BITCOIN_WALLET_TYPES_H
-#define BITCOIN_WALLET_TYPES_H
+#ifndef bitpulse_WALLET_TYPES_H
+#define bitpulse_WALLET_TYPES_H
 
 #include <type_traits>
 
@@ -64,4 +64,4 @@ enum class AddressPurpose {
 };
 } // namespace wallet
 
-#endif // BITCOIN_WALLET_TYPES_H
+#endif // bitpulse_WALLET_TYPES_H

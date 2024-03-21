@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2022 The Bitcoin Core developers
+// Copyright (c) 2009-2022 The Bitpulse Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_LOGGING_H
-#define BITCOIN_LOGGING_H
+#ifndef bitpulse_LOGGING_H
+#define bitpulse_LOGGING_H
 
 #include <threadsafety.h>
 #include <tinyformat.h>
@@ -263,4 +263,4 @@ static inline void LogPrintf_(const std::string& logging_function, const std::st
 // Deprecated conditional logging
 #define LogPrint(category, ...)  LogDebug(category, __VA_ARGS__)
 
-#endif // BITCOIN_LOGGING_H
+#endif // bitpulse_LOGGING_H

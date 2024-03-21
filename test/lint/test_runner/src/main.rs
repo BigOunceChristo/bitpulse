@@ -1,4 +1,4 @@
-// Copyright (c) The Bitcoin Core developers
+// Copyright (c) The bitpulse Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://opensource.org/license/mit/.
 
@@ -109,7 +109,7 @@ fn get_pathspecs_exclude_whitespace() -> Vec<String> {
             "doc/README_windows.txt",
             // Temporary excludes, or existing violations
             "doc/release-notes/release-notes-0.*",
-            "contrib/init/bitcoind.openrc",
+            "contrib/init/bitpulsed.openrc",
             "contrib/macdeploy/macdeployqtplus",
             "src/crypto/sha256_sse4.cpp",
             "src/qt/res/src/*.svg",
@@ -177,8 +177,8 @@ Please add any false positives, such as subtrees, or externally sourced files to
 }
 
 fn lint_includes_build_config() -> LintResult {
-    let config_path = "./src/config/bitcoin-config.h.in";
-    let include_directive = "#include <config/bitcoin-config.h>";
+    let config_path = "./src/config/bitpulse-config.h.in";
+    let include_directive = "#include <config/bitpulse-config.h>";
     if !Path::new(config_path).is_file() {
         assert!(Command::new("./autogen.sh")
             .status()
@@ -218,7 +218,7 @@ fn lint_includes_build_config() -> LintResult {
                 ])
                 .args(get_pathspecs_exclude_subtrees())
                 .args([
-                    // These are exceptions which don't use bitcoin-config.h, rather the Makefile.am adds
+                    // These are exceptions which don't use bitpulse-config.h, rather the Makefile.am adds
                     // these cppflags manually.
                     ":(exclude)src/crypto/sha256_arm_shani.cpp",
                     ":(exclude)src/crypto/sha256_avx2.cpp",
@@ -248,11 +248,11 @@ fn lint_includes_build_config() -> LintResult {
         return Err(format!(
             r#"
 ^^^
-One or more files use a symbol declared in the bitcoin-config.h header. However, they are not
+One or more files use a symbol declared in the bitpulse-config.h header. However, they are not
 including the header. This is problematic, because the header may or may not be indirectly
 included. If the indirect include were to be intentionally or accidentally removed, the build could
 still succeed, but silently be buggy. For example, a slower fallback algorithm could be picked,
-even though bitcoin-config.h indicates that a faster feature is available and should be used.
+even though bitpulse-config.h indicates that a faster feature is available and should be used.
 
 If you are unsure which symbol is used, you can find it with this command:
 git grep --perl-regexp '{}' -- file_name
@@ -264,7 +264,7 @@ git grep --perl-regexp '{}' -- file_name
     if redundant {
         return Err(r#"
 ^^^
-None of the files use a symbol declared in the bitcoin-config.h header. However, they are including
+None of the files use a symbol declared in the bitpulse-config.h header. However, they are including
 the header. Consider removing the unused include.
             "#
         .to_string());

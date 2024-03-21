@@ -1,9 +1,9 @@
 25.0 Release Notes
 ==================
 
-Bitcoin Core version 25.0 is now available from:
+bitpulse Core version 25.0 is now available from:
 
-  <https://bitcoincore.org/bin/bitcoin-core-25.0/>
+  <https://bitpulsecore.org/bin/bitpulse-core-25.0/>
 
 This release includes new features, various bug fixes and performance
 improvements, as well as updated translations.
@@ -14,27 +14,27 @@ Please report bugs using the issue tracker at GitHub:
 
 To receive security and update notifications, please subscribe to:
 
-  <https://bitcoincore.org/en/list/announcements/join/>
+  <https://bitpulsecore.org/en/list/announcements/join/>
 
 How to Upgrade
 ==============
 
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes in some cases), then run the
-installer (on Windows) or just copy over `/Applications/Bitcoin-Qt` (on macOS)
-or `bitcoind`/`bitcoin-qt` (on Linux).
+installer (on Windows) or just copy over `/Applications/bitpulse-Qt` (on macOS)
+or `bitpulsed`/`bitpulse-qt` (on Linux).
 
-Upgrading directly from a version of Bitcoin Core that has reached its EOL is
+Upgrading directly from a version of bitpulse Core that has reached its EOL is
 possible, but it might take some time if the data directory needs to be migrated. Old
-wallet versions of Bitcoin Core are generally supported.
+wallet versions of bitpulse Core are generally supported.
 
 Compatibility
 ==============
 
-Bitcoin Core is supported and extensively tested on operating systems
-using the Linux kernel, macOS 10.15+, and Windows 7 and newer.  Bitcoin
+bitpulse Core is supported and extensively tested on operating systems
+using the Linux kernel, macOS 10.15+, and Windows 7 and newer.  bitpulse
 Core should also work on most other Unix-like systems but is not as
-frequently tested on them.  It is not recommended to use Bitcoin Core on
+frequently tested on them.  It is not recommended to use bitpulse Core on
 unsupported systems.
 
 Notable changes
@@ -63,17 +63,17 @@ Updated RPCs
   parameter](https://github.com/bitcoin/bitcoin/blob/master/doc/JSON-RPC-interface.md#parameter-passing) called `args` that can
   contain positional parameter values. This is a convenience to allow some
   parameter values to be passed by name without having to name every value. The
-  python test framework and `bitcoin-cli` tool both take advantage of this, so
+  python test framework and `bitpulse-cli` tool both take advantage of this, so
   for example:
 
 ```sh
-bitcoin-cli -named createwallet wallet_name=mywallet load_on_startup=1
+bitpulse-cli -named createwallet wallet_name=mywallet load_on_startup=1
 ```
 
 Can now be shortened to:
 
 ```sh
-bitcoin-cli -named createwallet mywallet load_on_startup=1
+bitpulse-cli -named createwallet mywallet load_on_startup=1
 ```
 
 - The `verifychain` RPC will now return `false` if the checks didn't fail,
@@ -114,7 +114,7 @@ Updated settings
 
 - If the `-checkblocks` or `-checklevel` options are explicitly provided by the
 user, but the verification checks cannot be completed due to an insufficient
-dbcache, Bitcoin Core will now return an error at startup. (#25574)
+dbcache, bitpulse Core will now return an error at startup. (#25574)
 
 - Ports specified in `-port` and `-rpcport` options are now validated at startup.
   Values that previously worked and were considered valid can now result in errors. (#22087)
@@ -137,7 +137,7 @@ New settings
 ------------
 
 - The `shutdownnotify` option is used to specify a command to execute synchronously
-before Bitcoin Core has begun its shutdown sequence. (#23395)
+before bitpulse Core has begun its shutdown sequence. (#23395)
 
 
 Wallet
@@ -182,7 +182,7 @@ added to the following RPCs in #25375:
   returns a JSON array of strings to better handle multiple warning messages and
   for consistency with other wallet RPCs. The "warning" field will be fully
   removed from these RPCs in v26. It can be temporarily re-enabled during the
-  deprecation period by launching bitcoind with the configuration option
+  deprecation period by launching bitpulsed with the configuration option
   `-deprecatedrpc=walletwarningfield`. (#27279)
 
 - Descriptor wallets can now spend coins sent to P2WSH Miniscript descriptors. (#24149)
@@ -244,7 +244,7 @@ Thanks to everyone who directly contributed to this release:
 - Antoine Poinsot
 - Aurèle Oulès
 - Ben Woosley
-- Bitcoin Hodler
+- bitpulse Hodler
 - brunoerg
 - Bushstar
 - Carl Dong
@@ -337,4 +337,4 @@ Thanks to everyone who directly contributed to this release:
 - Yusuf Sahin HAMZA
 
 As well as to everyone that helped with translations on
-[Transifex](https://www.transifex.com/bitcoin/bitcoin/).
+[Transifex](https://www.transifex.com/bitpulse/bitpulse/).
