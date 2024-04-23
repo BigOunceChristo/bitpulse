@@ -8,9 +8,9 @@ This directory contains the following sets of tests:
 - [fuzz](/test/fuzz) A runner to execute all fuzz targets from
   [/src/test/fuzz](/src/test/fuzz).
 - [functional](/test/functional) which test the functionality of
-bitpulsed and bitpulse-qt by interacting with them through the RPC and P2P
+bitpulsed and bitpulsed-qt by interacting with them through the RPC and P2P
 interfaces.
-- [util](/test/util) which tests the utilities (bitpulse-util, bitpulse-tx, ...).
+- [util](/test/util) which tests the utilities (bitpulsed-util, bitpulsed-tx, ...).
 - [lint](/test/lint/) which perform various static analysis checks.
 
 The util tests are run as part of `make check` target. The fuzz tests, functional
@@ -18,7 +18,7 @@ tests and lint scripts can be run as explained in the sections below.
 
 # Running tests locally
 
-Before tests can be run locally, bitpulse Core must be built.  See the [building instructions](/doc#building) for help.
+Before tests can be run locally, bitpulsed Core must be built.  See the [building instructions](/doc#building) for help.
 
 ## Fuzz tests
 

@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2016 The bitpulse Core developers
+# Copyright (c) 2013-2016 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -18,10 +18,10 @@ RPCAUTH=@abs_top_srcdir@/share/rpcauth/rpcauth.py
 @ENABLE_WALLET_TRUE@ENABLE_WALLET=true
 @USE_SQLITE_TRUE@USE_SQLITE=true
 @USE_BDB_TRUE@USE_BDB=true
-@BUILD_bitpulse_CLI_TRUE@ENABLE_CLI=true
-@BUILD_bitpulse_UTIL_TRUE@ENABLE_bitpulse_UTIL=true
-@BUILD_bitpulse_WALLET_TRUE@ENABLE_WALLET_TOOL=true
-@BUILD_bitpulseD_TRUE@ENABLE_bitpulseD=true
+@BUILD_bitpulsed_CLI_TRUE@ENABLE_CLI=true
+@BUILD_bitpulsed_UTIL_TRUE@ENABLE_bitpulsed_UTIL=true
+@BUILD_bitpulsed_WALLET_TRUE@ENABLE_WALLET_TOOL=true
+@BUILD_bitpulsed_TRUE@ENABLE_bitpulsed=true
 @ENABLE_FUZZ_BINARY_TRUE@ENABLE_FUZZ_BINARY=true
 @ENABLE_ZMQ_TRUE@ENABLE_ZMQ=true
 @ENABLE_EXTERNAL_SIGNER_TRUE@ENABLE_EXTERNAL_SIGNER=true

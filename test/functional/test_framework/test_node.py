@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2017-2022 The bitpulse Core developers
+# Copyright (c) 2017-2022 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Class for bitpulsed node under test"""
@@ -41,7 +41,7 @@ from .util import (
     p2p_port,
 )
 
-bitpulseD_PROC_WAIT_TIMEOUT = 60
+bitpulsed_PROC_WAIT_TIMEOUT = 60
 
 
 class FailedToStartError(Exception):
@@ -68,7 +68,7 @@ class TestNode():
     To make things easier for the test writer, any unrecognised messages will
     be dispatched to the RPC connection."""
 
-    def __init__(self, i, datadir_path, *, chain, rpchost, timewait, timeout_factor, bitpulsed, bitpulse_cli, coverage_dir, cwd, extra_conf=None, extra_args=None, use_cli=False, start_perf=False, use_valgrind=False, version=None, descriptors=False, v2transport=False):
+    def __init__(self, i, datadir_path, *, chain, rpchost, timewait, timeout_factor, bitpulsed, bitpulsed_cli, coverage_dir, cwd, extra_conf=None, extra_args=None, use_cli=False, start_perf=False, use_valgrind=False, version=None, descriptors=False, v2transport=False):
         """
         Kwargs:
             start_perf (bool): If True, begin profiling the node with `perf` as soon as
@@ -78,7 +78,7 @@ class TestNode():
         self.index = i
         self.p2p_conn_index = 1
         self.datadir_path = datadir_path
-        self.bitpulseconf = self.datadir_path / "bitpulse.conf"
+        self.bitpulsedconf = self.datadir_path / "bitpulsed.conf"
         self.stdout_dir = self.datadir_path / "stdout"
         self.stderr_dir = self.datadir_path / "stderr"
         self.chain = chain
@@ -95,7 +95,7 @@ class TestNode():
         # Note that common args are set in the config file (see initialize_datadir)
         self.extra_args = extra_args
         self.version = version
-        # Configuration for logging is set as command-line args rather than in the bitpulse.conf file.
+        # Configuration for logging is set as command-line args rather than in the bitpulsed.conf file.
         # This means that starting a bitpulsed using the temp dir to debug a failed test won't
         # spam debug.log.
         self.args = [
@@ -138,7 +138,7 @@ class TestNode():
                 self.args.append("-v2transport=0")
         # if v2transport is requested via global flag but not supported for node version, ignore it
 
-        self.cli = TestNodeCLI(bitpulse_cli, self.datadir_path)
+        self.cli = TestNodeCLI(bitpulsed_cli, self.datadir_path)
         self.use_cli = use_cli
         self.start_perf = start_perf
 
@@ -418,7 +418,7 @@ class TestNode():
         self.log.debug("Node stopped")
         return True
 
-    def wait_until_stopped(self, *, timeout=bitpulseD_PROC_WAIT_TIMEOUT, expect_error=False, **kwargs):
+    def wait_until_stopped(self, *, timeout=bitpulsed_PROC_WAIT_TIMEOUT, expect_error=False, **kwargs):
         expected_ret_code = 1 if expect_error else 0  # Whether node shutdown return EXIT_FAILURE or EXIT_SUCCESS
         self.wait_until(lambda: self.is_node_stopped(expected_ret_code=expected_ret_code, **kwargs), timeout=timeout)
 
@@ -428,13 +428,13 @@ class TestNode():
         The substitutions are passed as a list of search-replace-tuples, e.g.
             [("old", "new"), ("foo", "bar"), ...]
         """
-        with open(self.bitpulseconf, 'r', encoding='utf8') as conf:
+        with open(self.bitpulsedconf, 'r', encoding='utf8') as conf:
             conf_data = conf.read()
         for replacement in replacements:
             assert_equal(len(replacement), 2)
             old, new = replacement[0], replacement[1]
             conf_data = conf_data.replace(old, new)
-        with open(self.bitpulseconf, 'w', encoding='utf8') as conf:
+        with open(self.bitpulsedconf, 'w', encoding='utf8') as conf:
             conf.write(conf_data)
 
     @property
@@ -836,16 +836,16 @@ def arg_to_cli(arg):
 
 
 class TestNodeCLI():
-    """Interface to bitpulse-cli for an individual node"""
+    """Interface to bitpulsed-cli for an individual node"""
     def __init__(self, binary, datadir):
         self.options = []
         self.binary = binary
         self.datadir = datadir
         self.input = None
-        self.log = logging.getLogger('TestFramework.bitpulsecli')
+        self.log = logging.getLogger('TestFramework.bitpulsedcli')
 
     def __call__(self, *options, input=None):
-        # TestNodeCLI is callable with bitpulse-cli command-line options
+        # TestNodeCLI is callable with bitpulsed-cli command-line options
         cli = TestNodeCLI(self.binary, self.datadir)
         cli.options = [str(o) for o in options]
         cli.input = input
@@ -864,7 +864,7 @@ class TestNodeCLI():
         return results
 
     def send_cli(self, clicommand=None, *args, **kwargs):
-        """Run bitpulse-cli command. Deserializes returned string as python object."""
+        """Run bitpulsed-cli command. Deserializes returned string as python object."""
         pos_args = [arg_to_cli(arg) for arg in args]
         named_args = [str(key) + "=" + arg_to_cli(value) for (key, value) in kwargs.items()]
         p_args = [self.binary, f"-datadir={self.datadir}"] + self.options
@@ -873,7 +873,7 @@ class TestNodeCLI():
         if clicommand is not None:
             p_args += [clicommand]
         p_args += pos_args + named_args
-        self.log.debug("Running bitpulse-cli {}".format(p_args[2:]))
+        self.log.debug("Running bitpulsed-cli {}".format(p_args[2:]))
         process = subprocess.Popen(p_args, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
         cli_stdout, cli_stderr = process.communicate(input=self.input)
         returncode = process.poll()

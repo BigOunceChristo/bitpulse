@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2022 The Bitpulse Core developers
+// Copyright (c) 2009-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_SCRIPT_SIGCACHE_H
-#define bitpulse_SCRIPT_SIGCACHE_H
+#ifndef bitpulsed_SCRIPT_SIGCACHE_H
+#define bitpulsed_SCRIPT_SIGCACHE_H
 
 #include <script/interpreter.h>
 #include <span.h>
@@ -34,4 +34,4 @@ public:
 
 [[nodiscard]] bool InitSignatureCache(size_t max_size_bytes);
 
-#endif // bitpulse_SCRIPT_SIGCACHE_H
+#endif // bitpulsed_SCRIPT_SIGCACHE_H

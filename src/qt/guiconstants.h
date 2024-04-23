@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2022 The Bitpulse Core developers
+// Copyright (c) 2011-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -19,7 +19,7 @@ static constexpr auto SHUTDOWN_POLLING_DELAY{200ms};
 /* AskPassphraseDialog -- Maximum passphrase length */
 static const int MAX_PASSPHRASE_SIZE = 1024;
 
-/* BitpulseGUI -- Size of icons in status bar */
+/* bitpulseGUI -- Size of icons in status bar */
 static const int STATUSBAR_ICONSIZE = 16;
 
 static const bool DEFAULT_SPLASHSCREEN = true;
@@ -46,12 +46,12 @@ static const int TOOLTIP_WRAP_THRESHOLD = 80;
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 36
 
-#define QAPP_ORG_NAME "Bitpulse"
+#define QAPP_ORG_NAME "bitpulse"
 #define QAPP_ORG_DOMAIN "bitpulse.org"
-#define QAPP_APP_NAME_DEFAULT "Bitpulse-Qt"
-#define QAPP_APP_NAME_TESTNET "Bitpulse-Qt-testnet"
-#define QAPP_APP_NAME_SIGNET "Bitpulse-Qt-signet"
-#define QAPP_APP_NAME_REGTEST "Bitpulse-Qt-regtest"
+#define QAPP_APP_NAME_DEFAULT "bitpulse-Qt"
+#define QAPP_APP_NAME_TESTNET "bitpulse-Qt-testnet"
+#define QAPP_APP_NAME_SIGNET "bitpulse-Qt-signet"
+#define QAPP_APP_NAME_REGTEST "bitpulse-Qt-regtest"
 
 /* One gigabyte (GB) in bytes */
 static constexpr uint64_t GB_BYTES{1000000000};

@@ -1,4 +1,4 @@
-// Copyright (c) 2024-present The Bitpulse Core developers
+// Copyright (c) 2024-present The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://www.opensource.org/licenses/mit-license.php.
 

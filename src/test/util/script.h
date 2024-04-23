@@ -1,9 +1,9 @@
-// Copyright (c) 2021 The Bitpulse Core developers
+// Copyright (c) 2021 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_TEST_UTIL_SCRIPT_H
-#define bitpulse_TEST_UTIL_SCRIPT_H
+#ifndef bitpulsed_TEST_UTIL_SCRIPT_H
+#define bitpulsed_TEST_UTIL_SCRIPT_H
 
 #include <crypto/sha256.h>
 #include <script/script.h>
@@ -33,4 +33,4 @@ static const std::vector<std::vector<uint8_t>> P2WSH_EMPTY_TWO_STACK{{static_cas
 /** Flags that are not forbidden by an assert in script validation */
 bool IsValidFlagCombination(unsigned flags);
 
-#endif // bitpulse_TEST_UTIL_SCRIPT_H
+#endif // bitpulsed_TEST_UTIL_SCRIPT_H

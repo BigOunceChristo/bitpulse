@@ -1,9 +1,9 @@
-// Copyright (c) 2020-2022 The Bitpulse Core developers
+// Copyright (c) 2020-2022 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_DEPLOYMENTSTATUS_H
-#define bitpulse_DEPLOYMENTSTATUS_H
+#ifndef bitpulsed_DEPLOYMENTSTATUS_H
+#define bitpulsed_DEPLOYMENTSTATUS_H
 
 #include <chain.h>
 #include <versionbits.h>
@@ -49,4 +49,4 @@ inline bool DeploymentEnabled(const Consensus::Params& params, Consensus::Deploy
     return params.vDeployments[dep].nStartTime != Consensus::BIP9Deployment::NEVER_ACTIVE;
 }
 
-#endif // bitpulse_DEPLOYMENTSTATUS_H
+#endif // bitpulsed_DEPLOYMENTSTATUS_H

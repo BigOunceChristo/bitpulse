@@ -1,4 +1,4 @@
-// Copyright (c) 2012-2022 The Bitpulse Core developers
+// Copyright (c) 2012-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -26,7 +26,7 @@ void ResetArgs(ArgsManager& local_args, const std::string& strArg)
     }
 
     // Insert dummy executable name:
-    vecArg.insert(vecArg.begin(), "testbitpulse");
+    vecArg.insert(vecArg.begin(), "testbitpulsed");
 
     // Convert to char*:
     std::vector<const char*> vecChar;
@@ -310,60 +310,60 @@ BOOST_AUTO_TEST_CASE(patharg)
     BOOST_CHECK_EQUAL(local_args.GetPathArg("-dir"), win_root_path);
 #endif
 
-    const fs::path absolute_path{"/home/user/.bitpulse"};
-    ResetArgs(local_args, "-dir=/home/user/.bitpulse");
+    const fs::path absolute_path{"/home/user/.bitpulsed"};
+    ResetArgs(local_args, "-dir=/home/user/.bitpulsed");
     BOOST_CHECK_EQUAL(local_args.GetPathArg("-dir"), absolute_path);
 
-    ResetArgs(local_args, "-dir=/root/../home/user/.bitpulse");
+    ResetArgs(local_args, "-dir=/root/../home/user/.bitpulsed");
     BOOST_CHECK_EQUAL(local_args.GetPathArg("-dir"), absolute_path);
 
-    ResetArgs(local_args, "-dir=/home/./user/.bitpulse");
+    ResetArgs(local_args, "-dir=/home/./user/.bitpulsed");
     BOOST_CHECK_EQUAL(local_args.GetPathArg("-dir"), absolute_path);
 
-    ResetArgs(local_args, "-dir=/home/user/.bitpulse/");
+    ResetArgs(local_args, "-dir=/home/user/.bitpulsed/");
     BOOST_CHECK_EQUAL(local_args.GetPathArg("-dir"), absolute_path);
 
-    ResetArgs(local_args, "-dir=/home/user/.bitpulse//");
+    ResetArgs(local_args, "-dir=/home/user/.bitpulsed//");
     BOOST_CHECK_EQUAL(local_args.GetPathArg("-dir"), absolute_path);
 
-    ResetArgs(local_args, "-dir=/home/user/.bitpulse/.");
+    ResetArgs(local_args, "-dir=/home/user/.bitpulsed/.");
     BOOST_CHECK_EQUAL(local_args.GetPathArg("-dir"), absolute_path);
 
-    ResetArgs(local_args, "-dir=/home/user/.bitpulse/./");
+    ResetArgs(local_args, "-dir=/home/user/.bitpulsed/./");
     BOOST_CHECK_EQUAL(local_args.GetPathArg("-dir"), absolute_path);
 
-    ResetArgs(local_args, "-dir=/home/user/.bitpulse/.//");
+    ResetArgs(local_args, "-dir=/home/user/.bitpulsed/.//");
     BOOST_CHECK_EQUAL(local_args.GetPathArg("-dir"), absolute_path);
 
-    const fs::path relative_path{"user/.bitpulse"};
-    ResetArgs(local_args, "-dir=user/.bitpulse");
+    const fs::path relative_path{"user/.bitpulsed"};
+    ResetArgs(local_args, "-dir=user/.bitpulsed");
     BOOST_CHECK_EQUAL(local_args.GetPathArg("-dir"), relative_path);
 
-    ResetArgs(local_args, "-dir=somewhere/../user/.bitpulse");
+    ResetArgs(local_args, "-dir=somewhere/../user/.bitpulsed");
     BOOST_CHECK_EQUAL(local_args.GetPathArg("-dir"), relative_path);
 
-    ResetArgs(local_args, "-dir=user/./.bitpulse");
+    ResetArgs(local_args, "-dir=user/./.bitpulsed");
     BOOST_CHECK_EQUAL(local_args.GetPathArg("-dir"), relative_path);
 
-    ResetArgs(local_args, "-dir=user/.bitpulse/");
+    ResetArgs(local_args, "-dir=user/.bitpulsed/");
     BOOST_CHECK_EQUAL(local_args.GetPathArg("-dir"), relative_path);
 
-    ResetArgs(local_args, "-dir=user/.bitpulse//");
+    ResetArgs(local_args, "-dir=user/.bitpulsed//");
     BOOST_CHECK_EQUAL(local_args.GetPathArg("-dir"), relative_path);
 
-    ResetArgs(local_args, "-dir=user/.bitpulse/.");
+    ResetArgs(local_args, "-dir=user/.bitpulsed/.");
     BOOST_CHECK_EQUAL(local_args.GetPathArg("-dir"), relative_path);
 
-    ResetArgs(local_args, "-dir=user/.bitpulse/./");
+    ResetArgs(local_args, "-dir=user/.bitpulsed/./");
     BOOST_CHECK_EQUAL(local_args.GetPathArg("-dir"), relative_path);
 
-    ResetArgs(local_args, "-dir=user/.bitpulse/.//");
+    ResetArgs(local_args, "-dir=user/.bitpulsed/.//");
     BOOST_CHECK_EQUAL(local_args.GetPathArg("-dir"), relative_path);
 
     // Check negated and default argument handling. Specifying an empty argument
     // is the same as not specifying the argument. This is convenient for
     // scripting so later command line arguments can override earlier command
-    // line arguments or bitpulse.conf values. Currently the -dir= case cannot be
+    // line arguments or bitpulsed.conf values. Currently the -dir= case cannot be
     // distinguished from -dir case with no assignment, but #16545 would add the
     // ability to distinguish these in the future (and treat the no-assign case
     // like an imperative command or an error).

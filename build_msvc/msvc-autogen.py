@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2016-2022 The bitpulse Core developers
+# Copyright (c) 2016-2022 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -12,15 +12,15 @@ SOURCE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src'
 DEFAULT_PLATFORM_TOOLSET = R'v143'
 
 libs = [
-    'libbitpulse_cli',
-    'libbitpulse_common',
-    'libbitpulse_crypto',
-    'libbitpulse_node',
-    'libbitpulse_util',
-    'libbitpulse_wallet_tool',
-    'libbitpulse_wallet',
-    'libbitpulse_zmq',
-    'bench_bitpulse',
+    'libbitpulsed_cli',
+    'libbitpulsed_common',
+    'libbitpulsed_crypto',
+    'libbitpulsed_node',
+    'libbitpulsed_util',
+    'libbitpulsed_wallet_tool',
+    'libbitpulsed_wallet',
+    'libbitpulsed_zmq',
+    'bench_bitpulsed',
     'libtest_util',
 ]
 
@@ -70,9 +70,9 @@ def parse_config_into_btc_config():
     config_dict = dict(item.split(", ") for item in config_info)
     config_dict["PACKAGE_VERSION"] = f"\"{config_dict['CLIENT_VERSION_MAJOR']}.{config_dict['CLIENT_VERSION_MINOR']}.{config_dict['CLIENT_VERSION_BUILD']}\""
     version = config_dict["PACKAGE_VERSION"].strip('"')
-    config_dict["PACKAGE_STRING"] = f"\"bitpulse Core {version}\""
+    config_dict["PACKAGE_STRING"] = f"\"bitpulsed Core {version}\""
 
-    with open(os.path.join(SOURCE_DIR,'../build_msvc/bitpulse_config.h.in'), "r", encoding="utf8") as template_file:
+    with open(os.path.join(SOURCE_DIR,'../build_msvc/bitpulsed_config.h.in'), "r", encoding="utf8") as template_file:
         template = template_file.readlines()
 
     for index, line in enumerate(template):
@@ -82,7 +82,7 @@ def parse_config_into_btc_config():
         if header in config_dict:
             template[index] = line.replace("$", f"{config_dict[header]}")
 
-    with open(os.path.join(SOURCE_DIR,'../build_msvc/bitpulse_config.h'), "w", encoding="utf8") as btc_config:
+    with open(os.path.join(SOURCE_DIR,'../build_msvc/bitpulsed_config.h'), "w", encoding="utf8") as btc_config:
         btc_config.writelines(template)
 
 def set_properties(vcxproj_filename, placeholder, content):
@@ -91,7 +91,7 @@ def set_properties(vcxproj_filename, placeholder, content):
             vcxproj_file.write(vcxproj_in_file.read().replace(placeholder, content))
 
 def main():
-    parser = argparse.ArgumentParser(description='bitpulse-core msbuild configuration initialiser.')
+    parser = argparse.ArgumentParser(description='bitpulsed-core msbuild configuration initialiser.')
     parser.add_argument('-toolset', nargs='?', default=DEFAULT_PLATFORM_TOOLSET,
         help='Optionally sets the msbuild platform toolset, e.g. v143 for Visual Studio 2022.'
          ' default is %s.'%DEFAULT_PLATFORM_TOOLSET)
@@ -110,7 +110,7 @@ def main():
             content += '    </ClCompile>\n'
         set_properties(vcxproj_filename, '@SOURCE_FILES@\n', content)
     parse_config_into_btc_config()
-    copyfile(os.path.join(SOURCE_DIR,'../build_msvc/bitpulse_config.h'), os.path.join(SOURCE_DIR, 'config/bitpulse-config.h'))
+    copyfile(os.path.join(SOURCE_DIR,'../build_msvc/bitpulsed_config.h'), os.path.join(SOURCE_DIR, 'config/bitpulsed-config.h'))
 
 if __name__ == '__main__':
     main()

@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2022 The Bitpulse Core developers
+// Copyright (c) 2011-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -42,7 +42,7 @@ const QString bitpulse_IPC_PREFIX("bitpulse:");
 //
 static QString ipcServerName()
 {
-    QString name("BitpulseQt");
+    QString name("bitpulseQt");
 
     // Append a simple hash of the datadir
     // Note that gArgs.GetDataDirNet() returns a different path
@@ -200,7 +200,7 @@ void PaymentServer::handleURIOrFile(const QString& s)
         // normal URI
         {
             SendCoinsRecipient recipient;
-            if (GUIUtil::parseBitpulseURI(s, &recipient))
+            if (GUIUtil::parsebitpulseURI(s, &recipient))
             {
                 std::string error_msg;
                 const CTxDestination dest = DecodeDestination(recipient.address.toStdString(), error_msg);
@@ -221,7 +221,7 @@ void PaymentServer::handleURIOrFile(const QString& s)
             }
             else
                 Q_EMIT message(tr("URI handling"),
-                    tr("URI cannot be parsed! This can be caused by an invalid Bitpulse address or malformed URI parameters."),
+                    tr("URI cannot be parsed! This can be caused by an invalid bitpulse address or malformed URI parameters."),
                     CClientUIInterface::ICON_WARNING);
 
             return;

@@ -1,9 +1,9 @@
-// Copyright (c) 2022 The Bitpulse Core developers
+// Copyright (c) 2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_TEST_UTIL_XOROSHIRO128PLUSPLUS_H
-#define bitpulse_TEST_UTIL_XOROSHIRO128PLUSPLUS_H
+#ifndef bitpulsed_TEST_UTIL_XOROSHIRO128PLUSPLUS_H
+#define bitpulsed_TEST_UTIL_XOROSHIRO128PLUSPLUS_H
 
 #include <cstdint>
 #include <limits>
@@ -68,4 +68,4 @@ public:
     static constexpr double entropy() noexcept { return 0.0; }
 };
 
-#endif // bitpulse_TEST_UTIL_XOROSHIRO128PLUSPLUS_H
+#endif // bitpulsed_TEST_UTIL_XOROSHIRO128PLUSPLUS_H

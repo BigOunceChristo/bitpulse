@@ -1,9 +1,9 @@
-// Copyright (c) 2017-2022 The Bitpulse Core developers
+// Copyright (c) 2017-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_WALLET_RPC_UTIL_H
-#define bitpulse_WALLET_RPC_UTIL_H
+#ifndef bitpulsed_WALLET_RPC_UTIL_H
+#define bitpulsed_WALLET_RPC_UTIL_H
 
 #include <rpc/util.h>
 #include <script/script.h>
@@ -55,4 +55,4 @@ int64_t ParseISO8601DateTime(const std::string& str);
 void AppendLastProcessedBlock(UniValue& entry, const CWallet& wallet) EXCLUSIVE_LOCKS_REQUIRED(wallet.cs_wallet);
 } //  namespace wallet
 
-#endif // bitpulse_WALLET_RPC_UTIL_H
+#endif // bitpulsed_WALLET_RPC_UTIL_H

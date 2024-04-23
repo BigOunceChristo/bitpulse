@@ -1,9 +1,9 @@
-// Copyright (c) 2023 The Bitpulse Core developers
+// Copyright (c) 2023 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_UTIL_ANY_H
-#define bitpulse_UTIL_ANY_H
+#ifndef bitpulsed_UTIL_ANY_H
+#define bitpulsed_UTIL_ANY_H
 
 #include <any>
 
@@ -23,4 +23,4 @@ T* AnyPtr(const std::any& any) noexcept
 
 } // namespace util
 
-#endif // bitpulse_UTIL_ANY_H
+#endif // bitpulsed_UTIL_ANY_H

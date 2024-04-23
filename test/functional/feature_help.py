@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-# Copyright (c) 2018-2021 The bitpulse Core developers
+# Copyright (c) 2018-2021 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
-"""Verify that starting bitpulse with -h works as expected."""
+"""Verify that starting bitpulsed with -h works as expected."""
 
-from test_framework.test_framework import bitpulseTestFramework
+from test_framework.test_framework import bitpulsedTestFramework
 from test_framework.util import assert_equal
 
-class HelpTest(bitpulseTestFramework):
+class HelpTest(bitpulsedTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 1
@@ -35,14 +35,14 @@ class HelpTest(bitpulseTestFramework):
         return out, err
 
     def run_test(self):
-        self.log.info("Start bitpulse with -h for help text")
+        self.log.info("Start bitpulsed with -h for help text")
         self.nodes[0].start(extra_args=['-h'])
         # Node should exit immediately and output help to stdout.
         output, _ = self.get_node_output(ret_code_expected=0)
         assert b'Options' in output
         self.log.info(f"Help text received: {output[0:60]} (...)")
 
-        self.log.info("Start bitpulse with -version for version information")
+        self.log.info("Start bitpulsed with -version for version information")
         self.nodes[0].start(extra_args=['-version'])
         # Node should exit immediately and output version to stdout.
         output, _ = self.get_node_output(ret_code_expected=0)

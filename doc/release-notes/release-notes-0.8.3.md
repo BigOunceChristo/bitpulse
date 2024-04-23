@@ -1,5 +1,5 @@
-bitpulse-Qt version 0.8.3 is now available from:
-  http://sourceforge.net/projects/bitpulse/files/bitpulse/bitpulse-0.8.3/
+bitpulsed-Qt version 0.8.3 is now available from:
+  http://sourceforge.net/projects/bitcoin/files/bitcoin/bitcoin-0.8.3/
 
 This is a maintenance release to fix a denial-of-service attack that
 can cause nodes to crash.

@@ -11,7 +11,7 @@
   </array>
 
   <key>CFBundleIconFile</key>
-  <string>bitpulse.icns</string>
+  <string>bitpulsed.icns</string>
 
   <key>CFBundlePackageType</key>
   <string>APPL</string>
@@ -34,16 +34,16 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>bitpulse-Qt</string>
+  <string>bitpulsed-Qt</string>
 
   <key>CFBundleName</key>
-  <string>bitpulse-Qt</string>
+  <string>bitpulsed-Qt</string>
 
   <key>LSHasLocalizedDisplayName</key>
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>org.bitpulsefoundation.bitpulse-Qt</string>
+  <string>org.bitpulsedfoundation.bitpulsed-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -51,10 +51,10 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>org.bitpulse.bitpulsePayment</string>
+      <string>org.bitpulsed.bitpulsedPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>bitpulse</string>
+        <string>bitpulsed</string>
       </array>
     </dict>
   </array>

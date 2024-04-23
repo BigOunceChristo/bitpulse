@@ -2,18 +2,18 @@
 
 *.exe
 *.pdb
-src/bitpulse
 src/bitpulsed
-src/bitpulse-cli
-src/bitpulse-gui
-src/bitpulse-node
-src/bitpulse-tx
-src/bitpulse-util
-src/bitpulse-chainstate
-src/bitpulse-wallet
+src/bitpulsed
+src/bitpulsed-cli
+src/bitpulsed-gui
+src/bitpulsed-node
+src/bitpulsed-tx
+src/bitpulsed-util
+src/bitpulsed-chainstate
+src/bitpulsed-wallet
 src/test/fuzz/fuzz
-src/test/test_bitpulse
-src/qt/test/test_bitpulse-qt
+src/test/test_bitpulsed
+src/qt/test/test_bitpulsed-qt
 
 # autoreconf
 Makefile.in
@@ -37,8 +37,8 @@ config.log
 config.status
 configure
 libtool
-src/config/bitpulse-config.h
-src/config/bitpulse-config.h.in
+src/config/bitpulsed-config.h
+src/config/bitpulsed-config.h.in
 src/config/stamp-h1
 src/obj
 share/setup.nsi
@@ -50,11 +50,11 @@ src/qt/forms/ui_*.h
 
 src/qt/test/moc*.cpp
 
-src/qt/bitpulse-qt.config
-src/qt/bitpulse-qt.creator
-src/qt/bitpulse-qt.creator.user
-src/qt/bitpulse-qt.files
-src/qt/bitpulse-qt.includes
+src/qt/bitpulsed-qt.config
+src/qt/bitpulsed-qt.creator
+src/qt/bitpulsed-qt.creator.user
+src/qt/bitpulsed-qt.files
+src/qt/bitpulsed-qt.includes
 
 .deps
 .dirstamp
@@ -92,15 +92,15 @@ src/qt/bitpulse-qt.includes
 *.qm
 Makefile
 !depends/Makefile
-src/qt/bitpulse-qt
-bitpulse-Qt.app
+src/qt/bitpulsed-qt
+bitpulsed-Qt.app
 
 # Qt Creator
 Makefile.am.user
 
 # Unit-tests
 Makefile.test
-bitpulse-qt_test
+bitpulsed-qt_test
 
 # Resources cpp
 qrc_*.cpp
@@ -116,7 +116,7 @@ releases
 *.gcno
 *.gcda
 /*.info
-test_bitpulse.coverage/
+test_bitpulsed.coverage/
 total.coverage/
 fuzz.coverage/
 coverage_percent.txt
@@ -135,7 +135,7 @@ test/.mypy_cache/
 
 /doc/doxygen/
 
-libbitpulseconsensus.pc
+libbitpulsedconsensus.pc
 contrib/devtools/split-debug.sh
 
 # Output from running db4 installation

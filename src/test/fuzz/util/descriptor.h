@@ -1,9 +1,9 @@
-// Copyright (c) 2023-present The Bitpulse Core developers
+// Copyright (c) 2023-present The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_TEST_FUZZ_UTIL_DESCRIPTOR_H
-#define bitpulse_TEST_FUZZ_UTIL_DESCRIPTOR_H
+#ifndef bitpulsed_TEST_FUZZ_UTIL_DESCRIPTOR_H
+#define bitpulsed_TEST_FUZZ_UTIL_DESCRIPTOR_H
 
 #include <key_io.h>
 #include <util/strencodings.h>
@@ -55,4 +55,4 @@ constexpr int MAX_DEPTH{2};
  */
 bool HasDeepDerivPath(const FuzzBufferType& buff, const int max_depth = MAX_DEPTH);
 
-#endif // bitpulse_TEST_FUZZ_UTIL_DESCRIPTOR_H
+#endif // bitpulsed_TEST_FUZZ_UTIL_DESCRIPTOR_H

@@ -1,7 +1,7 @@
-Win32, Linux, MacOSX and source releases for bitpulse v0.3.23 have been uploaded to
-https://sourceforge.net/projects/bitpulse/files/bitpulse/bitpulse-0.3.23/
+Win32, Linux, MacOSX and source releases for bitpulsed v0.3.23 have been uploaded to
+https://sourceforge.net/projects/bitpulsed/files/bitpulsed/bitpulsed-0.3.23/
 
-This is another quick bugfix release, trying to deal with the influx of new bitpulse users.
+This is another quick bugfix release, trying to deal with the influx of new bitpulsed users.
 
 Main items of note:
 

@@ -1,15 +1,15 @@
-// Copyright (c) 2012-present The Bitpulse Core developers
+// Copyright (c) 2012-present The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_NODE_PROTOCOL_VERSION_H
-#define bitpulse_NODE_PROTOCOL_VERSION_H
+#ifndef bitpulsed_NODE_PROTOCOL_VERSION_H
+#define bitpulsed_NODE_PROTOCOL_VERSION_H
 
 /**
  * network protocol versioning
  */
 
-static const int PROTOCOL_VERSION = 70016;
+static const int PROTOCOL_VERSION = 80000;
 
 //! initial proto version, to be increased after version/verack negotiation
 static const int INIT_PROTO_VERSION = 209;
@@ -35,4 +35,4 @@ static const int INVALID_CB_NO_BAN_VERSION = 70015;
 //! "wtxidrelay" command for wtxid-based relay starts with this version
 static const int WTXID_RELAY_VERSION = 70016;
 
-#endif // bitpulse_NODE_PROTOCOL_VERSION_H
+#endif // bitpulsed_NODE_PROTOCOL_VERSION_H

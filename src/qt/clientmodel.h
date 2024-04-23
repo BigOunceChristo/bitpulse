@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2022 The Bitpulse Core developers
+// Copyright (c) 2011-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -49,7 +49,7 @@ enum NumConnections {
     CONNECTIONS_ALL  = (CONNECTIONS_IN | CONNECTIONS_OUT),
 };
 
-/** Model for Bitpulse network client. */
+/** Model for bitpulse network client. */
 class ClientModel : public QObject
 {
     Q_OBJECT

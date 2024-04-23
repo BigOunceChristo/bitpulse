@@ -1,12 +1,12 @@
-# Fuzzing bitpulse Core using libFuzzer
+# Fuzzing bitpulsed Core using libFuzzer
 
 ## Quickstart guide
 
-To quickly get started fuzzing bitpulse Core using [libFuzzer](https://llvm.org/docs/LibFuzzer.html):
+To quickly get started fuzzing bitpulsed Core using [libFuzzer](https://llvm.org/docs/LibFuzzer.html):
 
 ```sh
 $ git clone https://github.com/bitcoin/bitcoin
-$ cd bitpulse/
+$ cd bitpulsed/
 $ ./autogen.sh
 $ CC=clang CXX=clang++ ./configure --enable-fuzz --with-sanitizers=address,fuzzer,undefined
 # macOS users: If you have problem with this step then make sure to read "macOS hints for
@@ -19,9 +19,9 @@ $ FUZZ=process_message src/test/fuzz/fuzz
 There is also a runner script to execute all fuzz targets. Refer to
 `./test/fuzz/test_runner.py --help` for more details.
 
-## Overview of bitpulse Core fuzzing
+## Overview of bitpulsed Core fuzzing
 
-[Google](https://github.com/google/fuzzing/) has a good overview of fuzzing in general, with contributions from key architects of some of the most-used fuzzers. [This paper](https://agroce.github.io/bitpulse_report.pdf) includes an external overview of the status of bitpulse Core fuzzing, as of summer 2021.  [John Regehr](https://blog.regehr.org/archives/1687) provides good advice on writing code that assists fuzzers in finding bugs, which is useful for developers to keep in mind.
+[Google](https://github.com/google/fuzzing/) has a good overview of fuzzing in general, with contributions from key architects of some of the most-used fuzzers. [This paper](https://agroce.github.io/bitpulsed_report.pdf) includes an external overview of the status of bitpulsed Core fuzzing, as of summer 2021.  [John Regehr](https://blog.regehr.org/archives/1687) provides good advice on writing code that assists fuzzers in finding bugs, which is useful for developers to keep in mind.
 
 ## Fuzzing harnesses and output
 
@@ -82,9 +82,9 @@ $ FUZZ=address_deserialize_v2 src/test/fuzz/fuzz -runs=1 fuzz_seed_corpus/addres
 
 ## Fuzzing corpora
 
-The project's collection of seed corpora is found in the [`bitpulse-core/qa-assets`](https://github.com/bitcoin-core/qa-assets) repo.
+The project's collection of seed corpora is found in the [`bitpulsed-core/qa-assets`](https://github.com/bitcoin-core/qa-assets) repo.
 
-To fuzz `process_message` using the [`bitpulse-core/qa-assets`](https://github.com/bitcoin-core/qa-assets) seed corpus:
+To fuzz `process_message` using the [`bitpulsed-core/qa-assets`](https://github.com/bitcoin-core/qa-assets) seed corpus:
 
 ```sh
 $ git clone https://github.com/bitcoin-core/qa-assets
@@ -117,9 +117,9 @@ Fuzzing on a harness compiled with `--with-sanitizers=address,fuzzer,undefined` 
 
 ## Submit improved coverage
 
-If you find coverage increasing inputs when fuzzing you are highly encouraged to submit them for inclusion in the [`bitpulse-core/qa-assets`](https://github.com/bitcoin-core/qa-assets) repo.
+If you find coverage increasing inputs when fuzzing you are highly encouraged to submit them for inclusion in the [`bitpulsed-core/qa-assets`](https://github.com/bitcoin-core/qa-assets) repo.
 
-Every single pull request submitted against the bitpulse Core repo is automatically tested against all inputs in the [`bitpulse-core/qa-assets`](https://github.com/bitcoin-core/qa-assets) repo. Contributing new coverage increasing inputs is an easy way to help make bitpulse Core more robust.
+Every single pull request submitted against the bitpulsed Core repo is automatically tested against all inputs in the [`bitpulsed-core/qa-assets`](https://github.com/bitcoin-core/qa-assets) repo. Contributing new coverage increasing inputs is an easy way to help make bitpulsed Core more robust.
 
 ## macOS hints for libFuzzer
 
@@ -139,15 +139,15 @@ Full configure that was tested on macOS with `brew` installed `llvm`:
 
 Read the [libFuzzer documentation](https://llvm.org/docs/LibFuzzer.html) for more information. This [libFuzzer tutorial](https://github.com/google/fuzzing/blob/master/tutorial/libFuzzerTutorial.md) might also be of interest.
 
-# Fuzzing bitpulse Core using afl++
+# Fuzzing bitpulsed Core using afl++
 
 ## Quickstart guide
 
-To quickly get started fuzzing bitpulse Core using [afl++](https://github.com/AFLplusplus/AFLplusplus):
+To quickly get started fuzzing bitpulsed Core using [afl++](https://github.com/AFLplusplus/AFLplusplus):
 
 ```sh
 $ git clone https://github.com/bitcoin/bitcoin
-$ cd bitpulse/
+$ cd bitpulsed/
 $ git clone https://github.com/AFLplusplus/AFLplusplus
 $ make -C AFLplusplus/ source-only
 $ ./autogen.sh
@@ -166,15 +166,15 @@ $ FUZZ=bech32 AFLplusplus/afl-fuzz -i inputs/ -o outputs/ -- src/test/fuzz/fuzz
 
 Read the [afl++ documentation](https://github.com/AFLplusplus/AFLplusplus) for more information.
 
-# Fuzzing bitpulse Core using Honggfuzz
+# Fuzzing bitpulsed Core using Honggfuzz
 
 ## Quickstart guide
 
-To quickly get started fuzzing bitpulse Core using [Honggfuzz](https://github.com/google/honggfuzz):
+To quickly get started fuzzing bitpulsed Core using [Honggfuzz](https://github.com/google/honggfuzz):
 
 ```sh
 $ git clone https://github.com/bitcoin/bitcoin
-$ cd bitpulse/
+$ cd bitpulsed/
 $ ./autogen.sh
 $ git clone https://github.com/google/honggfuzz
 $ cd honggfuzz/
@@ -188,9 +188,9 @@ $ FUZZ=process_message honggfuzz/honggfuzz -i inputs/ -- src/test/fuzz/fuzz
 
 Read the [Honggfuzz documentation](https://github.com/google/honggfuzz/blob/master/docs/USAGE.md) for more information.
 
-## Fuzzing the bitpulse Core P2P layer using Honggfuzz NetDriver
+## Fuzzing the bitpulsed Core P2P layer using Honggfuzz NetDriver
 
-Honggfuzz NetDriver allows for very easy fuzzing of TCP servers such as bitpulse
+Honggfuzz NetDriver allows for very easy fuzzing of TCP servers such as bitpulsed
 Core without having to write any custom fuzzing harness. The `bitpulsed` server
 process is largely fuzzed without modification.
 
@@ -200,10 +200,10 @@ also remotely triggerable by an untrusted peer.
 To quickly get started fuzzing the P2P layer using Honggfuzz NetDriver:
 
 ```sh
-$ mkdir bitpulse-honggfuzz-p2p/
-$ cd bitpulse-honggfuzz-p2p/
+$ mkdir bitpulsed-honggfuzz-p2p/
+$ cd bitpulsed-honggfuzz-p2p/
 $ git clone https://github.com/bitcoin/bitcoin
-$ cd bitpulse/
+$ cd bitpulsed/
 $ ./autogen.sh
 $ git clone https://github.com/google/honggfuzz
 $ cd honggfuzz/
@@ -263,15 +263,15 @@ $ honggfuzz/honggfuzz --exit_upon_crash --quiet --timeout 4 -n 1 -Q \
                        -debug
 ```
 
-# Fuzzing bitpulse Core using Eclipser (v1.x)
+# Fuzzing bitpulsed Core using Eclipser (v1.x)
 
 ## Quickstart guide
 
-To quickly get started fuzzing bitpulse Core using [Eclipser v1.x](https://github.com/SoftSec-KAIST/Eclipser/tree/v1.x):
+To quickly get started fuzzing bitpulsed Core using [Eclipser v1.x](https://github.com/SoftSec-KAIST/Eclipser/tree/v1.x):
 
 ```sh
 $ git clone https://github.com/bitcoin/bitcoin
-$ cd bitpulse/
+$ cd bitpulsed/
 $ sudo vim /etc/apt/sources.list # Uncomment the lines starting with 'deb-src'.
 $ sudo apt-get update
 $ sudo apt-get build-dep qemu
@@ -332,14 +332,14 @@ Read the [Eclipser documentation for v1.x](https://github.com/SoftSec-KAIST/Ecli
 
 # OSS-Fuzz
 
-bitpulse Core participates in Google's [OSS-Fuzz](https://github.com/google/oss-fuzz/tree/master/projects/bitpulse-core)
-program, which includes a dashboard of [publicly disclosed vulnerabilities](https://bugs.chromium.org/p/oss-fuzz/issues/list?q=bitpulse-core).
+bitpulsed Core participates in Google's [OSS-Fuzz](https://github.com/google/oss-fuzz/tree/master/projects/bitpulsed-core)
+program, which includes a dashboard of [publicly disclosed vulnerabilities](https://bugs.chromium.org/p/oss-fuzz/issues/list?q=bitpulsed-core).
 Generally, we try to disclose vulnerabilities as soon as possible after they
 are fixed to give users the knowledge they need to be protected. However,
-because bitpulse is a live P2P network, and not just standalone local software,
+because bitpulsed is a live P2P network, and not just standalone local software,
 we might not fully disclose every issue within Google's standard
 [90-day disclosure window](https://google.github.io/oss-fuzz/getting-started/bug-disclosure-guidelines/)
 if a partial or delayed disclosure is important to protect users or the
 function of the network.
 
-OSS-Fuzz also produces [a fuzzing coverage report](https://oss-fuzz.com/coverage-report/job/libfuzzer_asan_bitpulse-core/latest).
+OSS-Fuzz also produces [a fuzzing coverage report](https://oss-fuzz.com/coverage-report/job/libfuzzer_asan_bitpulsed-core/latest).

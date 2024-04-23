@@ -1,9 +1,9 @@
-// Copyright (c) 2023-present The Bitpulse Core developers
+// Copyright (c) 2023-present The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include <config/bitpulse-config.h>
+#include <config/bitpulsed-config.h>
 #endif
 
 #include <bench/bench.h>

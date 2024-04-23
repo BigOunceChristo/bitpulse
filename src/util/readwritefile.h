@@ -1,9 +1,9 @@
-// Copyright (c) 2015-2021 The Bitpulse Core developers
+// Copyright (c) 2015-2021 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_UTIL_READWRITEFILE_H
-#define bitpulse_UTIL_READWRITEFILE_H
+#ifndef bitpulsed_UTIL_READWRITEFILE_H
+#define bitpulsed_UTIL_READWRITEFILE_H
 
 #include <util/fs.h>
 
@@ -25,4 +25,4 @@ std::pair<bool,std::string> ReadBinaryFile(const fs::path &filename, size_t maxs
  */
 bool WriteBinaryFile(const fs::path &filename, const std::string &data);
 
-#endif // bitpulse_UTIL_READWRITEFILE_H
+#endif // bitpulsed_UTIL_READWRITEFILE_H

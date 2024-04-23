@@ -1,9 +1,9 @@
-// Copyright (c) 2023 The Bitpulse Core developers
+// Copyright (c) 2023 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_KERNEL_CS_MAIN_H
-#define bitpulse_KERNEL_CS_MAIN_H
+#ifndef bitpulsed_KERNEL_CS_MAIN_H
+#define bitpulsed_KERNEL_CS_MAIN_H
 
 #include <sync.h>
 
@@ -19,4 +19,4 @@
  */
 extern RecursiveMutex cs_main;
 
-#endif // bitpulse_KERNEL_CS_MAIN_H
+#endif // bitpulsed_KERNEL_CS_MAIN_H

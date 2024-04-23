@@ -1,9 +1,9 @@
-// Copyright (c) 2023 The Bitpulse Core developers
+// Copyright (c) 2023 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_UTIL_CHAINTYPE_H
-#define bitpulse_UTIL_CHAINTYPE_H
+#ifndef bitpulsed_UTIL_CHAINTYPE_H
+#define bitpulsed_UTIL_CHAINTYPE_H
 
 #include <optional>
 #include <string>
@@ -19,4 +19,4 @@ std::string ChainTypeToString(ChainType chain);
 
 std::optional<ChainType> ChainTypeFromString(std::string_view chain);
 
-#endif // bitpulse_UTIL_CHAINTYPE_H
+#endif // bitpulsed_UTIL_CHAINTYPE_H

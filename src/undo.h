@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2020 The Bitpulse Core developers
+// Copyright (c) 2009-2020 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_UNDO_H
-#define bitpulse_UNDO_H
+#ifndef bitpulsed_UNDO_H
+#define bitpulsed_UNDO_H
 
 #include <coins.h>
 #include <compressor.h>
@@ -67,4 +67,4 @@ public:
     SERIALIZE_METHODS(CBlockUndo, obj) { READWRITE(obj.vtxundo); }
 };
 
-#endif // bitpulse_UNDO_H
+#endif // bitpulsed_UNDO_H

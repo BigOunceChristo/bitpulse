@@ -1,9 +1,9 @@
-// Copyright (c) 2009-2022 The Bitpulse Core developers
+// Copyright (c) 2009-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_KERNEL_MEMPOOL_ENTRY_H
-#define bitpulse_KERNEL_MEMPOOL_ENTRY_H
+#ifndef bitpulsed_KERNEL_MEMPOOL_ENTRY_H
+#define bitpulsed_KERNEL_MEMPOOL_ENTRY_H
 
 #include <consensus/amount.h>
 #include <consensus/validation.h>
@@ -249,4 +249,4 @@ struct NewMempoolTransactionInfo {
           m_has_no_mempool_parents{has_no_mempool_parents} {}
 };
 
-#endif // bitpulse_KERNEL_MEMPOOL_ENTRY_H
+#endif // bitpulsed_KERNEL_MEMPOOL_ENTRY_H

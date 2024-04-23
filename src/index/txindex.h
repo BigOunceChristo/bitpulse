@@ -1,9 +1,9 @@
-// Copyright (c) 2017-2022 The Bitpulse Core developers
+// Copyright (c) 2017-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_INDEX_TXINDEX_H
-#define bitpulse_INDEX_TXINDEX_H
+#ifndef bitpulsed_INDEX_TXINDEX_H
+#define bitpulsed_INDEX_TXINDEX_H
 
 #include <index/base.h>
 
@@ -48,4 +48,4 @@ public:
 /// The global transaction index, used in GetTransaction. May be null.
 extern std::unique_ptr<TxIndex> g_txindex;
 
-#endif // bitpulse_INDEX_TXINDEX_H
+#endif // bitpulsed_INDEX_TXINDEX_H

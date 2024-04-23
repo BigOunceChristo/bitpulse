@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2014-2022 The bitpulse Core developers
+# Copyright (c) 2014-2022 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test the fundrawtransaction RPC."""
@@ -16,7 +16,7 @@ from test_framework.messages import (
     CTransaction,
     CTxOut,
 )
-from test_framework.test_framework import bitpulseTestFramework
+from test_framework.test_framework import bitpulsedTestFramework
 from test_framework.util import (
     assert_approx,
     assert_equal,
@@ -38,7 +38,7 @@ def get_unspent(listunspent, amount):
             return utx
     raise AssertionError('Could not find unspent with amount={}'.format(amount))
 
-class RawTransactionsTest(bitpulseTestFramework):
+class RawTransactionsTest(bitpulsedTestFramework):
     def add_options(self, parser):
         self.add_wallet_options(parser)
 
@@ -303,7 +303,7 @@ class RawTransactionsTest(bitpulseTestFramework):
         dec_tx  = self.nodes[2].decoderawtransaction(rawtx)
         assert_equal(utx['txid'], dec_tx['vin'][0]['txid'])
 
-        assert_raises_rpc_error(-5, "Change address must be a valid bitpulse address", self.nodes[2].fundrawtransaction, rawtx, changeAddress='foobar')
+        assert_raises_rpc_error(-5, "Change address must be a valid bitpulsed address", self.nodes[2].fundrawtransaction, rawtx, changeAddress='foobar')
 
     def test_valid_change_address(self):
         self.log.info("Test fundrawtxn with a provided change address")

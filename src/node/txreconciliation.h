@@ -1,9 +1,9 @@
-// Copyright (c) 2022 The Bitpulse Core developers
+// Copyright (c) 2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_NODE_TXRECONCILIATION_H
-#define bitpulse_NODE_TXRECONCILIATION_H
+#ifndef bitpulsed_NODE_TXRECONCILIATION_H
+#define bitpulsed_NODE_TXRECONCILIATION_H
 
 #include <net.h>
 #include <sync.h>
@@ -86,4 +86,4 @@ public:
     bool IsPeerRegistered(NodeId peer_id) const;
 };
 
-#endif // bitpulse_NODE_TXRECONCILIATION_H
+#endif // bitpulsed_NODE_TXRECONCILIATION_H

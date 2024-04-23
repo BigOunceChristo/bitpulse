@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2021 The Bitpulse Core developers
+// Copyright (c) 2009-2021 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_TEST_SCRIPTNUM10_H
-#define bitpulse_TEST_SCRIPTNUM10_H
+#ifndef bitpulsed_TEST_SCRIPTNUM10_H
+#define bitpulsed_TEST_SCRIPTNUM10_H
 
 #include <assert.h>
 #include <limits>
@@ -22,7 +22,7 @@ public:
 class CScriptNum10
 {
 /**
- * The ScriptNum implementation from Bitpulse Core 0.10.0, for cross-comparison.
+ * The ScriptNum implementation from bitpulsed Core 0.10.0, for cross-comparison.
  */
 public:
 
@@ -179,4 +179,4 @@ private:
 };
 
 
-#endif // bitpulse_TEST_SCRIPTNUM10_H
+#endif // bitpulsed_TEST_SCRIPTNUM10_H

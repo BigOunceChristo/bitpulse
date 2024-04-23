@@ -1,9 +1,9 @@
-// Copyright (c) 2018-2021 The Bitpulse Core developers
+// Copyright (c) 2018-2021 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_SCRIPT_DESCRIPTOR_H
-#define bitpulse_SCRIPT_DESCRIPTOR_H
+#ifndef bitpulsed_SCRIPT_DESCRIPTOR_H
+#define bitpulsed_SCRIPT_DESCRIPTOR_H
 
 #include <outputtype.h>
 #include <script/script.h>
@@ -199,4 +199,4 @@ std::unique_ptr<Descriptor> InferDescriptor(const CScript& script, const Signing
 */
 uint256 DescriptorID(const Descriptor& desc);
 
-#endif // bitpulse_SCRIPT_DESCRIPTOR_H
+#endif // bitpulsed_SCRIPT_DESCRIPTOR_H

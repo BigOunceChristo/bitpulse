@@ -1,9 +1,9 @@
-// Copyright (c) 2022 The Bitpulse Core developers
+// Copyright (c) 2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_UTIL_RESULT_H
-#define bitpulse_UTIL_RESULT_H
+#ifndef bitpulsed_UTIL_RESULT_H
+#define bitpulsed_UTIL_RESULT_H
 
 #include <attributes.h>
 #include <util/translation.h>
@@ -84,4 +84,4 @@ bilingual_str ErrorString(const Result<T>& result)
 }
 } // namespace util
 
-#endif // bitpulse_UTIL_RESULT_H
+#endif // bitpulsed_UTIL_RESULT_H

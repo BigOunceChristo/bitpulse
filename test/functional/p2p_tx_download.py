@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2019-2021 The bitpulse Core developers
+# Copyright (c) 2019-2021 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """
@@ -19,7 +19,7 @@ from test_framework.p2p import (
     P2PInterface,
     p2p_lock,
 )
-from test_framework.test_framework import bitpulseTestFramework
+from test_framework.test_framework import bitpulsedTestFramework
 from test_framework.util import (
     assert_equal,
 )
@@ -51,7 +51,7 @@ NUM_INBOUND = 10
 MAX_GETDATA_INBOUND_WAIT = GETDATA_TX_INTERVAL + INBOUND_PEER_TX_DELAY + TXID_RELAY_DELAY
 
 
-class TxDownloadTest(bitpulseTestFramework):
+class TxDownloadTest(bitpulsedTestFramework):
     def set_test_params(self):
         self.num_nodes = 2
 

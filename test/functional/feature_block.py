@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2015-2022 The bitpulse Core developers
+# Copyright (c) 2015-2022 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test block processing."""
@@ -48,7 +48,7 @@ from test_framework.script import (
 from test_framework.script_util import (
     script_to_p2sh_script,
 )
-from test_framework.test_framework import bitpulseTestFramework
+from test_framework.test_framework import bitpulsedTestFramework
 from test_framework.util import (
     assert_equal,
     assert_greater_than,
@@ -82,7 +82,7 @@ class CBrokenBlock(CBlock):
 DUPLICATE_COINBASE_SCRIPT_SIG = b'\x01\x78'  # Valid for block at height 120
 
 
-class FullBlockTest(bitpulseTestFramework):
+class FullBlockTest(bitpulsedTestFramework):
     def set_test_params(self):
         self.num_nodes = 1
         self.setup_clean_chain = True
@@ -1148,7 +1148,7 @@ class FullBlockTest(bitpulseTestFramework):
         #
         #    The tx'es must be unsigned and pass the node's mempool policy.  It is unsigned for the
         #    rather obscure reason that the Python signature code does not distinguish between
-        #    Low-S and High-S values (whereas the bitpulse code has custom code which does so);
+        #    Low-S and High-S values (whereas the bitpulsed code has custom code which does so);
         #    as a result of which, the odds are 50% that the python code will use the right
         #    value and the transaction will be accepted into the mempool. Until we modify the
         #    test framework to support low-S signing, we are out of luck.

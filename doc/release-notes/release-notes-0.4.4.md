@@ -1,15 +1,15 @@
-bitpulse version 0.4.4 is now available for download at:
-http://luke.dashjr.org/programs/bitpulse/files/bitpulsed-0.4.4/
+bitpulsed version 0.4.4 is now available for download at:
+http://luke.dashjr.org/programs/bitpulsed/files/bitpulsed-0.4.4/
 
 This is a bugfix-only release based on 0.4.0.
 
-Please note that the wxbitpulse GUI client is no longer maintained nor supported. If someone would like to step up to maintain this, they should contact Luke-Jr.
+Please note that the wxbitpulsed GUI client is no longer maintained nor supported. If someone would like to step up to maintain this, they should contact Luke-Jr.
 
 Please report bugs for the daemon only using the issue tracker at github:
 https://github.com/bitcoin/bitcoin/issues
 
 Stable source code is hosted at Gitorious:
-http://gitorious.org/bitpulse/bitpulsed-stable/archive-tarball/v0.4.4#.tar.gz
+http://gitorious.org/bitpulsed/bitpulsed-stable/archive-tarball/v0.4.4#.tar.gz
 
 BUG FIXES
 

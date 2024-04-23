@@ -1,4 +1,4 @@
-// Copyright (c) 2012-2022 The Bitpulse Core developers
+// Copyright (c) 2012-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -84,10 +84,10 @@ bool static TestSplitHost(const std::string& test, const std::string& host, uint
 
 BOOST_AUTO_TEST_CASE(netbase_splithost)
 {
-    BOOST_CHECK(TestSplitHost("www.bitpulsecore.org", "www.bitpulsecore.org", 0));
-    BOOST_CHECK(TestSplitHost("[www.bitpulsecore.org]", "www.bitpulsecore.org", 0));
-    BOOST_CHECK(TestSplitHost("www.bitpulsecore.org:80", "www.bitpulsecore.org", 80));
-    BOOST_CHECK(TestSplitHost("[www.bitpulsecore.org]:80", "www.bitpulsecore.org", 80));
+    BOOST_CHECK(TestSplitHost("www.bitpulsedcore.org", "www.bitpulsedcore.org", 0));
+    BOOST_CHECK(TestSplitHost("[www.bitpulsedcore.org]", "www.bitpulsedcore.org", 0));
+    BOOST_CHECK(TestSplitHost("www.bitpulsedcore.org:80", "www.bitpulsedcore.org", 80));
+    BOOST_CHECK(TestSplitHost("[www.bitpulsedcore.org]:80", "www.bitpulsedcore.org", 80));
     BOOST_CHECK(TestSplitHost("127.0.0.1", "127.0.0.1", 0));
     BOOST_CHECK(TestSplitHost("127.0.0.1:8333", "127.0.0.1", 8333));
     BOOST_CHECK(TestSplitHost("[127.0.0.1]", "127.0.0.1", 0));
@@ -113,9 +113,9 @@ BOOST_AUTO_TEST_CASE(netbase_splithost)
     BOOST_CHECK(TestSplitHost("127.0.0.1:", "127.0.0.1:", 0, false));
     BOOST_CHECK(TestSplitHost("127.0.0.1:1/2", "127.0.0.1:1/2", 0, false));
     BOOST_CHECK(TestSplitHost("127.0.0.1:1E2", "127.0.0.1:1E2", 0, false));
-    BOOST_CHECK(TestSplitHost("www.bitpulsecore.org:65536", "www.bitpulsecore.org:65536", 0, false));
-    BOOST_CHECK(TestSplitHost("www.bitpulsecore.org:0", "www.bitpulsecore.org", 0, false));
-    BOOST_CHECK(TestSplitHost("www.bitpulsecore.org:", "www.bitpulsecore.org:", 0, false));
+    BOOST_CHECK(TestSplitHost("www.bitpulsedcore.org:65536", "www.bitpulsedcore.org:65536", 0, false));
+    BOOST_CHECK(TestSplitHost("www.bitpulsedcore.org:0", "www.bitpulsedcore.org", 0, false));
+    BOOST_CHECK(TestSplitHost("www.bitpulsedcore.org:", "www.bitpulsedcore.org:", 0, false));
 }
 
 bool static TestParse(std::string src, std::string canon)

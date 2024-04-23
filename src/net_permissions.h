@@ -1,4 +1,4 @@
-// Copyright (c) 2009-2022 The Bitpulse Core developers
+// Copyright (c) 2009-2022 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -9,8 +9,8 @@
 #include <type_traits>
 #include <vector>
 
-#ifndef bitpulse_NET_PERMISSIONS_H
-#define bitpulse_NET_PERMISSIONS_H
+#ifndef bitpulsed_NET_PERMISSIONS_H
+#define bitpulsed_NET_PERMISSIONS_H
 
 struct bilingual_str;
 
@@ -93,4 +93,4 @@ public:
     CSubNet m_subnet;
 };
 
-#endif // bitpulse_NET_PERMISSIONS_H
+#endif // bitpulsed_NET_PERMISSIONS_H

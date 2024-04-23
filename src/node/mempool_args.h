@@ -1,9 +1,9 @@
-// Copyright (c) 2022 The Bitpulse Core developers
+// Copyright (c) 2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_NODE_MEMPOOL_ARGS_H
-#define bitpulse_NODE_MEMPOOL_ARGS_H
+#ifndef bitpulsed_NODE_MEMPOOL_ARGS_H
+#define bitpulsed_NODE_MEMPOOL_ARGS_H
 
 #include <util/result.h>
 
@@ -24,4 +24,4 @@ struct MemPoolOptions;
 [[nodiscard]] util::Result<void> ApplyArgsManOptions(const ArgsManager& argsman, const CChainParams& chainparams, kernel::MemPoolOptions& mempool_opts);
 
 
-#endif // bitpulse_NODE_MEMPOOL_ARGS_H
+#endif // bitpulsed_NODE_MEMPOOL_ARGS_H

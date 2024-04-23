@@ -1,9 +1,9 @@
-// Copyright (c) 2020-2022 The Bitpulse Core developers
+// Copyright (c) 2020-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_TEST_UTIL_VALIDATION_H
-#define bitpulse_TEST_UTIL_VALIDATION_H
+#ifndef bitpulsed_TEST_UTIL_VALIDATION_H
+#define bitpulsed_TEST_UTIL_VALIDATION_H
 
 #include <validation.h>
 
@@ -26,4 +26,4 @@ public:
         const CBlockIndex* pindex);
 };
 
-#endif // bitpulse_TEST_UTIL_VALIDATION_H
+#endif // bitpulsed_TEST_UTIL_VALIDATION_H

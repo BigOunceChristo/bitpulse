@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2020 The bitpulse Core developers
+# Copyright (c) 2013-2020 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -14,30 +14,30 @@ endif
 .PHONY: deploy FORCE
 .INTERMEDIATE: $(COVERAGE_INFO)
 
-if BUILD_bitpulse_LIBS
+if BUILD_bitpulsed_LIBS
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = libbitpulseconsensus.pc
+pkgconfig_DATA = libbitpulsedconsensus.pc
 endif
 
-bitpulseD_BIN=$(top_builddir)/src/$(bitpulse_DAEMON_NAME)$(EXEEXT)
-bitpulse_QT_BIN=$(top_builddir)/src/qt/$(bitpulse_GUI_NAME)$(EXEEXT)
-bitpulse_TEST_BIN=$(top_builddir)/src/test/$(bitpulse_TEST_NAME)$(EXEEXT)
-bitpulse_CLI_BIN=$(top_builddir)/src/$(bitpulse_CLI_NAME)$(EXEEXT)
-bitpulse_TX_BIN=$(top_builddir)/src/$(bitpulse_TX_NAME)$(EXEEXT)
-bitpulse_UTIL_BIN=$(top_builddir)/src/$(bitpulse_UTIL_NAME)$(EXEEXT)
-bitpulse_WALLET_BIN=$(top_builddir)/src/$(bitpulse_WALLET_TOOL_NAME)$(EXEEXT)
-bitpulse_NODE_BIN=$(top_builddir)/src/$(bitpulse_MP_NODE_NAME)$(EXEEXT)
-bitpulse_GUI_BIN=$(top_builddir)/src/$(bitpulse_MP_GUI_NAME)$(EXEEXT)
-bitpulse_WIN_INSTALLER=$(PACKAGE)-$(PACKAGE_VERSION)-win64-setup$(EXEEXT)
+bitpulsed_BIN=$(top_builddir)/src/$(bitpulsed_DAEMON_NAME)$(EXEEXT)
+bitpulsed_QT_BIN=$(top_builddir)/src/qt/$(bitpulsed_GUI_NAME)$(EXEEXT)
+bitpulsed_TEST_BIN=$(top_builddir)/src/test/$(bitpulsed_TEST_NAME)$(EXEEXT)
+bitpulsed_CLI_BIN=$(top_builddir)/src/$(bitpulsed_CLI_NAME)$(EXEEXT)
+bitpulsed_TX_BIN=$(top_builddir)/src/$(bitpulsed_TX_NAME)$(EXEEXT)
+bitpulsed_UTIL_BIN=$(top_builddir)/src/$(bitpulsed_UTIL_NAME)$(EXEEXT)
+bitpulsed_WALLET_BIN=$(top_builddir)/src/$(bitpulsed_WALLET_TOOL_NAME)$(EXEEXT)
+bitpulsed_NODE_BIN=$(top_builddir)/src/$(bitpulsed_MP_NODE_NAME)$(EXEEXT)
+bitpulsed_GUI_BIN=$(top_builddir)/src/$(bitpulsed_MP_GUI_NAME)$(EXEEXT)
+bitpulsed_WIN_INSTALLER=$(PACKAGE)-$(PACKAGE_VERSION)-win64-setup$(EXEEXT)
 
 empty :=
 space := $(empty) $(empty)
 
-OSX_APP=bitpulse-Qt.app
+OSX_APP=bitpulsed-Qt.app
 OSX_VOLNAME = $(subst $(space),-,$(PACKAGE_NAME))
 OSX_ZIP = $(OSX_VOLNAME).zip
 OSX_DEPLOY_SCRIPT=$(top_srcdir)/contrib/macdeploy/macdeployqtplus
-OSX_INSTALLER_ICONS=$(top_srcdir)/src/qt/res/icons/bitpulse.icns
+OSX_INSTALLER_ICONS=$(top_srcdir)/src/qt/res/icons/bitpulsed.icns
 OSX_PLIST=$(top_builddir)/share/qt/Info.plist #not installed
 
 DIST_CONTRIB = \
@@ -56,7 +56,7 @@ BIN_CHECKS=$(top_srcdir)/contrib/devtools/symbol-check.py \
            $(top_srcdir)/contrib/devtools/security-check.py \
            $(top_srcdir)/contrib/devtools/utils.py
 
-WINDOWS_PACKAGING = $(top_srcdir)/share/pixmaps/bitpulse.ico \
+WINDOWS_PACKAGING = $(top_srcdir)/share/pixmaps/bitpulsed.ico \
   $(top_srcdir)/share/pixmaps/nsis-header.bmp \
   $(top_srcdir)/share/pixmaps/nsis-wizard.bmp \
   $(top_srcdir)/doc/README_windows.txt
@@ -65,28 +65,28 @@ OSX_PACKAGING = $(OSX_DEPLOY_SCRIPT) $(OSX_INSTALLER_ICONS) \
   $(top_srcdir)/contrib/macdeploy/detached-sig-create.sh
 
 COVERAGE_INFO = $(COV_TOOL_WRAPPER) baseline.info \
-  test_bitpulse_filtered.info total_coverage.info \
+  test_bitpulsed_filtered.info total_coverage.info \
   baseline_filtered.info functional_test.info functional_test_filtered.info \
-  test_bitpulse_coverage.info test_bitpulse.info fuzz.info fuzz_filtered.info fuzz_coverage.info
+  test_bitpulsed_coverage.info test_bitpulsed.info fuzz.info fuzz_filtered.info fuzz_coverage.info
 
 dist-hook:
 	-$(GIT) archive --format=tar HEAD -- src/clientversion.cpp | $(AMTAR) -C $(top_distdir) -xf -
 
 if TARGET_WINDOWS
-$(bitpulse_WIN_INSTALLER): all-recursive
+$(bitpulsed_WIN_INSTALLER): all-recursive
 	$(MKDIR_P) $(top_builddir)/release
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(bitpulseD_BIN) $(top_builddir)/release
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(bitpulse_QT_BIN) $(top_builddir)/release
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(bitpulse_TEST_BIN) $(top_builddir)/release
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(bitpulse_CLI_BIN) $(top_builddir)/release
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(bitpulse_TX_BIN) $(top_builddir)/release
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(bitpulse_WALLET_BIN) $(top_builddir)/release
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(bitpulse_UTIL_BIN) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(bitpulsed_BIN) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(bitpulsed_QT_BIN) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(bitpulsed_TEST_BIN) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(bitpulsed_CLI_BIN) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(bitpulsed_TX_BIN) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(bitpulsed_WALLET_BIN) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(bitpulsed_UTIL_BIN) $(top_builddir)/release
 	@test -f $(MAKENSIS) && echo 'OutFile "$@"' | cat $(top_builddir)/share/setup.nsi - | $(MAKENSIS) -V2 - || \
 	  echo error: could not build $@
 	@echo built $@
 
-deploy: $(bitpulse_WIN_INSTALLER)
+deploy: $(bitpulsed_WIN_INSTALLER)
 endif
 
 if TARGET_DARWIN
@@ -102,21 +102,21 @@ $(OSX_APP)/Contents/Info.plist: $(OSX_PLIST)
 	$(MKDIR_P) $(@D)
 	$(INSTALL_DATA) $< $@
 
-$(OSX_APP)/Contents/Resources/bitpulse.icns: $(OSX_INSTALLER_ICONS)
+$(OSX_APP)/Contents/Resources/bitpulsed.icns: $(OSX_INSTALLER_ICONS)
 	$(MKDIR_P) $(@D)
 	$(INSTALL_DATA) $< $@
 
-$(OSX_APP)/Contents/MacOS/bitpulse-Qt: all-recursive
+$(OSX_APP)/Contents/MacOS/bitpulsed-Qt: all-recursive
 	$(MKDIR_P) $(@D)
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM)  $(bitpulse_QT_BIN) $@
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM)  $(bitpulsed_QT_BIN) $@
 
 $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings:
 	$(MKDIR_P) $(@D)
 	echo '{	CFBundleDisplayName = "$(PACKAGE_NAME)"; CFBundleName = "$(PACKAGE_NAME)"; }' > $@
 
 OSX_APP_BUILT=$(OSX_APP)/Contents/PkgInfo $(OSX_APP)/Contents/Resources/empty.lproj \
-  $(OSX_APP)/Contents/Resources/bitpulse.icns $(OSX_APP)/Contents/Info.plist \
-  $(OSX_APP)/Contents/MacOS/bitpulse-Qt $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings
+  $(OSX_APP)/Contents/Resources/bitpulsed.icns $(OSX_APP)/Contents/Info.plist \
+  $(OSX_APP)/Contents/MacOS/bitpulsed-Qt $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings
 
 osx_volname:
 	echo $(OSX_VOLNAME) >$@
@@ -133,37 +133,37 @@ $(OSX_ZIP): deploydir
 	if [ -n "$(SOURCE_DATE_EPOCH)" ]; then find $(APP_DIST_DIR) -exec touch -d @$(SOURCE_DATE_EPOCH) {} +; fi
 	cd $(APP_DIST_DIR) && find . | sort | $(ZIP) -X@ $@
 
-$(APP_DIST_DIR)/$(OSX_APP)/Contents/MacOS/bitpulse-Qt: $(OSX_APP_BUILT) $(OSX_PACKAGING)
+$(APP_DIST_DIR)/$(OSX_APP)/Contents/MacOS/bitpulsed-Qt: $(OSX_APP_BUILT) $(OSX_PACKAGING)
 	INSTALL_NAME_TOOL=$(INSTALL_NAME_TOOL) OTOOL=$(OTOOL) STRIP=$(STRIP) $(PYTHON) $(OSX_DEPLOY_SCRIPT) $(OSX_APP) $(OSX_VOLNAME) -translations-dir=$(QT_TRANSLATION_DIR)
 
-deploydir: $(APP_DIST_DIR)/$(OSX_APP)/Contents/MacOS/bitpulse-Qt
+deploydir: $(APP_DIST_DIR)/$(OSX_APP)/Contents/MacOS/bitpulsed-Qt
 endif !BUILD_DARWIN
 
 deploy: $(OSX_ZIP)
 endif
 
-$(bitpulse_QT_BIN): FORCE
+$(bitpulsed_QT_BIN): FORCE
 	$(MAKE) -C src qt/$(@F)
 
-$(bitpulseD_BIN): FORCE
+$(bitpulsed_BIN): FORCE
 	$(MAKE) -C src $(@F)
 
-$(bitpulse_CLI_BIN): FORCE
+$(bitpulsed_CLI_BIN): FORCE
 	$(MAKE) -C src $(@F)
 
-$(bitpulse_TX_BIN): FORCE
+$(bitpulsed_TX_BIN): FORCE
 	$(MAKE) -C src $(@F)
 
-$(bitpulse_UTIL_BIN): FORCE
+$(bitpulsed_UTIL_BIN): FORCE
 	$(MAKE) -C src $(@F)
 
-$(bitpulse_WALLET_BIN): FORCE
+$(bitpulsed_WALLET_BIN): FORCE
 	$(MAKE) -C src $(@F)
 
-$(bitpulse_NODE_BIN): FORCE
+$(bitpulsed_NODE_BIN): FORCE
 	$(MAKE) -C src $(@F)
 
-$(bitpulse_GUI_BIN): FORCE
+$(bitpulsed_GUI_BIN): FORCE
 	$(MAKE) -C src $(@F)
 
 if USE_LCOV
@@ -202,16 +202,16 @@ fuzz_filtered.info: fuzz.info
 	$(abs_builddir)/contrib/filter-lcov.py $(LCOV_FILTER_PATTERN) $< $@
 	$(LCOV) -a $@ $(LCOV_OPTS) -o $@
 
-test_bitpulse.info: baseline_filtered.info
+test_bitpulsed.info: baseline_filtered.info
 	$(MAKE) -C src/ check
-	$(LCOV) -c $(LCOV_OPTS) -d $(abs_builddir)/src -t test_bitpulse -o $@
+	$(LCOV) -c $(LCOV_OPTS) -d $(abs_builddir)/src -t test_bitpulsed -o $@
 	$(LCOV) -z $(LCOV_OPTS) -d $(abs_builddir)/src
 
-test_bitpulse_filtered.info: test_bitpulse.info
+test_bitpulsed_filtered.info: test_bitpulsed.info
 	$(abs_builddir)/contrib/filter-lcov.py $(LCOV_FILTER_PATTERN) $< $@
 	$(LCOV) -a $@ $(LCOV_OPTS) -o $@
 
-functional_test.info: test_bitpulse_filtered.info
+functional_test.info: test_bitpulsed_filtered.info
 	@TIMEOUT=15 test/functional/test_runner.py $(EXTENDED_FUNCTIONAL_TESTS)
 	$(LCOV) -c $(LCOV_OPTS) -d $(abs_builddir)/src --t functional-tests -o $@
 	$(LCOV) -z $(LCOV_OPTS) -d $(abs_builddir)/src
@@ -223,17 +223,17 @@ functional_test_filtered.info: functional_test.info
 fuzz_coverage.info: fuzz_filtered.info
 	$(LCOV) $(LCOV_OPTS) -a baseline_filtered.info -a fuzz_filtered.info -o $@ | $(GREP) "\%" | $(AWK) '{ print substr($$3,2,50) "/" $$5 }' > coverage_percent.txt
 
-test_bitpulse_coverage.info: baseline_filtered.info test_bitpulse_filtered.info
-	$(LCOV) $(LCOV_OPTS) -a baseline_filtered.info -a test_bitpulse_filtered.info -o $@
+test_bitpulsed_coverage.info: baseline_filtered.info test_bitpulsed_filtered.info
+	$(LCOV) $(LCOV_OPTS) -a baseline_filtered.info -a test_bitpulsed_filtered.info -o $@
 
-total_coverage.info: test_bitpulse_filtered.info functional_test_filtered.info
-	$(LCOV) $(LCOV_OPTS) -a baseline_filtered.info -a test_bitpulse_filtered.info -a functional_test_filtered.info -o $@ | $(GREP) "\%" | $(AWK) '{ print substr($$3,2,50) "/" $$5 }' > coverage_percent.txt
+total_coverage.info: test_bitpulsed_filtered.info functional_test_filtered.info
+	$(LCOV) $(LCOV_OPTS) -a baseline_filtered.info -a test_bitpulsed_filtered.info -a functional_test_filtered.info -o $@ | $(GREP) "\%" | $(AWK) '{ print substr($$3,2,50) "/" $$5 }' > coverage_percent.txt
 
 fuzz.coverage/.dirstamp: fuzz_coverage.info
 	$(GENHTML) -s $(LCOV_OPTS) $< -o $(@D)
 	@touch $@
 
-test_bitpulse.coverage/.dirstamp:  test_bitpulse_coverage.info
+test_bitpulsed.coverage/.dirstamp:  test_bitpulsed_coverage.info
 	$(GENHTML) -s $(LCOV_OPTS) $< -o $(@D)
 	@touch $@
 
@@ -243,7 +243,7 @@ total.coverage/.dirstamp: total_coverage.info
 
 cov_fuzz: fuzz.coverage/.dirstamp
 
-cov: test_bitpulse.coverage/.dirstamp total.coverage/.dirstamp
+cov: test_bitpulsed.coverage/.dirstamp total.coverage/.dirstamp
 
 endif
 
@@ -257,7 +257,7 @@ EXTRA_DIST += \
 
 EXTRA_DIST += \
     test/util/test_runner.py \
-    test/util/data/bitpulse-util-test.json \
+    test/util/data/bitpulsed-util-test.json \
     test/util/data/blanktxv1.hex \
     test/util/data/blanktxv1.json \
     test/util/data/blanktxv2.hex \
@@ -316,7 +316,7 @@ EXTRA_DIST += \
     test/util/data/txreplacesingleinput.hex \
     test/util/rpcauth-test.py
 
-CLEANFILES = $(OSX_ZIP) $(bitpulse_WIN_INSTALLER)
+CLEANFILES = $(OSX_ZIP) $(bitpulsed_WIN_INSTALLER)
 
 DISTCHECK_CONFIGURE_FLAGS = --enable-man
 
@@ -336,7 +336,7 @@ clean-docs:
 	rm -rf doc/doxygen
 
 clean-local: clean-docs
-	rm -rf coverage_percent.txt test_bitpulse.coverage/ total.coverage/ fuzz.coverage/ test/tmp/ cache/ $(OSX_APP)
+	rm -rf coverage_percent.txt test_bitpulsed.coverage/ total.coverage/ fuzz.coverage/ test/tmp/ cache/ $(OSX_APP)
 	rm -rf test/functional/__pycache__ test/functional/test_framework/__pycache__ test/cache share/rpcauth/__pycache__
 	rm -rf osx_volname dist/
 

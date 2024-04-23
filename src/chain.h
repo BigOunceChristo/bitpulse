@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2022 The Bitpulse Core developers
+// Copyright (c) 2009-2022 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_CHAIN_H
-#define bitpulse_CHAIN_H
+#ifndef bitpulsed_CHAIN_H
+#define bitpulsed_CHAIN_H
 
 #include <arith_uint256.h>
 #include <consensus/params.h>
@@ -513,4 +513,4 @@ CBlockLocator GetLocator(const CBlockIndex* index);
 /** Construct a list of hash entries to put in a locator.  */
 std::vector<uint256> LocatorEntries(const CBlockIndex* index);
 
-#endif // bitpulse_CHAIN_H
+#endif // bitpulsed_CHAIN_H

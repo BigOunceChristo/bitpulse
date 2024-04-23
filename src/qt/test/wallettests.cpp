@@ -1,4 +1,4 @@
-// Copyright (c) 2015-2022 The Bitpulse Core developers
+// Copyright (c) 2015-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -81,7 +81,7 @@ uint256 SendCoins(CWallet& wallet, SendCoinsDialog& sendCoinsDialog, const CTxDe
     QVBoxLayout* entries = sendCoinsDialog.findChild<QVBoxLayout*>("entries");
     SendCoinsEntry* entry = qobject_cast<SendCoinsEntry*>(entries->itemAt(0)->widget());
     entry->findChild<QValidatedLineEdit*>("payTo")->setText(QString::fromStdString(EncodeDestination(address)));
-    entry->findChild<BitpulseAmountField*>("payAmount")->setValue(amount);
+    entry->findChild<bitpulseAmountField*>("payAmount")->setValue(amount);
     sendCoinsDialog.findChild<QFrame*>("frameFee")
         ->findChild<QFrame*>("frameFeeSelection")
         ->findChild<QCheckBox*>("optInRBF")
@@ -138,8 +138,8 @@ void BumpFee(TransactionView& view, const uint256& txid, bool expectDisabled, st
 
 void CompareBalance(WalletModel& walletModel, CAmount expected_balance, QLabel* balance_label_to_check)
 {
-    BitpulseUnit unit = walletModel.getOptionsModel()->getDisplayUnit();
-    QString balanceComparison = BitpulseUnits::formatWithUnit(unit, expected_balance, false, BitpulseUnits::SeparatorStyle::ALWAYS);
+    bitpulseUnit unit = walletModel.getOptionsModel()->getDisplayUnit();
+    QString balanceComparison = bitpulseUnits::formatWithUnit(unit, expected_balance, false, bitpulseUnits::SeparatorStyle::ALWAYS);
     QCOMPARE(balance_label_to_check->text().trimmed(), balanceComparison);
 }
 
@@ -320,7 +320,7 @@ void TestGUI(interfaces::Node& node, const std::shared_ptr<CWallet>& wallet)
     labelInput->setText("TEST_LABEL_1");
 
     // Amount input
-    BitpulseAmountField* amountInput = receiveCoinsDialog.findChild<BitpulseAmountField*>("reqAmount");
+    bitpulseAmountField* amountInput = receiveCoinsDialog.findChild<bitpulseAmountField*>("reqAmount");
     amountInput->setValue(1);
 
     // Message input

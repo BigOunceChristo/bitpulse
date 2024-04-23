@@ -1,9 +1,10 @@
-// Copyright (c) 2018-2022 The Bitpulse Core developers
-// Distributed under the MIT software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+// Copyright (c) 2018-2022 The bitpulsed Core Developers
+// This project is derived from the Bitcoin Core Project, originally licensed under the MIT license.
+// See the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php for details.
 
-#ifndef bitpulse_UTIL_SPANPARSING_H
-#define bitpulse_UTIL_SPANPARSING_H
+
+#ifndef bitpulsed_UTIL_SPANPARSING_H
+#define bitpulsed_UTIL_SPANPARSING_H
 
 #include <span.h>
 
@@ -76,4 +77,4 @@ std::vector<T> Split(const Span<const char>& sp, char sep)
 
 } // namespace spanparsing
 
-#endif // bitpulse_UTIL_SPANPARSING_H
+#endif // bitpulsed_UTIL_SPANPARSING_H

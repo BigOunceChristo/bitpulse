@@ -1,9 +1,9 @@
-// Copyright (c) 2022 The Bitpulse Core developers
+// Copyright (c) 2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_COMMON_RUN_COMMAND_H
-#define bitpulse_COMMON_RUN_COMMAND_H
+#ifndef bitpulsed_COMMON_RUN_COMMAND_H
+#define bitpulsed_COMMON_RUN_COMMAND_H
 
 #include <string>
 
@@ -18,4 +18,4 @@ class UniValue;
  */
 UniValue RunCommandParseJSON(const std::string& str_command, const std::string& str_std_in="");
 
-#endif // bitpulse_COMMON_RUN_COMMAND_H
+#endif // bitpulsed_COMMON_RUN_COMMAND_H

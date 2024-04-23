@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.9)
 
-project(bitpulse-tidy VERSION 1.0.0 DESCRIPTION "clang-tidy checks for bitpulse Core")
+project(bitpulsed-tidy VERSION 1.0.0 DESCRIPTION "clang-tidy checks for bitpulsed Core")
 
 include(GNUInstallDirs)
 
@@ -14,43 +14,43 @@ find_program(CLANG_TIDY_EXE NAMES "clang-tidy-${LLVM_VERSION_MAJOR}" "clang-tidy
 message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
 message(STATUS "Found clang-tidy: ${CLANG_TIDY_EXE}")
 
-add_library(bitpulse-tidy MODULE bitpulse-tidy.cpp logprintf.cpp)
-target_include_directories(bitpulse-tidy SYSTEM PRIVATE ${LLVM_INCLUDE_DIRS})
+add_library(bitpulsed-tidy MODULE bitpulsed-tidy.cpp logprintf.cpp)
+target_include_directories(bitpulsed-tidy SYSTEM PRIVATE ${LLVM_INCLUDE_DIRS})
 
 # Disable RTTI and exceptions as necessary
 if (MSVC)
-    target_compile_options(bitpulse-tidy PRIVATE /GR-)
+    target_compile_options(bitpulsed-tidy PRIVATE /GR-)
 else()
-    target_compile_options(bitpulse-tidy PRIVATE -fno-rtti)
-    target_compile_options(bitpulse-tidy PRIVATE -fno-exceptions)
+    target_compile_options(bitpulsed-tidy PRIVATE -fno-rtti)
+    target_compile_options(bitpulsed-tidy PRIVATE -fno-exceptions)
 endif()
 
 if(CMAKE_HOST_APPLE)
     # ld64 expects no undefined symbols by default
-    target_link_options(bitpulse-tidy PRIVATE -Wl,-flat_namespace)
-    target_link_options(bitpulse-tidy PRIVATE -Wl,-undefined -Wl,suppress)
+    target_link_options(bitpulsed-tidy PRIVATE -Wl,-flat_namespace)
+    target_link_options(bitpulsed-tidy PRIVATE -Wl,-undefined -Wl,suppress)
 endif()
 
 # Add warnings
 if (MSVC)
-    target_compile_options(bitpulse-tidy PRIVATE /W4)
+    target_compile_options(bitpulsed-tidy PRIVATE /W4)
 else()
-    target_compile_options(bitpulse-tidy PRIVATE -Wall)
-    target_compile_options(bitpulse-tidy PRIVATE -Wextra)
+    target_compile_options(bitpulsed-tidy PRIVATE -Wall)
+    target_compile_options(bitpulsed-tidy PRIVATE -Wextra)
 endif()
 
 if(CMAKE_VERSION VERSION_LESS 3.27)
-    set(CLANG_TIDY_COMMAND "${CLANG_TIDY_EXE}" "--load=${CMAKE_BINARY_DIR}/${CMAKE_SHARED_MODULE_PREFIX}bitpulse-tidy${CMAKE_SHARED_MODULE_SUFFIX}" "-checks=-*,bitpulse-*")
+    set(CLANG_TIDY_COMMAND "${CLANG_TIDY_EXE}" "--load=${CMAKE_BINARY_DIR}/${CMAKE_SHARED_MODULE_PREFIX}bitpulsed-tidy${CMAKE_SHARED_MODULE_SUFFIX}" "-checks=-*,bitpulsed-*")
 else()
     # CLANG_TIDY_COMMAND supports generator expressions as of 3.27
-    set(CLANG_TIDY_COMMAND "${CLANG_TIDY_EXE}" "--load=$<TARGET_FILE:bitpulse-tidy>" "-checks=-*,bitpulse-*")
+    set(CLANG_TIDY_COMMAND "${CLANG_TIDY_EXE}" "--load=$<TARGET_FILE:bitpulsed-tidy>" "-checks=-*,bitpulsed-*")
 endif()
 
 # Create a dummy library that runs clang-tidy tests as a side-effect of building
-add_library(bitpulse-tidy-tests OBJECT EXCLUDE_FROM_ALL example_logprintf.cpp)
-add_dependencies(bitpulse-tidy-tests bitpulse-tidy)
+add_library(bitpulsed-tidy-tests OBJECT EXCLUDE_FROM_ALL example_logprintf.cpp)
+add_dependencies(bitpulsed-tidy-tests bitpulsed-tidy)
 
-set_target_properties(bitpulse-tidy-tests PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
+set_target_properties(bitpulsed-tidy-tests PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
 
 
-install(TARGETS bitpulse-tidy LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(TARGETS bitpulsed-tidy LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})

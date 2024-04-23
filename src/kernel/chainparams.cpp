@@ -1,5 +1,5 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2009-2021 The Bitpulse Core developers
+// Copyright (c) 2009-2021 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -112,11 +112,11 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 32-bit integer with any alignment.
          */
-        pchMessageStart[0] = 0xf9;
-        pchMessageStart[1] = 0xbe;
-        pchMessageStart[2] = 0xb4;
-        pchMessageStart[3] = 0xd9;
-        nDefaultPort = 8333;
+        pchMessageStart[0] = 0xfa;
+        pchMessageStart[1] = 0xbf;
+        pchMessageStart[2] = 0xb5;
+        pchMessageStart[3] = 0xda;
+        nDefaultPort = 12260;
         nPruneAfterHeight = 100000;
         m_assumed_blockchain_size = 600;
         m_assumed_chain_state_size = 10;
@@ -133,8 +133,8 @@ public:
         // release ASAP to avoid it where possible.
         vSeeds.emplace_back("seed.bitcoin.sipa.be."); // Pieter Wuille, only supports x1, x5, x9, and xd
         vSeeds.emplace_back("dnsseed.bluematt.me."); // Matt Corallo, only supports x9
-        vSeeds.emplace_back("dnsseed.bitpulse.dashjr.org."); // Luke Dashjr
-        vSeeds.emplace_back("seed.bitpulsestats.com."); // Christian Decker, supports x1 - xf
+        vSeeds.emplace_back("dnsseed.bitpulsed.dashjr.org."); // Luke Dashjr
+        vSeeds.emplace_back("seed.bitpulsedstats.com."); // Christian Decker, supports x1 - xf
         vSeeds.emplace_back("seed.bitcoin.jonasschnelli.ch."); // Jonas Schnelli, only supports x1, x5, x9, and xd
         vSeeds.emplace_back("seed.btp.petertodd.net."); // Peter Todd, only supports x1, x5, x9, and xd
         vSeeds.emplace_back("seed.bitcoin.sprovoost.nl."); // Sjors Provoost
@@ -225,16 +225,16 @@ public:
         consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000c59b14e264ba6c15db9");
         consensus.defaultAssumeValid = uint256S("0x000000000001323071f38f21ea5aae529ece491eadaccce506a59bcc2d968917"); // 2550000
 
-        pchMessageStart[0] = 0x0b;
-        pchMessageStart[1] = 0x11;
-        pchMessageStart[2] = 0x09;
-        pchMessageStart[3] = 0x07;
-        nDefaultPort = 18333;
+        pchMessageStart[0] = 0xfa;
+        pchMessageStart[1] = 0xbf;
+        pchMessageStart[2] = 0xb5;
+        pchMessageStart[3] = 0xda;
+        nDefaultPort = 12261;
         nPruneAfterHeight = 1000;
         m_assumed_blockchain_size = 42;
         m_assumed_chain_state_size = 3;
 
-        genesis = CreateGenesisBlock(1296688602, 414098458, 0x1d00ffff, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1296688602, 414098458, 0x1d00ffff, 1, 25 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         assert(consensus.hashGenesisBlock == uint256S("0x000000000933ea01ad0ee984209779baaec3ced90fa3f408719526f8d77f4943"));
         assert(genesis.hashMerkleRoot == uint256S("0x4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"));
@@ -244,7 +244,7 @@ public:
         // nodes with support for servicebits filtering should be at the top
         vSeeds.emplace_back("testnet-seed.bitcoin.jonasschnelli.ch.");
         vSeeds.emplace_back("seed.tbtc.petertodd.net.");
-        vSeeds.emplace_back("seed.testnet.bitpulse.sprovoost.nl.");
+        vSeeds.emplace_back("seed.testnet.bitpulsed.sprovoost.nl.");
         vSeeds.emplace_back("testnet-seed.bluematt.me."); // Just a static list of stable node(s), only supports x9
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
@@ -296,7 +296,7 @@ public:
 
         if (!options.challenge) {
             bin = ParseHex("512103ad5e0edad18cb1f0fc0d28a3d4f1f3e445640337489abb10404f2d1e086be430210359ef5021964fe22d6f8e05b2463c9540ce96883fe3b278760f048f5189f2e6c452ae");
-            vSeeds.emplace_back("seed.signet.bitpulse.sprovoost.nl.");
+            vSeeds.emplace_back("seed.signet.bitpulsed.sprovoost.nl.");
 
             // Hardcoded nodes can be removed once there are more DNS seeds
             vSeeds.emplace_back("178.128.221.177");
@@ -365,7 +365,7 @@ public:
         uint256 hash = h.GetHash();
         std::copy_n(hash.begin(), 4, pchMessageStart.begin());
 
-        nDefaultPort = 38333;
+        nDefaultPort = 12262;
         nPruneAfterHeight = 1000;
 
         genesis = CreateGenesisBlock(1598918400, 52613770, 0x1e0377ae, 1, 50 * COIN);
@@ -438,11 +438,11 @@ public:
         consensus.nMinimumChainWork = uint256{};
         consensus.defaultAssumeValid = uint256{};
 
-        pchMessageStart[0] = 0xfa;
-        pchMessageStart[1] = 0xbf;
-        pchMessageStart[2] = 0xb5;
-        pchMessageStart[3] = 0xda;
-        nDefaultPort = 18444;
+        pchMessageStart[0] = 0xfc;
+        pchMessageStart[1] = 0xc1;
+        pchMessageStart[2] = 0xd2;
+        pchMessageStart[3] = 0xe3;
+        nDefaultPort = 12263;
         nPruneAfterHeight = opts.fastprune ? 100 : 1000;
         m_assumed_blockchain_size = 0;
         m_assumed_chain_state_size = 0;

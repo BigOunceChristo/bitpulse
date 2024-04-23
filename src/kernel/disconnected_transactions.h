@@ -1,9 +1,9 @@
-// Copyright (c) 2023 The Bitpulse Core developers
+// Copyright (c) 2023 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_KERNEL_DISCONNECTED_TRANSACTIONS_H
-#define bitpulse_KERNEL_DISCONNECTED_TRANSACTIONS_H
+#ifndef bitpulsed_KERNEL_DISCONNECTED_TRANSACTIONS_H
+#define bitpulsed_KERNEL_DISCONNECTED_TRANSACTIONS_H
 
 #include <primitives/transaction.h>
 #include <util/hasher.h>
@@ -73,4 +73,4 @@ public:
     /** Clear all data structures and return the list of transactions. */
     std::list<CTransactionRef> take();
 };
-#endif // bitpulse_KERNEL_DISCONNECTED_TRANSACTIONS_H
+#endif // bitpulsed_KERNEL_DISCONNECTED_TRANSACTIONS_H

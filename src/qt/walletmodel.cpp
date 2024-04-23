@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2022 The Bitpulse Core developers
+// Copyright (c) 2011-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -500,15 +500,15 @@ bool WalletModel::bumpFee(uint256 hash, uint256& new_hash)
     questionString.append("<tr><td>");
     questionString.append(tr("Current fee:"));
     questionString.append("</td><td>");
-    questionString.append(BitpulseUnits::formatHtmlWithUnit(getOptionsModel()->getDisplayUnit(), old_fee));
+    questionString.append(bitpulseUnits::formatHtmlWithUnit(getOptionsModel()->getDisplayUnit(), old_fee));
     questionString.append("</td></tr><tr><td>");
     questionString.append(tr("Increase:"));
     questionString.append("</td><td>");
-    questionString.append(BitpulseUnits::formatHtmlWithUnit(getOptionsModel()->getDisplayUnit(), new_fee - old_fee));
+    questionString.append(bitpulseUnits::formatHtmlWithUnit(getOptionsModel()->getDisplayUnit(), new_fee - old_fee));
     questionString.append("</td></tr><tr><td>");
     questionString.append(tr("New fee:"));
     questionString.append("</td><td>");
-    questionString.append(BitpulseUnits::formatHtmlWithUnit(getOptionsModel()->getDisplayUnit(), new_fee));
+    questionString.append(bitpulseUnits::formatHtmlWithUnit(getOptionsModel()->getDisplayUnit(), new_fee));
     questionString.append("</td></tr></table>");
 
     // Display warning in the "Confirm fee bump" window if the "Coin Control Features" option is enabled

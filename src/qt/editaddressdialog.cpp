@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2021 The Bitpulse Core developers
+// Copyright (c) 2011-2021 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -110,7 +110,7 @@ void EditAddressDialog::accept()
             break;
         case AddressTableModel::INVALID_ADDRESS:
             QMessageBox::warning(this, windowTitle(),
-                tr("The entered address \"%1\" is not a valid Bitpulse address.").arg(ui->addressEdit->text()),
+                tr("The entered address \"%1\" is not a valid bitpulse address.").arg(ui->addressEdit->text()),
                 QMessageBox::Ok, QMessageBox::Ok);
             break;
         case AddressTableModel::DUPLICATE_ADDRESS:

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2020-2022 The bitpulse Core developers
+# Copyright (c) 2020-2022 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test the send RPC command."""
@@ -13,7 +13,7 @@ from test_framework.messages import (
     ser_compact_size,
     WITNESS_SCALE_FACTOR,
 )
-from test_framework.test_framework import bitpulseTestFramework
+from test_framework.test_framework import bitpulsedTestFramework
 from test_framework.util import (
     assert_equal,
     assert_fee_amount,
@@ -24,7 +24,7 @@ from test_framework.util import (
 from test_framework.wallet_util import generate_keypair
 
 
-class WalletSendTest(bitpulseTestFramework):
+class WalletSendTest(bitpulsedTestFramework):
     def add_options(self, parser):
         self.add_wallet_options(parser)
 
@@ -426,7 +426,7 @@ class WalletSendTest(bitpulseTestFramework):
 
         self.log.info("Manual change address and position...")
         self.test_send(from_wallet=w0, to_wallet=w1, amount=1, change_address="not an address",
-                       expect_error=(-5, "Change address must be a valid bitpulse address"))
+                       expect_error=(-5, "Change address must be a valid bitpulsed address"))
         change_address = w0.getnewaddress()
         self.test_send(from_wallet=w0, to_wallet=w1, amount=1, add_to_wallet=False, change_address=change_address)
         assert res["complete"]

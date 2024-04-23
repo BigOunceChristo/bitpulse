@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2022 The Bitpulse Core developers
+// Copyright (c) 2009-2022 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_HASH_H
-#define bitpulse_HASH_H
+#ifndef bitpulsed_HASH_H
+#define bitpulsed_HASH_H
 
 #include <attributes.h>
 #include <crypto/common.h>
@@ -20,7 +20,7 @@
 
 typedef uint256 ChainCode;
 
-/** A hasher class for Bitpulse's 256-bit hash (double SHA-256). */
+/** A hasher class for bitpulsed's 256-bit hash (double SHA-256). */
 class CHash256 {
 private:
     CSHA256 sha;
@@ -45,7 +45,7 @@ public:
     }
 };
 
-/** A hasher class for Bitpulse's 160-bit hash (SHA-256 + RIPEMD-160). */
+/** A hasher class for bitpulsed's 160-bit hash (SHA-256 + RIPEMD-160). */
 class CHash160 {
 private:
     CSHA256 sha;
@@ -226,4 +226,4 @@ inline uint160 RIPEMD160(Span<const unsigned char> data)
     return result;
 }
 
-#endif // bitpulse_HASH_H
+#endif // bitpulsed_HASH_H

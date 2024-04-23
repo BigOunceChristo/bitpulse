@@ -3,7 +3,7 @@ bitcoin Core integration/staging tree
 
 https://bitcoincore.org
 
-For an immediately usable, binary version of the bitpulse Core software, see
+For an immediately usable, binary version of the bitpulsed Core software, see
 https://bitcoincore.org/en/download/.
 
 What is bitcoin Core?
@@ -26,7 +26,7 @@ Development Process
 
 The `master` branch is regularly built (see `doc/build-*.md` for instructions) and tested, but it is not guaranteed to be
 completely stable. [Tags](https://github.com/bitcoin/bitcoin/tags) are created
-regularly from release branches to indicate new official, stable release versions of bitpulse Core.
+regularly from release branches to indicate new official, stable release versions of bitpulsed Core.
 
 The https://github.com/bitcoin-core/gui repository is used exclusively for the
 development of the GUI. Its master branch is identical in all monotree

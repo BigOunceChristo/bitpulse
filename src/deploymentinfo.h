@@ -1,9 +1,9 @@
-// Copyright (c) 2016-2021 The Bitpulse Core developers
+// Copyright (c) 2016-2021 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_DEPLOYMENTINFO_H
-#define bitpulse_DEPLOYMENTINFO_H
+#ifndef bitpulsed_DEPLOYMENTINFO_H
+#define bitpulsed_DEPLOYMENTINFO_H
 
 #include <consensus/params.h>
 
@@ -29,4 +29,4 @@ inline std::string DeploymentName(Consensus::DeploymentPos pos)
 
 std::optional<Consensus::BuriedDeployment> GetBuriedDeployment(const std::string_view deployment_name);
 
-#endif // bitpulse_DEPLOYMENTINFO_H
+#endif // bitpulsed_DEPLOYMENTINFO_H

@@ -6,10 +6,10 @@ define(_CLIENT_VERSION_RC, 0)
 define(_CLIENT_VERSION_IS_RELEASE, false)
 define(_COPYRIGHT_YEAR, 2024)
 define(_COPYRIGHT_HOLDERS,[The %s developers])
-define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[[bitpulse Core]])
-AC_INIT([bitpulse Core],m4_join([.], _CLIENT_VERSION_MAJOR, _CLIENT_VERSION_MINOR, _CLIENT_VERSION_BUILD)m4_if(_CLIENT_VERSION_RC, [0], [], [rc]_CLIENT_VERSION_RC),[https://github.com/bitcoin/bitcoin/issues],[bitcoin],[https://bitcoincore.org/])
+define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[[bitpulsed Core]])
+AC_INIT([bitpulsed Core], [1.0.0], [https://github.com/BigOunceChristo/bitpulsed/issues], [bitpulsed], [https://github.com/BigOunceChristo/bitpulsed])
 AC_CONFIG_SRCDIR([src/validation.cpp])
-AC_CONFIG_HEADERS([src/config/bitpulse-config.h])
+AC_CONFIG_HEADERS([src/config/bitpulsed-config.h])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([build-aux/m4])
 
@@ -29,17 +29,17 @@ if test -n "$PKG_CONFIG_LIBDIR"; then
   PKG_CONFIG="env PKG_CONFIG_LIBDIR=$PKG_CONFIG_LIBDIR $PKG_CONFIG"
 fi
 
-bitpulse_DAEMON_NAME=bitpulsed
-bitpulse_GUI_NAME=bitpulse-qt
-bitpulse_TEST_NAME=test_bitpulse
-bitpulse_CLI_NAME=bitpulse-cli
-bitpulse_TX_NAME=bitpulse-tx
-bitpulse_UTIL_NAME=bitpulse-util
-bitpulse_CHAINSTATE_NAME=bitpulse-chainstate
-bitpulse_WALLET_TOOL_NAME=bitpulse-wallet
+bitpulsed_DAEMON_NAME=bitpulsed
+bitpulsed_GUI_NAME=bitpulsed-qt
+bitpulsed_TEST_NAME=test_bitpulsed
+bitpulsed_CLI_NAME=bitpulsed-cli
+bitpulsed_TX_NAME=bitpulsed-tx
+bitpulsed_UTIL_NAME=bitpulsed-util
+bitpulsed_CHAINSTATE_NAME=bitpulsed-chainstate
+bitpulsed_WALLET_TOOL_NAME=bitpulsed-wallet
 dnl Multi Process
-bitpulse_MP_NODE_NAME=bitpulse-node
-bitpulse_MP_GUI_NAME=bitpulse-gui
+bitpulsed_MP_NODE_NAME=bitpulsed-node
+bitpulsed_MP_GUI_NAME=bitpulsed-gui
 
 dnl Unless the user specified ARFLAGS, force it to be cr
 dnl This is also the default as-of libtool 2.4.7
@@ -50,9 +50,9 @@ fi
 
 AC_CANONICAL_HOST
 
-AH_TOP([#ifndef bitpulse_CONFIG_H])
-AH_TOP([#define bitpulse_CONFIG_H])
-AH_BOTTOM([#endif //bitpulse_CONFIG_H])
+AH_TOP([#ifndef bitpulsed_CONFIG_H])
+AH_TOP([#define bitpulsed_CONFIG_H])
+AH_BOTTOM([#endif //bitpulsed_CONFIG_H])
 
 dnl Automake init set-up and checks
 AM_INIT_AUTOMAKE([1.13 no-define subdir-objects foreign])
@@ -223,7 +223,7 @@ AC_ARG_ENABLE([ccache],
 
 dnl Suppress warnings from external headers (e.g. Boost, Qt).
 dnl May be useful if warnings from external headers clutter the build output
-dnl too much, so that it becomes difficult to spot bitpulse Core warnings
+dnl too much, so that it becomes difficult to spot bitpulsed Core warnings
 dnl or if they cause a build failure with --enable-werror.
 AC_ARG_ENABLE([suppress-external-warnings],
   [AS_HELP_STRING([--disable-suppress-external-warnings],
@@ -269,7 +269,7 @@ AC_ARG_WITH([mpgen],
 
 AC_ARG_ENABLE([multiprocess],
   [AS_HELP_STRING([--enable-multiprocess],
-  [build multiprocess bitpulse-node, bitpulse-wallet, and bitpulse-gui executables in addition to monolithic bitpulsed and bitpulse-qt executables. Requires libmultiprocess library. Experimental (default is no)])],
+  [build multiprocess bitpulsed-node, bitpulsed-wallet, and bitpulsed-gui executables in addition to monolithic bitpulsed and bitpulsed-qt executables. Requires libmultiprocess library. Experimental (default is no)])],
   [enable_multiprocess=$enableval],
   [enable_multiprocess=no])
 
@@ -592,49 +592,49 @@ CORE_CPPFLAGS="$CORE_CPPFLAGS -DHAVE_BUILD_INFO"
 
 AC_ARG_WITH([utils],
   [AS_HELP_STRING([--with-utils],
-  [build bitpulse-cli bitpulse-tx bitpulse-util bitpulse-wallet (default=yes)])],
-  [build_bitpulse_utils=$withval],
-  [build_bitpulse_utils=yes])
+  [build bitpulsed-cli bitpulsed-tx bitpulsed-util bitpulsed-wallet (default=yes)])],
+  [build_bitpulsed_utils=$withval],
+  [build_bitpulsed_utils=yes])
 
 AC_ARG_ENABLE([util-cli],
   [AS_HELP_STRING([--enable-util-cli],
-  [build bitpulse-cli])],
-  [build_bitpulse_cli=$enableval],
-  [build_bitpulse_cli=$build_bitpulse_utils])
+  [build bitpulsed-cli])],
+  [build_bitpulsed_cli=$enableval],
+  [build_bitpulsed_cli=$build_bitpulsed_utils])
 
 AC_ARG_ENABLE([util-tx],
   [AS_HELP_STRING([--enable-util-tx],
-  [build bitpulse-tx])],
-  [build_bitpulse_tx=$enableval],
-  [build_bitpulse_tx=$build_bitpulse_utils])
+  [build bitpulsed-tx])],
+  [build_bitpulsed_tx=$enableval],
+  [build_bitpulsed_tx=$build_bitpulsed_utils])
 
 AC_ARG_ENABLE([util-wallet],
   [AS_HELP_STRING([--enable-util-wallet],
-  [build bitpulse-wallet])],
-  [build_bitpulse_wallet=$enableval],
-  [build_bitpulse_wallet=$build_bitpulse_utils])
+  [build bitpulsed-wallet])],
+  [build_bitpulsed_wallet=$enableval],
+  [build_bitpulsed_wallet=$build_bitpulsed_utils])
 
 AC_ARG_ENABLE([util-util],
   [AS_HELP_STRING([--enable-util-util],
-  [build bitpulse-util])],
-  [build_bitpulse_util=$enableval],
-  [build_bitpulse_util=$build_bitpulse_utils])
+  [build bitpulsed-util])],
+  [build_bitpulsed_util=$enableval],
+  [build_bitpulsed_util=$build_bitpulsed_utils])
 
 AC_ARG_ENABLE([experimental-util-chainstate],
   [AS_HELP_STRING([--enable-experimental-util-chainstate],
-  [build experimental bitpulse-chainstate executable (default=no)])],
-  [build_bitpulse_chainstate=$enableval],
-  [build_bitpulse_chainstate=no])
+  [build experimental bitpulsed-chainstate executable (default=no)])],
+  [build_bitpulsed_chainstate=$enableval],
+  [build_bitpulsed_chainstate=no])
 
 AC_ARG_WITH([libs],
   [AS_HELP_STRING([--with-libs],
   [build libraries (default=yes)])],
-  [build_bitpulse_libs=$withval],
-  [build_bitpulse_libs=yes])
+  [build_bitpulsed_libs=$withval],
+  [build_bitpulsed_libs=yes])
 
 AC_ARG_WITH([experimental-kernel-lib],
   [AS_HELP_STRING([--with-experimental-kernel-lib],
-  [build experimental bitpulsekernel library (default is to build if we're building libraries and the experimental build-chainstate executable)])],
+  [build experimental bitpulsedkernel library (default is to build if we're building libraries and the experimental build-chainstate executable)])],
   [build_experimental_kernel_lib=$withval],
   [build_experimental_kernel_lib=auto])
 
@@ -722,7 +722,7 @@ case $host in
 
          if test "$use_bdb" != "no" && $BREW list --versions berkeley-db@4 >/dev/null && test "$BDB_CFLAGS" = "" && test "$BDB_LIBS" = ""; then
            bdb_prefix=$($BREW --prefix berkeley-db@4 2>/dev/null)
-           dnl This must precede the call to bitpulse_FIND_BDB48 below.
+           dnl This must precede the call to bitpulsed_FIND_BDB48 below.
            BDB_CFLAGS="-I$bdb_prefix/include"
            BDB_LIBS="-L$bdb_prefix/lib -ldb_cxx-4.8"
          fi
@@ -865,7 +865,7 @@ AX_PTHREAD
 dnl Check if -latomic is required for <std::atomic>
 CHECK_ATOMIC
 
-dnl The following macro will add the necessary defines to bitpulse-config.h, but
+dnl The following macro will add the necessary defines to bitpulsed-config.h, but
 dnl they also need to be passed down to any subprojects. Pull the results out of
 dnl the cache and add them to CPPFLAGS.
 AC_SYS_LARGEFILE
@@ -1255,17 +1255,17 @@ AC_DEFUN([SUPPRESS_WARNINGS],
 dnl enable-fuzz should disable all other targets
 if test "$enable_fuzz" = "yes"; then
   AC_MSG_WARN([enable-fuzz will disable all other targets and force --enable-fuzz-binary=yes])
-  build_bitpulse_utils=no
-  build_bitpulse_cli=no
-  build_bitpulse_tx=no
-  build_bitpulse_util=no
-  build_bitpulse_chainstate=no
-  build_bitpulse_wallet=no
+  build_bitpulsed_utils=no
+  build_bitpulsed_cli=no
+  build_bitpulsed_tx=no
+  build_bitpulsed_util=no
+  build_bitpulsed_chainstate=no
+  build_bitpulsed_wallet=no
   build_bitpulsed=no
-  build_bitpulse_libs=no
-  bitpulse_enable_qt=no
-  bitpulse_enable_qt_test=no
-  bitpulse_enable_qt_dbus=no
+  build_bitpulsed_libs=no
+  bitpulsed_enable_qt=no
+  bitpulsed_enable_qt_test=no
+  bitpulsed_enable_qt_dbus=no
   use_bench=no
   use_tests=no
   use_external_signer=no
@@ -1276,10 +1276,10 @@ if test "$enable_fuzz" = "yes"; then
 
   AX_CHECK_PREPROC_FLAG([-DABORT_ON_FAILED_ASSUME], [DEBUG_CPPFLAGS="$DEBUG_CPPFLAGS -DABORT_ON_FAILED_ASSUME"], [], [$CXXFLAG_WERROR])
 else
-  bitpulse_QT_INIT
+  bitpulsed_QT_INIT
 
-  dnl sets $bitpulse_enable_qt, $bitpulse_enable_qt_test, $bitpulse_enable_qt_dbus
-  bitpulse_QT_CONFIGURE([5.11.3])
+  dnl sets $bitpulsed_enable_qt, $bitpulsed_enable_qt_test, $bitpulsed_enable_qt_dbus
+  bitpulsed_QT_CONFIGURE([5.11.3])
 
   dnl Keep a copy of the original $QT_INCLUDES and use it when invoking qt's moc
   QT_INCLUDES_UNSUPPRESSED=$QT_INCLUDES
@@ -1310,7 +1310,7 @@ fi
 if test "$enable_wallet" != "no"; then
     dnl Check for libdb_cxx only if wallet enabled
     if test "$use_bdb" != "no"; then
-      bitpulse_FIND_BDB48
+      bitpulsed_FIND_BDB48
       if test "$suppress_external_warnings" != "no" ; then
         BDB_CPPFLAGS=SUPPRESS_WARNINGS($BDB_CPPFLAGS)
       fi
@@ -1360,7 +1360,7 @@ if test "$use_usdt" != "no"; then
 fi
 AM_CONDITIONAL([ENABLE_USDT_TRACEPOINTS], [test "$use_usdt" = "yes"])
 
-if test "$build_bitpulsed$bitpulse_enable_qt$use_bench$use_tests" = "nononono"; then
+if test "$build_bitpulsed$bitpulsed_enable_qt$use_bench$use_tests" = "nononono"; then
   use_upnp=no
   use_natpmp=no
   use_zmq=no
@@ -1410,7 +1410,7 @@ if test "$use_natpmp" != "no"; then
   CPPFLAGS="$TEMP_CPPFLAGS"
 fi
 
-if test "$build_bitpulse_wallet$build_bitpulse_cli$build_bitpulse_tx$build_bitpulse_util$build_bitpulsed$bitpulse_enable_qt$use_tests$use_bench$enable_fuzz_binary" = "nonononononononono"; then
+if test "$build_bitpulsed_wallet$build_bitpulsed_cli$build_bitpulsed_tx$build_bitpulsed_util$build_bitpulsed$bitpulsed_enable_qt$use_tests$use_bench$enable_fuzz_binary" = "nonononononononono"; then
   use_boost=no
 else
   use_boost=yes
@@ -1421,7 +1421,7 @@ if test "$use_boost" = "yes"; then
   dnl Check for Boost headers
   AX_BOOST_BASE([1.73.0],[],[AC_MSG_ERROR([Boost is not available!])])
   if test "$want_boost" = "no"; then
-    AC_MSG_ERROR([only libbitpulseconsensus can be built without Boost])
+    AC_MSG_ERROR([only libbitpulsedconsensus can be built without Boost])
   fi
 
   dnl we don't use multi_index serialization
@@ -1509,7 +1509,7 @@ fi
 dnl libevent check
 
 use_libevent=no
-if test "$build_bitpulse_cli$build_bitpulsed$bitpulse_enable_qt$enable_fuzz_binary$use_tests$use_bench" != "nononononono"; then
+if test "$build_bitpulsed_cli$build_bitpulsed$bitpulsed_enable_qt$enable_fuzz_binary$use_tests$use_bench" != "nononononono"; then
   PKG_CHECK_MODULES([EVENT], [libevent >= 2.1.8], [use_libevent=yes], [AC_MSG_ERROR([libevent version 2.1.8 or greater not found.])])
   if test "$TARGET_OS" != "windows"; then
     PKG_CHECK_MODULES([EVENT_PTHREADS], [libevent_pthreads >= 2.1.8], [], [AC_MSG_ERROR([libevent_pthreads version 2.1.8 or greater not found.])])
@@ -1543,7 +1543,7 @@ fi
 dnl QR Code encoding library check
 
 if test "$use_qr" != "no"; then
-  bitpulse_QT_CHECK([PKG_CHECK_MODULES([QR], [libqrencode], [have_qrencode=yes], [have_qrencode=no])])
+  bitpulsed_QT_CHECK([PKG_CHECK_MODULES([QR], [libqrencode], [have_qrencode=yes], [have_qrencode=no])])
 fi
 
 dnl ZMQ check
@@ -1592,8 +1592,8 @@ else
 fi
 
 AM_CONDITIONAL([BUILD_MULTIPROCESS], [test "$build_multiprocess" = "yes"])
-AM_CONDITIONAL([BUILD_bitpulse_NODE], [test "$build_multiprocess" = "yes"])
-AM_CONDITIONAL([BUILD_bitpulse_GUI], [test "$build_multiprocess" = "yes"])
+AM_CONDITIONAL([BUILD_bitpulsed_NODE], [test "$build_multiprocess" = "yes"])
+AM_CONDITIONAL([BUILD_bitpulsed_GUI], [test "$build_multiprocess" = "yes"])
 
 dnl codegen tools check
 
@@ -1607,45 +1607,45 @@ if test "$build_multiprocess" != "no"; then
 fi
 
 AC_MSG_CHECKING([whether to build bitpulsed])
-AM_CONDITIONAL([BUILD_bitpulseD], [test $build_bitpulsed = "yes"])
+AM_CONDITIONAL([BUILD_bitpulsed], [test $build_bitpulsed = "yes"])
 AC_MSG_RESULT($build_bitpulsed)
 
-AC_MSG_CHECKING([whether to build bitpulse-cli])
-AM_CONDITIONAL([BUILD_bitpulse_CLI], [test $build_bitpulse_cli = "yes"])
-AC_MSG_RESULT($build_bitpulse_cli)
+AC_MSG_CHECKING([whether to build bitpulsed-cli])
+AM_CONDITIONAL([BUILD_bitpulsed_CLI], [test $build_bitpulsed_cli = "yes"])
+AC_MSG_RESULT($build_bitpulsed_cli)
 
-AC_MSG_CHECKING([whether to build bitpulse-tx])
-AM_CONDITIONAL([BUILD_bitpulse_TX], [test $build_bitpulse_tx = "yes"])
-AC_MSG_RESULT($build_bitpulse_tx)
+AC_MSG_CHECKING([whether to build bitpulsed-tx])
+AM_CONDITIONAL([BUILD_bitpulsed_TX], [test $build_bitpulsed_tx = "yes"])
+AC_MSG_RESULT($build_bitpulsed_tx)
 
-AC_MSG_CHECKING([whether to build bitpulse-wallet])
-AM_CONDITIONAL([BUILD_bitpulse_WALLET], [test $build_bitpulse_wallet = "yes"])
-AC_MSG_RESULT($build_bitpulse_wallet)
+AC_MSG_CHECKING([whether to build bitpulsed-wallet])
+AM_CONDITIONAL([BUILD_bitpulsed_WALLET], [test $build_bitpulsed_wallet = "yes"])
+AC_MSG_RESULT($build_bitpulsed_wallet)
 
-AC_MSG_CHECKING([whether to build bitpulse-util])
-AM_CONDITIONAL([BUILD_bitpulse_UTIL], [test $build_bitpulse_util = "yes"])
-AC_MSG_RESULT($build_bitpulse_util)
+AC_MSG_CHECKING([whether to build bitpulsed-util])
+AM_CONDITIONAL([BUILD_bitpulsed_UTIL], [test $build_bitpulsed_util = "yes"])
+AC_MSG_RESULT($build_bitpulsed_util)
 
-AC_MSG_CHECKING([whether to build experimental bitpulse-chainstate])
-if test "$build_bitpulse_chainstate" = "yes"; then
+AC_MSG_CHECKING([whether to build experimental bitpulsed-chainstate])
+if test "$build_bitpulsed_chainstate" = "yes"; then
   if test "$build_experimental_kernel_lib" = "no"; then
-    AC_MSG_ERROR([experimental bitpulse-chainstate cannot be built without the experimental bitpulsekernel library. Use --with-experimental-kernel-lib]);
+    AC_MSG_ERROR([experimental bitpulsed-chainstate cannot be built without the experimental bitpulsedkernel library. Use --with-experimental-kernel-lib]);
   fi
 fi
-AM_CONDITIONAL([BUILD_bitpulse_CHAINSTATE], [test $build_bitpulse_chainstate = "yes"])
-AC_MSG_RESULT($build_bitpulse_chainstate)
+AM_CONDITIONAL([BUILD_bitpulsed_CHAINSTATE], [test $build_bitpulsed_chainstate = "yes"])
+AC_MSG_RESULT($build_bitpulsed_chainstate)
 
 AC_MSG_CHECKING([whether to build libraries])
-AM_CONDITIONAL([BUILD_bitpulse_LIBS], [test $build_bitpulse_libs = "yes"])
+AM_CONDITIONAL([BUILD_bitpulsed_LIBS], [test $build_bitpulsed_libs = "yes"])
 
-if test "$build_bitpulse_libs" = "yes"; then
+if test "$build_bitpulsed_libs" = "yes"; then
   AC_DEFINE([HAVE_CONSENSUS_LIB], [1], [Define this symbol if the consensus lib has been built])
-  AC_CONFIG_FILES([libbitpulseconsensus.pc:libbitpulseconsensus.pc.in])
+  AC_CONFIG_FILES([libbitpulsedconsensus.pc:libbitpulsedconsensus.pc.in])
 fi
 
-AM_CONDITIONAL([BUILD_bitpulse_KERNEL_LIB], [test "$build_experimental_kernel_lib" != "no" && ( test "$build_experimental_kernel_lib" = "yes" || test "$build_bitpulse_chainstate" = "yes" )])
+AM_CONDITIONAL([BUILD_bitpulsed_KERNEL_LIB], [test "$build_experimental_kernel_lib" != "no" && ( test "$build_experimental_kernel_lib" = "yes" || test "$build_bitpulsed_chainstate" = "yes" )])
 
-AC_MSG_RESULT($build_bitpulse_libs)
+AC_MSG_RESULT($build_bitpulsed_libs)
 
 AC_LANG_POP
 
@@ -1724,13 +1724,13 @@ fi
 
 dnl these are only used when qt is enabled
 BUILD_TEST_QT=""
-if test "$bitpulse_enable_qt" != "no"; then
+if test "$bitpulsed_enable_qt" != "no"; then
   dnl enable dbus support
   AC_MSG_CHECKING([whether to build GUI with support for D-Bus])
-  if test "$bitpulse_enable_qt_dbus" != "no"; then
+  if test "$bitpulsed_enable_qt_dbus" != "no"; then
     AC_DEFINE([USE_DBUS], [1], [Define if dbus support should be compiled in])
   fi
-  AC_MSG_RESULT([$bitpulse_enable_qt_dbus])
+  AC_MSG_RESULT([$bitpulsed_enable_qt_dbus])
 
   dnl enable qr support
   AC_MSG_CHECKING([whether to build GUI with support for QR codes])
@@ -1751,8 +1751,8 @@ if test "$bitpulse_enable_qt" != "no"; then
     AC_MSG_WARN([xgettext is required to update qt translations])
   fi
 
-  AC_MSG_CHECKING([whether to build test_bitpulse-qt])
-  if test "$use_gui_tests$bitpulse_enable_qt_test" = "yesyes"; then
+  AC_MSG_CHECKING([whether to build test_bitpulsed-qt])
+  if test "$use_gui_tests$bitpulsed_enable_qt_test" = "yesyes"; then
     AC_MSG_RESULT([yes])
     BUILD_TEST_QT="yes"
   else
@@ -1760,7 +1760,7 @@ if test "$bitpulse_enable_qt" != "no"; then
   fi
 fi
 
-AC_MSG_CHECKING([whether to build test_bitpulse])
+AC_MSG_CHECKING([whether to build test_bitpulsed])
 if test "$use_tests" = "yes"; then
   if test "$enable_fuzz" = "yes"; then
     AC_MSG_RESULT([no, because fuzzing is enabled])
@@ -1780,7 +1780,7 @@ else
   AC_MSG_RESULT([no])
 fi
 
-if test "$build_bitpulse_wallet$build_bitpulse_cli$build_bitpulse_tx$build_bitpulse_util$build_bitpulse_libs$build_bitpulsed$bitpulse_enable_qt$enable_fuzz_binary$use_bench$use_tests" = "nononononononononono"; then
+if test "$build_bitpulsed_wallet$build_bitpulsed_cli$build_bitpulsed_tx$build_bitpulsed_util$build_bitpulsed_libs$build_bitpulsed$bitpulsed_enable_qt$enable_fuzz_binary$use_bench$use_tests" = "nononononononononono"; then
   AC_MSG_ERROR([No targets! Please specify at least one of: --with-utils --with-libs --with-daemon --with-gui --enable-fuzz(-binary) --enable-bench or --enable-tests])
 fi
 
@@ -1794,7 +1794,7 @@ AM_CONDITIONAL([USE_BDB], [test "$use_bdb" = "yes"])
 AM_CONDITIONAL([ENABLE_TESTS], [test "$BUILD_TEST" = "yes"])
 AM_CONDITIONAL([ENABLE_FUZZ], [test "$enable_fuzz" = "yes"])
 AM_CONDITIONAL([ENABLE_FUZZ_BINARY], [test "$enable_fuzz_binary" = "yes"])
-AM_CONDITIONAL([ENABLE_QT], [test "$bitpulse_enable_qt" = "yes"])
+AM_CONDITIONAL([ENABLE_QT], [test "$bitpulsed_enable_qt" = "yes"])
 AM_CONDITIONAL([ENABLE_QT_TESTS], [test "$BUILD_TEST_QT" = "yes"])
 AM_CONDITIONAL([ENABLE_BENCH], [test "$use_bench" = "yes"])
 AM_CONDITIONAL([USE_QRCODE], [test "$use_qr" = "yes"])
@@ -1832,16 +1832,16 @@ AC_SUBST(COPYRIGHT_YEAR, _COPYRIGHT_YEAR)
 AC_SUBST(COPYRIGHT_HOLDERS, "_COPYRIGHT_HOLDERS")
 AC_SUBST(COPYRIGHT_HOLDERS_SUBSTITUTION, "_COPYRIGHT_HOLDERS_SUBSTITUTION")
 AC_SUBST(COPYRIGHT_HOLDERS_FINAL, "_COPYRIGHT_HOLDERS_FINAL")
-AC_SUBST(bitpulse_DAEMON_NAME)
-AC_SUBST(bitpulse_GUI_NAME)
-AC_SUBST(bitpulse_TEST_NAME)
-AC_SUBST(bitpulse_CLI_NAME)
-AC_SUBST(bitpulse_TX_NAME)
-AC_SUBST(bitpulse_UTIL_NAME)
-AC_SUBST(bitpulse_CHAINSTATE_NAME)
-AC_SUBST(bitpulse_WALLET_TOOL_NAME)
-AC_SUBST(bitpulse_MP_NODE_NAME)
-AC_SUBST(bitpulse_MP_GUI_NAME)
+AC_SUBST(bitpulsed_DAEMON_NAME)
+AC_SUBST(bitpulsed_GUI_NAME)
+AC_SUBST(bitpulsed_TEST_NAME)
+AC_SUBST(bitpulsed_CLI_NAME)
+AC_SUBST(bitpulsed_TX_NAME)
+AC_SUBST(bitpulsed_UTIL_NAME)
+AC_SUBST(bitpulsed_CHAINSTATE_NAME)
+AC_SUBST(bitpulsed_WALLET_TOOL_NAME)
+AC_SUBST(bitpulsed_MP_NODE_NAME)
+AC_SUBST(bitpulsed_MP_GUI_NAME)
 
 AC_SUBST(RELDFLAGS)
 AC_SUBST(CORE_LDFLAGS)
@@ -1891,7 +1891,7 @@ AC_SUBST(HAVE_EVHTTP_CONNECTION_GET_PEER_CONST_CHAR)
 AC_CONFIG_FILES([Makefile src/Makefile doc/man/Makefile share/setup.nsi share/qt/Info.plist test/config.ini])
 AC_CONFIG_FILES([contrib/devtools/split-debug.sh],[chmod +x contrib/devtools/split-debug.sh])
 AM_COND_IF([HAVE_DOXYGEN], [AC_CONFIG_FILES([doc/Doxyfile])])
-AC_CONFIG_LINKS([contrib/devtools/iwyu/bitpulse.core.imp:contrib/devtools/iwyu/bitpulse.core.imp])
+# AC_CONFIG_LINKS([contrib/devtools/iwyu/bitpulsed.core.imp:contrib/devtools/iwyu/bitpulsed.core.imp])
 AC_CONFIG_LINKS([contrib/filter-lcov.py:contrib/filter-lcov.py])
 AC_CONFIG_LINKS([src/.bear-tidy-config:src/.bear-tidy-config])
 AC_CONFIG_LINKS([src/.clang-tidy:src/.clang-tidy])
@@ -1941,21 +1941,21 @@ echo
 echo "Options used to compile and link:"
 echo "  external signer = $use_external_signer"
 echo "  multiprocess    = $build_multiprocess"
-echo "  with libs       = $build_bitpulse_libs"
+echo "  with libs       = $build_bitpulsed_libs"
 echo "  with wallet     = $enable_wallet"
 if test "$enable_wallet" != "no"; then
     echo "    with sqlite   = $use_sqlite"
     echo "    with bdb      = $use_bdb"
 fi
-echo "  with gui / qt   = $bitpulse_enable_qt"
-if test $bitpulse_enable_qt != "no"; then
+echo "  with gui / qt   = $bitpulsed_enable_qt"
+if test $bitpulsed_enable_qt != "no"; then
     echo "    with qr       = $use_qr"
 fi
 echo "  with zmq        = $use_zmq"
 if test $enable_fuzz = "no"; then
     echo "  with test       = $use_tests"
 else
-    echo "  with test       = not building test_bitpulse because fuzzing is enabled"
+    echo "  with test       = not building test_bitpulsed because fuzzing is enabled"
 fi
 echo "  with fuzz binary = $enable_fuzz_binary"
 echo "  with bench      = $use_bench"

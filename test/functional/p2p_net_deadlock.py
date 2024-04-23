@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-# Copyright (c) 2023-present The bitpulse Core developers
+# Copyright (c) 2023-present The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 import threading
-from test_framework.test_framework import bitpulseTestFramework
+from test_framework.test_framework import bitpulsedTestFramework
 from random import randbytes
 
 
-class NetDeadlockTest(bitpulseTestFramework):
+class NetDeadlockTest(bitpulsedTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 2

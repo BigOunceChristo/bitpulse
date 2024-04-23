@@ -1,9 +1,9 @@
-// Copyright (c) 2022 The Bitpulse Core developers
+// Copyright (c) 2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_NODE_VALIDATION_CACHE_ARGS_H
-#define bitpulse_NODE_VALIDATION_CACHE_ARGS_H
+#ifndef bitpulsed_NODE_VALIDATION_CACHE_ARGS_H
+#define bitpulsed_NODE_VALIDATION_CACHE_ARGS_H
 
 class ArgsManager;
 namespace kernel {
@@ -14,4 +14,4 @@ namespace node {
 void ApplyArgsManOptions(const ArgsManager& argsman, kernel::ValidationCacheSizes& cache_sizes);
 } // namespace node
 
-#endif // bitpulse_NODE_VALIDATION_CACHE_ARGS_H
+#endif // bitpulsed_NODE_VALIDATION_CACHE_ARGS_H

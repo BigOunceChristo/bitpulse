@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2022 The Bitpulse Core developers
+// Copyright (c) 2009-2022 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_RANDOM_H
-#define bitpulse_RANDOM_H
+#ifndef bitpulsed_RANDOM_H
+#define bitpulsed_RANDOM_H
 
 #include <crypto/chacha20.h>
 #include <crypto/common.h>
@@ -299,4 +299,4 @@ bool Random_SanityCheck();
  */
 void RandomInit();
 
-#endif // bitpulse_RANDOM_H
+#endif // bitpulsed_RANDOM_H

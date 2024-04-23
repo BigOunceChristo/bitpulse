@@ -1,9 +1,9 @@
-// Copyright (c) 2020-2022 The Bitpulse Core developers
+// Copyright (c) 2020-2022 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_I2P_H
-#define bitpulse_I2P_H
+#ifndef bitpulsed_I2P_H
+#define bitpulsed_I2P_H
 
 #include <compat/compat.h>
 #include <netaddress.h>
@@ -288,4 +288,4 @@ private:
 } // namespace sam
 } // namespace i2p
 
-#endif // bitpulse_I2P_H
+#endif // bitpulsed_I2P_H

@@ -1,9 +1,9 @@
-// Copyright (c) 2023 The Bitpulse Core developers
+// Copyright (c) 2023 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_TEST_UTIL_COINS_H
-#define bitpulse_TEST_UTIL_COINS_H
+#ifndef bitpulsed_TEST_UTIL_COINS_H
+#define bitpulsed_TEST_UTIL_COINS_H
 
 #include <primitives/transaction.h>
 
@@ -16,4 +16,4 @@ class CCoinsViewCache;
  */
 COutPoint AddTestCoin(CCoinsViewCache& coins_view);
 
-#endif // bitpulse_TEST_UTIL_COINS_H
+#endif // bitpulsed_TEST_UTIL_COINS_H

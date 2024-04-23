@@ -1,6 +1,6 @@
-bitpulse Core version 0.14.1 is now available from:
+bitpulsed Core version 0.14.1 is now available from:
 
-  <https://bitpulse.org/bin/bitpulse-core-0.14.1/>
+  <https://bitpulsed.org/bin/bitpulsed-core-0.14.1/>
 
 This is a new minor version release, including various bugfixes and
 performance improvements, as well as updated translations.
@@ -11,12 +11,12 @@ Please report bugs using the issue tracker at github:
 
 To receive security and update notifications, please subscribe to:
 
-  <https://bitpulsecore.org/en/list/announcements/join/>
+  <https://bitpulsedcore.org/en/list/announcements/join/>
 
 Compatibility
 ==============
 
-bitpulse Core is extensively tested on multiple operating systems using
+bitpulsed Core is extensively tested on multiple operating systems using
 the Linux kernel, macOS 10.8+, and Windows Vista and later.
 
 Microsoft ended support for Windows XP on [April 8th, 2014](https://www.microsoft.com/en-us/WindowsForBusiness/end-of-xp-support),
@@ -24,7 +24,7 @@ No attempt is made to prevent installing or running the software on Windows XP, 
 can still do so at your own risk but be aware that there are known instabilities and issues.
 Please do not report issues about Windows XP to the issue tracker.
 
-bitpulse Core should also work on most other Unix-like systems but is not
+bitpulsed Core should also work on most other Unix-like systems but is not
 frequently tested on them.
 
 Notable changes
@@ -117,7 +117,7 @@ git merge commit are mentioned.
 ### Miscellaneous
 - #10037 `4d8e660` Trivial: Fix typo in help getrawtransaction RPC (keystrike)
 - #10120 `e4c9a90` util: Work around (virtual) memory exhaustion on 32-bit w/ glibc (laanwj)
-- #10130 `ecc5232` bitpulse-tx input verification (awemany, jnewbery)
+- #10130 `ecc5232` bitpulsed-tx input verification (awemany, jnewbery)
 
 Credits
 =======
@@ -139,5 +139,5 @@ Thanks to everyone who directly contributed to this release:
 - Suhas Daftuar
 - Wladimir J. van der Laan
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/bitpulse/).
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/bitpulsed/).
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Copyright (c) 2019-2023 The bitpulse Core developers
+# Copyright (c) 2019-2023 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #
@@ -11,25 +11,25 @@ set -ueo pipefail
 NETWORK_DISABLED=false
 
 if (( $# < 3 )); then
-  echo 'Usage: utxo_snapshot.sh <generate-at-height> <snapshot-out-path> <bitpulse-cli-call ...>'
+  echo 'Usage: utxo_snapshot.sh <generate-at-height> <snapshot-out-path> <bitpulsed-cli-call ...>'
   echo
   echo "  if <snapshot-out-path> is '-', don't produce a snapshot file but instead print the "
   echo "  expected assumeutxo hash"
   echo
   echo 'Examples:'
   echo
-  echo "  ./contrib/devtools/utxo_snapshot.sh 570000 utxo.dat ./src/bitpulse-cli -datadir=\$(pwd)/testdata"
-  echo '  ./contrib/devtools/utxo_snapshot.sh 570000 - ./src/bitpulse-cli'
+  echo "  ./contrib/devtools/utxo_snapshot.sh 570000 utxo.dat ./src/bitpulsed-cli -datadir=\$(pwd)/testdata"
+  echo '  ./contrib/devtools/utxo_snapshot.sh 570000 - ./src/bitpulsed-cli'
   exit 1
 fi
 
 GENERATE_AT_HEIGHT="${1}"; shift;
 OUTPUT_PATH="${1}"; shift;
 # Most of the calls we make take a while to run, so pad with a lengthy timeout.
-bitpulse_CLI_CALL="${*} -rpcclienttimeout=9999999"
+bitpulsed_CLI_CALL="${*} -rpcclienttimeout=9999999"
 
 # Check if the node is pruned and get the pruned block height
-PRUNED=$( ${bitpulse_CLI_CALL} getblockchaininfo | awk '/pruneheight/ {print $2}' | tr -d ',' )
+PRUNED=$( ${bitpulsed_CLI_CALL} getblockchaininfo | awk '/pruneheight/ {print $2}' | tr -d ',' )
 
 if (( GENERATE_AT_HEIGHT < PRUNED )); then
   echo "Error: The requested snapshot height (${GENERATE_AT_HEIGHT}) should be greater than the pruned block height (${PRUNED})."
@@ -50,11 +50,11 @@ fi
 
 function cleanup {
   (>&2 echo "Restoring chain to original height; this may take a while")
-  ${bitpulse_CLI_CALL} reconsiderblock "${PIVOT_BLOCKHASH}"
+  ${bitpulsed_CLI_CALL} reconsiderblock "${PIVOT_BLOCKHASH}"
 
   if $NETWORK_DISABLED; then
     (>&2 echo "Restoring network activity")
-    ${bitpulse_CLI_CALL} setnetworkactive true
+    ${bitpulsed_CLI_CALL} setnetworkactive true
   fi
 }
 
@@ -70,25 +70,25 @@ if [[ "$REPLY" =~ ^[Yy]*$ || -z "$REPLY" ]]; then
   # User input is "Y", "y", or Enter key, proceed with the action
   NETWORK_DISABLED=true
   (>&2 echo "Disabling network activity")
-  ${bitpulse_CLI_CALL} setnetworkactive false
+  ${bitpulsed_CLI_CALL} setnetworkactive false
 else
   (>&2 echo "Network activity remains enabled")
 fi
 
 # Block we'll invalidate/reconsider to rewind/fast-forward the chain.
-PIVOT_BLOCKHASH=$($bitpulse_CLI_CALL getblockhash $(( GENERATE_AT_HEIGHT + 1 )) )
+PIVOT_BLOCKHASH=$($bitpulsed_CLI_CALL getblockhash $(( GENERATE_AT_HEIGHT + 1 )) )
 
 # Trap for normal exit and Ctrl-C
 trap cleanup EXIT
 trap early_exit INT
 
 (>&2 echo "Rewinding chain back to height ${GENERATE_AT_HEIGHT} (by invalidating ${PIVOT_BLOCKHASH}); this may take a while")
-${bitpulse_CLI_CALL} invalidateblock "${PIVOT_BLOCKHASH}"
+${bitpulsed_CLI_CALL} invalidateblock "${PIVOT_BLOCKHASH}"
 
 if [[ "${OUTPUT_PATH}" = "-" ]]; then
   (>&2 echo "Generating txoutset info...")
-  ${bitpulse_CLI_CALL} gettxoutsetinfo | grep hash_serialized_3 | sed 's/^.*: "\(.\+\)\+",/\1/g'
+  ${bitpulsed_CLI_CALL} gettxoutsetinfo | grep hash_serialized_3 | sed 's/^.*: "\(.\+\)\+",/\1/g'
 else
   (>&2 echo "Generating UTXO snapshot...")
-  ${bitpulse_CLI_CALL} dumptxoutset "${OUTPUT_PATH}"
+  ${bitpulsed_CLI_CALL} dumptxoutset "${OUTPUT_PATH}"
 fi

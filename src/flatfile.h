@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2020 The Bitpulse Core developers
+// Copyright (c) 2009-2020 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_FLATFILE_H
-#define bitpulse_FLATFILE_H
+#ifndef bitpulsed_FLATFILE_H
+#define bitpulsed_FLATFILE_H
 
 #include <string>
 
@@ -86,4 +86,4 @@ public:
     bool Flush(const FlatFilePos& pos, bool finalize = false);
 };
 
-#endif // bitpulse_FLATFILE_H
+#endif // bitpulsed_FLATFILE_H

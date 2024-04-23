@@ -1,9 +1,9 @@
-// Copyright (c) 2020-2022 The Bitpulse Core developers
+// Copyright (c) 2020-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_TEST_UTIL_NET_H
-#define bitpulse_TEST_UTIL_NET_H
+#ifndef bitpulsed_TEST_UTIL_NET_H
+#define bitpulsed_TEST_UTIL_NET_H
 
 #include <compat/compat.h>
 #include <net.h>
@@ -234,4 +234,4 @@ private:
 
 std::vector<NodeEvictionCandidate> GetRandomNodeEvictionCandidates(int n_candidates, FastRandomContext& random_context);
 
-#endif // bitpulse_TEST_UTIL_NET_H
+#endif // bitpulsed_TEST_UTIL_NET_H

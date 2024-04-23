@@ -1,9 +1,9 @@
-// Copyright (c) 2024-present The Bitpulse Core developers
+// Copyright (c) 2024-present The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_UTIL_TASK_RUNNER_H
-#define bitpulse_UTIL_TASK_RUNNER_H
+#ifndef bitpulsed_UTIL_TASK_RUNNER_H
+#define bitpulsed_UTIL_TASK_RUNNER_H
 
 #include <cstddef>
 #include <functional>
@@ -49,4 +49,4 @@ public:
 
 } // namespace util
 
-#endif // bitpulse_UTIL_TASK_RUNNER_H
+#endif // bitpulsed_UTIL_TASK_RUNNER_H

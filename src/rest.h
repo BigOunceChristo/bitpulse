@@ -1,9 +1,9 @@
-// Copyright (c) 2015-2022 The Bitpulse Core developers
+// Copyright (c) 2015-2022 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_REST_H
-#define bitpulse_REST_H
+#ifndef bitpulsed_REST_H
+#define bitpulsed_REST_H
 
 #include <string>
 
@@ -25,4 +25,4 @@ enum class RESTResponseFormat {
  */
 RESTResponseFormat ParseDataFormat(std::string& param, const std::string& strReq);
 
-#endif // bitpulse_REST_H
+#endif // bitpulsed_REST_H

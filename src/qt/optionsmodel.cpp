@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2022 The Bitpulse Core developers
+// Copyright (c) 2011-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -60,7 +60,7 @@ static const char* SettingName(OptionsModel::OptionID option)
     }
 }
 
-/** Call node.updateRwSetting() with Bitpulse 22.x workaround. */
+/** Call node.updateRwSetting() with bitpulse 22.x workaround. */
 static void UpdateRwSetting(interfaces::Node& node, OptionsModel::OptionID option, const std::string& suffix, const common::SettingsValue& value)
 {
     if (value.isNum() &&
@@ -69,7 +69,7 @@ static void UpdateRwSetting(interfaces::Node& node, OptionsModel::OptionID optio
          option == OptionsModel::Prune ||
          option == OptionsModel::PruneSize)) {
         // Write certain old settings as strings, even though they are numbers,
-        // because Bitpulse 22.x releases try to read these specific settings as
+        // because bitpulse 22.x releases try to read these specific settings as
         // strings in addOverriddenOption() calls at startup, triggering
         // uncaught exceptions in UniValue::get_str(). These errors were fixed
         // in later releases by https://github.com/bitcoin/bitcoin/pull/24498.
@@ -191,15 +191,15 @@ bool OptionsModel::Init(bilingual_str& error)
     fMinimizeOnClose = settings.value("fMinimizeOnClose").toBool();
 
     // Display
-    if (!settings.contains("DisplayBitpulseUnit")) {
-        settings.setValue("DisplayBitpulseUnit", QVariant::fromValue(BitpulseUnit::BTP));
+    if (!settings.contains("DisplaybitpulseUnit")) {
+        settings.setValue("DisplaybitpulseUnit", QVariant::fromValue(bitpulseUnit::BTP));
     }
-    QVariant unit = settings.value("DisplayBitpulseUnit");
-    if (unit.canConvert<BitpulseUnit>()) {
-        m_display_bitpulse_unit = unit.value<BitpulseUnit>();
+    QVariant unit = settings.value("DisplaybitpulseUnit");
+    if (unit.canConvert<bitpulseUnit>()) {
+        m_display_bitpulse_unit = unit.value<bitpulseUnit>();
     } else {
-        m_display_bitpulse_unit = BitpulseUnit::BTP;
-        settings.setValue("DisplayBitpulseUnit", QVariant::fromValue(m_display_bitpulse_unit));
+        m_display_bitpulse_unit = bitpulseUnit::BTP;
+        settings.setValue("DisplaybitpulseUnit", QVariant::fromValue(m_display_bitpulse_unit));
     }
 
     if (!settings.contains("strThirdPartyTxUrls"))
@@ -708,10 +708,10 @@ bool OptionsModel::setOption(OptionID option, const QVariant& value, const std::
 
 void OptionsModel::setDisplayUnit(const QVariant& new_unit)
 {
-    if (new_unit.isNull() || new_unit.value<BitpulseUnit>() == m_display_bitpulse_unit) return;
-    m_display_bitpulse_unit = new_unit.value<BitpulseUnit>();
+    if (new_unit.isNull() || new_unit.value<bitpulseUnit>() == m_display_bitpulse_unit) return;
+    m_display_bitpulse_unit = new_unit.value<bitpulseUnit>();
     QSettings settings;
-    settings.setValue("DisplayBitpulseUnit", QVariant::fromValue(m_display_bitpulse_unit));
+    settings.setValue("DisplaybitpulseUnit", QVariant::fromValue(m_display_bitpulse_unit));
     Q_EMIT displayUnitChanged(m_display_bitpulse_unit);
 }
 

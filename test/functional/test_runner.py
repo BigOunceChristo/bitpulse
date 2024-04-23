@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2014-2022 The bitpulse Core developers
+# Copyright (c) 2014-2022 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Run regression test suite.
@@ -8,7 +8,7 @@ This module calls down into individual test cases via subprocess. It will
 forward all unrecognized arguments onto the individual test scripts.
 
 For a description of arguments recognized by test scripts, see
-`test/functional/test_framework/test_framework.py:bitpulseTestFramework.main`.
+`test/functional/test_framework/test_framework.py:bitpulsedTestFramework.main`.
 
 """
 
@@ -184,8 +184,8 @@ BASE_SCRIPTS = [
     'interface_zmq.py',
     'rpc_invalid_address_message.py',
     'rpc_validateaddress.py',
-    'interface_bitpulse_cli.py --legacy-wallet',
-    'interface_bitpulse_cli.py --descriptors',
+    'interface_bitpulsed_cli.py --legacy-wallet',
+    'interface_bitpulsed_cli.py --descriptors',
     'feature_bind_extra.py',
     'mempool_resurrect.py',
     'wallet_txn_doublespend.py --mineblock',
@@ -468,7 +468,7 @@ def main():
 
     logging.debug("Temporary test directory at %s" % tmpdir)
 
-    enable_bitpulsed = config["components"].getboolean("ENABLE_bitpulseD")
+    enable_bitpulsed = config["components"].getboolean("ENABLE_bitpulsed")
 
     if not enable_bitpulsed:
         print("No functional tests to run.")
@@ -836,7 +836,7 @@ class RPCCoverage():
     Coverage calculation works by having each test script subprocess write
     coverage files into a particular directory. These files contain the RPC
     commands invoked during testing, as well as a complete listing of RPC
-    commands per `bitpulse-cli help` (`rpc_interface.txt`).
+    commands per `bitpulsed-cli help` (`rpc_interface.txt`).
 
     After all tests complete, the commands run are combined and diff'd against
     the complete list to calculate uncovered RPC commands.

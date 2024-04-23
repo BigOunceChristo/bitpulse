@@ -1,9 +1,9 @@
-// Copyright (c) 2019-2021 The Bitpulse Core developers
+// Copyright (c) 2019-2021 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_NET_TYPES_H
-#define bitpulse_NET_TYPES_H
+#ifndef bitpulsed_NET_TYPES_H
+#define bitpulsed_NET_TYPES_H
 
 #include <cstdint>
 #include <map>
@@ -57,4 +57,4 @@ UniValue BanMapToJson(const banmap_t& bans);
  */
 void BanMapFromJson(const UniValue& bans_json, banmap_t& bans);
 
-#endif // bitpulse_NET_TYPES_H
+#endif // bitpulsed_NET_TYPES_H

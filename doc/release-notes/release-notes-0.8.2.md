@@ -1,5 +1,5 @@
-bitpulse-Qt version 0.8.2 is now available from:
-  http://sourceforge.net/projects/bitpulse/files/bitpulse/bitpulse-0.8.2/
+bitpulsed-Qt version 0.8.2 is now available from:
+  http://sourceforge.net/projects/bitcoin/files/bitcoin/bitcoin-0.8.2/
 
 This is a maintenance release that fixes many bugs and includes
 a few small new features.
@@ -13,7 +13,7 @@ How to Upgrade
 If you are running an older version, shut it down. Wait
 until it has completely shut down (which might take a few minutes for older
 versions), then run the installer (on Windows) or just copy over
-/Applications/bitpulse-Qt (on Mac) or bitpulsed/bitpulse-qt (on Linux).
+/Applications/bitpulsed-Qt (on Mac) or bitpulsed/bitpulsed-qt (on Linux).
 
 If you are upgrading from version 0.7.2 or earlier, the first time you
 run 0.8.2 your blockchain files will be re-indexed, which will take
@@ -43,7 +43,7 @@ with code that automatically calculates and suggests appropriate fees in the
 0.9 release and note that if you set a fee policy significantly different from
 the rest of the network your transactions may never confirm.
 
-bitpulse-Qt changes
+bitpulsed-Qt changes
 
 * New icon and splash screen
 * Improve reporting of synchronization process
@@ -58,7 +58,7 @@ bitpulse-Qt changes
   to current translations
 
 MacOSX:
-* OSX support for click-to-pay (bitpulse:) links
+* OSX support for click-to-pay (bitpulsed:) links
 * Fix GUI disappearing problem on MacOSX (issue #1522)
 
 Linux/Unix:
@@ -97,8 +97,8 @@ Wallet compatibility/rescuing
 
 Known Bugs
 
-* Entering the 'getblocktemplate' or 'getwork' RPC commands into the bitpulse-Qt debug
-console will cause bitpulse-Qt to crash. Run bitpulse-Qt with the -server command-line
+* Entering the 'getblocktemplate' or 'getwork' RPC commands into the bitpulsed-Qt debug
+console will cause bitpulsed-Qt to crash. Run bitpulsed-Qt with the -server command-line
 option to workaround.
 
 Thanks to everybody who contributed to the 0.8.2 release!

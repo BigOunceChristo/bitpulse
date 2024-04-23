@@ -46,7 +46,7 @@ NO_NATPMP ?=
 MULTIPROCESS ?=
 LTO ?=
 NO_HARDEN ?=
-FALLBACK_DOWNLOAD_PATH ?= https://bitpulsecore.org/depends-sources
+FALLBACK_DOWNLOAD_PATH ?= https://bitpulsedcore.org/depends-sources
 
 C_STANDARD ?= c11
 CXX_STANDARD ?= c++20

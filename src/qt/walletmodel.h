@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2022 The Bitpulse Core developers
+// Copyright (c) 2011-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -43,7 +43,7 @@ QT_BEGIN_NAMESPACE
 class QTimer;
 QT_END_NAMESPACE
 
-/** Interface to Bitpulse wallet from Qt view code. */
+/** Interface to bitpulse wallet from Qt view code. */
 class WalletModel : public QObject
 {
     Q_OBJECT

@@ -13,7 +13,7 @@ can be found in the contrib/init folder.
 Service User
 ---------------------------------
 
-All three Linux startup configurations assume the existence of a "bitpulse" user
+All three Linux startup configurations assume the existence of a "bitpulsed" user
 and group.  They must be created before attempting to use these scripts.
 The macOS configuration assumes bitpulsed will be set up for the current user.
 
@@ -21,7 +21,7 @@ Configuration
 ---------------------------------
 
 Running bitpulsed as a daemon does not require any manual configuration. You may
-set the `rpcauth` setting in the `bitpulse.conf` configuration file to override
+set the `rpcauth` setting in the `bitpulsed.conf` configuration file to override
 the default behaviour of using a special cookie for authentication.
 
 This password does not have to be remembered or typed as it is mostly used
@@ -44,7 +44,7 @@ This allows for running bitpulsed without having to do any manual configuration.
 relative to the data directory. `wallet` *only* supports relative paths.
 
 For an example configuration file that describes the configuration settings,
-see `share/examples/bitpulse.conf`.
+see `share/examples/bitpulsed.conf`.
 
 Paths
 ---------------------------------
@@ -54,40 +54,40 @@ Paths
 All three configurations assume several paths that might need to be adjusted.
 
     Binary:              /usr/bin/bitpulsed
-    Configuration file:  /etc/bitpulse/bitpulse.conf
+    Configuration file:  /etc/bitpulsed/bitpulsed.conf
     Data directory:      /var/lib/bitpulsed
     PID file:            /var/run/bitpulsed/bitpulsed.pid (OpenRC and Upstart) or
                          /run/bitpulsed/bitpulsed.pid (systemd)
     Lock file:           /var/lock/subsys/bitpulsed (CentOS)
 
 The PID directory (if applicable) and data directory should both be owned by the
-bitpulse user and group. It is advised for security reasons to make the
-configuration file and data directory only readable by the bitpulse user and
-group. Access to bitpulse-cli and other bitpulsed rpc clients can then be
+bitpulsed user and group. It is advised for security reasons to make the
+configuration file and data directory only readable by the bitpulsed user and
+group. Access to bitpulsed-cli and other bitpulsed rpc clients can then be
 controlled by group membership.
 
 NOTE: When using the systemd .service file, the creation of the aforementioned
 directories and the setting of their permissions is automatically handled by
-systemd. Directories are given a permission of 710, giving the bitpulse group
+systemd. Directories are given a permission of 710, giving the bitpulsed group
 access to files under it _if_ the files themselves give permission to the
-bitpulse group to do so. This does not allow
+bitpulsed group to do so. This does not allow
 for the listing of files under the directory.
 
 NOTE: It is not currently possible to override `datadir` in
-`/etc/bitpulse/bitpulse.conf` with the current systemd, OpenRC, and Upstart init
+`/etc/bitpulsed/bitpulsed.conf` with the current systemd, OpenRC, and Upstart init
 files out-of-the-box. This is because the command line options specified in the
 init files take precedence over the configurations in
-`/etc/bitpulse/bitpulse.conf`. However, some init systems have their own
+`/etc/bitpulsed/bitpulsed.conf`. However, some init systems have their own
 configuration mechanisms that would allow for overriding the command line
-options specified in the init files (e.g. setting `bitpulseD_DATADIR` for
+options specified in the init files (e.g. setting `bitpulsed_DATADIR` for
 OpenRC).
 
 ### macOS
 
     Binary:              /usr/local/bin/bitpulsed
-    Configuration file:  ~/Library/Application Support/bitpulse/bitpulse.conf
-    Data directory:      ~/Library/Application Support/bitpulse
-    Lock file:           ~/Library/Application Support/bitpulse/.lock
+    Configuration file:  ~/Library/Application Support/bitpulsed/bitpulsed.conf
+    Data directory:      ~/Library/Application Support/bitpulsed
+    Lock file:           ~/Library/Application Support/bitpulsed/.lock
 
 Installing Service Configuration
 -----------------------------------
@@ -125,19 +125,19 @@ use old versions of Upstart and do not supply the start-stop-daemon utility.
 Copy bitpulsed.init to /etc/init.d/bitpulsed. Test by running `service bitpulsed start`.
 
 Using this script, you can adjust the path and flags to the bitpulsed program by
-setting the bitpulseD and FLAGS environment variables in the file
+setting the bitpulsed and FLAGS environment variables in the file
 /etc/sysconfig/bitpulsed. You can also use the DAEMONOPTS environment variable here.
 
 ### macOS
 
-Copy org.bitpulse.bitpulsed.plist into ~/Library/LaunchAgents. Load the launch agent by
-running `launchctl load ~/Library/LaunchAgents/org.bitpulse.bitpulsed.plist`.
+Copy org.bitpulsed.bitpulsed.plist into ~/Library/LaunchAgents. Load the launch agent by
+running `launchctl load ~/Library/LaunchAgents/org.bitpulsed.bitpulsed.plist`.
 
 This Launch Agent will cause bitpulsed to start whenever the user logs in.
 
 NOTE: This approach is intended for those wanting to run bitpulsed as the current user.
-You will need to modify org.bitpulse.bitpulsed.plist if you intend to use it as a
-Launch Daemon with a dedicated bitpulse user.
+You will need to modify org.bitpulsed.bitpulsed.plist if you intend to use it as a
+Launch Daemon with a dedicated bitpulsed user.
 
 Auto-respawn
 -----------------------------------

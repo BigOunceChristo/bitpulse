@@ -1,9 +1,9 @@
-// Copyright (c) 2019-2020 The Bitpulse Core developers
+// Copyright (c) 2019-2020 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_INDEX_DISKTXPOS_H
-#define bitpulse_INDEX_DISKTXPOS_H
+#ifndef bitpulsed_INDEX_DISKTXPOS_H
+#define bitpulsed_INDEX_DISKTXPOS_H
 
 #include <flatfile.h>
 #include <serialize.h>
@@ -23,4 +23,4 @@ struct CDiskTxPos : public FlatFilePos
     CDiskTxPos() {}
 };
 
-#endif // bitpulse_INDEX_DISKTXPOS_H
+#endif // bitpulsed_INDEX_DISKTXPOS_H

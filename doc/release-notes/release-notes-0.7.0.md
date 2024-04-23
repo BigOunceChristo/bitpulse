@@ -1,7 +1,7 @@
-bitpulse version 0.7.0 is now available for download at:
-  http://sourceforge.net/projects/bitpulse/files/bitpulse/bitpulse-0.7.0/
+bitpulsed version 0.7.0 is now available for download at:
+  http://sourceforge.net/projects/bitcoin/files/bitcoin/bitcoin-0.7.0/
 
-We recommend that everybody running prior versions of bitpulsed/bitpulse-Qt
+We recommend that everybody running prior versions of bitpulsed/bitpulsed-Qt
 upgrade to this release, except for users running Mac OSX 10.5.
 
 Please report bugs using the issue tracker at github:
@@ -14,11 +14,11 @@ source-only tarballs/zipballs directly from there:
 
 Ubuntu Linux users can use the "Personal Package Archive" (PPA)
 maintained by Matt Corallo to automatically keep 
-bitpulse up-to-date.  Just type
-  sudo apt-add-repository ppa:bitpulse/bitpulse
+bitpulsed up-to-date.  Just type
+  sudo apt-add-repository ppa:bitpulsed/bitpulsed
   sudo apt-get update
-in your terminal, then install the bitpulse-qt package:
-  sudo apt-get install bitpulse-qt
+in your terminal, then install the bitpulsed-qt package:
+  sudo apt-get install bitpulsed-qt
 
 
 How to Upgrade
@@ -27,10 +27,10 @@ If you are running an older version, shut it down. Wait
 until it has completely shut down (which might take a few minutes for older
 versions), then run the installer (on Windows) or just copy over
 Code:
-/Applications/bitpulse-Qt
+/Applications/bitpulsed-Qt
 (on Mac) or
 Code:
-bitpulsed/bitpulse-qt
+bitpulsed/bitpulsed-qt
 (on Linux).
 
 If you were running on Linux with a version that might have been compiled
@@ -45,14 +45,14 @@ Incompatible Changes
   and 'getrawmempool' commands.
 * Remove deprecated RPC 'getblocknumber'
 
-bitpulse Improvement Proposals implemented
+bitpulsed Improvement Proposals implemented
 
 BIP 22 - 'getblocktemplate', 'submitblock' RPCs
 BIP 34 - block version 2, height in coinbase
 BIP 35 - 'mempool' message, extended 'getdata' message behavior
 
 
-Core bitpulse handling and blockchain database
+Core bitpulsed handling and blockchain database
 
 * Reduced CPU usage, by eliminating some redundant hash calculations
 * Cache signature verifications, to eliminate redundant signature checks
@@ -109,7 +109,7 @@ Qt GUI
 * Add 2 labels to the overviewpage that display Wallet and Transaction status (obsolete or current)
 * Extend the optionsdialog (e.g. language selection) and re-work it to a tabbed UI
 * Merge sign/verify message into a single window with tabbed UI
-* Ensure a changed bitpulse unit immediately updates all GUI elements that use units
+* Ensure a changed bitpulsed unit immediately updates all GUI elements that use units
 * Update QR Code dialog
 * Improve error reporting at startup
 * Fine-grained UI updates for a much smoother UI during block downloads
@@ -119,8 +119,8 @@ Qt GUI
 * Much better translations
 * Override progress bar design on platforms with segmented progress bars to assist with readability
 * Added 'immature balance' display on the overview page
-* (Windows only): enable ASLR and DEP for bitpulse-qt.exe
-* (Windows only): add meta-data to bitpulse-qt.exe (e.g. description)
+* (Windows only): enable ASLR and DEP for bitpulsed-qt.exe
+* (Windows only): add meta-data to bitpulsed-qt.exe (e.g. description)
 
 Internal codebase
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2021-present The bitpulse Core developers
+# Copyright (c) 2021-present The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test for assumeutxo, a means of quickly bootstrapping a node using
@@ -35,7 +35,7 @@ Interesting starting states could be loading a snapshot when the current chain t
 from shutil import rmtree
 
 from test_framework.messages import tx_from_hex
-from test_framework.test_framework import bitpulseTestFramework
+from test_framework.test_framework import bitpulsedTestFramework
 from test_framework.util import (
     assert_equal,
     assert_raises_rpc_error,
@@ -51,7 +51,7 @@ FINAL_HEIGHT = 399
 COMPLETE_IDX = {'synced': True, 'best_block_height': FINAL_HEIGHT}
 
 
-class AssumeutxoTest(bitpulseTestFramework):
+class AssumeutxoTest(bitpulsedTestFramework):
 
     def set_test_params(self):
         """Use the pregenerated, deterministic chain up to height 199."""

@@ -1,9 +1,9 @@
-// Copyright (c) 2022 The Bitpulse Core developers
+// Copyright (c) 2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_TEST_UTIL_TXMEMPOOL_H
-#define bitpulse_TEST_UTIL_TXMEMPOOL_H
+#ifndef bitpulsed_TEST_UTIL_TXMEMPOOL_H
+#define bitpulsed_TEST_UTIL_TXMEMPOOL_H
 
 #include <policy/packages.h>
 #include <txmempool.h>
@@ -56,4 +56,4 @@ std::optional<std::string>  CheckPackageMempoolAcceptResult(const Package& txns,
  *   */
 void CheckMempoolV3Invariants(const CTxMemPool& tx_pool);
 
-#endif // bitpulse_TEST_UTIL_TXMEMPOOL_H
+#endif // bitpulsed_TEST_UTIL_TXMEMPOOL_H

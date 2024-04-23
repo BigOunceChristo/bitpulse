@@ -1,9 +1,9 @@
-// Copyright (c) 2017-present The Bitpulse Core developers
+// Copyright (c) 2017-present The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_UTIL_FS_H
-#define bitpulse_UTIL_FS_H
+#ifndef bitpulsed_UTIL_FS_H
+#define bitpulsed_UTIL_FS_H
 
 #include <tinyformat.h>
 
@@ -250,4 +250,4 @@ template<> inline void formatValue(std::ostream&, const char*, const char*, int,
 template<> inline void formatValue(std::ostream&, const char*, const char*, int, const fs::path&) = delete;
 } // namespace tinyformat
 
-#endif // bitpulse_UTIL_FS_H
+#endif // bitpulsed_UTIL_FS_H

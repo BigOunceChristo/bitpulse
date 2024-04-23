@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2022 The bitpulse Core developers
+# Copyright (c) 2022 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -16,7 +16,7 @@ except ImportError:
     pass
 
 from test_framework.address import ADDRESS_BCRT1_UNSPENDABLE
-from test_framework.test_framework import bitpulseTestFramework
+from test_framework.test_framework import bitpulsedTestFramework
 from test_framework.util import assert_equal
 
 
@@ -50,7 +50,7 @@ int trace_block_connected(struct pt_regs *ctx) {
 """
 
 
-class ValidationTracepointTest(bitpulseTestFramework):
+class ValidationTracepointTest(bitpulsedTestFramework):
     def set_test_params(self):
         self.num_nodes = 1
 

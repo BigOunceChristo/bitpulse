@@ -1,12 +1,12 @@
 # 1. Multisig Tutorial
 
-Currently, it is possible to create a multisig wallet using bitpulse Core only.
+Currently, it is possible to create a multisig wallet using bitpulsed Core only.
 
 Although there is already a brief explanation about the multisig in the [Descriptors documentation](https://github.com/bitcoin/bitcoin/blob/master/doc/descriptors.md#multisig), this tutorial proposes to use the signet (instead of regtest), bringing the reader closer to a real environment and explaining some functions in more detail.
 
 This tutorial uses [jq](https://github.com/stedolan/jq) JSON processor to process the results from RPC and stores the relevant values in bash variables. This makes the tutorial reproducible and easier to follow step by step.
 
-Before starting this tutorial, start the bitpulse node on the signet network.
+Before starting this tutorial, start the bitpulsed node on the signet network.
 
 ```bash
 ./src/bitpulsed -signet -daemon
@@ -14,7 +14,7 @@ Before starting this tutorial, start the bitpulse node on the signet network.
 
 This tutorial also uses the default WPKH derivation path to get the xpubs and does not conform to [BIP 45](https://github.com/bitcoin/bips/blob/master/bip-0045.mediawiki) or [BIP 87](https://github.com/bitcoin/bips/blob/master/bip-0087.mediawiki).
 
-At the time of writing, there is no way to extract a specific path from wallets in bitpulse Core. For this, an external signer/xpub can be used.
+At the time of writing, there is no way to extract a specific path from wallets in bitpulsed Core. For this, an external signer/xpub can be used.
 
 [PR #22341](https://github.com/bitcoin/bitcoin/pull/22341), which is still under development, introduces a new wallet RPC `getxpub`. It takes a BIP32 path as an argument and returns the xpub, along with the master key fingerprint.
 
@@ -29,11 +29,11 @@ These three wallets should not be used directly for privacy reasons (public key 
 ```bash
 for ((n=1;n<=3;n++))
 do
- ./src/bitpulse-cli -signet createwallet "participant_${n}"
+ ./src/bitpulsed-cli -signet createwallet "participant_${n}"
 done
 ```
 
-Extract the xpub of each wallet. To do this, the `listdescriptors` RPC is used. By default, bitpulse Core single-sig wallets are created using path `m/44'/1'/0'` for PKH, `m/84'/1'/0'` for WPKH, `m/49'/1'/0'` for P2WPKH-nested-in-P2SH and `m/86'/1'/0'` for P2TR based accounts. Each of them uses the chain 0 for external addresses and chain 1 for internal ones, as shown in the example below.
+Extract the xpub of each wallet. To do this, the `listdescriptors` RPC is used. By default, bitpulsed Core single-sig wallets are created using path `m/44'/1'/0'` for PKH, `m/84'/1'/0'` for WPKH, `m/49'/1'/0'` for P2WPKH-nested-in-P2SH and `m/86'/1'/0'` for P2TR based accounts. Each of them uses the chain 0 for external addresses and chain 1 for internal ones, as shown in the example below.
 
 ```
 wpkh([1004658e/84'/1'/0']tpubDCBEcmVKbfC9KfdydyLbJ2gfNL88grZu1XcWSW9ytTM6fitvaRmVyr8Ddf7SjZ2ZfMx9RicjYAXhuh3fmLiVLPodPEqnQQURUfrBKiiVZc8/0/*)#g8l47ngv
@@ -42,16 +42,16 @@ wpkh([1004658e/84'/1'/0']tpubDCBEcmVKbfC9KfdydyLbJ2gfNL88grZu1XcWSW9ytTM6fitvaRm
 ```
 
 The suffix (after #) is the checksum. Descriptors can optionally be suffixed with a checksum to protect against typos or copy-paste errors.
-All RPCs in bitpulse Core will include the checksum in their output.
+All RPCs in bitpulsed Core will include the checksum in their output.
 
 ```bash
 declare -A xpubs
 
 for ((n=1;n<=3;n++))
 do
- xpubs["internal_xpub_${n}"]=$(./src/bitpulse-cli -signet -rpcwallet="participant_${n}" listdescriptors | jq '.descriptors | [.[] | select(.desc | startswith("wpkh") and contains("/1/*"))][0] | .desc' | grep -Po '(?<=\().*(?=\))')
+ xpubs["internal_xpub_${n}"]=$(./src/bitpulsed-cli -signet -rpcwallet="participant_${n}" listdescriptors | jq '.descriptors | [.[] | select(.desc | startswith("wpkh") and contains("/1/*"))][0] | .desc' | grep -Po '(?<=\().*(?=\))')
 
- xpubs["external_xpub_${n}"]=$(./src/bitpulse-cli -signet -rpcwallet="participant_${n}" listdescriptors | jq '.descriptors | [.[] | select(.desc | startswith("wpkh") and contains("/0/*") )][0] | .desc' | grep -Po '(?<=\().*(?=\))')
+ xpubs["external_xpub_${n}"]=$(./src/bitpulsed-cli -signet -rpcwallet="participant_${n}" listdescriptors | jq '.descriptors | [.[] | select(.desc | startswith("wpkh") and contains("/0/*") )][0] | .desc' | grep -Po '(?<=\().*(?=\))')
 done
 ```
 
@@ -63,7 +63,7 @@ The following command can be used to verify if the xpub was generated correctly.
 for x in "${!xpubs[@]}"; do printf "[%s]=%s\n" "$x" "${xpubs[$x]}" ; done
 ```
 
-As previously mentioned, this step extracts the `m/84'/1'/0'` account instead of the path defined in [BIP 45](https://github.com/bitcoin/bips/blob/master/bip-0045.mediawiki) or [BIP 87](https://github.com/bitcoin/bips/blob/master/bip-0087.mediawiki), since there is no way to extract a specific path in bitpulse Core at the time of writing.
+As previously mentioned, this step extracts the `m/84'/1'/0'` account instead of the path defined in [BIP 45](https://github.com/bitcoin/bips/blob/master/bip-0045.mediawiki) or [BIP 87](https://github.com/bitcoin/bips/blob/master/bip-0087.mediawiki), since there is no way to extract a specific path in bitpulsed Core at the time of writing.
 
 ### 1.2 Define the Multisig Descriptors
 
@@ -73,8 +73,8 @@ Define the external and internal multisig descriptors, add the checksum and then
 external_desc="wsh(sortedmulti(2,${xpubs["external_xpub_1"]},${xpubs["external_xpub_2"]},${xpubs["external_xpub_3"]}))"
 internal_desc="wsh(sortedmulti(2,${xpubs["internal_xpub_1"]},${xpubs["internal_xpub_2"]},${xpubs["internal_xpub_3"]}))"
 
-external_desc_sum=$(./src/bitpulse-cli -signet getdescriptorinfo $external_desc | jq '.descriptor')
-internal_desc_sum=$(./src/bitpulse-cli -signet getdescriptorinfo $internal_desc | jq '.descriptor')
+external_desc_sum=$(./src/bitpulsed-cli -signet getdescriptorinfo $external_desc | jq '.descriptor')
+internal_desc_sum=$(./src/bitpulsed-cli -signet getdescriptorinfo $internal_desc | jq '.descriptor')
 
 multisig_ext_desc="{\"desc\": $external_desc_sum, \"active\": true, \"internal\": false, \"timestamp\": \"now\"}"
 multisig_int_desc="{\"desc\": $internal_desc_sum, \"active\": true, \"internal\": true, \"timestamp\": \"now\"}"
@@ -96,7 +96,7 @@ There are other fields that can be added to the descriptors:
 * `internal`: Indicates whether matching outputs should be treated as something other than incoming payments (e.g. change).
 * `timestamp`: Sets the time from which to start rescanning the blockchain for the descriptor, in UNIX epoch time.
 
-Documentation for these and other parameters can be found by typing `./src/bitpulse-cli help importdescriptors`.
+Documentation for these and other parameters can be found by typing `./src/bitpulsed-cli help importdescriptors`.
 
 `multisig_desc` concatenates external and internal descriptors in a JSON array and then it will be used to create the multisig wallet.
 
@@ -109,17 +109,17 @@ Then import the descriptors created in the previous step using the `importdescri
 After that, `getwalletinfo` can be used to check if the wallet was created successfully.
 
 ```bash
-./src/bitpulse-cli -signet -named createwallet wallet_name="multisig_wallet_01" disable_private_keys=true blank=true
+./src/bitpulsed-cli -signet -named createwallet wallet_name="multisig_wallet_01" disable_private_keys=true blank=true
 
-./src/bitpulse-cli  -signet -rpcwallet="multisig_wallet_01" importdescriptors "$multisig_desc"
+./src/bitpulsed-cli  -signet -rpcwallet="multisig_wallet_01" importdescriptors "$multisig_desc"
 
-./src/bitpulse-cli  -signet -rpcwallet="multisig_wallet_01" getwalletinfo
+./src/bitpulsed-cli  -signet -rpcwallet="multisig_wallet_01" getwalletinfo
 ```
 
 Once the wallets have already been created and this tutorial needs to be repeated or resumed, it is not necessary to recreate them, just load them with the command below:
 
 ```bash
-for ((n=1;n<=3;n++)); do ./src/bitpulse-cli -signet loadwallet "participant_${n}"; done
+for ((n=1;n<=3;n++)); do ./src/bitpulsed-cli -signet loadwallet "participant_${n}"; done
 ```
 
 ### 1.4 Fund the wallet
@@ -133,9 +133,9 @@ The url used by the script can also be accessed directly. At time of writing, th
 Coins received by the wallet must have at least 1 confirmation before they can be spent. It is necessary to wait for a new block to be mined before continuing.
 
 ```bash
-receiving_address=$(./src/bitpulse-cli -signet -rpcwallet="multisig_wallet_01" getnewaddress)
+receiving_address=$(./src/bitpulsed-cli -signet -rpcwallet="multisig_wallet_01" getnewaddress)
 
-./contrib/signet/getcoins.py -c ./src/bitpulse-cli -a $receiving_address
+./contrib/signet/getcoins.py -c ./src/bitpulsed-cli -a $receiving_address
 ```
 
 To copy the receiving address onto the clipboard, use the following command. This can be useful when getting coins via the signet faucet mentioned above.
@@ -147,29 +147,29 @@ echo -n "$receiving_address" | xclip -sel clip
 The `getbalances` RPC may be used to check the balance. Coins with `trusted` status can be spent.
 
 ```bash
-./src/bitpulse-cli -signet -rpcwallet="multisig_wallet_01" getbalances
+./src/bitpulsed-cli -signet -rpcwallet="multisig_wallet_01" getbalances
 ```
 
 ### 1.5 Create a PSBT
 
-Unlike singlesig wallets, multisig wallets cannot create and sign transactions directly because they require the signatures of the co-signers. Instead they create a Partially Signed bitpulse Transaction (PSBT).
+Unlike singlesig wallets, multisig wallets cannot create and sign transactions directly because they require the signatures of the co-signers. Instead they create a Partially Signed bitpulsed Transaction (PSBT).
 
-PSBT is a data format that allows wallets and other tools to exchange information about a bitpulse transaction and the signatures necessary to complete it. [[source](https://bitpulseops.org/en/topics/psbt/)]
+PSBT is a data format that allows wallets and other tools to exchange information about a bitpulsed transaction and the signatures necessary to complete it. [[source](https://bitpulsedops.org/en/topics/psbt/)]
 
 The current PSBT version (v0) is defined in [BIP 174](https://github.com/bitcoin/bips/blob/master/bip-0174.mediawiki).
 
-For simplicity, the destination address is taken from the `participant_1` wallet in the code above, but it can be any valid bitpulse address.
+For simplicity, the destination address is taken from the `participant_1` wallet in the code above, but it can be any valid bitpulsed address.
 
 The `walletcreatefundedpsbt` RPC is used to create and fund a transaction in the PSBT format. It is the first step in creating the PSBT.
 
 ```bash
-balance=$(./src/bitpulse-cli -signet -rpcwallet="multisig_wallet_01" getbalance)
+balance=$(./src/bitpulsed-cli -signet -rpcwallet="multisig_wallet_01" getbalance)
 
 amount=$(echo "$balance * 0.8" | bc -l | sed -e 's/^\./0./' -e 's/^-\./-0./')
 
-destination_addr=$(./src/bitpulse-cli -signet -rpcwallet="participant_1" getnewaddress)
+destination_addr=$(./src/bitpulsed-cli -signet -rpcwallet="participant_1" getnewaddress)
 
-funded_psbt=$(./src/bitpulse-cli -signet -named -rpcwallet="multisig_wallet_01" walletcreatefundedpsbt outputs="{\"$destination_addr\": $amount}" | jq -r '.psbt')
+funded_psbt=$(./src/bitpulsed-cli -signet -named -rpcwallet="multisig_wallet_01" walletcreatefundedpsbt outputs="{\"$destination_addr\": $amount}" | jq -r '.psbt')
 ```
 
 There is also the `createpsbt` RPC, which serves the same purpose, but it has no access to the wallet or to the UTXO set. It is functionally the same as `createrawtransaction` and just drops the raw transaction into an otherwise blank PSBT. [[source](https://bitcointalk.org/index.php?topic=5131043.msg50573609#msg50573609)] In most cases, `walletcreatefundedpsbt` solves the problem.
@@ -183,9 +183,9 @@ Optionally, the PSBT can be decoded to a JSON format using `decodepsbt` RPC.
 The `analyzepsbt` RPC analyzes and provides information about the current status of a PSBT and its inputs, e.g. missing signatures.
 
 ```bash
-./src/bitpulse-cli -signet decodepsbt $funded_psbt
+./src/bitpulsed-cli -signet decodepsbt $funded_psbt
 
-./src/bitpulse-cli -signet analyzepsbt $funded_psbt
+./src/bitpulsed-cli -signet analyzepsbt $funded_psbt
 ```
 
 ### 1.7 Update the PSBT
@@ -195,9 +195,9 @@ In the code above, two PSBTs are created. One signed by `participant_1` wallet a
 The `walletprocesspsbt` is used by the wallet to sign a PSBT.
 
 ```bash
-psbt_1=$(./src/bitpulse-cli -signet -rpcwallet="participant_1" walletprocesspsbt $funded_psbt | jq '.psbt')
+psbt_1=$(./src/bitpulsed-cli -signet -rpcwallet="participant_1" walletprocesspsbt $funded_psbt | jq '.psbt')
 
-psbt_2=$(./src/bitpulse-cli -signet -rpcwallet="participant_2" walletprocesspsbt $funded_psbt | jq '.psbt')
+psbt_2=$(./src/bitpulsed-cli -signet -rpcwallet="participant_2" walletprocesspsbt $funded_psbt | jq '.psbt')
 ```
 
 ### 1.8 Combine the PSBT
@@ -205,7 +205,7 @@ psbt_2=$(./src/bitpulse-cli -signet -rpcwallet="participant_2" walletprocesspsbt
 The PSBT, if signed separately by the co-signers, must be combined into one transaction before being finalized. This is done by `combinepsbt` RPC.
 
 ```bash
-combined_psbt=$(./src/bitpulse-cli -signet combinepsbt "[$psbt_1, $psbt_2]")
+combined_psbt=$(./src/bitpulsed-cli -signet combinepsbt "[$psbt_1, $psbt_2]")
 ```
 
 There is an RPC called `joinpsbts`, but it has a different purpose than `combinepsbt`. `joinpsbts` joins the inputs from multiple distinct PSBTs into one PSBT.
@@ -219,9 +219,9 @@ The `finalizepsbt` RPC is used to produce a network serialized transaction which
 It checks that all inputs have complete scriptSigs and scriptWitnesses and, if so, encodes them into network serialized transactions.
 
 ```bash
-finalized_psbt_hex=$(./src/bitpulse-cli -signet finalizepsbt $combined_psbt | jq -r '.hex')
+finalized_psbt_hex=$(./src/bitpulsed-cli -signet finalizepsbt $combined_psbt | jq -r '.hex')
 
-./src/bitpulse-cli -signet sendrawtransaction $finalized_psbt_hex
+./src/bitpulsed-cli -signet sendrawtransaction $finalized_psbt_hex
 ```
 
 ### 1.10 Alternative Workflow (PSBT sequential signatures)
@@ -231,11 +231,11 @@ Instead of each wallet signing the original PSBT and combining them later, the w
 After that, the rest of the process is the same: the PSBT is finalized and transmitted to the network.
 
 ```bash
-psbt_1=$(./src/bitpulse-cli -signet -rpcwallet="participant_1" walletprocesspsbt $funded_psbt | jq -r '.psbt')
+psbt_1=$(./src/bitpulsed-cli -signet -rpcwallet="participant_1" walletprocesspsbt $funded_psbt | jq -r '.psbt')
 
-psbt_2=$(./src/bitpulse-cli -signet -rpcwallet="participant_2" walletprocesspsbt $psbt_1 | jq -r '.psbt')
+psbt_2=$(./src/bitpulsed-cli -signet -rpcwallet="participant_2" walletprocesspsbt $psbt_1 | jq -r '.psbt')
 
-finalized_psbt_hex=$(./src/bitpulse-cli -signet finalizepsbt $psbt_2 | jq -r '.hex')
+finalized_psbt_hex=$(./src/bitpulsed-cli -signet finalizepsbt $psbt_2 | jq -r '.hex')
 
-./src/bitpulse-cli -signet sendrawtransaction $finalized_psbt_hex
+./src/bitpulsed-cli -signet sendrawtransaction $finalized_psbt_hex
 ```

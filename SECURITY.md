@@ -2,12 +2,12 @@
 
 ## Supported Versions
 
-See our website for versions of bitpulse Core that are currently supported with
-security updates: https://bitpulsecore.org/en/lifecycle/#schedule
+See our website for versions of bitpulsed Core that are currently supported with
+security updates: https://bitpulsedcore.org/en/lifecycle/#schedule
 
 ## Reporting a Vulnerability
 
-To report security issues send an email to security@bitpulsecore.org (not for support).
+To report security issues send an email to security@bitpulsedcore.org (not for support).
 
 The following keys may be used to communicate sensitive information to developers:
 

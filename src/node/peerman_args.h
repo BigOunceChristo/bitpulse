@@ -1,5 +1,5 @@
-#ifndef bitpulse_NODE_PEERMAN_ARGS_H
-#define bitpulse_NODE_PEERMAN_ARGS_H
+#ifndef bitpulsed_NODE_PEERMAN_ARGS_H
+#define bitpulsed_NODE_PEERMAN_ARGS_H
 
 #include <net_processing.h>
 
@@ -9,4 +9,4 @@ namespace node {
 void ApplyArgsManOptions(const ArgsManager& argsman, PeerManager::Options& options);
 } // namespace node
 
-#endif // bitpulse_NODE_PEERMAN_ARGS_H
+#endif // bitpulsed_NODE_PEERMAN_ARGS_H

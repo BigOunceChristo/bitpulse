@@ -9,7 +9,7 @@ extern "C" {
 #endif
 
 /** This module implements a variant of Schnorr signatures compliant with
- *  Bitpulse Improvement Proposal 340 "Schnorr Signatures for secp256k1"
+ *  bitpulse Improvement Proposal 340 "Schnorr Signatures for secp256k1"
  *  (https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki).
  */
 
@@ -49,7 +49,7 @@ typedef int (*secp256k1_nonce_function_hardened)(
     void *data
 );
 
-/** An implementation of the nonce generation function as defined in Bitpulse
+/** An implementation of the nonce generation function as defined in bitpulse
  *  Improvement Proposal 340 "Schnorr Signatures for secp256k1"
  *  (https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki).
  *

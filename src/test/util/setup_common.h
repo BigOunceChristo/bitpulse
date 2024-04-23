@@ -1,9 +1,9 @@
-// Copyright (c) 2015-2022 The Bitpulse Core developers
+// Copyright (c) 2015-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_TEST_UTIL_SETUP_COMMON_H
-#define bitpulse_TEST_UTIL_SETUP_COMMON_H
+#ifndef bitpulsed_TEST_UTIL_SETUP_COMMON_H
+#define bitpulsed_TEST_UTIL_SETUP_COMMON_H
 
 #include <common/args.h> // IWYU pragma: export
 #include <key.h>
@@ -253,4 +253,4 @@ private:
     const std::string m_reason;
 };
 
-#endif // bitpulse_TEST_UTIL_SETUP_COMMON_H
+#endif // bitpulsed_TEST_UTIL_SETUP_COMMON_H

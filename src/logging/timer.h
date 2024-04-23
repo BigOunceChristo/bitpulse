@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2022 The Bitpulse Core developers
+// Copyright (c) 2009-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_LOGGING_TIMER_H
-#define bitpulse_LOGGING_TIMER_H
+#ifndef bitpulsed_LOGGING_TIMER_H
+#define bitpulsed_LOGGING_TIMER_H
 
 #include <logging.h>
 #include <util/macros.h>
@@ -108,4 +108,4 @@ private:
     BCLog::Timer<std::chrono::seconds> UNIQUE_NAME(logging_timer)(__func__, end_msg)
 
 
-#endif // bitpulse_LOGGING_TIMER_H
+#endif // bitpulsed_LOGGING_TIMER_H

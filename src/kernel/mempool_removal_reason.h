@@ -1,9 +1,9 @@
-// Copyright (c) 2016-present The Bitpulse Core developers
+// Copyright (c) 2016-present The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://opensource.org/license/mit/.
 
-#ifndef bitpulse_KERNEL_MEMPOOL_REMOVAL_REASON_H
-#define bitpulse_KERNEL_MEMPOOL_REMOVAL_REASON_H
+#ifndef bitpulsed_KERNEL_MEMPOOL_REMOVAL_REASON_H
+#define bitpulsed_KERNEL_MEMPOOL_REMOVAL_REASON_H
 
 #include <string>
 
@@ -21,4 +21,4 @@ enum class MemPoolRemovalReason {
 
 std::string RemovalReasonToString(const MemPoolRemovalReason& r) noexcept;
 
-#endif // bitpulse_KERNEL_MEMPOOL_REMOVAL_REASON_H
+#endif // bitpulsed_KERNEL_MEMPOOL_REMOVAL_REASON_H

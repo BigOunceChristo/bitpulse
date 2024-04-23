@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2018-2022 The bitpulse Core developers
+# Copyright (c) 2018-2022 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Backwards compatibility functional test
@@ -18,7 +18,7 @@ import os
 import shutil
 
 from test_framework.blocktools import COINBASE_MATURITY
-from test_framework.test_framework import bitpulseTestFramework
+from test_framework.test_framework import bitpulsedTestFramework
 from test_framework.descriptors import descsum_create
 
 from test_framework.util import (
@@ -27,7 +27,7 @@ from test_framework.util import (
 )
 
 
-class BackwardsCompatibilityTest(bitpulseTestFramework):
+class BackwardsCompatibilityTest(bitpulsedTestFramework):
     def add_options(self, parser):
         self.add_wallet_options(parser)
 
@@ -110,7 +110,7 @@ class BackwardsCompatibilityTest(bitpulseTestFramework):
         assert wallet.getaddressinfo(address_18075)["solvable"]
         node_v19.unloadwallet("w1_v19")
 
-        # Copy the 0.19 wallet to the last bitpulse Core version and open it:
+        # Copy the 0.19 wallet to the last bitpulsed Core version and open it:
         shutil.copytree(
             os.path.join(node_v19.wallets_path, "w1_v19"),
             os.path.join(node_master.wallets_path, "w1_v19")
@@ -287,7 +287,7 @@ class BackwardsCompatibilityTest(bitpulseTestFramework):
             node_v17.assert_start_raises_init_error(["-wallet=w3"], "Error: wallet.dat corrupt, salvage failed")
         else:
             self.log.info("Test blank wallet incompatibility with v17")
-            node_v17.assert_start_raises_init_error(["-wallet=w3"], "Error: Error loading w3: Wallet requires newer version of bitpulse Core")
+            node_v17.assert_start_raises_init_error(["-wallet=w3"], "Error: Error loading w3: Wallet requires newer version of bitpulsed Core")
         self.start_node(node_v17.index)
 
         # No wallet created in master can be opened in 0.16
@@ -297,7 +297,7 @@ class BackwardsCompatibilityTest(bitpulseTestFramework):
             if self.options.descriptors:
                 node_v16.assert_start_raises_init_error([f"-wallet={wallet_name}"], f"Error: {wallet_name} corrupt, salvage failed")
             else:
-                node_v16.assert_start_raises_init_error([f"-wallet={wallet_name}"], f"Error: Error loading {wallet_name}: Wallet requires newer version of bitpulse Core")
+                node_v16.assert_start_raises_init_error([f"-wallet={wallet_name}"], f"Error: Error loading {wallet_name}: Wallet requires newer version of bitpulsed Core")
 
         # When descriptors are enabled, w1 cannot be opened by 0.21 since it contains a taproot descriptor
         if self.options.descriptors:

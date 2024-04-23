@@ -1,7 +1,7 @@
 ANDROID BUILD NOTES
 ======================
 
-This guide describes how to build and package the `bitpulse-qt` GUI for Android on Linux and macOS.
+This guide describes how to build and package the `bitpulsed-qt` GUI for Android on Linux and macOS.
 
 
 ## Dependencies

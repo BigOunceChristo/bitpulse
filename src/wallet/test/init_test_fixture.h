@@ -1,9 +1,9 @@
-// Copyright (c) 2018-2021 The Bitpulse Core developers
+// Copyright (c) 2018-2021 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_WALLET_TEST_INIT_TEST_FIXTURE_H
-#define bitpulse_WALLET_TEST_INIT_TEST_FIXTURE_H
+#ifndef bitpulsed_WALLET_TEST_INIT_TEST_FIXTURE_H
+#define bitpulsed_WALLET_TEST_INIT_TEST_FIXTURE_H
 
 #include <interfaces/chain.h>
 #include <interfaces/wallet.h>
@@ -24,5 +24,5 @@ struct InitWalletDirTestingSetup: public BasicTestingSetup {
     std::unique_ptr<interfaces::WalletLoader> m_wallet_loader;
 };
 
-#endif // bitpulse_WALLET_TEST_INIT_TEST_FIXTURE_H
+#endif // bitpulsed_WALLET_TEST_INIT_TEST_FIXTURE_H
 } // namespace wallet

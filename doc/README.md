@@ -1,42 +1,42 @@
-bitpulse Core
+bitpulsed Core
 =============
 
 Setup
 ---------------------
-bitpulse Core is the original bitpulse client and it builds the backbone of the network. It downloads and, by default, stores the entire history of bitpulse transactions, which requires a few hundred gigabytes of disk space. Depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
+bitpulsed Core is the original bitpulsed client and it builds the backbone of the network. It downloads and, by default, stores the entire history of bitpulsed transactions, which requires a few hundred gigabytes of disk space. Depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
 
-To download bitpulse Core, visit [bitpulsecore.org](https://bitpulsecore.org/en/download/).
+To download bitpulsed Core, visit [bitpulsedcore.org](https://bitpulsedcore.org/en/download/).
 
 Running
 ---------------------
-The following are some helpful notes on how to run bitpulse Core on your native platform.
+The following are some helpful notes on how to run bitpulsed Core on your native platform.
 
 ### Unix
 
 Unpack the files into a directory and run:
 
-- `bin/bitpulse-qt` (GUI) or
+- `bin/bitpulsed-qt` (GUI) or
 - `bin/bitpulsed` (headless)
 
 ### Windows
 
-Unpack the files into a directory, and then run bitpulse-qt.exe.
+Unpack the files into a directory, and then run bitpulsed-qt.exe.
 
 ### macOS
 
-Drag bitpulse Core to your applications folder, and then run bitpulse Core.
+Drag bitpulsed Core to your applications folder, and then run bitpulsed Core.
 
 ### Need Help?
 
-* See the documentation at the [bitpulse Wiki](https://en.bitcoin.it/wiki/Main_Page)
+* See the documentation at the [bitpulsed Wiki](https://en.bitcoin.it/wiki/Main_Page)
 for help and more information.
-* Ask for help on [bitpulse StackExchange](https://bitcoin.stackexchange.com).
-* Ask for help on #bitpulse on Libera Chat. If you don't have an IRC client, you can use [web.libera.chat](https://web.libera.chat/#bitpulse).
-* Ask for help on the [bitpulseTalk](https://bitcointalk.org/) forums, in the [Technical Support board](https://bitcointalk.org/index.php?board=4.0).
+* Ask for help on [bitpulsed StackExchange](https://bitcoin.stackexchange.com).
+* Ask for help on #bitpulsed on Libera Chat. If you don't have an IRC client, you can use [web.libera.chat](https://web.libera.chat/#bitpulsed).
+* Ask for help on the [bitpulsedTalk](https://bitcointalk.org/) forums, in the [Technical Support board](https://bitcointalk.org/index.php?board=4.0).
 
 Building
 ---------------------
-The following are developer notes on how to build bitpulse Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build bitpulsed Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
 - [Dependencies](dependencies.md)
 - [macOS Build Notes](build-osx.md)
@@ -49,12 +49,12 @@ The following are developer notes on how to build bitpulse Core on your native p
 
 Development
 ---------------------
-The bitpulse repo's [root README](/README.md) contains relevant information on the development process and automated testing.
+The bitpulsed repo's [root README](/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
 - [Productivity Notes](productivity.md)
 - [Release Process](release-process.md)
-- [Source Code Documentation (External Link)](https://doxygen.bitpulsecore.org/)
+- [Source Code Documentation (External Link)](https://doxygen.bitpulsedcore.org/)
 - [Translation Process](translation_process.md)
 - [Translation Strings Policy](translation_strings_policy.md)
 - [JSON-RPC Interface](JSON-RPC-interface.md)
@@ -66,12 +66,12 @@ The bitpulse repo's [root README](/README.md) contains relevant information on t
 - [Internal Design Docs](design/)
 
 ### Resources
-* Discuss on the [bitpulseTalk](https://bitcointalk.org/) forums, in the [Development & Technical Discussion board](https://bitcointalk.org/index.php?board=6.0).
-* Discuss project-specific development on #bitpulse-core-dev on Libera Chat. If you don't have an IRC client, you can use [web.libera.chat](https://web.libera.chat/#bitpulse-core-dev).
+* Discuss on the [bitpulsedTalk](https://bitcointalk.org/) forums, in the [Development & Technical Discussion board](https://bitcointalk.org/index.php?board=6.0).
+* Discuss project-specific development on #bitpulsed-core-dev on Libera Chat. If you don't have an IRC client, you can use [web.libera.chat](https://web.libera.chat/#bitpulsed-core-dev).
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)
-- [bitpulse.conf Configuration File](bitpulse-conf.md)
+- [bitpulsed.conf Configuration File](bitpulsed-conf.md)
 - [CJDNS Support](cjdns.md)
 - [Files](files.md)
 - [Fuzz-testing](fuzzing.md)

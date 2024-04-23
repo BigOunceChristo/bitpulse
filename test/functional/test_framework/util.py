@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2014-2022 The bitpulse Core developers
+# Copyright (c) 2014-2022 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Helpful routines for regression testing."""
@@ -263,7 +263,7 @@ def wait_until_helper_internal(predicate, *, attempts=float('inf'), timeout=floa
 
     Warning: Note that this method is not recommended to be used in tests as it is
     not aware of the context of the test framework. Using the `wait_until()` members
-    from `bitpulseTestFramework` or `P2PInterface` class ensures the timeout is
+    from `bitpulsedTestFramework` or `P2PInterface` class ensures the timeout is
     properly scaled. Furthermore, `wait_until()` from `P2PInterface` class in
     `p2p.py` has a preset lock.
     """
@@ -375,7 +375,7 @@ def initialize_datadir(dirname, n, chain, disable_autoconnect=True):
     datadir = get_datadir_path(dirname, n)
     if not os.path.isdir(datadir):
         os.makedirs(datadir)
-    write_config(os.path.join(datadir, "bitpulse.conf"), n=n, chain=chain, disable_autoconnect=disable_autoconnect)
+    write_config(os.path.join(datadir, "bitpulsed.conf"), n=n, chain=chain, disable_autoconnect=disable_autoconnect)
     os.makedirs(os.path.join(datadir, 'stderr'), exist_ok=True)
     os.makedirs(os.path.join(datadir, 'stdout'), exist_ok=True)
     return datadir
@@ -433,18 +433,18 @@ def get_temp_default_datadir(temp_dir: pathlib.Path) -> tuple[dict, pathlib.Path
     temp_dir, as well as the complete path it would return."""
     if platform.system() == "Windows":
         env = dict(APPDATA=str(temp_dir))
-        datadir = temp_dir / "bitpulse"
+        datadir = temp_dir / "bitpulsed"
     else:
         env = dict(HOME=str(temp_dir))
         if platform.system() == "Darwin":
-            datadir = temp_dir / "Library/Application Support/bitpulse"
+            datadir = temp_dir / "Library/Application Support/bitpulsed"
         else:
-            datadir = temp_dir / ".bitpulse"
+            datadir = temp_dir / ".bitpulsed"
     return env, datadir
 
 
 def append_config(datadir, options):
-    with open(os.path.join(datadir, "bitpulse.conf"), 'a', encoding='utf8') as f:
+    with open(os.path.join(datadir, "bitpulsed.conf"), 'a', encoding='utf8') as f:
         for option in options:
             f.write(option + "\n")
 
@@ -452,8 +452,8 @@ def append_config(datadir, options):
 def get_auth_cookie(datadir, chain):
     user = None
     password = None
-    if os.path.isfile(os.path.join(datadir, "bitpulse.conf")):
-        with open(os.path.join(datadir, "bitpulse.conf"), 'r', encoding='utf8') as f:
+    if os.path.isfile(os.path.join(datadir, "bitpulsed.conf")):
+        with open(os.path.join(datadir, "bitpulsed.conf"), 'r', encoding='utf8') as f:
             for line in f:
                 if line.startswith("rpcuser="):
                     assert user is None  # Ensure that there is only one rpcuser line

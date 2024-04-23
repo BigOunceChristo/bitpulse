@@ -1,23 +1,23 @@
-# Copyright (c) 2015-2016 The bitpulse Core developers
+# Copyright (c) 2015-2016 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-bin_PROGRAMS += bench/bench_bitpulse
+bin_PROGRAMS += bench/bench_bitpulsed
 BENCH_SRCDIR = bench
-BENCH_BINARY = bench/bench_bitpulse$(EXEEXT)
+BENCH_BINARY = bench/bench_bitpulsed$(EXEEXT)
 
 RAW_BENCH_FILES = \
   bench/data/block413567.raw
 GENERATED_BENCH_FILES = $(RAW_BENCH_FILES:.raw=.raw.h)
 
-bench_bench_bitpulse_SOURCES = \
+bench_bench_bitpulsed_SOURCES = \
   $(RAW_BENCH_FILES) \
   bench/addrman.cpp \
   bench/base58.cpp \
   bench/bech32.cpp \
   bench/bench.cpp \
   bench/bench.h \
-  bench/bench_bitpulse.cpp \
+  bench/bench_bitpulsed.cpp \
   bench/bip324_ecdh.cpp \
   bench/block_assemble.cpp \
   bench/ccoins_caching.cpp \
@@ -57,19 +57,19 @@ bench_bench_bitpulse_SOURCES = \
   bench/verify_script.cpp \
   bench/xor.cpp
 
-nodist_bench_bench_bitpulse_SOURCES = $(GENERATED_BENCH_FILES)
+nodist_bench_bench_bitpulsed_SOURCES = $(GENERATED_BENCH_FILES)
 
-bench_bench_bitpulse_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulse_INCLUDES) $(BOOST_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS) -I$(builddir)/bench/
-bench_bench_bitpulse_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bench_bench_bitpulse_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
-bench_bench_bitpulse_LDADD = \
+bench_bench_bitpulsed_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulsed_INCLUDES) $(BOOST_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS) -I$(builddir)/bench/
+bench_bench_bitpulsed_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+bench_bench_bitpulsed_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+bench_bench_bitpulsed_LDADD = \
   $(LIBTEST_UTIL) \
-  $(LIBbitpulse_NODE) \
-  $(LIBbitpulse_WALLET) \
-  $(LIBbitpulse_COMMON) \
-  $(LIBbitpulse_UTIL) \
-  $(LIBbitpulse_CONSENSUS) \
-  $(LIBbitpulse_CRYPTO) \
+  $(LIBbitpulsed_NODE) \
+  $(LIBbitpulsed_WALLET) \
+  $(LIBbitpulsed_COMMON) \
+  $(LIBbitpulsed_UTIL) \
+  $(LIBbitpulsed_CONSENSUS) \
+  $(LIBbitpulsed_CRYPTO) \
   $(LIBLEVELDB) \
   $(LIBMEMENV) \
   $(LIBSECP256K1) \
@@ -80,30 +80,30 @@ bench_bench_bitpulse_LDADD = \
   $(NATPMP_LIBS)
 
 if ENABLE_ZMQ
-bench_bench_bitpulse_LDADD += $(LIBbitpulse_ZMQ) $(ZMQ_LIBS)
+bench_bench_bitpulsed_LDADD += $(LIBbitpulsed_ZMQ) $(ZMQ_LIBS)
 endif
 
 if ENABLE_WALLET
-bench_bench_bitpulse_SOURCES += bench/coin_selection.cpp
-bench_bench_bitpulse_SOURCES += bench/wallet_balance.cpp
-bench_bench_bitpulse_SOURCES += bench/wallet_create.cpp
-bench_bench_bitpulse_SOURCES += bench/wallet_loading.cpp
-bench_bench_bitpulse_SOURCES += bench/wallet_create_tx.cpp
-bench_bench_bitpulse_SOURCES += bench/wallet_ismine.cpp
+bench_bench_bitpulsed_SOURCES += bench/coin_selection.cpp
+bench_bench_bitpulsed_SOURCES += bench/wallet_balance.cpp
+bench_bench_bitpulsed_SOURCES += bench/wallet_create.cpp
+bench_bench_bitpulsed_SOURCES += bench/wallet_loading.cpp
+bench_bench_bitpulsed_SOURCES += bench/wallet_create_tx.cpp
+bench_bench_bitpulsed_SOURCES += bench/wallet_ismine.cpp
 
-bench_bench_bitpulse_LDADD += $(BDB_LIBS) $(SQLITE_LIBS)
+bench_bench_bitpulsed_LDADD += $(BDB_LIBS) $(SQLITE_LIBS)
 endif
 
-CLEAN_bitpulse_BENCH = bench/*.gcda bench/*.gcno $(GENERATED_BENCH_FILES)
+CLEAN_bitpulsed_BENCH = bench/*.gcda bench/*.gcno $(GENERATED_BENCH_FILES)
 
-CLEANFILES += $(CLEAN_bitpulse_BENCH)
+CLEANFILES += $(CLEAN_bitpulsed_BENCH)
 
 bench/data.cpp: bench/data/block413567.raw.h
 
-bitpulse_bench: $(BENCH_BINARY)
+bitpulsed_bench: $(BENCH_BINARY)
 
 bench: $(BENCH_BINARY) FORCE
 	$(BENCH_BINARY)
 
-bitpulse_bench_clean : FORCE
-	rm -f $(CLEAN_bitpulse_BENCH) $(bench_bench_bitpulse_OBJECTS) $(BENCH_BINARY)
+bitpulsed_bench_clean : FORCE
+	rm -f $(CLEAN_bitpulsed_BENCH) $(bench_bench_bitpulsed_OBJECTS) $(BENCH_BINARY)

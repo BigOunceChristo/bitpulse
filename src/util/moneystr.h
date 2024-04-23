@@ -1,13 +1,13 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2022 The Bitpulse Core developers
+// Copyright (c) 2009-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 /**
  * Money parsing/formatting utilities.
  */
-#ifndef bitpulse_UTIL_MONEYSTR_H
-#define bitpulse_UTIL_MONEYSTR_H
+#ifndef bitpulsed_UTIL_MONEYSTR_H
+#define bitpulsed_UTIL_MONEYSTR_H
 
 #include <consensus/amount.h>
 
@@ -21,4 +21,4 @@ std::string FormatMoney(const CAmount n);
 /** Parse an amount denoted in full coins. E.g. "0.0034" supplied on the command line. **/
 std::optional<CAmount> ParseMoney(const std::string& str);
 
-#endif // bitpulse_UTIL_MONEYSTR_H
+#endif // bitpulsed_UTIL_MONEYSTR_H

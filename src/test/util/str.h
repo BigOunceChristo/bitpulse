@@ -1,9 +1,9 @@
-// Copyright (c) 2019 The Bitpulse Core developers
+// Copyright (c) 2019 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_TEST_UTIL_STR_H
-#define bitpulse_TEST_UTIL_STR_H
+#ifndef bitpulsed_TEST_UTIL_STR_H
+#define bitpulsed_TEST_UTIL_STR_H
 
 #include <string>
 
@@ -42,4 +42,4 @@ void ForEachNoDup(CharType (&string)[StringLength], CharType min_char, CharType 
     }
 }
 
-#endif // bitpulse_TEST_UTIL_STR_H
+#endif // bitpulsed_TEST_UTIL_STR_H

@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2016 The bitpulse Core developers
+# Copyright (c) 2013-2016 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -25,49 +25,49 @@ check_PROGRAMS =
 TESTS =
 BENCHMARKS =
 
-bitpulse_INCLUDES=-I$(builddir) -I$(srcdir)/$(MINISKETCH_INCLUDE_DIR_INT) -I$(srcdir)/secp256k1/include -I$(srcdir)/$(UNIVALUE_INCLUDE_DIR_INT)
+bitpulsed_INCLUDES=-I$(builddir) -I$(srcdir)/$(MINISKETCH_INCLUDE_DIR_INT) -I$(srcdir)/secp256k1/include -I$(srcdir)/$(UNIVALUE_INCLUDE_DIR_INT)
 
-LIBbitpulse_NODE=libbitpulse_node.a
-LIBbitpulse_COMMON=libbitpulse_common.a
-LIBbitpulse_CONSENSUS=libbitpulse_consensus.a
-LIBbitpulse_CLI=libbitpulse_cli.a
-LIBbitpulse_UTIL=libbitpulse_util.a
-LIBbitpulse_CRYPTO_BASE=crypto/libbitpulse_crypto_base.la
-LIBbitpulseQT=qt/libbitpulseqt.a
+LIBbitpulsed_NODE=libbitpulsed_node.a
+LIBbitpulsed_COMMON=libbitpulsed_common.a
+LIBbitpulsed_CONSENSUS=libbitpulsed_consensus.a
+LIBbitpulsed_CLI=libbitpulsed_cli.a
+LIBbitpulsed_UTIL=libbitpulsed_util.a
+LIBbitpulsed_CRYPTO_BASE=crypto/libbitpulsed_crypto_base.la
+LIBbitpulsedQT=qt/libbitpulsedqt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
 
 if ENABLE_ZMQ
-LIBbitpulse_ZMQ=libbitpulse_zmq.a
+LIBbitpulsed_ZMQ=libbitpulsed_zmq.a
 endif
-if BUILD_bitpulse_LIBS
-LIBbitpulseCONSENSUS=libbitpulseconsensus.la
+if BUILD_bitpulsed_LIBS
+LIBbitpulsedCONSENSUS=libbitpulsedconsensus.la
 endif
-if BUILD_bitpulse_KERNEL_LIB
-LIBbitpulseKERNEL=libbitpulsekernel.la
+if BUILD_bitpulsed_KERNEL_LIB
+LIBbitpulsedKERNEL=libbitpulsedkernel.la
 endif
 if ENABLE_WALLET
-LIBbitpulse_WALLET=libbitpulse_wallet.a
-LIBbitpulse_WALLET_TOOL=libbitpulse_wallet_tool.a
+LIBbitpulsed_WALLET=libbitpulsed_wallet.a
+LIBbitpulsed_WALLET_TOOL=libbitpulsed_wallet_tool.a
 endif
 
-LIBbitpulse_CRYPTO = $(LIBbitpulse_CRYPTO_BASE)
+LIBbitpulsed_CRYPTO = $(LIBbitpulsed_CRYPTO_BASE)
 if ENABLE_SSE41
-LIBbitpulse_CRYPTO_SSE41 = crypto/libbitpulse_crypto_sse41.la
-LIBbitpulse_CRYPTO += $(LIBbitpulse_CRYPTO_SSE41)
+LIBbitpulsed_CRYPTO_SSE41 = crypto/libbitpulsed_crypto_sse41.la
+LIBbitpulsed_CRYPTO += $(LIBbitpulsed_CRYPTO_SSE41)
 endif
 if ENABLE_AVX2
-LIBbitpulse_CRYPTO_AVX2 = crypto/libbitpulse_crypto_avx2.la
-LIBbitpulse_CRYPTO += $(LIBbitpulse_CRYPTO_AVX2)
+LIBbitpulsed_CRYPTO_AVX2 = crypto/libbitpulsed_crypto_avx2.la
+LIBbitpulsed_CRYPTO += $(LIBbitpulsed_CRYPTO_AVX2)
 endif
 if ENABLE_X86_SHANI
-LIBbitpulse_CRYPTO_X86_SHANI = crypto/libbitpulse_crypto_x86_shani.la
-LIBbitpulse_CRYPTO += $(LIBbitpulse_CRYPTO_X86_SHANI)
+LIBbitpulsed_CRYPTO_X86_SHANI = crypto/libbitpulsed_crypto_x86_shani.la
+LIBbitpulsed_CRYPTO += $(LIBbitpulsed_CRYPTO_X86_SHANI)
 endif
 if ENABLE_ARM_SHANI
-LIBbitpulse_CRYPTO_ARM_SHANI = crypto/libbitpulse_crypto_arm_shani.la
-LIBbitpulse_CRYPTO += $(LIBbitpulse_CRYPTO_ARM_SHANI)
+LIBbitpulsed_CRYPTO_ARM_SHANI = crypto/libbitpulsed_crypto_arm_shani.la
+LIBbitpulsed_CRYPTO += $(LIBbitpulsed_CRYPTO_ARM_SHANI)
 endif
-noinst_LTLIBRARIES += $(LIBbitpulse_CRYPTO)
+noinst_LTLIBRARIES += $(LIBbitpulsed_CRYPTO)
 
 $(LIBSECP256K1): $(wildcard secp256k1/src/*.h) $(wildcard secp256k1/src/*.c) $(wildcard secp256k1/include/*)
 	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -C $(@D) $(@F)
@@ -75,49 +75,49 @@ $(LIBSECP256K1): $(wildcard secp256k1/src/*.h) $(wildcard secp256k1/src/*.c) $(w
 # Make is not made aware of per-object dependencies to avoid limiting building parallelization
 # But to build the less dependent modules first, we manually select their order here:
 EXTRA_LIBRARIES += \
-  $(LIBbitpulse_UTIL) \
-  $(LIBbitpulse_COMMON) \
-  $(LIBbitpulse_CONSENSUS) \
-  $(LIBbitpulse_NODE) \
-  $(LIBbitpulse_CLI) \
-  $(LIBbitpulse_IPC) \
-  $(LIBbitpulse_WALLET) \
-  $(LIBbitpulse_WALLET_TOOL) \
-  $(LIBbitpulse_ZMQ)
+  $(LIBbitpulsed_UTIL) \
+  $(LIBbitpulsed_COMMON) \
+  $(LIBbitpulsed_CONSENSUS) \
+  $(LIBbitpulsed_NODE) \
+  $(LIBbitpulsed_CLI) \
+  $(LIBbitpulsed_IPC) \
+  $(LIBbitpulsed_WALLET) \
+  $(LIBbitpulsed_WALLET_TOOL) \
+  $(LIBbitpulsed_ZMQ)
 
-if BUILD_bitpulseD
+if BUILD_bitpulsed
   bin_PROGRAMS += bitpulsed
 endif
 
-if BUILD_bitpulse_NODE
-  bin_PROGRAMS += bitpulse-node
+if BUILD_bitpulsed_NODE
+  bin_PROGRAMS += bitpulsed-node
 endif
 
-if BUILD_bitpulse_CLI
-  bin_PROGRAMS += bitpulse-cli
+if BUILD_bitpulsed_CLI
+  bin_PROGRAMS += bitpulsed-cli
 endif
 
-if BUILD_bitpulse_TX
-  bin_PROGRAMS += bitpulse-tx
+if BUILD_bitpulsed_TX
+  bin_PROGRAMS += bitpulsed-tx
 endif
 
 if ENABLE_WALLET
-if BUILD_bitpulse_WALLET
-  bin_PROGRAMS += bitpulse-wallet
+if BUILD_bitpulsed_WALLET
+  bin_PROGRAMS += bitpulsed-wallet
 endif
 endif
 
-if BUILD_bitpulse_UTIL
-  bin_PROGRAMS += bitpulse-util
+if BUILD_bitpulsed_UTIL
+  bin_PROGRAMS += bitpulsed-util
 endif
 
-if BUILD_bitpulse_CHAINSTATE
-  bin_PROGRAMS += bitpulse-chainstate
+if BUILD_bitpulsed_CHAINSTATE
+  bin_PROGRAMS += bitpulsed-chainstate
 endif
 
 .PHONY: FORCE check-symbols check-security
-# bitpulse core #
-bitpulse_CORE_H = \
+# bitpulsed core #
+bitpulsed_CORE_H = \
   addresstype.h \
   addrdb.h \
   addrman.h \
@@ -375,12 +375,12 @@ obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
 	$(AM_V_GEN) $(top_srcdir)/share/genbuild.sh "$(abs_top_builddir)/src/obj/build.h" \
 	  "$(abs_top_srcdir)"
-libbitpulse_util_a-clientversion.$(OBJEXT): obj/build.h
+libbitpulsed_util_a-clientversion.$(OBJEXT): obj/build.h
 
 # node #
-libbitpulse_node_a_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulse_INCLUDES) $(LEVELDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(MINIUPNPC_CPPFLAGS) $(NATPMP_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
-libbitpulse_node_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitpulse_node_a_SOURCES = \
+libbitpulsed_node_a_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulsed_INCLUDES) $(LEVELDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(MINIUPNPC_CPPFLAGS) $(NATPMP_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
+libbitpulsed_node_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbitpulsed_node_a_SOURCES = \
   addrdb.cpp \
   addrman.cpp \
   banman.cpp \
@@ -471,22 +471,22 @@ libbitpulse_node_a_SOURCES = \
   validation.cpp \
   validationinterface.cpp \
   versionbits.cpp \
-  $(bitpulse_CORE_H)
+  $(bitpulsed_CORE_H)
 
 if ENABLE_WALLET
-libbitpulse_node_a_SOURCES += wallet/init.cpp
-libbitpulse_node_a_CPPFLAGS += $(BDB_CPPFLAGS)
+libbitpulsed_node_a_SOURCES += wallet/init.cpp
+libbitpulsed_node_a_CPPFLAGS += $(BDB_CPPFLAGS)
 endif
 if !ENABLE_WALLET
-libbitpulse_node_a_SOURCES += dummywallet.cpp
+libbitpulsed_node_a_SOURCES += dummywallet.cpp
 endif
 #
 
 # zmq #
 if ENABLE_ZMQ
-libbitpulse_zmq_a_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulse_INCLUDES) $(ZMQ_CFLAGS)
-libbitpulse_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitpulse_zmq_a_SOURCES = \
+libbitpulsed_zmq_a_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulsed_INCLUDES) $(ZMQ_CFLAGS)
+libbitpulsed_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbitpulsed_zmq_a_SOURCES = \
   zmq/zmqabstractnotifier.cpp \
   zmq/zmqnotificationinterface.cpp \
   zmq/zmqpublishnotifier.cpp \
@@ -496,9 +496,9 @@ endif
 #
 
 # wallet #
-libbitpulse_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulse_INCLUDES) $(BOOST_CPPFLAGS) $(BDB_CPPFLAGS) $(SQLITE_CFLAGS)
-libbitpulse_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitpulse_wallet_a_SOURCES = \
+libbitpulsed_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulsed_INCLUDES) $(BOOST_CPPFLAGS) $(BDB_CPPFLAGS) $(SQLITE_CFLAGS)
+libbitpulsed_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbitpulsed_wallet_a_SOURCES = \
   wallet/coincontrol.cpp \
   wallet/context.cpp \
   wallet/crypter.cpp \
@@ -526,22 +526,22 @@ libbitpulse_wallet_a_SOURCES = \
   wallet/walletdb.cpp \
   wallet/walletutil.cpp \
   wallet/coinselection.cpp \
-  $(bitpulse_CORE_H)
+  $(bitpulsed_CORE_H)
 
 if USE_SQLITE
-libbitpulse_wallet_a_SOURCES += wallet/sqlite.cpp
+libbitpulsed_wallet_a_SOURCES += wallet/sqlite.cpp
 endif
 if USE_BDB
-libbitpulse_wallet_a_SOURCES += wallet/bdb.cpp wallet/salvage.cpp
+libbitpulsed_wallet_a_SOURCES += wallet/bdb.cpp wallet/salvage.cpp
 endif
 #
 
 # wallet tool #
-libbitpulse_wallet_tool_a_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulse_INCLUDES) $(BOOST_CPPFLAGS)
-libbitpulse_wallet_tool_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitpulse_wallet_tool_a_SOURCES = \
+libbitpulsed_wallet_tool_a_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulsed_INCLUDES) $(BOOST_CPPFLAGS)
+libbitpulsed_wallet_tool_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbitpulsed_wallet_tool_a_SOURCES = \
   wallet/wallettool.cpp \
-  $(bitpulse_CORE_H)
+  $(bitpulsed_CORE_H)
 #
 
 # crypto #
@@ -549,16 +549,16 @@ libbitpulse_wallet_tool_a_SOURCES = \
 # crypto_base contains the unspecialized (unoptimized) versions of our
 # crypto functions. Functions that require custom compiler flags and/or
 # runtime opt-in are omitted.
-crypto_libbitpulse_crypto_base_la_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libbitpulsed_crypto_base_la_CPPFLAGS = $(AM_CPPFLAGS)
 
 # Specify -static in both CXXFLAGS and LDFLAGS so libtool will only build a
 # static version of this library. We don't need a dynamic version, and a dynamic
 # version can't be used on windows anyway because the library doesn't currently
 # export DLL symbols.
-crypto_libbitpulse_crypto_base_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
-crypto_libbitpulse_crypto_base_la_LDFLAGS = $(AM_LDFLAGS) -static
+crypto_libbitpulsed_crypto_base_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
+crypto_libbitpulsed_crypto_base_la_LDFLAGS = $(AM_LDFLAGS) -static
 
-crypto_libbitpulse_crypto_base_la_SOURCES = \
+crypto_libbitpulsed_crypto_base_la_SOURCES = \
   crypto/aes.cpp \
   crypto/aes.h \
   crypto/chacha20.h \
@@ -590,47 +590,47 @@ crypto_libbitpulse_crypto_base_la_SOURCES = \
   crypto/siphash.cpp \
   crypto/siphash.h
 
-# See explanation for -static in crypto_libbitpulse_crypto_base_la's LDFLAGS and
+# See explanation for -static in crypto_libbitpulsed_crypto_base_la's LDFLAGS and
 # CXXFLAGS above
-crypto_libbitpulse_crypto_sse41_la_LDFLAGS = $(AM_LDFLAGS) -static
-crypto_libbitpulse_crypto_sse41_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
-crypto_libbitpulse_crypto_sse41_la_CPPFLAGS = $(AM_CPPFLAGS)
-crypto_libbitpulse_crypto_sse41_la_CXXFLAGS += $(SSE41_CXXFLAGS)
-crypto_libbitpulse_crypto_sse41_la_CPPFLAGS += -DENABLE_SSE41
-crypto_libbitpulse_crypto_sse41_la_SOURCES = crypto/sha256_sse41.cpp
+crypto_libbitpulsed_crypto_sse41_la_LDFLAGS = $(AM_LDFLAGS) -static
+crypto_libbitpulsed_crypto_sse41_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
+crypto_libbitpulsed_crypto_sse41_la_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libbitpulsed_crypto_sse41_la_CXXFLAGS += $(SSE41_CXXFLAGS)
+crypto_libbitpulsed_crypto_sse41_la_CPPFLAGS += -DENABLE_SSE41
+crypto_libbitpulsed_crypto_sse41_la_SOURCES = crypto/sha256_sse41.cpp
 
-# See explanation for -static in crypto_libbitpulse_crypto_base_la's LDFLAGS and
+# See explanation for -static in crypto_libbitpulsed_crypto_base_la's LDFLAGS and
 # CXXFLAGS above
-crypto_libbitpulse_crypto_avx2_la_LDFLAGS = $(AM_LDFLAGS) -static
-crypto_libbitpulse_crypto_avx2_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
-crypto_libbitpulse_crypto_avx2_la_CPPFLAGS = $(AM_CPPFLAGS)
-crypto_libbitpulse_crypto_avx2_la_CXXFLAGS += $(AVX2_CXXFLAGS)
-crypto_libbitpulse_crypto_avx2_la_CPPFLAGS += -DENABLE_AVX2
-crypto_libbitpulse_crypto_avx2_la_SOURCES = crypto/sha256_avx2.cpp
+crypto_libbitpulsed_crypto_avx2_la_LDFLAGS = $(AM_LDFLAGS) -static
+crypto_libbitpulsed_crypto_avx2_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
+crypto_libbitpulsed_crypto_avx2_la_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libbitpulsed_crypto_avx2_la_CXXFLAGS += $(AVX2_CXXFLAGS)
+crypto_libbitpulsed_crypto_avx2_la_CPPFLAGS += -DENABLE_AVX2
+crypto_libbitpulsed_crypto_avx2_la_SOURCES = crypto/sha256_avx2.cpp
 
-# See explanation for -static in crypto_libbitpulse_crypto_base_la's LDFLAGS and
+# See explanation for -static in crypto_libbitpulsed_crypto_base_la's LDFLAGS and
 # CXXFLAGS above
-crypto_libbitpulse_crypto_x86_shani_la_LDFLAGS = $(AM_LDFLAGS) -static
-crypto_libbitpulse_crypto_x86_shani_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
-crypto_libbitpulse_crypto_x86_shani_la_CPPFLAGS = $(AM_CPPFLAGS)
-crypto_libbitpulse_crypto_x86_shani_la_CXXFLAGS += $(X86_SHANI_CXXFLAGS)
-crypto_libbitpulse_crypto_x86_shani_la_CPPFLAGS += -DENABLE_X86_SHANI
-crypto_libbitpulse_crypto_x86_shani_la_SOURCES = crypto/sha256_x86_shani.cpp
+crypto_libbitpulsed_crypto_x86_shani_la_LDFLAGS = $(AM_LDFLAGS) -static
+crypto_libbitpulsed_crypto_x86_shani_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
+crypto_libbitpulsed_crypto_x86_shani_la_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libbitpulsed_crypto_x86_shani_la_CXXFLAGS += $(X86_SHANI_CXXFLAGS)
+crypto_libbitpulsed_crypto_x86_shani_la_CPPFLAGS += -DENABLE_X86_SHANI
+crypto_libbitpulsed_crypto_x86_shani_la_SOURCES = crypto/sha256_x86_shani.cpp
 
-# See explanation for -static in crypto_libbitpulse_crypto_base_la's LDFLAGS and
+# See explanation for -static in crypto_libbitpulsed_crypto_base_la's LDFLAGS and
 # CXXFLAGS above
-crypto_libbitpulse_crypto_arm_shani_la_LDFLAGS = $(AM_LDFLAGS) -static
-crypto_libbitpulse_crypto_arm_shani_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
-crypto_libbitpulse_crypto_arm_shani_la_CPPFLAGS = $(AM_CPPFLAGS)
-crypto_libbitpulse_crypto_arm_shani_la_CXXFLAGS += $(ARM_SHANI_CXXFLAGS)
-crypto_libbitpulse_crypto_arm_shani_la_CPPFLAGS += -DENABLE_ARM_SHANI
-crypto_libbitpulse_crypto_arm_shani_la_SOURCES = crypto/sha256_arm_shani.cpp
+crypto_libbitpulsed_crypto_arm_shani_la_LDFLAGS = $(AM_LDFLAGS) -static
+crypto_libbitpulsed_crypto_arm_shani_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
+crypto_libbitpulsed_crypto_arm_shani_la_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libbitpulsed_crypto_arm_shani_la_CXXFLAGS += $(ARM_SHANI_CXXFLAGS)
+crypto_libbitpulsed_crypto_arm_shani_la_CPPFLAGS += -DENABLE_ARM_SHANI
+crypto_libbitpulsed_crypto_arm_shani_la_SOURCES = crypto/sha256_arm_shani.cpp
 #
 
 # consensus #
-libbitpulse_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulse_INCLUDES)
-libbitpulse_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitpulse_consensus_a_SOURCES = \
+libbitpulsed_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulsed_INCLUDES)
+libbitpulsed_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbitpulsed_consensus_a_SOURCES = \
   arith_uint256.cpp \
   arith_uint256.h \
   consensus/amount.h \
@@ -648,7 +648,7 @@ libbitpulse_consensus_a_SOURCES = \
   primitives/transaction.h \
   pubkey.cpp \
   pubkey.h \
-  script/bitpulseconsensus.cpp \
+  script/bitpulsedconsensus.cpp \
   script/interpreter.cpp \
   script/interpreter.h \
   script/script.cpp \
@@ -665,9 +665,9 @@ libbitpulse_consensus_a_SOURCES = \
 #
 
 # common #
-libbitpulse_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulse_INCLUDES) $(BOOST_CPPFLAGS)
-libbitpulse_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitpulse_common_a_SOURCES = \
+libbitpulsed_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulsed_INCLUDES) $(BOOST_CPPFLAGS)
+libbitpulsed_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbitpulsed_common_a_SOURCES = \
   addresstype.cpp \
   base58.cpp \
   bech32.cpp \
@@ -712,18 +712,18 @@ libbitpulse_common_a_SOURCES = \
   script/signingprovider.cpp \
   script/solver.cpp \
   warnings.cpp \
-  $(bitpulse_CORE_H)
+  $(bitpulsed_CORE_H)
 
 if USE_LIBEVENT
-libbitpulse_common_a_CPPFLAGS += $(EVENT_CFLAGS)
-libbitpulse_common_a_SOURCES += common/url.cpp
+libbitpulsed_common_a_CPPFLAGS += $(EVENT_CFLAGS)
+libbitpulsed_common_a_SOURCES += common/url.cpp
 endif
 #
 
 # util #
-libbitpulse_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulse_INCLUDES)
-libbitpulse_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitpulse_util_a_SOURCES = \
+libbitpulsed_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulsed_INCLUDES)
+libbitpulsed_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbitpulsed_util_a_SOURCES = \
   support/lockedpool.cpp \
   chainparamsbase.cpp \
   clientversion.cpp \
@@ -761,172 +761,172 @@ libbitpulse_util_a_SOURCES = \
   util/string.cpp \
   util/time.cpp \
   util/tokenpipe.cpp \
-  $(bitpulse_CORE_H)
+  $(bitpulsed_CORE_H)
 #
 
 # cli #
-libbitpulse_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulse_INCLUDES)
-libbitpulse_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitpulse_cli_a_SOURCES = \
+libbitpulsed_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulsed_INCLUDES)
+libbitpulsed_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbitpulsed_cli_a_SOURCES = \
   compat/stdin.h \
   compat/stdin.cpp \
   rpc/client.cpp \
-  $(bitpulse_CORE_H)
+  $(bitpulsed_CORE_H)
 
-nodist_libbitpulse_util_a_SOURCES = $(srcdir)/obj/build.h
+nodist_libbitpulsed_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# bitpulsed & bitpulse-node binaries #
-bitpulse_daemon_sources = bitpulsed.cpp
-bitpulse_bin_cppflags = $(AM_CPPFLAGS) $(bitpulse_INCLUDES)
-bitpulse_bin_cxxflags = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bitpulse_bin_ldflags = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+# bitpulsed & bitpulsed-node binaries #
+bitpulsed_daemon_sources = bitpulsed.cpp
+bitpulsed_bin_cppflags = $(AM_CPPFLAGS) $(bitpulsed_INCLUDES)
+bitpulsed_bin_cxxflags = $(AM_CXXFLAGS) $(PIE_FLAGS)
+bitpulsed_bin_ldflags = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
 if TARGET_WINDOWS
-bitpulse_daemon_sources += bitpulsed-res.rc
+bitpulsed_daemon_sources += bitpulsed-res.rc
 endif
 
-bitpulse_bin_ldadd = \
-  $(LIBbitpulse_WALLET) \
-  $(LIBbitpulse_COMMON) \
-  $(LIBbitpulse_UTIL) \
+bitpulsed_bin_ldadd = \
+  $(LIBbitpulsed_WALLET) \
+  $(LIBbitpulsed_COMMON) \
+  $(LIBbitpulsed_UTIL) \
   $(LIBUNIVALUE) \
-  $(LIBbitpulse_ZMQ) \
-  $(LIBbitpulse_CONSENSUS) \
-  $(LIBbitpulse_CRYPTO) \
+  $(LIBbitpulsed_ZMQ) \
+  $(LIBbitpulsed_CONSENSUS) \
+  $(LIBbitpulsed_CRYPTO) \
   $(LIBLEVELDB) \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-bitpulse_bin_ldadd += $(BDB_LIBS) $(MINIUPNPC_LIBS) $(NATPMP_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS) $(SQLITE_LIBS)
+bitpulsed_bin_ldadd += $(BDB_LIBS) $(MINIUPNPC_LIBS) $(NATPMP_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS) $(SQLITE_LIBS)
 
-bitpulsed_SOURCES = $(bitpulse_daemon_sources) init/bitpulsed.cpp
-bitpulsed_CPPFLAGS = $(bitpulse_bin_cppflags)
-bitpulsed_CXXFLAGS = $(bitpulse_bin_cxxflags)
-bitpulsed_LDFLAGS = $(bitpulse_bin_ldflags)
-bitpulsed_LDADD = $(LIBbitpulse_NODE) $(bitpulse_bin_ldadd)
+bitpulsed_SOURCES = $(bitpulsed_daemon_sources) init/bitpulsed.cpp
+bitpulsed_CPPFLAGS = $(bitpulsed_bin_cppflags)
+bitpulsed_CXXFLAGS = $(bitpulsed_bin_cxxflags)
+bitpulsed_LDFLAGS = $(bitpulsed_bin_ldflags)
+bitpulsed_LDADD = $(LIBbitpulsed_NODE) $(bitpulsed_bin_ldadd)
 
-bitpulse_node_SOURCES = $(bitpulse_daemon_sources) init/bitpulse-node.cpp
-bitpulse_node_CPPFLAGS = $(bitpulse_bin_cppflags)
-bitpulse_node_CXXFLAGS = $(bitpulse_bin_cxxflags)
-bitpulse_node_LDFLAGS = $(bitpulse_bin_ldflags)
-bitpulse_node_LDADD = $(LIBbitpulse_NODE) $(bitpulse_bin_ldadd) $(LIBbitpulse_IPC) $(LIBMULTIPROCESS_LIBS)
+bitpulsed_node_SOURCES = $(bitpulsed_daemon_sources) init/bitpulsed-node.cpp
+bitpulsed_node_CPPFLAGS = $(bitpulsed_bin_cppflags)
+bitpulsed_node_CXXFLAGS = $(bitpulsed_bin_cxxflags)
+bitpulsed_node_LDFLAGS = $(bitpulsed_bin_ldflags)
+bitpulsed_node_LDADD = $(LIBbitpulsed_NODE) $(bitpulsed_bin_ldadd) $(LIBbitpulsed_IPC) $(LIBMULTIPROCESS_LIBS)
 
-# bitpulse-cli binary #
-bitpulse_cli_SOURCES = bitpulse-cli.cpp
-bitpulse_cli_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulse_INCLUDES) $(EVENT_CFLAGS)
-bitpulse_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bitpulse_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+# bitpulsed-cli binary #
+bitpulsed_cli_SOURCES = bitpulsed-cli.cpp
+bitpulsed_cli_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulsed_INCLUDES) $(EVENT_CFLAGS)
+bitpulsed_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+bitpulsed_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
 if TARGET_WINDOWS
-bitpulse_cli_SOURCES += bitpulse-cli-res.rc
+bitpulsed_cli_SOURCES += bitpulsed-cli-res.rc
 endif
 
-bitpulse_cli_LDADD = \
-  $(LIBbitpulse_CLI) \
+bitpulsed_cli_LDADD = \
+  $(LIBbitpulsed_CLI) \
   $(LIBUNIVALUE) \
-  $(LIBbitpulse_COMMON) \
-  $(LIBbitpulse_UTIL) \
-  $(LIBbitpulse_CRYPTO)
+  $(LIBbitpulsed_COMMON) \
+  $(LIBbitpulsed_UTIL) \
+  $(LIBbitpulsed_CRYPTO)
 
-bitpulse_cli_LDADD += $(EVENT_LIBS)
+bitpulsed_cli_LDADD += $(EVENT_LIBS)
 #
 
-# bitpulse-tx binary #
-bitpulse_tx_SOURCES = bitpulse-tx.cpp
-bitpulse_tx_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulse_INCLUDES)
-bitpulse_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bitpulse_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+# bitpulsed-tx binary #
+bitpulsed_tx_SOURCES = bitpulsed-tx.cpp
+bitpulsed_tx_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulsed_INCLUDES)
+bitpulsed_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+bitpulsed_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
 if TARGET_WINDOWS
-bitpulse_tx_SOURCES += bitpulse-tx-res.rc
+bitpulsed_tx_SOURCES += bitpulsed-tx-res.rc
 endif
 
-bitpulse_tx_LDADD = \
+bitpulsed_tx_LDADD = \
   $(LIBUNIVALUE) \
-  $(LIBbitpulse_COMMON) \
-  $(LIBbitpulse_UTIL) \
-  $(LIBbitpulse_CONSENSUS) \
-  $(LIBbitpulse_CRYPTO) \
+  $(LIBbitpulsed_COMMON) \
+  $(LIBbitpulsed_UTIL) \
+  $(LIBbitpulsed_CONSENSUS) \
+  $(LIBbitpulsed_CRYPTO) \
   $(LIBSECP256K1)
 #
 
-# bitpulse-wallet binary #
-bitpulse_wallet_SOURCES = bitpulse-wallet.cpp
-bitpulse_wallet_SOURCES += init/bitpulse-wallet.cpp
-bitpulse_wallet_CPPFLAGS = $(bitpulse_bin_cppflags)
-bitpulse_wallet_CXXFLAGS = $(bitpulse_bin_cxxflags)
-bitpulse_wallet_LDFLAGS = $(bitpulse_bin_ldflags)
-bitpulse_wallet_LDADD = \
-  $(LIBbitpulse_WALLET_TOOL) \
-  $(LIBbitpulse_WALLET) \
-  $(LIBbitpulse_COMMON) \
-  $(LIBbitpulse_UTIL) \
+# bitpulsed-wallet binary #
+bitpulsed_wallet_SOURCES = bitpulsed-wallet.cpp
+bitpulsed_wallet_SOURCES += init/bitpulsed-wallet.cpp
+bitpulsed_wallet_CPPFLAGS = $(bitpulsed_bin_cppflags)
+bitpulsed_wallet_CXXFLAGS = $(bitpulsed_bin_cxxflags)
+bitpulsed_wallet_LDFLAGS = $(bitpulsed_bin_ldflags)
+bitpulsed_wallet_LDADD = \
+  $(LIBbitpulsed_WALLET_TOOL) \
+  $(LIBbitpulsed_WALLET) \
+  $(LIBbitpulsed_COMMON) \
+  $(LIBbitpulsed_UTIL) \
   $(LIBUNIVALUE) \
-  $(LIBbitpulse_CONSENSUS) \
-  $(LIBbitpulse_CRYPTO) \
+  $(LIBbitpulsed_CONSENSUS) \
+  $(LIBbitpulsed_CRYPTO) \
   $(LIBSECP256K1) \
   $(BDB_LIBS) \
   $(SQLITE_LIBS)
 
 if TARGET_WINDOWS
-bitpulse_wallet_SOURCES += bitpulse-wallet-res.rc
+bitpulsed_wallet_SOURCES += bitpulsed-wallet-res.rc
 endif
 #
 
-# bitpulse-util binary #
-bitpulse_util_SOURCES = bitpulse-util.cpp
-bitpulse_util_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulse_INCLUDES)
-bitpulse_util_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bitpulse_util_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+# bitpulsed-util binary #
+bitpulsed_util_SOURCES = bitpulsed-util.cpp
+bitpulsed_util_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulsed_INCLUDES)
+bitpulsed_util_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+bitpulsed_util_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
 if TARGET_WINDOWS
-bitpulse_util_SOURCES += bitpulse-util-res.rc
+bitpulsed_util_SOURCES += bitpulsed-util-res.rc
 endif
 
-bitpulse_util_LDADD = \
-  $(LIBbitpulse_COMMON) \
-  $(LIBbitpulse_UTIL) \
+bitpulsed_util_LDADD = \
+  $(LIBbitpulsed_COMMON) \
+  $(LIBbitpulsed_UTIL) \
   $(LIBUNIVALUE) \
-  $(LIBbitpulse_CONSENSUS) \
-  $(LIBbitpulse_CRYPTO) \
+  $(LIBbitpulsed_CONSENSUS) \
+  $(LIBbitpulsed_CRYPTO) \
   $(LIBSECP256K1)
 #
 
-# bitpulse-chainstate binary #
-bitpulse_chainstate_SOURCES = bitpulse-chainstate.cpp
-bitpulse_chainstate_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulse_INCLUDES) $(BOOST_CPPFLAGS)
-bitpulse_chainstate_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+# bitpulsed-chainstate binary #
+bitpulsed_chainstate_SOURCES = bitpulsed-chainstate.cpp
+bitpulsed_chainstate_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulsed_INCLUDES) $(BOOST_CPPFLAGS)
+bitpulsed_chainstate_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
-bitpulse_chainstate_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(PTHREAD_FLAGS) $(LIBTOOL_APP_LDFLAGS) -static
-bitpulse_chainstate_LDADD = $(LIBbitpulseKERNEL)
+bitpulsed_chainstate_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(PTHREAD_FLAGS) $(LIBTOOL_APP_LDFLAGS) -static
+bitpulsed_chainstate_LDADD = $(LIBbitpulsedKERNEL)
 
 # libtool is unable to calculate this indirect dependency, presumably because it's a subproject.
-# libsecp256k1 only needs to be linked in when libbitpulsekernel is static.
-bitpulse_chainstate_LDADD += $(LIBSECP256K1)
+# libsecp256k1 only needs to be linked in when libbitpulsedkernel is static.
+bitpulsed_chainstate_LDADD += $(LIBSECP256K1)
 #
 
-# bitpulsekernel library #
-if BUILD_bitpulse_KERNEL_LIB
-lib_LTLIBRARIES += $(LIBbitpulseKERNEL)
+# bitpulsedkernel library #
+if BUILD_bitpulsed_KERNEL_LIB
+lib_LTLIBRARIES += $(LIBbitpulsedKERNEL)
 
-libbitpulsekernel_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS) $(PTHREAD_FLAGS)
-libbitpulsekernel_la_LIBADD = $(LIBbitpulse_CRYPTO) $(LIBLEVELDB) $(LIBMEMENV) $(LIBSECP256K1)
-libbitpulsekernel_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS)
+libbitpulsedkernel_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS) $(PTHREAD_FLAGS)
+libbitpulsedkernel_la_LIBADD = $(LIBbitpulsed_CRYPTO) $(LIBLEVELDB) $(LIBMEMENV) $(LIBSECP256K1)
+libbitpulsedkernel_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS)
 
-# libbitpulsekernel requires default symbol visibility, explicitly specify that
+# libbitpulsedkernel requires default symbol visibility, explicitly specify that
 # here so that things still work even when user configures with
 #   --enable-reduce-exports
 #
 # Note this is a quick hack that will be removed as we incrementally define what
 # to export from the library.
-libbitpulsekernel_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -fvisibility=default
+libbitpulsedkernel_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -fvisibility=default
 
-# TODO: libbitpulsekernel is a work in progress consensus engine library, as more
+# TODO: libbitpulsedkernel is a work in progress consensus engine library, as more
 #       and more modules are decoupled from the consensus engine, this list will
 #       shrink to only those which are absolutely necessary.
-libbitpulsekernel_la_SOURCES = \
-  kernel/bitpulsekernel.cpp \
+libbitpulsedkernel_la_SOURCES = \
+  kernel/bitpulsedkernel.cpp \
   arith_uint256.cpp \
   chain.cpp \
   clientversion.cpp \
@@ -1003,21 +1003,21 @@ libbitpulsekernel_la_SOURCES = \
 
 # Required for obj/build.h to be generated first.
 # More details: https://www.gnu.org/software/automake/manual/html_node/Built-Sources-Example.html
-libbitpulsekernel_la-clientversion.l$(OBJEXT): obj/build.h
-endif # BUILD_bitpulse_KERNEL_LIB
+libbitpulsedkernel_la-clientversion.l$(OBJEXT): obj/build.h
+endif # BUILD_bitpulsed_KERNEL_LIB
 #
 
-# bitpulseconsensus library #
-if BUILD_bitpulse_LIBS
-lib_LTLIBRARIES += $(LIBbitpulseCONSENSUS)
+# bitpulsedconsensus library #
+if BUILD_bitpulsed_LIBS
+lib_LTLIBRARIES += $(LIBbitpulsedCONSENSUS)
 
-include_HEADERS = script/bitpulseconsensus.h
-libbitpulseconsensus_la_SOURCES = support/cleanse.cpp $(crypto_libbitpulse_crypto_base_la_SOURCES) $(libbitpulse_consensus_a_SOURCES)
+include_HEADERS = script/bitpulsedconsensus.h
+libbitpulsedconsensus_la_SOURCES = support/cleanse.cpp $(crypto_libbitpulsed_crypto_base_la_SOURCES) $(libbitpulsed_consensus_a_SOURCES)
 
-libbitpulseconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
-libbitpulseconsensus_la_LIBADD = $(LIBSECP256K1)
-libbitpulseconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_bitpulse_INTERNAL -DDISABLE_OPTIMIZED_SHA256
-libbitpulseconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbitpulsedconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
+libbitpulsedconsensus_la_LIBADD = $(LIBSECP256K1)
+libbitpulsedconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_bitpulsed_INTERNAL -DDISABLE_OPTIMIZED_SHA256
+libbitpulsedconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
 endif
 #
@@ -1053,12 +1053,12 @@ CLEANFILES += obj/build.h
 EXTRA_DIST = $(CTAES_DIST)
 
 
-config/bitpulse-config.h: config/stamp-h1
+config/bitpulsed-config.h: config/stamp-h1
 	@$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-config/stamp-h1: $(top_srcdir)/$(subdir)/config/bitpulse-config.h.in $(top_builddir)/config.status
+config/stamp-h1: $(top_srcdir)/$(subdir)/config/bitpulsed-config.h.in $(top_builddir)/config.status
 	$(AM_V_at)$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-$(top_srcdir)/$(subdir)/config/bitpulse-config.h.in:  $(am__configure_deps)
-	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/bitpulse-config.h.in
+$(top_srcdir)/$(subdir)/config/bitpulsed-config.h.in:  $(am__configure_deps)
+	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/bitpulsed-config.h.in
 
 clean-local:
 	-$(MAKE) -C secp256k1 clean
@@ -1081,19 +1081,19 @@ if HARDEN
 	$(AM_V_at) $(PYTHON) $(top_srcdir)/contrib/devtools/security-check.py $(bin_PROGRAMS)
 endif
 
-libbitpulse_ipc_mpgen_input = \
+libbitpulsed_ipc_mpgen_input = \
   ipc/capnp/echo.capnp \
   ipc/capnp/init.capnp
-EXTRA_DIST += $(libbitpulse_ipc_mpgen_input)
+EXTRA_DIST += $(libbitpulsed_ipc_mpgen_input)
 %.capnp:
 
 # Explicitly list dependencies on generated headers as described in
 # https://www.gnu.org/software/automake/manual/html_node/Built-Sources-Example.html#Recording-Dependencies-manually
-ipc/capnp/libbitpulse_ipc_a-protocol.$(OBJEXT): $(libbitpulse_ipc_mpgen_input:=.h)
+ipc/capnp/libbitpulsed_ipc_a-protocol.$(OBJEXT): $(libbitpulsed_ipc_mpgen_input:=.h)
 
 if BUILD_MULTIPROCESS
-LIBbitpulse_IPC=libbitpulse_ipc.a
-libbitpulse_ipc_a_SOURCES = \
+LIBbitpulsed_IPC=libbitpulsed_ipc.a
+libbitpulsed_ipc_a_SOURCES = \
   ipc/capnp/common-types.h \
   ipc/capnp/context.h \
   ipc/capnp/init-types.h \
@@ -1105,20 +1105,20 @@ libbitpulse_ipc_a_SOURCES = \
   ipc/process.cpp \
   ipc/process.h \
   ipc/protocol.h
-libbitpulse_ipc_a_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulse_INCLUDES)
-libbitpulse_ipc_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) $(LIBMULTIPROCESS_CFLAGS)
+libbitpulsed_ipc_a_CPPFLAGS = $(AM_CPPFLAGS) $(bitpulsed_INCLUDES)
+libbitpulsed_ipc_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) $(LIBMULTIPROCESS_CFLAGS)
 
 include $(MPGEN_PREFIX)/include/mpgen.mk
-libbitpulse_ipc_mpgen_output = \
-  $(libbitpulse_ipc_mpgen_input:=.c++) \
-  $(libbitpulse_ipc_mpgen_input:=.h) \
-  $(libbitpulse_ipc_mpgen_input:=.proxy-client.c++) \
-  $(libbitpulse_ipc_mpgen_input:=.proxy-server.c++) \
-  $(libbitpulse_ipc_mpgen_input:=.proxy-types.c++) \
-  $(libbitpulse_ipc_mpgen_input:=.proxy-types.h) \
-  $(libbitpulse_ipc_mpgen_input:=.proxy.h)
-nodist_libbitpulse_ipc_a_SOURCES = $(libbitpulse_ipc_mpgen_output)
-CLEANFILES += $(libbitpulse_ipc_mpgen_output)
+libbitpulsed_ipc_mpgen_output = \
+  $(libbitpulsed_ipc_mpgen_input:=.c++) \
+  $(libbitpulsed_ipc_mpgen_input:=.h) \
+  $(libbitpulsed_ipc_mpgen_input:=.proxy-client.c++) \
+  $(libbitpulsed_ipc_mpgen_input:=.proxy-server.c++) \
+  $(libbitpulsed_ipc_mpgen_input:=.proxy-types.c++) \
+  $(libbitpulsed_ipc_mpgen_input:=.proxy-types.h) \
+  $(libbitpulsed_ipc_mpgen_input:=.proxy.h)
+nodist_libbitpulsed_ipc_a_SOURCES = $(libbitpulsed_ipc_mpgen_output)
+CLEANFILES += $(libbitpulsed_ipc_mpgen_output)
 endif
 
 %.raw.h: %.raw

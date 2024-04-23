@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2022 The Bitpulse Core developers
+// Copyright (c) 2011-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -158,7 +158,7 @@ OptionsDialog::OptionsDialog(QWidget* parent, bool enableWallet)
     ui->bitpulseAtStartup->setToolTip(ui->bitpulseAtStartup->toolTip().arg(PACKAGE_NAME));
     ui->bitpulseAtStartup->setText(ui->bitpulseAtStartup->text().arg(PACKAGE_NAME));
 
-    ui->openBitpulseConfButton->setToolTip(ui->openBitpulseConfButton->toolTip().arg(PACKAGE_NAME));
+    ui->openbitpulseConfButton->setToolTip(ui->openbitpulseConfButton->toolTip().arg(PACKAGE_NAME));
 
     ui->lang->setToolTip(ui->lang->toolTip().arg(PACKAGE_NAME));
     ui->lang->addItem(QString("(") + tr("default") + QString(")"), QVariant(""));
@@ -178,7 +178,7 @@ OptionsDialog::OptionsDialog(QWidget* parent, bool enableWallet)
             ui->lang->addItem(locale.nativeLanguageName() + QString(" (") + langStr + QString(")"), QVariant(langStr));
         }
     }
-    ui->unit->setModel(new BitpulseUnits(this));
+    ui->unit->setModel(new bitpulseUnits(this));
 
     /* Widget-to-option mapper */
     mapper = new QDataWidgetMapper(this);
@@ -357,7 +357,7 @@ void OptionsDialog::on_resetButton_clicked()
     }
 }
 
-void OptionsDialog::on_openBitpulseConfButton_clicked()
+void OptionsDialog::on_openbitpulseConfButton_clicked()
 {
     QMessageBox config_msgbox(this);
     config_msgbox.setIcon(QMessageBox::Information);
@@ -377,7 +377,7 @@ void OptionsDialog::on_openBitpulseConfButton_clicked()
     if (config_msgbox.clickedButton() != open_button) return;
 
     /* show an error if there was some problem opening the file */
-    if (!GUIUtil::openBitpulseConf())
+    if (!GUIUtil::openbitpulseConf())
         QMessageBox::critical(this, tr("Error"), tr("The configuration file could not be opened."));
 }
 

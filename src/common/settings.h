@@ -1,9 +1,9 @@
-// Copyright (c) 2019-2022 The Bitpulse Core developers
+// Copyright (c) 2019-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_COMMON_SETTINGS_H
-#define bitpulse_COMMON_SETTINGS_H
+#ifndef bitpulsed_COMMON_SETTINGS_H
+#define bitpulsed_COMMON_SETTINGS_H
 
 #include <util/fs.h>
 
@@ -112,4 +112,4 @@ auto FindKey(Map&& map, Key&& key) -> decltype(&map.at(key))
 
 } // namespace common
 
-#endif // bitpulse_COMMON_SETTINGS_H
+#endif // bitpulsed_COMMON_SETTINGS_H

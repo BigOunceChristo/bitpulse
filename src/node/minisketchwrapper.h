@@ -1,9 +1,9 @@
-// Copyright (c) 2021 The Bitpulse Core developers
+// Copyright (c) 2021 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_NODE_MINISKETCHWRAPPER_H
-#define bitpulse_NODE_MINISKETCHWRAPPER_H
+#ifndef bitpulsed_NODE_MINISKETCHWRAPPER_H
+#define bitpulsed_NODE_MINISKETCHWRAPPER_H
 
 #include <minisketch.h>
 
@@ -17,4 +17,4 @@ Minisketch MakeMinisketch32(size_t capacity);
 Minisketch MakeMinisketch32FP(size_t max_elements, uint32_t fpbits);
 } // namespace node
 
-#endif // bitpulse_NODE_MINISKETCHWRAPPER_H
+#endif // bitpulsed_NODE_MINISKETCHWRAPPER_H

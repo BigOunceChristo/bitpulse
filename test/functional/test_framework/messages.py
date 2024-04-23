@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # Copyright (c) 2010 ArtForz -- public domain half-a-node
 # Copyright (c) 2012 Jeff Garzik
-# Copyright (c) 2010-2022 The bitpulse Core developers
+# Copyright (c) 2010-2022 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
-"""bitpulse test framework primitive and message structures
+"""bitpulsed test framework primitive and message structures
 
 CBlock, CTransaction, CBlockHeader, CTxIn, CTxOut, etc....:
     data structures that should map to corresponding structures in
-    bitpulse/primitives
+    bitpulsed/primitives
 
 msg_block, msg_tx, msg_headers, etc.:
     data structures that represent network messages
@@ -410,7 +410,7 @@ class CBlockLocator:
 
     def serialize(self):
         r = b""
-        r += (0).to_bytes(4, "little", signed=True)  # bitpulse Core ignores the version field. Set it to 0.
+        r += (0).to_bytes(4, "little", signed=True)  # bitpulsed Core ignores the version field. Set it to 0.
         r += ser_uint256_vector(self.vHave)
         return r
 

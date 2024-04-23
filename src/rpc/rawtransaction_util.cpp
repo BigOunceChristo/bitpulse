@@ -1,5 +1,5 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2009-2022 The Bitpulse Core developers
+// Copyright (c) 2009-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -117,7 +117,7 @@ std::vector<std::pair<CTxDestination, CAmount>> ParseOutputs(const UniValue& out
             CTxDestination destination{DecodeDestination(name_)};
             CAmount amount{AmountFromValue(outputs[name_])};
             if (!IsValidDestination(destination)) {
-                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid Bitpulse address: ") + name_);
+                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid bitpulse address: ") + name_);
             }
 
             if (!destinations.insert(destination).second) {

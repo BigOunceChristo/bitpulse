@@ -1,9 +1,9 @@
-// Copyright (c) 2022 The Bitpulse Core developers
+// Copyright (c) 2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_KERNEL_CHAIN_H
-#define bitpulse_KERNEL_CHAIN_H
+#ifndef bitpulsed_KERNEL_CHAIN_H
+#define bitpulsed_KERNEL_CHAIN_H
 
 #include<iostream>
 
@@ -36,4 +36,4 @@ enum class ChainstateRole {
 
 std::ostream& operator<<(std::ostream& os, const ChainstateRole& role);
 
-#endif // bitpulse_KERNEL_CHAIN_H
+#endif // bitpulsed_KERNEL_CHAIN_H

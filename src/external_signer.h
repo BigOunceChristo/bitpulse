@@ -1,9 +1,9 @@
-// Copyright (c) 2018-2021 The Bitpulse Core developers
+// Copyright (c) 2018-2021 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_EXTERNAL_SIGNER_H
-#define bitpulse_EXTERNAL_SIGNER_H
+#ifndef bitpulsed_EXTERNAL_SIGNER_H
+#define bitpulsed_EXTERNAL_SIGNER_H
 
 #include <common/system.h>
 #include <univalue.h>
@@ -21,7 +21,7 @@ private:
     //! The command which handles interaction with the external signer.
     std::string m_command;
 
-    //! Bitpulse mainnet, testnet, etc
+    //! bitpulsed mainnet, testnet, etc
     std::string m_chain;
 
     std::string NetworkArg() const;
@@ -63,4 +63,4 @@ public:
     bool SignTransaction(PartiallySignedTransaction& psbt, std::string& error);
 };
 
-#endif // bitpulse_EXTERNAL_SIGNER_H
+#endif // bitpulsed_EXTERNAL_SIGNER_H

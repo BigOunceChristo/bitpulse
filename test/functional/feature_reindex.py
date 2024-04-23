@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2014-2021 The bitpulse Core developers
+# Copyright (c) 2014-2021 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test running bitpulsed with -reindex and -reindex-chainstate options.
@@ -10,12 +10,12 @@
 - Verify that out-of-order blocks are correctly processed, see LoadExternalBlockFile()
 """
 
-from test_framework.test_framework import bitpulseTestFramework
+from test_framework.test_framework import bitpulsedTestFramework
 from test_framework.messages import MAGIC_BYTES
 from test_framework.util import assert_equal
 
 
-class ReindexTest(bitpulseTestFramework):
+class ReindexTest(bitpulsedTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 1

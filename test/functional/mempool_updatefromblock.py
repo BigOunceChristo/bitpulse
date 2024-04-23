@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2020-2022 The bitpulse Core developers
+# Copyright (c) 2020-2022 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test mempool descendants/ancestors information update.
@@ -10,12 +10,12 @@ when transactions have been re-added from a disconnected block to the mempool.
 from math import ceil
 import time
 
-from test_framework.test_framework import bitpulseTestFramework
+from test_framework.test_framework import bitpulsedTestFramework
 from test_framework.util import assert_equal
 from test_framework.wallet import MiniWallet
 
 
-class MempoolUpdateFromBlockTest(bitpulseTestFramework):
+class MempoolUpdateFromBlockTest(bitpulsedTestFramework):
     def set_test_params(self):
         self.num_nodes = 1
         self.extra_args = [['-limitdescendantsize=1000', '-limitancestorsize=1000', '-limitancestorcount=100']]

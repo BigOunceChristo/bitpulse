@@ -1,6 +1,6 @@
-bitpulse Core version 0.17.0.1 is now available from:
+bitpulsed Core version 0.17.0.1 is now available from:
 
-  <https://bitpulsecore.org/bin/bitpulse-core-0.17.0.1/>
+  <https://bitpulsedcore.org/bin/bitpulsed-core-0.17.0.1/>
 
 This release provides a minor bug fix for 0.17.0.
 
@@ -10,7 +10,7 @@ Please report bugs using the issue tracker at GitHub:
 
 To receive security and update notifications, please subscribe to:
 
-  <https://bitpulsecore.org/en/list/announcements/join/>
+  <https://bitpulsedcore.org/en/list/announcements/join/>
 
 Notable changes
 ===============

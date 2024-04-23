@@ -4,16 +4,16 @@ Test Shell for Interactive Environments
 This document describes how to use the `TestShell` submodule in the functional
 test suite.
 
-The `TestShell` submodule extends the `bitpulseTestFramework` functionality to
+The `TestShell` submodule extends the `bitpulsedTestFramework` functionality to
 external interactive environments for prototyping and educational purposes. Just
-like `bitpulseTestFramework`, the `TestShell` allows the user to:
+like `bitpulsedTestFramework`, the `TestShell` allows the user to:
 
 * Manage regtest bitpulsed subprocesses.
 * Access RPC interfaces of the underlying bitpulsed instances.
 * Log events to the functional test logging utility.
 
 The `TestShell` can be useful in interactive environments where it is necessary
-to extend the object lifetime of the underlying `bitpulseTestFramework` between
+to extend the object lifetime of the underlying `bitpulsedTestFramework` between
 user inputs. Such environments include the Python3 command line interpreter or
 [Jupyter](https://jupyter.org/) notebooks running a Python3 kernel.
 
@@ -22,15 +22,15 @@ user inputs. Such environments include the Python3 command line interpreter or
 * Python3
 * `bitpulsed` built in the same repository as the `TestShell`.
 
-## 2. Importing `TestShell` from the bitpulse Core repository
+## 2. Importing `TestShell` from the bitpulsed Core repository
 
-We can import the `TestShell` by adding the path of the bitpulse Core
+We can import the `TestShell` by adding the path of the bitpulsed Core
 `test_framework` module to the beginning of the PATH variable, and then
 importing the `TestShell` class from the `test_shell` sub-package.
 
 ```
 >>> import sys
->>> sys.path.insert(0, "/path/to/bitpulse/test/functional")
+>>> sys.path.insert(0, "/path/to/bitpulsed/test/functional")
 >>> from test_framework.test_shell import TestShell
 ```
 
@@ -40,7 +40,7 @@ processes and logging utilities.
 * `TestShell().setup()`
 * `TestShell().shutdown()`
 
-The `TestShell` inherits all `bitpulseTestFramework` members and methods, such
+The `TestShell` inherits all `bitpulsedTestFramework` members and methods, such
 as:
 * `TestShell().nodes[index].rpc_method()`
 * `TestShell().log.info("Custom log message")`
@@ -52,10 +52,10 @@ The following sections demonstrate how to initialize, run, and shut down a
 
 ```
 >>> test = TestShell().setup(num_nodes=2, setup_clean_chain=True)
-20XX-XX-XXTXX:XX:XX.XXXXXXX TestFramework (INFO): Initializing test directory /path/to/bitpulse_func_test_XXXXXXX
+20XX-XX-XXTXX:XX:XX.XXXXXXX TestFramework (INFO): Initializing test directory /path/to/bitpulsed_func_test_XXXXXXX
 ```
 The `TestShell` forwards all functional test parameters of the parent
-`bitpulseTestFramework` object. The full set of argument keywords which can be
+`bitpulsedTestFramework` object. The full set of argument keywords which can be
 used to initialize the `TestShell` can be found in [section
 #6](#custom-testshell-parameters) of this document.
 
@@ -71,12 +71,12 @@ TestShell is already running!
 
 ## 4. Interacting with the `TestShell`
 
-Unlike the `bitpulseTestFramework` class, the `TestShell` keeps the underlying
+Unlike the `bitpulsedTestFramework` class, the `TestShell` keeps the underlying
 bitpulsed subprocesses (nodes) and logging utilities running until the user
 explicitly shuts down the `TestShell` object.
 
 During the time between the `setup` and `shutdown` calls, all `bitpulsed` node
-processes and `bitpulseTestFramework` convenience methods can be accessed
+processes and `bitpulsedTestFramework` convenience methods can be accessed
 interactively.
 
 **Example: Mining a regtest chain**
@@ -139,7 +139,7 @@ instances and remove all temporary data and logging directories.
 ```
 >>> test.shutdown()
 20XX-XX-XXTXX:XX:XX.XXXXXXX TestFramework (INFO): Stopping nodes
-20XX-XX-XXTXX:XX:XX.XXXXXXX TestFramework (INFO): Cleaning up /path/to/bitpulse_func_test_XXXXXXX on exit
+20XX-XX-XXTXX:XX:XX.XXXXXXX TestFramework (INFO): Cleaning up /path/to/bitpulsed_func_test_XXXXXXX on exit
 20XX-XX-XXTXX:XX:XX.XXXXXXX TestFramework (INFO): Tests successful
 ```
 To prevent the logs from being removed after a shutdown, simply set the
@@ -148,20 +148,20 @@ To prevent the logs from being removed after a shutdown, simply set the
 >>> test.options.nocleanup = True
 >>> test.shutdown()
 20XX-XX-XXTXX:XX:XX.XXXXXXX TestFramework (INFO): Stopping nodes
-20XX-XX-XXTXX:XX:XX.XXXXXXX TestFramework (INFO): Not cleaning up dir /path/to/bitpulse_func_test_XXXXXXX on exit
+20XX-XX-XXTXX:XX:XX.XXXXXXX TestFramework (INFO): Not cleaning up dir /path/to/bitpulsed_func_test_XXXXXXX on exit
 20XX-XX-XXTXX:XX:XX.XXXXXXX TestFramework (INFO): Tests successful
 ```
 
 The following utility consolidates logs from the bitpulsed nodes and the
-underlying `bitpulseTestFramework`:
+underlying `bitpulsedTestFramework`:
 
-* `/path/to/bitpulse/test/functional/combine_logs.py
-  '/path/to/bitpulse_func_test_XXXXXXX'`
+* `/path/to/bitpulsed/test/functional/combine_logs.py
+  '/path/to/bitpulsed_func_test_XXXXXXX'`
 
 ## 6. Custom `TestShell` parameters
 
 The `TestShell` object initializes with the default settings inherited from the
-`bitpulseTestFramework` class. The user can override these in
+`bitpulsedTestFramework` class. The user can override these in
 `TestShell().setup(key=value)`.
 
 **Note:** `TestShell().reset()` will reset test parameters to default values and
@@ -170,9 +170,9 @@ can be called after the TestShell is shut down.
 | Test parameter key | Default Value | Description |
 |---|---|---|
 | `bind_to_localhost_only` | `True` | Binds bitpulsed RPC services to `127.0.0.1` if set to `True`.|
-| `cachedir` | `"/path/to/bitpulse/test/cache"` | Sets the bitpulsed datadir directory. |
+| `cachedir` | `"/path/to/bitpulsed/test/cache"` | Sets the bitpulsed datadir directory. |
 | `chain`  | `"regtest"` | Sets the chain-type for the underlying test bitpulsed processes. |
-| `configfile` | `"/path/to/bitpulse/test/config.ini"` | Sets the location of the test framework config file. |
+| `configfile` | `"/path/to/bitpulsed/test/config.ini"` | Sets the location of the test framework config file. |
 | `coveragedir` | `None` | Records bitpulsed RPC test coverage into this directory if set. |
 | `loglevel` | `INFO` | Logs events at this level and higher. Can be set to `DEBUG`, `INFO`, `WARNING`, `ERROR` or `CRITICAL`. |
 | `nocleanup` | `False` | Cleans up temporary test directory if set to `True` during `shutdown`. |
@@ -182,7 +182,7 @@ can be called after the TestShell is shut down.
 | `rpc_timeout` | `60` | Sets the RPC server timeout for the underlying bitpulsed processes. |
 | `setup_clean_chain` | `False` | A 200-block-long chain is initialized from cache by default. Instead, `setup_clean_chain` initializes an empty blockchain if set to `True`. |
 | `randomseed` | Random Integer | `TestShell().options.randomseed` is a member of `TestShell` which can be accessed during a test to seed a random generator. User can override default with a constant value for reproducible test runs. |
-| `supports_cli` | `False` | Whether the bitpulse-cli utility is compiled and available for the test. |
+| `supports_cli` | `False` | Whether the bitpulsed-cli utility is compiled and available for the test. |
 | `tmpdir` | `"/var/folders/.../"` | Sets directory for test logs. Will be deleted upon a successful test run unless `nocleanup` is set to `True` |
 | `trace_rpc` | `False` | Logs all RPC calls if set to `True`. |
-| `usecli` | `False` | Uses the bitpulse-cli interface for all bitpulsed commands instead of directly calling the RPC server. Requires `supports_cli`. |
+| `usecli` | `False` | Uses the bitpulsed-cli interface for all bitpulsed commands instead of directly calling the RPC server. Requires `supports_cli`. |

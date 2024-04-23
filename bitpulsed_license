@@ -1,0 +1,21 @@
+bitpulsed License
+This document outlines the terms under which the bitpulsed project is made available to the public.
+
+1. Grant of License
+Subject to the terms and conditions of this License, contributors grant you a free, perpetual, non-exclusive, no-charge, royalty-free, irrevocable copyright license to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the bitpulsed software and to permit persons to whom the Software is furnished to do so.
+
+2. Relationship with Bitcoin
+bitpulsed is a fork of Bitcoin, aiming to introduce a supplementary supply mechanism to the existing Bitcoin ecosystem. This project inherits the core principles and functionality of Bitcoin but seeks to explore and implement changes that address the limitations of Bitcoin's capped supply.
+
+3. Trademark Notice
+"bitpulsed" and the bitpulsed logo are trademarks of the bitpulsed project. The use of these trademarks, especially in a manner that suggests endorsement or an official connection with the bitpulsed project, is not permitted without prior written consent from the bitpulsed project maintainers.
+
+4. Contributions
+Contributions to the bitpulsed project by third parties are welcomed. By contributing to bitpulsed, contributors agree that their contributions will be licensed under the same terms as this License.
+
+5. Disclaimer of Warranty
+bitpulsed is provided "as is," without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages, or other liability, whether in an action of contract, tort or otherwise, arising from, out of, or in connection with the software or the use or other dealings in the software.
+
+6. Acknowledgements
+The bitpulsed project acknowledges the pioneering work of the Bitcoin community and its contributors. bitpulsed is built upon the foundation laid by Bitcoin, and it aims to contribute positively to the broader cryptocurrency ecosystem.
+

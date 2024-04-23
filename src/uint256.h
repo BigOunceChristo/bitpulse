@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2022 The Bitpulse Core developers
+// Copyright (c) 2009-2022 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_UINT256_H
-#define bitpulse_UINT256_H
+#ifndef bitpulsed_UINT256_H
+#define bitpulsed_UINT256_H
 
 #include <crypto/common.h>
 #include <span.h>
@@ -133,4 +133,4 @@ inline uint256 uint256S(const std::string& str)
     return rv;
 }
 
-#endif // bitpulse_UINT256_H
+#endif // bitpulsed_UINT256_H

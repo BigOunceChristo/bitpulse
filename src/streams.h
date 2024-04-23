@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2022 The Bitpulse Core developers
+// Copyright (c) 2009-2022 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_STREAMS_H
-#define bitpulse_STREAMS_H
+#ifndef bitpulsed_STREAMS_H
+#define bitpulsed_STREAMS_H
 
 #include <serialize.h>
 #include <span.h>
@@ -604,4 +604,4 @@ public:
     }
 };
 
-#endif // bitpulse_STREAMS_H
+#endif // bitpulsed_STREAMS_H

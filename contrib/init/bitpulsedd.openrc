@@ -1,0 +1,93 @@
+#!/sbin/openrc-run
+
+# backward compatibility for existing gentoo layout 
+#
+if [ -d "/var/lib/bitpulsed/.bitpulsed" ]; then
+	bitpulsed_DEFAULT_DATADIR="/var/lib/bitpulsed/.bitpulsed"
+else
+	bitpulsed_DEFAULT_DATADIR="/var/lib/bitpulsed"
+fi
+
+bitpulsed_CONFIGFILE=${bitpulsed_CONFIGFILE:-/etc/bitpulsed/bitpulsed.conf}
+bitpulsed_PIDDIR=${bitpulsed_PIDDIR:-/var/run/bitpulsed}
+bitpulsed_PIDFILE=${bitpulsed_PIDFILE:-${bitpulsed_PIDDIR}/bitpulsed.pid}
+bitpulsed_DATADIR=${bitpulsed_DATADIR:-${bitpulsed_DEFAULT_DATADIR}}
+bitpulsed_USER=${bitpulsed_USER:-${bitpulsed_USER:-bitpulsed}}
+bitpulsed_GROUP=${bitpulsed_GROUP:-bitpulsed}
+bitpulsed_BIN=${bitpulsed_BIN:-/usr/bin/bitpulsed}
+bitpulsed_NICE=${bitpulsed_NICE:-${NICELEVEL:-0}}
+bitpulsed_OPTS="${bitpulsed_OPTS:-${bitpulsed_OPTS}}"
+
+name="bitpulsed Core Daemon"
+description="bitpulsed cryptocurrency P2P network daemon"
+
+command="/usr/bin/bitpulsed"
+command_args="-pid=\"${bitpulsed_PIDFILE}\" \
+		-conf=\"${bitpulsed_CONFIGFILE}\" \
+		-datadir=\"${bitpulsed_DATADIR}\" \
+		-daemon \
+		${bitpulsed_OPTS}"
+
+required_files="${bitpulsed_CONFIGFILE}"
+start_stop_daemon_args="-u ${bitpulsed_USER} \
+			-N ${bitpulsed_NICE} -w 2000"
+pidfile="${bitpulsed_PIDFILE}"
+
+# The retry schedule to use when stopping the daemon. Could be either
+# a timeout in seconds or multiple signal/timeout pairs (like
+# "SIGKILL/180 SIGTERM/300")
+retry="${bitpulsed_SIGTERM_TIMEOUT}"
+
+depend() {
+	need localmount net
+}
+
+# verify
+# 1) that the datadir exists and is writable (or create it)
+# 2) that a directory for the pid exists and is writable
+# 3) ownership and permissions on the config file
+start_pre() {
+	checkpath \
+	-d \
+	--mode 0750 \
+	--owner "${bitpulsed_USER}:${bitpulsed_GROUP}" \
+	"${bitpulsed_DATADIR}"
+
+	checkpath \
+	-d \
+	--mode 0755 \
+	--owner "${bitpulsed_USER}:${bitpulsed_GROUP}" \
+	"${bitpulsed_PIDDIR}"
+
+	checkpath -f \
+	-o "${bitpulsed_USER}:${bitpulsed_GROUP}" \
+	-m 0660 \
+	"${bitpulsed_CONFIGFILE}"
+
+	checkconfig || return 1
+}
+
+checkconfig()
+{
+	if grep -qs '^rpcuser=' "${bitpulsed_CONFIGFILE}" && \
+		! grep -qs '^rpcpassword=' "${bitpulsed_CONFIGFILE}" ; then
+		eerror ""
+		eerror "ERROR: You must set a secure rpcpassword to run bitpulsed."
+		eerror "The setting must appear in ${bitpulsed_CONFIGFILE}"
+		eerror ""
+		eerror "This password is security critical to securing wallets "
+		eerror "and must not be the same as the rpcuser setting."
+		eerror "You can generate a suitable random password using the following "
+		eerror "command from the shell:"
+		eerror ""
+		eerror "bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'"
+		eerror ""
+		eerror "It is recommended that you also set alertnotify so you are "
+		eerror "notified of problems:"
+		eerror ""
+		eerror "ie: alertnotify=echo %%s | mail -s \"bitpulsed Alert\"" \
+			"admin@foo.com"
+		eerror ""
+		return 1
+	fi
+}

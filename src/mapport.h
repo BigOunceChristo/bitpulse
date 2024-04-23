@@ -1,9 +1,9 @@
-// Copyright (c) 2011-2020 The Bitpulse Core developers
+// Copyright (c) 2011-2020 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_MAPPORT_H
-#define bitpulse_MAPPORT_H
+#ifndef bitpulsed_MAPPORT_H
+#define bitpulsed_MAPPORT_H
 
 static constexpr bool DEFAULT_UPNP = false;
 
@@ -19,4 +19,4 @@ void StartMapPort(bool use_upnp, bool use_natpmp);
 void InterruptMapPort();
 void StopMapPort();
 
-#endif // bitpulse_MAPPORT_H
+#endif // bitpulsed_MAPPORT_H

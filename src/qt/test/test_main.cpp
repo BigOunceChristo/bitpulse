@@ -1,4 +1,4 @@
-// Copyright (c) 2009-2022 The Bitpulse Core developers
+// Copyright (c) 2009-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -94,7 +94,7 @@ int main(int argc, char* argv[])
     int num_test_failures{0};
 
     {
-        BitpulseApplication app;
+        bitpulseApplication app;
         app.createNode(*init);
 
         AppTests app_tests(app);

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2021-2022 The bitpulse Core developers
+# Copyright (c) 2021-2022 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test simulaterawtransaction.
@@ -7,14 +7,14 @@
 
 from decimal import Decimal
 from test_framework.blocktools import COINBASE_MATURITY
-from test_framework.test_framework import bitpulseTestFramework
+from test_framework.test_framework import bitpulsedTestFramework
 from test_framework.util import (
     assert_approx,
     assert_equal,
     assert_raises_rpc_error,
 )
 
-class SimulateTxTest(bitpulseTestFramework):
+class SimulateTxTest(bitpulsedTestFramework):
     def add_options(self, parser):
         self.add_wallet_options(parser)
 
@@ -71,10 +71,10 @@ class SimulateTxTest(bitpulseTestFramework):
         funding = w0.fundrawtransaction(tx1)
         tx1 = funding["hex"]
         tx1changepos = funding["changepos"]
-        bitpulse_fee = Decimal(funding["fee"])
+        bitpulsed_fee = Decimal(funding["fee"])
 
         # w0 sees fee + 5 btp decrease, w2 sees + 5 btp
-        assert_approx(w0.simulaterawtransaction([tx1])["balance_change"], -(Decimal("5") + bitpulse_fee))
+        assert_approx(w0.simulaterawtransaction([tx1])["balance_change"], -(Decimal("5") + bitpulsed_fee))
         assert_approx(w2.simulaterawtransaction([tx1])["balance_change"], Decimal("5"))
 
         # w1 sees same as before
@@ -99,11 +99,11 @@ class SimulateTxTest(bitpulseTestFramework):
 
         # they should succeed when including tx1:
         #       wallet                  tx3                             tx4
-        #       w0                      -5 - bitpulse_fee + 4.9999       -5 - bitpulse_fee
+        #       w0                      -5 - bitpulsed_fee + 4.9999       -5 - bitpulsed_fee
         #       w1                      0                               +4.9999
-        assert_approx(w0.simulaterawtransaction([tx1, tx3])["balance_change"], -Decimal("5") - bitpulse_fee + Decimal("4.9999"))
+        assert_approx(w0.simulaterawtransaction([tx1, tx3])["balance_change"], -Decimal("5") - bitpulsed_fee + Decimal("4.9999"))
         assert_approx(w1.simulaterawtransaction([tx1, tx3])["balance_change"], 0)
-        assert_approx(w0.simulaterawtransaction([tx1, tx4])["balance_change"], -Decimal("5") - bitpulse_fee)
+        assert_approx(w0.simulaterawtransaction([tx1, tx4])["balance_change"], -Decimal("5") - bitpulsed_fee)
         assert_approx(w1.simulaterawtransaction([tx1, tx4])["balance_change"], Decimal("4.9999"))
 
         # they should fail if attempting to include both tx3 and tx4
@@ -118,8 +118,8 @@ class SimulateTxTest(bitpulseTestFramework):
         # w0 funds transaction 2; it should now see a decrease in (tx fee and payment), and w1 should see the same as above
         funding = w0.fundrawtransaction(tx2)
         tx2 = funding["hex"]
-        bitpulse_fee2 = Decimal(funding["fee"])
-        assert_approx(w0.simulaterawtransaction([tx2])["balance_change"], -(Decimal("10") + bitpulse_fee2))
+        bitpulsed_fee2 = Decimal(funding["fee"])
+        assert_approx(w0.simulaterawtransaction([tx2])["balance_change"], -(Decimal("10") + bitpulsed_fee2))
         assert_approx(w1.simulaterawtransaction([tx2])["balance_change"], +(Decimal("10")))
         assert_approx(w2.simulaterawtransaction([tx2])["balance_change"], 0)
 

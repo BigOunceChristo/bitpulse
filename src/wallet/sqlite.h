@@ -1,9 +1,9 @@
-// Copyright (c) 2020-2021 The Bitpulse Core developers
+// Copyright (c) 2020-2021 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_WALLET_SQLITE_H
-#define bitpulse_WALLET_SQLITE_H
+#ifndef bitpulsed_WALLET_SQLITE_H
+#define bitpulsed_WALLET_SQLITE_H
 
 #include <sync.h>
 #include <wallet/db.h>
@@ -182,4 +182,4 @@ std::unique_ptr<SQLiteDatabase> MakeSQLiteDatabase(const fs::path& path, const D
 std::string SQLiteDatabaseVersion();
 } // namespace wallet
 
-#endif // bitpulse_WALLET_SQLITE_H
+#endif // bitpulsed_WALLET_SQLITE_H

@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2021 The Bitpulse Core developers
+// Copyright (c) 2018-2021 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -12,7 +12,7 @@
 #include <vector>
 
 #if defined(HAVE_CONFIG_H)
-#include <config/bitpulse-config.h>
+#include <config/bitpulsed-config.h>
 #endif
 
 #include <boost/test/unit_test.hpp>

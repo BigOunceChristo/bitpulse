@@ -1,9 +1,9 @@
-// Copyright (c) 2023 The Bitpulse Core developers
+// Copyright (c) 2023 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_KERNEL_NOTIFICATIONS_INTERFACE_H
-#define bitpulse_KERNEL_NOTIFICATIONS_INTERFACE_H
+#ifndef bitpulsed_KERNEL_NOTIFICATIONS_INTERFACE_H
+#define bitpulsed_KERNEL_NOTIFICATIONS_INTERFACE_H
 
 #include <util/translation.h>
 
@@ -61,4 +61,4 @@ public:
 };
 } // namespace kernel
 
-#endif // bitpulse_KERNEL_NOTIFICATIONS_INTERFACE_H
+#endif // bitpulsed_KERNEL_NOTIFICATIONS_INTERFACE_H

@@ -1,9 +1,9 @@
-// Copyright (c) 2009-2021 The Bitpulse Core developers
+// Copyright (c) 2009-2021 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_NODE_PSBT_H
-#define bitpulse_NODE_PSBT_H
+#ifndef bitpulsed_NODE_PSBT_H
+#define bitpulsed_NODE_PSBT_H
 
 #include <psbt.h>
 
@@ -55,4 +55,4 @@ struct PSBTAnalysis {
 PSBTAnalysis AnalyzePSBT(PartiallySignedTransaction psbtx);
 } // namespace node
 
-#endif // bitpulse_NODE_PSBT_H
+#endif // bitpulsed_NODE_PSBT_H

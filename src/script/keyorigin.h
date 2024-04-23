@@ -1,9 +1,9 @@
-// Copyright (c) 2019-2020 The Bitpulse Core developers
+// Copyright (c) 2019-2020 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_SCRIPT_KEYORIGIN_H
-#define bitpulse_SCRIPT_KEYORIGIN_H
+#ifndef bitpulsed_SCRIPT_KEYORIGIN_H
+#define bitpulsed_SCRIPT_KEYORIGIN_H
 
 #include <serialize.h>
 #include <vector>
@@ -46,4 +46,4 @@ struct KeyOriginInfo
     }
 };
 
-#endif // bitpulse_SCRIPT_KEYORIGIN_H
+#endif // bitpulsed_SCRIPT_KEYORIGIN_H

@@ -1,9 +1,9 @@
-// Copyright (c) 2019-2022 The Bitpulse Core developers
+// Copyright (c) 2019-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_WALLET_SCRIPTPUBKEYMAN_H
-#define bitpulse_WALLET_SCRIPTPUBKEYMAN_H
+#ifndef bitpulsed_WALLET_SCRIPTPUBKEYMAN_H
+#define bitpulsed_WALLET_SCRIPTPUBKEYMAN_H
 
 #include <addresstype.h>
 #include <logging.h>
@@ -70,7 +70,7 @@ std::vector<CKeyID> GetAffectedKeys(const CScript& spk, const SigningProvider& p
  * are sets of keys that have not yet been used to provide addresses or receive
  * change.
  *
- * The Bitpulse Core wallet was originally a collection of unrelated private
+ * The bitpulsed Core wallet was originally a collection of unrelated private
  * keys with their associated addresses. If a non-HD wallet generated a
  * key/address, gave that address out and then restored a backup from before
  * that key's generation, then any funds sent to that address would be
@@ -687,4 +687,4 @@ struct MigrationData
 
 } // namespace wallet
 
-#endif // bitpulse_WALLET_SCRIPTPUBKEYMAN_H
+#endif // bitpulsed_WALLET_SCRIPTPUBKEYMAN_H

@@ -1,9 +1,9 @@
-// Copyright (c) 2019-2021 The Bitpulse Core developers
+// Copyright (c) 2019-2021 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_NODE_COIN_H
-#define bitpulse_NODE_COIN_H
+#ifndef bitpulsed_NODE_COIN_H
+#define bitpulsed_NODE_COIN_H
 
 #include <map>
 
@@ -24,4 +24,4 @@ struct NodeContext;
 void FindCoins(const node::NodeContext& node, std::map<COutPoint, Coin>& coins);
 } // namespace node
 
-#endif // bitpulse_NODE_COIN_H
+#endif // bitpulsed_NODE_COIN_H

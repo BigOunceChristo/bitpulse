@@ -1,4 +1,4 @@
-// Copyright (c) The Bitpulse Core developers
+// Copyright (c) The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://opensource.org/license/mit/.
 

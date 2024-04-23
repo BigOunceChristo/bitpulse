@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[o:bitpulse:p:bitpulse:r:qt-translation-027x]
-file_filter = src/qt/locale/bitpulse_<lang>.xlf
-source_file = src/qt/locale/bitpulse_en.xlf
+[o:bitpulsed:p:bitpulsed:r:qt-translation-027x]
+file_filter = src/qt/locale/bitpulsed_<lang>.xlf
+source_file = src/qt/locale/bitpulsed_en.xlf
 source_lang = en

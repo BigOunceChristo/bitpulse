@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+#
+#  bitpulsed The bitpulsed core server.
+#
+#
+# chkconfig: 345 80 20
+# description: bitpulsed
+# processname: bitpulsed
+#
+
+# Source function library.
+. /etc/init.d/functions
+
+# you can override defaults in /etc/sysconfig/bitpulsed, see below
+if [ -f /etc/sysconfig/bitpulsed ]; then
+        . /etc/sysconfig/bitpulsed
+fi
+
+RETVAL=0
+
+prog=bitpulsed
+# you can override the lockfile via bitpulsed_LOCKFILE in /etc/sysconfig/bitpulsed
+lockfile=${bitpulsed_LOCKFILE-/var/lock/subsys/bitpulsed}
+
+# bitpulsed defaults to /usr/bin/bitpulsed, override with bitpulsed_BIN
+bitpulsed=${bitpulsed_BIN-/usr/bin/bitpulsed}
+
+# bitpulsed opts default to -disablewallet, override with bitpulsed_OPTS
+bitpulsed_opts=${bitpulsed_OPTS--disablewallet}
+
+start() {
+    echo -n $"Starting $prog: "
+    daemon $DAEMONOPTS $bitpulsed $bitpulsed_opts
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && touch $lockfile
+    return $RETVAL
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog -t600
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && rm -f $lockfile
+    return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status $prog
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: service $prog {start|stop|status|restart}"
+        exit 1
+        ;;
+esac

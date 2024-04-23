@@ -1,9 +1,10 @@
-// Copyright (c) 2018-2022 The Bitpulse Core developers
-// Distributed under the MIT software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+// Copyright (c) 2018-2022 The bitpulsed Core Developers
+// This project is derived from the Bitcoin Core Project, originally licensed under the MIT license.
+// See the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php for details.
 
-#ifndef bitpulse_BLOCKFILTER_H
-#define bitpulse_BLOCKFILTER_H
+
+#ifndef bitpulsed_BLOCKFILTER_H
+#define bitpulsed_BLOCKFILTER_H
 
 #include <cstddef>
 #include <cstdint>
@@ -172,4 +173,4 @@ public:
     }
 };
 
-#endif // bitpulse_BLOCKFILTER_H
+#endif // bitpulsed_BLOCKFILTER_H

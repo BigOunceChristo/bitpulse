@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-# Copyright (c) 2020-2021 The bitpulse Core developers
+# Copyright (c) 2020-2021 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
-"""Script for verifying bitpulse Core release binaries.
+"""Script for verifying bitpulsed Core release binaries.
 
 This script attempts to download the sum file SHA256SUMS and corresponding
-signature file SHA256SUMS.asc from bitpulsecore.org and bitpulse.org and
+signature file SHA256SUMS.asc from bitpulsedcore.org and bitpulsed.org and
 compares them.
 
 The sum-signature file is signed by a number of builder keys. This script
@@ -46,9 +46,9 @@ from hashlib import sha256
 from pathlib import PurePath, Path
 
 # The primary host; this will fail if we can't retrieve files from here.
-HOST1 = "https://bitpulsecore.org"
-HOST2 = "https://bitpulse.org"
-VERSIONPREFIX = "bitpulse-core-"
+HOST1 = "https://bitpulsedcore.org"
+HOST2 = "https://bitpulsed.org"
+VERSIONPREFIX = "bitpulsed-core-"
 SUMS_FILENAME = 'SHA256SUMS'
 SIGNATUREFILENAME = f"{SUMS_FILENAME}.asc"
 
@@ -384,7 +384,7 @@ def verify_shasums_signature(
 
     # Decide which keys we trust, though not "trust" in the GPG sense, but rather
     # which pubkeys convince us that this sums file is legitimate. In other words,
-    # which pubkeys within the bitpulse community do we trust for the purposes of
+    # which pubkeys within the bitpulsed community do we trust for the purposes of
     # binary verification?
     trusted_keys = set()
     if args.trusted_keys:
@@ -459,7 +459,7 @@ def verify_binary_hashes(hashes_to_verify: list[list[str]]) -> tuple[ReturnCode,
 
 
 def verify_published_handler(args: argparse.Namespace) -> ReturnCode:
-    WORKINGDIR = Path(tempfile.gettempdir()) / f"bitpulse_verify_binaries.{args.version}"
+    WORKINGDIR = Path(tempfile.gettempdir()) / f"bitpulsed_verify_binaries.{args.version}"
 
     def cleanup():
         log.info("cleaning up files")
@@ -517,7 +517,7 @@ def verify_published_handler(args: argparse.Namespace) -> ReturnCode:
         log.error("no files matched the platform specified")
         return ReturnCode.NO_BINARIES_MATCH
 
-    # remove binaries that are known not to be hosted by bitpulsecore.org
+    # remove binaries that are known not to be hosted by bitpulsedcore.org
     fragments_to_remove = ['-unsigned', '-debug', '-codesignatures']
     for fragment in fragments_to_remove:
         nobinaries = [i for i in hashes_to_verify if fragment in i[1]]
@@ -677,7 +677,7 @@ def main():
     pub_parser.set_defaults(func=verify_published_handler)
     pub_parser.add_argument(
         'version', type=str, help=(
-            f'version of the bitpulse release to download; of the format '
+            f'version of the bitpulsed release to download; of the format '
             f'{VERSION_FORMAT}. Example: {VERSION_EXAMPLE}')
     )
     pub_parser.add_argument(
@@ -690,7 +690,7 @@ def main():
         default=bool_from_env('BINVERIFY_REQUIRE_ALL_HOSTS'),
         help=(
             f'If set, require all hosts ({HOST1}, {HOST2}) to provide signatures. '
-            '(Sometimes bitpulse.org lags behind bitpulsecore.org.)')
+            '(Sometimes bitpulsed.org lags behind bitpulsedcore.org.)')
     )
 
     bin_parser = subparsers.add_parser("bin", help="Verify local binaries.")

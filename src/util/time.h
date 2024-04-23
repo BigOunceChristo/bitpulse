@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2022 The Bitpulse Core developers
+// Copyright (c) 2009-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_UTIL_TIME_H
-#define bitpulse_UTIL_TIME_H
+#ifndef bitpulsed_UTIL_TIME_H
+#define bitpulsed_UTIL_TIME_H
 
 #include <chrono> // IWYU pragma: export
 #include <cstdint>
@@ -119,4 +119,4 @@ struct timeval MillisToTimeval(std::chrono::milliseconds ms);
 /** Sanity check epoch match normal Unix epoch */
 bool ChronoSanityCheck();
 
-#endif // bitpulse_UTIL_TIME_H
+#endif // bitpulsed_UTIL_TIME_H

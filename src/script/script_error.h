@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2020 The Bitpulse Core developers
+// Copyright (c) 2009-2020 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_SCRIPT_SCRIPT_ERROR_H
-#define bitpulse_SCRIPT_SCRIPT_ERROR_H
+#ifndef bitpulsed_SCRIPT_SCRIPT_ERROR_H
+#define bitpulsed_SCRIPT_SCRIPT_ERROR_H
 
 #include <string>
 
@@ -89,4 +89,4 @@ typedef enum ScriptError_t
 
 std::string ScriptErrorString(const ScriptError error);
 
-#endif // bitpulse_SCRIPT_SCRIPT_ERROR_H
+#endif // bitpulsed_SCRIPT_SCRIPT_ERROR_H

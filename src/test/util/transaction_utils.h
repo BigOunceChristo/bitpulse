@@ -1,9 +1,9 @@
-// Copyright (c) 2019-2020 The Bitpulse Core developers
+// Copyright (c) 2019-2020 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_TEST_UTIL_TRANSACTION_UTILS_H
-#define bitpulse_TEST_UTIL_TRANSACTION_UTILS_H
+#ifndef bitpulsed_TEST_UTIL_TRANSACTION_UTILS_H
+#define bitpulsed_TEST_UTIL_TRANSACTION_UTILS_H
 
 #include <primitives/transaction.h>
 
@@ -26,4 +26,4 @@ CMutableTransaction BuildSpendingTransaction(const CScript& scriptSig, const CSc
 // the second nValues[2] and nValues[3] outputs paid to a TxoutType::PUBKEYHASH.
 std::vector<CMutableTransaction> SetupDummyInputs(FillableSigningProvider& keystoreRet, CCoinsViewCache& coinsRet, const std::array<CAmount,4>& nValues);
 
-#endif // bitpulse_TEST_UTIL_TRANSACTION_UTILS_H
+#endif // bitpulsed_TEST_UTIL_TRANSACTION_UTILS_H

@@ -1,9 +1,9 @@
-// Copyright (c) 2022 The Bitpulse Core developers
+// Copyright (c) 2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_KERNEL_CHAINSTATEMANAGER_OPTS_H
-#define bitpulse_KERNEL_CHAINSTATEMANAGER_OPTS_H
+#ifndef bitpulsed_KERNEL_CHAINSTATEMANAGER_OPTS_H
+#define bitpulsed_KERNEL_CHAINSTATEMANAGER_OPTS_H
 
 #include <kernel/notifications_interface.h>
 
@@ -52,4 +52,4 @@ struct ChainstateManagerOpts {
 
 } // namespace kernel
 
-#endif // bitpulse_KERNEL_CHAINSTATEMANAGER_OPTS_H
+#endif // bitpulsed_KERNEL_CHAINSTATEMANAGER_OPTS_H

@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-# Copyright (c) 2018-2022 The bitpulse Core developers
+# Copyright (c) 2018-2022 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Check that it's not possible to start a second bitpulsed instance using the same datadir or wallet."""
 import random
 import string
 
-from test_framework.test_framework import bitpulseTestFramework
+from test_framework.test_framework import bitpulsedTestFramework
 from test_framework.test_node import ErrorMatch
 
-class FilelockTest(bitpulseTestFramework):
+class FilelockTest(bitpulsedTestFramework):
     def add_options(self, parser):
         self.add_wallet_options(parser)
 

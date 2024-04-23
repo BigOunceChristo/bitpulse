@@ -5,7 +5,7 @@ Upstart: bitpulsed.conf
 OpenRC:  bitpulsed.openrc
          bitpulsed.openrcconf
 CentOS:  bitpulsed.init
-macOS:   org.bitpulse.bitpulsed.plist
+macOS:   org.bitpulsed.bitpulsed.plist
 ```
 have been made available to assist packagers in creating node packages here.
 

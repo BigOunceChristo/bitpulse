@@ -1,9 +1,9 @@
-// Copyright (c) 2016-2021 The Bitpulse Core developers
+// Copyright (c) 2016-2021 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_WALLET_WALLETTOOL_H
-#define bitpulse_WALLET_WALLETTOOL_H
+#ifndef bitpulsed_WALLET_WALLETTOOL_H
+#define bitpulsed_WALLET_WALLETTOOL_H
 
 #include <string>
 
@@ -17,4 +17,4 @@ bool ExecuteWalletToolFunc(const ArgsManager& args, const std::string& command);
 } // namespace WalletTool
 } // namespace wallet
 
-#endif // bitpulse_WALLET_WALLETTOOL_H
+#endif // bitpulsed_WALLET_WALLETTOOL_H

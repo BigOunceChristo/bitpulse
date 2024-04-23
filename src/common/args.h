@@ -1,9 +1,9 @@
-// Copyright (c) 2023 The Bitpulse Core developers
+// Copyright (c) 2023 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_COMMON_ARGS_H
-#define bitpulse_COMMON_ARGS_H
+#ifndef bitpulsed_COMMON_ARGS_H
+#define bitpulsed_COMMON_ARGS_H
 
 #include <common/settings.h>
 #include <compat/compat.h>
@@ -23,8 +23,8 @@
 
 class ArgsManager;
 
-extern const char * const bitpulse_CONF_FILENAME;
-extern const char * const bitpulse_SETTINGS_FILENAME;
+extern const char * const bitpulsed_CONF_FILENAME;
+extern const char * const bitpulsed_SETTINGS_FILENAME;
 
 // Return true if -datadir option points to a valid directory or is not specified.
 bool CheckDataDirOption(const ArgsManager& args);
@@ -486,4 +486,4 @@ private:
 #endif
 } // namespace common
 
-#endif // bitpulse_COMMON_ARGS_H
+#endif // bitpulsed_COMMON_ARGS_H

@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2020 The Bitpulse Core developers
+// Copyright (c) 2011-2020 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -101,7 +101,7 @@ private:
     QString formatTxDate(const TransactionRecord *wtx) const;
     QString formatTxType(const TransactionRecord *wtx) const;
     QString formatTxToAddress(const TransactionRecord *wtx, bool tooltip) const;
-    QString formatTxAmount(const TransactionRecord *wtx, bool showUnconfirmed=true, BitpulseUnits::SeparatorStyle separators=BitpulseUnits::SeparatorStyle::STANDARD) const;
+    QString formatTxAmount(const TransactionRecord *wtx, bool showUnconfirmed=true, bitpulseUnits::SeparatorStyle separators=bitpulseUnits::SeparatorStyle::STANDARD) const;
     QString formatTooltip(const TransactionRecord *rec) const;
     QVariant txStatusDecoration(const TransactionRecord *wtx) const;
     QVariant txWatchonlyDecoration(const TransactionRecord *wtx) const;

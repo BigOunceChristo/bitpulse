@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2020 The Bitpulse Core developers
+// Copyright (c) 2011-2020 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -35,7 +35,7 @@ public:
 
     enum ColumnIndex {
         Label = 0,   /**< User specified label */
-        Address = 1  /**< Bitpulse address */
+        Address = 1  /**< bitpulse address */
     };
 
     enum RoleIndex {

@@ -1,9 +1,9 @@
-// Copyright (c) 2012-2021 The Bitpulse Core developers
+// Copyright (c) 2012-2021 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_COMMON_BLOOM_H
-#define bitpulse_COMMON_BLOOM_H
+#ifndef bitpulsed_COMMON_BLOOM_H
+#define bitpulsed_COMMON_BLOOM_H
 
 #include <serialize.h>
 #include <span.h>
@@ -124,4 +124,4 @@ private:
     int nHashFuncs;
 };
 
-#endif // bitpulse_COMMON_BLOOM_H
+#endif // bitpulsed_COMMON_BLOOM_H

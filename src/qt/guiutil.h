@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2022 The Bitpulse Core developers
+// Copyright (c) 2011-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -52,7 +52,7 @@ class QUrl;
 class QWidget;
 QT_END_NAMESPACE
 
-/** Utility functions used by the Bitpulse Qt UI.
+/** Utility functions used by the bitpulse Qt UI.
  */
 namespace GUIUtil
 {
@@ -78,9 +78,9 @@ namespace GUIUtil
     void AddButtonShortcut(QAbstractButton* button, const QKeySequence& shortcut);
 
     // Parse "bitpulse:" URI into recipient object, return true on successful parsing
-    bool parseBitpulseURI(const QUrl &uri, SendCoinsRecipient *out);
-    bool parseBitpulseURI(QString uri, SendCoinsRecipient *out);
-    QString formatBitpulseURI(const SendCoinsRecipient &info);
+    bool parsebitpulseURI(const QUrl &uri, SendCoinsRecipient *out);
+    bool parsebitpulseURI(QString uri, SendCoinsRecipient *out);
+    QString formatbitpulseURI(const SendCoinsRecipient &info);
 
     // Returns true if given address+amount meets "dust" definition
     bool isDust(interfaces::Node& node, const QString& address, const CAmount& amount);
@@ -178,7 +178,7 @@ namespace GUIUtil
     void openDebugLogfile();
 
     // Open the config file
-    bool openBitpulseConf();
+    bool openbitpulseConf();
 
     /** Qt event filter that intercepts ToolTipChange events, and replaces the tooltip with a rich text
       representation if needed. This assures that Qt can word-wrap long tooltip messages.

@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2022 The Bitpulse Core developers
+// Copyright (c) 2011-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -26,7 +26,7 @@ class TransactionDesc: public QObject
     Q_OBJECT
 
 public:
-    static QString toHTML(interfaces::Node& node, interfaces::Wallet& wallet, TransactionRecord* rec, BitpulseUnit unit);
+    static QString toHTML(interfaces::Node& node, interfaces::Wallet& wallet, TransactionRecord* rec, bitpulseUnit unit);
 
 private:
     TransactionDesc() {}

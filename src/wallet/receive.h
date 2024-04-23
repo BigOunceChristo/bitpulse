@@ -1,9 +1,9 @@
-// Copyright (c) 2021-2022 The Bitpulse Core developers
+// Copyright (c) 2021-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_WALLET_RECEIVE_H
-#define bitpulse_WALLET_RECEIVE_H
+#ifndef bitpulsed_WALLET_RECEIVE_H
+#define bitpulsed_WALLET_RECEIVE_H
 
 #include <consensus/amount.h>
 #include <wallet/transaction.h>
@@ -62,4 +62,4 @@ std::map<CTxDestination, CAmount> GetAddressBalances(const CWallet& wallet);
 std::set<std::set<CTxDestination>> GetAddressGroupings(const CWallet& wallet) EXCLUSIVE_LOCKS_REQUIRED(wallet.cs_wallet);
 } // namespace wallet
 
-#endif // bitpulse_WALLET_RECEIVE_H
+#endif // bitpulsed_WALLET_RECEIVE_H

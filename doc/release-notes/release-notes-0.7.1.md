@@ -1,5 +1,5 @@
-bitpulse version 0.7.1 is now available from:
-  http://sourceforge.net/projects/bitpulse/files/bitpulse/bitpulse-0.7.1/
+bitpulsed version 0.7.1 is now available from:
+  http://sourceforge.net/projects/bitcoin/files/bitcoin/bitcoin-0.7.1/
 
 This is a bug-fix minor release.
 
@@ -14,10 +14,10 @@ source-only tarballs/zipballs directly from there:
 Ubuntu Linux users can use the "Personal Package Archive" (PPA)
 maintained by Matt Corallo to automatically keep 
 up-to-date.  Just type:
-  sudo apt-add-repository ppa:bitpulse/bitpulse
+  sudo apt-add-repository ppa:bitpulsed/bitpulsed
   sudo apt-get update
-in your terminal, then install the bitpulse-qt package:
-  sudo apt-get install bitpulse-qt
+in your terminal, then install the bitpulsed-qt package:
+  sudo apt-get install bitpulsed-qt
 
 KNOWN ISSUES
 ------------
@@ -30,7 +30,7 @@ How to Upgrade
 If you are running an older version, shut it down. Wait
 until it has completely shut down (which might take a few minutes for older
 versions), then run the installer (on Windows) or just copy over
-/Applications/bitpulse-Qt (on Mac) or bitpulsed/bitpulse-qt (on Linux).
+/Applications/bitpulsed-Qt (on Mac) or bitpulsed/bitpulsed-qt (on Linux).
 
 If you were running on Linux with a version that might have been compiled
 with a different version of Berkeley DB (for example, if you were using an
@@ -75,7 +75,7 @@ Dependency changes
 Bug fixes
 ---------
 
-* Clicking on a bitpulse: URI on Windows should now launch bitpulse-Qt properly.
+* Clicking on a bitpulsed: URI on Windows should now launch bitpulsed-Qt properly.
 
 * When running -testnet, use RPC port 18332 by default.
 

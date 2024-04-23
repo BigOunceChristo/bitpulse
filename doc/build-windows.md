@@ -1,9 +1,9 @@
 WINDOWS BUILD NOTES
 ====================
 
-Below are some notes on how to build bitpulse Core for Windows.
+Below are some notes on how to build bitpulsed Core for Windows.
 
-The options known to work for building bitpulse Core on Windows are:
+The options known to work for building bitpulsed Core on Windows are:
 
 * On Linux, using the [Mingw-w64](https://www.mingw-w64.org/) cross compiler tool chain.
 * On Windows, using [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/about) and Mingw-w64.
@@ -43,7 +43,7 @@ If you want to build the windows installer with `make deploy` you need [NSIS](ht
 Acquire the source in the usual way:
 
     git clone https://github.com/bitcoin/bitcoin.git
-    cd bitpulse
+    cd bitpulsed
 
 ## Building for 64-bit Windows
 
@@ -55,8 +55,8 @@ sudo apt install g++-mingw-w64-x86-64-posix
 
 Once the toolchain is installed the build steps are common:
 
-Note that for WSL the bitpulse Core source path MUST be somewhere in the default mount file system, for
-example /usr/src/bitpulse, AND not under /mnt/d/. If this is not the case the dependency autoconf scripts will fail.
+Note that for WSL the bitpulsed Core source path MUST be somewhere in the default mount file system, for
+example /usr/src/bitpulsed, AND not under /mnt/d/. If this is not the case the dependency autoconf scripts will fail.
 This means you cannot use a directory that is located directly on the host Windows file system to perform the build.
 
 Additional WSL Note: WSL support for [launching Win32 applications](https://learn.microsoft.com/en-us/archive/blogs/wsl/windows-and-ubuntu-interoperability#launching-win32-applications-from-within-wsl)
@@ -86,9 +86,9 @@ Installation
 After building using the Windows subsystem it can be useful to copy the compiled
 executables to a directory on the Windows drive in the same directory structure
 as they appear in the release `.zip` archive. This can be done in the following
-way. This will install to `c:\workspace\bitpulse`, for example:
+way. This will install to `c:\workspace\bitpulsed`, for example:
 
-    make install DESTDIR=/mnt/c/workspace/bitpulse
+    make install DESTDIR=/mnt/c/workspace/bitpulsed
 
 You can also create an installer using:
 

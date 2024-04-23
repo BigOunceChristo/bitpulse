@@ -1,9 +1,9 @@
-// Copyright (c) 2011-2022 The Bitpulse Core developers
+// Copyright (c) 2011-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include <config/bitpulse-config.h>
+#include <config/bitpulsed-config.h>
 #endif
 
 #include <test/data/script_tests.json.h>
@@ -28,7 +28,7 @@
 #include <util/strencodings.h>
 
 #if defined(HAVE_CONSENSUS_LIB)
-#include <script/bitpulseconsensus.h>
+#include <script/bitpulsedconsensus.h>
 #endif
 
 #include <cstdint>
@@ -147,14 +147,14 @@ void DoTest(const CScript& scriptPubKey, const CScript& scriptSig, const CScript
 #if defined(HAVE_CONSENSUS_LIB)
     DataStream stream;
     stream << TX_WITH_WITNESS(tx2);
-    uint32_t libconsensus_flags{flags & bitpulseconsensus_SCRIPT_FLAGS_VERIFY_ALL};
+    uint32_t libconsensus_flags{flags & bitpulsedconsensus_SCRIPT_FLAGS_VERIFY_ALL};
     if (libconsensus_flags == flags) {
         int expectedSuccessCode = expect ? 1 : 0;
-        if (flags & bitpulseconsensus_SCRIPT_FLAGS_VERIFY_WITNESS) {
-            BOOST_CHECK_MESSAGE(bitpulseconsensus_verify_script_with_amount(scriptPubKey.data(), scriptPubKey.size(), txCredit.vout[0].nValue, UCharCast(stream.data()), stream.size(), 0, libconsensus_flags, nullptr) == expectedSuccessCode, message);
+        if (flags & bitpulsedconsensus_SCRIPT_FLAGS_VERIFY_WITNESS) {
+            BOOST_CHECK_MESSAGE(bitpulsedconsensus_verify_script_with_amount(scriptPubKey.data(), scriptPubKey.size(), txCredit.vout[0].nValue, UCharCast(stream.data()), stream.size(), 0, libconsensus_flags, nullptr) == expectedSuccessCode, message);
         } else {
-            BOOST_CHECK_MESSAGE(bitpulseconsensus_verify_script_with_amount(scriptPubKey.data(), scriptPubKey.size(), 0, UCharCast(stream.data()), stream.size(), 0, libconsensus_flags, nullptr) == expectedSuccessCode, message);
-            BOOST_CHECK_MESSAGE(bitpulseconsensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), UCharCast(stream.data()), stream.size(), 0, libconsensus_flags, nullptr) == expectedSuccessCode, message);
+            BOOST_CHECK_MESSAGE(bitpulsedconsensus_verify_script_with_amount(scriptPubKey.data(), scriptPubKey.size(), 0, UCharCast(stream.data()), stream.size(), 0, libconsensus_flags, nullptr) == expectedSuccessCode, message);
+            BOOST_CHECK_MESSAGE(bitpulsedconsensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), UCharCast(stream.data()), stream.size(), 0, libconsensus_flags, nullptr) == expectedSuccessCode, message);
         }
     }
 #endif
@@ -1500,8 +1500,8 @@ static CScriptWitness ScriptWitnessFromJSON(const UniValue& univalue)
 
 #if defined(HAVE_CONSENSUS_LIB)
 
-/* Test simple (successful) usage of bitpulseconsensus_verify_script */
-BOOST_AUTO_TEST_CASE(bitpulseconsensus_verify_script_returns_true)
+/* Test simple (successful) usage of bitpulsedconsensus_verify_script */
+BOOST_AUTO_TEST_CASE(bitpulsedconsensus_verify_script_returns_true)
 {
     unsigned int libconsensus_flags = 0;
     int nIn = 0;
@@ -1517,14 +1517,14 @@ BOOST_AUTO_TEST_CASE(bitpulseconsensus_verify_script_returns_true)
     DataStream stream;
     stream << TX_WITH_WITNESS(spendTx);
 
-    bitpulseconsensus_error err;
-    int result = bitpulseconsensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), UCharCast(stream.data()), stream.size(), nIn, libconsensus_flags, &err);
+    bitpulsedconsensus_error err;
+    int result = bitpulsedconsensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), UCharCast(stream.data()), stream.size(), nIn, libconsensus_flags, &err);
     BOOST_CHECK_EQUAL(result, 1);
-    BOOST_CHECK_EQUAL(err, bitpulseconsensus_ERR_OK);
+    BOOST_CHECK_EQUAL(err, bitpulsedconsensus_ERR_OK);
 }
 
-/* Test bitpulseconsensus_verify_script returns invalid tx index err*/
-BOOST_AUTO_TEST_CASE(bitpulseconsensus_verify_script_tx_index_err)
+/* Test bitpulsedconsensus_verify_script returns invalid tx index err*/
+BOOST_AUTO_TEST_CASE(bitpulsedconsensus_verify_script_tx_index_err)
 {
     unsigned int libconsensus_flags = 0;
     int nIn = 3;
@@ -1540,14 +1540,14 @@ BOOST_AUTO_TEST_CASE(bitpulseconsensus_verify_script_tx_index_err)
     DataStream stream;
     stream << TX_WITH_WITNESS(spendTx);
 
-    bitpulseconsensus_error err;
-    int result = bitpulseconsensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), UCharCast(stream.data()), stream.size(), nIn, libconsensus_flags, &err);
+    bitpulsedconsensus_error err;
+    int result = bitpulsedconsensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), UCharCast(stream.data()), stream.size(), nIn, libconsensus_flags, &err);
     BOOST_CHECK_EQUAL(result, 0);
-    BOOST_CHECK_EQUAL(err, bitpulseconsensus_ERR_TX_INDEX);
+    BOOST_CHECK_EQUAL(err, bitpulsedconsensus_ERR_TX_INDEX);
 }
 
-/* Test bitpulseconsensus_verify_script returns tx size mismatch err*/
-BOOST_AUTO_TEST_CASE(bitpulseconsensus_verify_script_tx_size)
+/* Test bitpulsedconsensus_verify_script returns tx size mismatch err*/
+BOOST_AUTO_TEST_CASE(bitpulsedconsensus_verify_script_tx_size)
 {
     unsigned int libconsensus_flags = 0;
     int nIn = 0;
@@ -1563,14 +1563,14 @@ BOOST_AUTO_TEST_CASE(bitpulseconsensus_verify_script_tx_size)
     DataStream stream;
     stream << TX_WITH_WITNESS(spendTx);
 
-    bitpulseconsensus_error err;
-    int result = bitpulseconsensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), UCharCast(stream.data()), stream.size() * 2, nIn, libconsensus_flags, &err);
+    bitpulsedconsensus_error err;
+    int result = bitpulsedconsensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), UCharCast(stream.data()), stream.size() * 2, nIn, libconsensus_flags, &err);
     BOOST_CHECK_EQUAL(result, 0);
-    BOOST_CHECK_EQUAL(err, bitpulseconsensus_ERR_TX_SIZE_MISMATCH);
+    BOOST_CHECK_EQUAL(err, bitpulsedconsensus_ERR_TX_SIZE_MISMATCH);
 }
 
-/* Test bitpulseconsensus_verify_script returns invalid tx serialization error */
-BOOST_AUTO_TEST_CASE(bitpulseconsensus_verify_script_tx_serialization)
+/* Test bitpulsedconsensus_verify_script returns invalid tx serialization error */
+BOOST_AUTO_TEST_CASE(bitpulsedconsensus_verify_script_tx_serialization)
 {
     unsigned int libconsensus_flags = 0;
     int nIn = 0;
@@ -1586,16 +1586,16 @@ BOOST_AUTO_TEST_CASE(bitpulseconsensus_verify_script_tx_serialization)
     DataStream stream;
     stream << 0xffffffff;
 
-    bitpulseconsensus_error err;
-    int result = bitpulseconsensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), UCharCast(stream.data()), stream.size(), nIn, libconsensus_flags, &err);
+    bitpulsedconsensus_error err;
+    int result = bitpulsedconsensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), UCharCast(stream.data()), stream.size(), nIn, libconsensus_flags, &err);
     BOOST_CHECK_EQUAL(result, 0);
-    BOOST_CHECK_EQUAL(err, bitpulseconsensus_ERR_TX_DESERIALIZE);
+    BOOST_CHECK_EQUAL(err, bitpulsedconsensus_ERR_TX_DESERIALIZE);
 }
 
-/* Test bitpulseconsensus_verify_script returns amount required error */
-BOOST_AUTO_TEST_CASE(bitpulseconsensus_verify_script_amount_required_err)
+/* Test bitpulsedconsensus_verify_script returns amount required error */
+BOOST_AUTO_TEST_CASE(bitpulsedconsensus_verify_script_amount_required_err)
 {
-    unsigned int libconsensus_flags = bitpulseconsensus_SCRIPT_FLAGS_VERIFY_WITNESS;
+    unsigned int libconsensus_flags = bitpulsedconsensus_SCRIPT_FLAGS_VERIFY_WITNESS;
     int nIn = 0;
 
     CScript scriptPubKey;
@@ -1609,14 +1609,14 @@ BOOST_AUTO_TEST_CASE(bitpulseconsensus_verify_script_amount_required_err)
     DataStream stream;
     stream << TX_WITH_WITNESS(spendTx);
 
-    bitpulseconsensus_error err;
-    int result = bitpulseconsensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), UCharCast(stream.data()), stream.size(), nIn, libconsensus_flags, &err);
+    bitpulsedconsensus_error err;
+    int result = bitpulsedconsensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), UCharCast(stream.data()), stream.size(), nIn, libconsensus_flags, &err);
     BOOST_CHECK_EQUAL(result, 0);
-    BOOST_CHECK_EQUAL(err, bitpulseconsensus_ERR_AMOUNT_REQUIRED);
+    BOOST_CHECK_EQUAL(err, bitpulsedconsensus_ERR_AMOUNT_REQUIRED);
 }
 
-/* Test bitpulseconsensus_verify_script returns invalid flags err */
-BOOST_AUTO_TEST_CASE(bitpulseconsensus_verify_script_invalid_flags)
+/* Test bitpulsedconsensus_verify_script returns invalid flags err */
+BOOST_AUTO_TEST_CASE(bitpulsedconsensus_verify_script_invalid_flags)
 {
     unsigned int libconsensus_flags = 1 << 3;
     int nIn = 0;
@@ -1632,16 +1632,16 @@ BOOST_AUTO_TEST_CASE(bitpulseconsensus_verify_script_invalid_flags)
     DataStream stream;
     stream << TX_WITH_WITNESS(spendTx);
 
-    bitpulseconsensus_error err;
-    int result = bitpulseconsensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), UCharCast(stream.data()), stream.size(), nIn, libconsensus_flags, &err);
+    bitpulsedconsensus_error err;
+    int result = bitpulsedconsensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), UCharCast(stream.data()), stream.size(), nIn, libconsensus_flags, &err);
     BOOST_CHECK_EQUAL(result, 0);
-    BOOST_CHECK_EQUAL(err, bitpulseconsensus_ERR_INVALID_FLAGS);
+    BOOST_CHECK_EQUAL(err, bitpulsedconsensus_ERR_INVALID_FLAGS);
 }
 
-/* Test bitpulseconsensus_verify_script returns spent outputs required err */
-BOOST_AUTO_TEST_CASE(bitpulseconsensus_verify_script_spent_outputs_required_err)
+/* Test bitpulsedconsensus_verify_script returns spent outputs required err */
+BOOST_AUTO_TEST_CASE(bitpulsedconsensus_verify_script_spent_outputs_required_err)
 {
-    unsigned int libconsensus_flags{bitpulseconsensus_SCRIPT_FLAGS_VERIFY_TAPROOT};
+    unsigned int libconsensus_flags{bitpulsedconsensus_SCRIPT_FLAGS_VERIFY_TAPROOT};
     const int nIn{0};
 
     CScript scriptPubKey;
@@ -1655,18 +1655,18 @@ BOOST_AUTO_TEST_CASE(bitpulseconsensus_verify_script_spent_outputs_required_err)
     DataStream stream;
     stream << TX_WITH_WITNESS(spendTx);
 
-    bitpulseconsensus_error err;
-    int result{bitpulseconsensus_verify_script_with_spent_outputs(scriptPubKey.data(), scriptPubKey.size(), creditTx.vout[0].nValue, UCharCast(stream.data()), stream.size(), nullptr, 0, nIn, libconsensus_flags, &err)};
+    bitpulsedconsensus_error err;
+    int result{bitpulsedconsensus_verify_script_with_spent_outputs(scriptPubKey.data(), scriptPubKey.size(), creditTx.vout[0].nValue, UCharCast(stream.data()), stream.size(), nullptr, 0, nIn, libconsensus_flags, &err)};
     BOOST_CHECK_EQUAL(result, 0);
-    BOOST_CHECK_EQUAL(err, bitpulseconsensus_ERR_SPENT_OUTPUTS_REQUIRED);
+    BOOST_CHECK_EQUAL(err, bitpulsedconsensus_ERR_SPENT_OUTPUTS_REQUIRED);
 
-    result = bitpulseconsensus_verify_script_with_amount(scriptPubKey.data(), scriptPubKey.size(), creditTx.vout[0].nValue, UCharCast(stream.data()), stream.size(), nIn, libconsensus_flags, &err);
+    result = bitpulsedconsensus_verify_script_with_amount(scriptPubKey.data(), scriptPubKey.size(), creditTx.vout[0].nValue, UCharCast(stream.data()), stream.size(), nIn, libconsensus_flags, &err);
     BOOST_CHECK_EQUAL(result, 0);
-    BOOST_CHECK_EQUAL(err, bitpulseconsensus_ERR_SPENT_OUTPUTS_REQUIRED);
+    BOOST_CHECK_EQUAL(err, bitpulsedconsensus_ERR_SPENT_OUTPUTS_REQUIRED);
 
-    result = bitpulseconsensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), UCharCast(stream.data()), stream.size(), nIn, libconsensus_flags, &err);
+    result = bitpulsedconsensus_verify_script(scriptPubKey.data(), scriptPubKey.size(), UCharCast(stream.data()), stream.size(), nIn, libconsensus_flags, &err);
     BOOST_CHECK_EQUAL(result, 0);
-    BOOST_CHECK_EQUAL(err, bitpulseconsensus_ERR_SPENT_OUTPUTS_REQUIRED);
+    BOOST_CHECK_EQUAL(err, bitpulsedconsensus_ERR_SPENT_OUTPUTS_REQUIRED);
 }
 
 #endif // defined(HAVE_CONSENSUS_LIB)
@@ -1737,7 +1737,7 @@ static void AssetTest(const UniValue& test)
                 bool ret = VerifyScript(tx.vin[idx].scriptSig, prevouts[idx].scriptPubKey, &tx.vin[idx].scriptWitness, flags, txcheck, nullptr);
                 BOOST_CHECK(ret);
 #if defined(HAVE_CONSENSUS_LIB)
-                int lib_ret = bitpulseconsensus_verify_script_with_spent_outputs(prevouts[idx].scriptPubKey.data(), prevouts[idx].scriptPubKey.size(), prevouts[idx].nValue, UCharCast(stream.data()), stream.size(), utxos.data(), utxos.size(), idx, flags, nullptr);
+                int lib_ret = bitpulsedconsensus_verify_script_with_spent_outputs(prevouts[idx].scriptPubKey.data(), prevouts[idx].scriptPubKey.size(), prevouts[idx].nValue, UCharCast(stream.data()), stream.size(), utxos.data(), utxos.size(), idx, flags, nullptr);
                 BOOST_CHECK(lib_ret == 1);
 #endif
             }
@@ -1770,7 +1770,7 @@ static void AssetTest(const UniValue& test)
                 bool ret = VerifyScript(tx.vin[idx].scriptSig, prevouts[idx].scriptPubKey, &tx.vin[idx].scriptWitness, flags, txcheck, nullptr);
                 BOOST_CHECK(!ret);
 #if defined(HAVE_CONSENSUS_LIB)
-                int lib_ret = bitpulseconsensus_verify_script_with_spent_outputs(prevouts[idx].scriptPubKey.data(), prevouts[idx].scriptPubKey.size(), prevouts[idx].nValue, UCharCast(stream.data()), stream.size(), utxos.data(), utxos.size(), idx, flags, nullptr);
+                int lib_ret = bitpulsedconsensus_verify_script_with_spent_outputs(prevouts[idx].scriptPubKey.data(), prevouts[idx].scriptPubKey.size(), prevouts[idx].nValue, UCharCast(stream.data()), stream.size(), utxos.data(), utxos.size(), idx, flags, nullptr);
                 BOOST_CHECK(lib_ret == 0);
 #endif
             }

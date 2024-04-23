@@ -1,6 +1,7 @@
-// Copyright (c) 2018-2022 The Bitpulse Core developers
-// Distributed under the MIT software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+// Copyright (c) 2018-2022 The bitpulse Core Developers
+// This project is derived from the Bitcoin Core Project, originally licensed under the MIT license.
+// See the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php for details.
+
 //
 // Based on https://github.com/noloader/SHA-Intrinsics/blob/master/sha256-x86.c,
 // Written and placed in public domain by Jeffrey Walton.

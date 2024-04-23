@@ -1,9 +1,9 @@
-// Copyright (c) 2019-2022 The Bitpulse Core developers
+// Copyright (c) 2019-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_UTIL_CHECK_H
-#define bitpulse_UTIL_CHECK_H
+#ifndef bitpulsed_UTIL_CHECK_H
+#define bitpulsed_UTIL_CHECK_H
 
 #include <attributes.h>
 
@@ -97,4 +97,4 @@ T&& inline_assertion_check(LIFETIMEBOUND T&& val, [[maybe_unused]] const char* f
 
 // NOLINTEND(bugprone-lambda-function-name)
 
-#endif // bitpulse_UTIL_CHECK_H
+#endif // bitpulsed_UTIL_CHECK_H

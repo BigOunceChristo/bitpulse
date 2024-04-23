@@ -1,6 +1,7 @@
-// Copyright (c) 2018-2022 The Bitpulse Core developers
-// Distributed under the MIT software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+// Copyright (c) 2018-2022 The bitpulse Core Developers
+// This project is derived from the Bitcoin Core Project, originally licensed under the MIT license.
+// See the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php for details.
+
 
 #if defined(HAVE_CONFIG_H)
 #include <config/bitpulse-config.h>
@@ -112,7 +113,7 @@ void OptionTests::parametersInteraction()
 {
     // Test that the bug https://github.com/bitcoin-core/gui/issues/567 does not resurface.
     // It was fixed via https://github.com/bitcoin-core/gui/pull/568.
-    // With fListen=false in ~/.config/Bitpulse/Bitpulse-Qt.conf and all else left as default,
+    // With fListen=false in ~/.config/bitpulse/bitpulse-Qt.conf and all else left as default,
     // bitpulse-qt should set both -listen and -listenonion to false and start successfully.
     gArgs.LockSettings([&](common::Settings& s) {
         s.forced_settings.erase("listen");

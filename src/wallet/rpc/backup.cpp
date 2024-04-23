@@ -1,9 +1,9 @@
-// Copyright (c) 2009-2022 The Bitpulse Core developers
+// Copyright (c) 2009-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include <config/bitpulse-config.h>
+#include <config/bitpulsed-config.h>
 #endif
 
 #include <chain.h>
@@ -232,7 +232,7 @@ RPCHelpMan importaddress()
             "Note: Use \"getwalletinfo\" to query the scanning progress.\n"
             "Note: This command is only compatible with legacy wallets. Use \"importdescriptors\" for descriptor wallets.\n",
                 {
-                    {"address", RPCArg::Type::STR, RPCArg::Optional::NO, "The Bitpulse address (or hex-encoded script)"},
+                    {"address", RPCArg::Type::STR, RPCArg::Optional::NO, "The bitpulsed address (or hex-encoded script)"},
                     {"label", RPCArg::Type::STR, RPCArg::Default{""}, "An optional label"},
                     {"rescan", RPCArg::Type::BOOL, RPCArg::Default{true}, "Scan the chain and mempool for wallet transactions."},
                     {"p2sh", RPCArg::Type::BOOL, RPCArg::Default{false}, "Add the P2SH version of the script as well"},
@@ -305,7 +305,7 @@ RPCHelpMan importaddress()
 
             pwallet->ImportScriptPubKeys(strLabel, scripts, /*have_solving_data=*/false, /*apply_label=*/true, /*timestamp=*/1);
         } else {
-            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Bitpulse address or script");
+            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid bitpulsed address or script");
         }
     }
     if (fRescan)
@@ -646,7 +646,7 @@ RPCHelpMan dumpprivkey()
                 "Then the importprivkey can be used with this output\n"
                 "Note: This command is only compatible with legacy wallets.\n",
                 {
-                    {"address", RPCArg::Type::STR, RPCArg::Optional::NO, "The bitpulse address for the private key"},
+                    {"address", RPCArg::Type::STR, RPCArg::Optional::NO, "The bitpulsed address for the private key"},
                 },
                 RPCResult{
                     RPCResult::Type::STR, "key", "The private key"
@@ -670,7 +670,7 @@ RPCHelpMan dumpprivkey()
     std::string strAddress = request.params[0].get_str();
     CTxDestination dest = DecodeDestination(strAddress);
     if (!IsValidDestination(dest)) {
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Bitpulse address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid bitpulsed address");
     }
     auto keyid = GetKeyForDestination(spk_man, dest);
     if (keyid.IsNull()) {

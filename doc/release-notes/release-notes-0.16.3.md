@@ -1,6 +1,6 @@
-bitpulse Core version 0.16.3 is now available from:
+bitpulsed Core version 0.16.3 is now available from:
 
-  <https://bitpulsecore.org/bin/bitpulse-core-0.16.3/>
+  <https://bitpulsedcore.org/bin/bitpulsed-core-0.16.3/>
 
 This is a new minor version release, with various bugfixes.
 
@@ -10,15 +10,15 @@ Please report bugs using the issue tracker at GitHub:
 
 To receive security and update notifications, please subscribe to:
 
-  <https://bitpulsecore.org/en/list/announcements/join/>
+  <https://bitpulsedcore.org/en/list/announcements/join/>
 
 How to Upgrade
 ==============
 
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the
-installer (on Windows) or just copy over `/Applications/bitpulse-Qt` (on Mac)
-or `bitpulsed`/`bitpulse-qt` (on Linux).
+installer (on Windows) or just copy over `/Applications/bitpulsed-Qt` (on Mac)
+or `bitpulsed`/`bitpulsed-qt` (on Linux).
 
 The first time you run version 0.15.0 or newer, your chainstate database will be converted to a
 new format, which will take anywhere from a few minutes to half an hour,
@@ -39,10 +39,10 @@ wallets that were created with older versions are not affected by this.
 Compatibility
 ==============
 
-bitpulse Core is extensively tested on multiple operating systems using
+bitpulsed Core is extensively tested on multiple operating systems using
 the Linux kernel, macOS 10.8+, and Windows Vista and later. Windows XP is not supported.
 
-bitpulse Core should also work on most other Unix-like systems but is not
+bitpulsed Core should also work on most other Unix-like systems but is not
 frequently tested on them.
 
 Notable changes
@@ -52,7 +52,7 @@ Denial-of-Service vulnerability
 -------------------------------
 
 A denial-of-service vulnerability (CVE-2018-17144) exploitable by miners has
-been discovered in bitpulse Core versions 0.14.0 up to 0.16.2. It is recommended
+been discovered in bitpulsed Core versions 0.14.0 up to 0.16.2. It is recommended
 to upgrade any of the vulnerable versions to 0.16.3 as soon as possible.
 
 0.16.3 change log
@@ -65,7 +65,7 @@ to upgrade any of the vulnerable versions to 0.16.3 as soon as possible.
 - #13547 `212ef1f` Make `signrawtransaction*` give an error when amount is needed but missing (ajtowns)
 
 ### Miscellaneous
-- #13655 `1cdbea7` bitpulseconsensus: invalid flags error should be set to `bitpulseconsensus_err` (afk11)
+- #13655 `1cdbea7` bitpulsedconsensus: invalid flags error should be set to `bitpulsedconsensus_err` (afk11)
 
 ### Documentation
 - #13844 `11b9dbb` correct the help output for -prune (hebasto)

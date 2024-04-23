@@ -1,9 +1,9 @@
-// Copyright (c) 2022 The Bitpulse Core developers
+// Copyright (c) 2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_KERNEL_VALIDATION_CACHE_SIZES_H
-#define bitpulse_KERNEL_VALIDATION_CACHE_SIZES_H
+#ifndef bitpulsed_KERNEL_VALIDATION_CACHE_SIZES_H
+#define bitpulsed_KERNEL_VALIDATION_CACHE_SIZES_H
 
 #include <script/sigcache.h>
 
@@ -17,4 +17,4 @@ struct ValidationCacheSizes {
 };
 }
 
-#endif // bitpulse_KERNEL_VALIDATION_CACHE_SIZES_H
+#endif // bitpulsed_KERNEL_VALIDATION_CACHE_SIZES_H

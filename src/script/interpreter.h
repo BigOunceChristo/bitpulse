@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2022 The Bitpulse Core developers
+// Copyright (c) 2009-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_SCRIPT_INTERPRETER_H
-#define bitpulse_SCRIPT_INTERPRETER_H
+#ifndef bitpulsed_SCRIPT_INTERPRETER_H
+#define bitpulsed_SCRIPT_INTERPRETER_H
 
 #include <consensus/amount.h>
 #include <hash.h>
@@ -351,4 +351,4 @@ size_t CountWitnessSigOps(const CScript& scriptSig, const CScript& scriptPubKey,
 
 int FindAndDelete(CScript& script, const CScript& b);
 
-#endif // bitpulse_SCRIPT_INTERPRETER_H
+#endif // bitpulsed_SCRIPT_INTERPRETER_H

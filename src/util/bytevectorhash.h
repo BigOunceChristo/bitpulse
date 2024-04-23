@@ -1,9 +1,10 @@
-// Copyright (c) 2018-2022 The Bitpulse Core developers
-// Distributed under the MIT software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+// Copyright (c) 2018-2022 The bitpulsed Core Developers
+// This project is derived from the Bitcoin Core Project, originally licensed under the MIT license.
+// See the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php for details.
 
-#ifndef bitpulse_UTIL_BYTEVECTORHASH_H
-#define bitpulse_UTIL_BYTEVECTORHASH_H
+
+#ifndef bitpulsed_UTIL_BYTEVECTORHASH_H
+#define bitpulsed_UTIL_BYTEVECTORHASH_H
 
 #include <cstdint>
 #include <cstddef>
@@ -24,4 +25,4 @@ public:
     size_t operator()(const std::vector<unsigned char>& input) const;
 };
 
-#endif // bitpulse_UTIL_BYTEVECTORHASH_H
+#endif // bitpulsed_UTIL_BYTEVECTORHASH_H

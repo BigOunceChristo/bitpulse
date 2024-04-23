@@ -1,9 +1,9 @@
-// Copyright (c) 2019 The Bitpulse Core developers
+// Copyright (c) 2019 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_BENCH_DATA_H
-#define bitpulse_BENCH_DATA_H
+#ifndef bitpulsed_BENCH_DATA_H
+#define bitpulsed_BENCH_DATA_H
 
 #include <cstdint>
 #include <vector>
@@ -16,4 +16,4 @@ extern const std::vector<uint8_t> block413567;
 } // namespace data
 } // namespace benchmark
 
-#endif // bitpulse_BENCH_DATA_H
+#endif // bitpulsed_BENCH_DATA_H

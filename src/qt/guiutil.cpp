@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2022 The Bitpulse Core developers
+// Copyright (c) 2011-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -134,10 +134,10 @@ void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent)
     widget->setFont(fixedPitchFont());
     // We don't want translators to use own addresses in translations
     // and this is the only place, where this address is supplied.
-    widget->setPlaceholderText(QObject::tr("Enter a Bitpulse address (e.g. %1)").arg(
+    widget->setPlaceholderText(QObject::tr("Enter a bitpulse address (e.g. %1)").arg(
         QString::fromStdString(DummyAddress(Params()))));
-    widget->setValidator(new BitpulseAddressEntryValidator(parent));
-    widget->setCheckValidator(new BitpulseAddressCheckValidator(parent));
+    widget->setValidator(new bitpulseAddressEntryValidator(parent));
+    widget->setCheckValidator(new bitpulseAddressCheckValidator(parent));
 }
 
 void AddButtonShortcut(QAbstractButton* button, const QKeySequence& shortcut)
@@ -145,7 +145,7 @@ void AddButtonShortcut(QAbstractButton* button, const QKeySequence& shortcut)
     QObject::connect(new QShortcut(shortcut, button), &QShortcut::activated, [button]() { button->animateClick(); });
 }
 
-bool parseBitpulseURI(const QUrl &uri, SendCoinsRecipient *out)
+bool parsebitpulseURI(const QUrl &uri, SendCoinsRecipient *out)
 {
     // return if URI is not valid or is no bitpulse: URI
     if(!uri.isValid() || uri.scheme() != QString("bitpulse"))
@@ -184,7 +184,7 @@ bool parseBitpulseURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if (!BitpulseUnits::parse(BitpulseUnit::BTP, i->second, &rv.amount)) {
+                if (!bitpulseUnits::parse(bitpulseUnit::BTP, i->second, &rv.amount)) {
                     return false;
                 }
             }
@@ -201,13 +201,13 @@ bool parseBitpulseURI(const QUrl &uri, SendCoinsRecipient *out)
     return true;
 }
 
-bool parseBitpulseURI(QString uri, SendCoinsRecipient *out)
+bool parsebitpulseURI(QString uri, SendCoinsRecipient *out)
 {
     QUrl uriInstance(uri);
-    return parseBitpulseURI(uriInstance, out);
+    return parsebitpulseURI(uriInstance, out);
 }
 
-QString formatBitpulseURI(const SendCoinsRecipient &info)
+QString formatbitpulseURI(const SendCoinsRecipient &info)
 {
     bool bech_32 = info.address.startsWith(QString::fromStdString(Params().Bech32HRP() + "1"));
 
@@ -216,7 +216,7 @@ QString formatBitpulseURI(const SendCoinsRecipient &info)
 
     if (info.amount)
     {
-        ret += QString("?amount=%1").arg(BitpulseUnits::format(BitpulseUnit::BTP, info.amount, false, BitpulseUnits::SeparatorStyle::NEVER));
+        ret += QString("?amount=%1").arg(bitpulseUnits::format(bitpulseUnit::BTP, info.amount, false, bitpulseUnits::SeparatorStyle::NEVER));
         paramCount++;
     }
 
@@ -434,7 +434,7 @@ void openDebugLogfile()
         QDesktopServices::openUrl(QUrl::fromLocalFile(PathToQString(pathDebug)));
 }
 
-bool openBitpulseConf()
+bool openbitpulseConf()
 {
     fs::path pathConfig = gArgs.GetConfigFilePath();
 
@@ -510,15 +510,15 @@ fs::path static StartupShortcutPath()
 {
     ChainType chain = gArgs.GetChainType();
     if (chain == ChainType::MAIN)
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "Bitpulse.lnk";
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "bitpulse.lnk";
     if (chain == ChainType::TESTNET) // Remove this special case when testnet CBaseChainParams::DataDir() is incremented to "testnet4"
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "Bitpulse (testnet).lnk";
-    return GetSpecialFolderPath(CSIDL_STARTUP) / fs::u8path(strprintf("Bitpulse (%s).lnk", ChainTypeToString(chain)));
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "bitpulse (testnet).lnk";
+    return GetSpecialFolderPath(CSIDL_STARTUP) / fs::u8path(strprintf("bitpulse (%s).lnk", ChainTypeToString(chain)));
 }
 
 bool GetStartOnSystemStartup()
 {
-    // check for Bitpulse*.lnk
+    // check for bitpulse*.lnk
     return fs::exists(StartupShortcutPath());
 }
 
@@ -639,9 +639,9 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         optionFile << "[Desktop Entry]\n";
         optionFile << "Type=Application\n";
         if (chain == ChainType::MAIN)
-            optionFile << "Name=Bitpulse\n";
+            optionFile << "Name=bitpulse\n";
         else
-            optionFile << strprintf("Name=Bitpulse (%s)\n", ChainTypeToString(chain));
+            optionFile << strprintf("Name=bitpulse (%s)\n", ChainTypeToString(chain));
         optionFile << "Exec=" << pszExePath << strprintf(" -min -chain=%s\n", ChainTypeToString(chain));
         optionFile << "Terminal=false\n";
         optionFile << "Hidden=false\n";

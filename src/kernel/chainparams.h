@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2021 The Bitpulse Core developers
+// Copyright (c) 2009-2021 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_KERNEL_CHAINPARAMS_H
-#define bitpulse_KERNEL_CHAINPARAMS_H
+#ifndef bitpulsed_KERNEL_CHAINPARAMS_H
+#define bitpulsed_KERNEL_CHAINPARAMS_H
 
 #include <consensus/params.h>
 #include <kernel/messagestartchars.h>
@@ -75,7 +75,7 @@ struct ChainTxData {
 
 /**
  * CChainParams defines various tweakable parameters of a given instance of the
- * Bitpulse system.
+ * bitpulsed system.
  */
 class CChainParams
 {
@@ -183,4 +183,4 @@ protected:
     ChainTxData chainTxData;
 };
 
-#endif // bitpulse_KERNEL_CHAINPARAMS_H
+#endif // bitpulsed_KERNEL_CHAINPARAMS_H

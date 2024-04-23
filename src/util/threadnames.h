@@ -1,9 +1,9 @@
-// Copyright (c) 2018-2019 The Bitpulse Core developers
+// Copyright (c) 2018-2019 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_UTIL_THREADNAMES_H
-#define bitpulse_UTIL_THREADNAMES_H
+#ifndef bitpulsed_UTIL_THREADNAMES_H
+#define bitpulsed_UTIL_THREADNAMES_H
 
 #include <string>
 
@@ -23,4 +23,4 @@ const std::string& ThreadGetInternalName();
 
 } // namespace util
 
-#endif // bitpulse_UTIL_THREADNAMES_H
+#endif // bitpulsed_UTIL_THREADNAMES_H

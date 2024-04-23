@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2020 The Bitpulse Core developers
+// Copyright (c) 2009-2020 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_THREADSAFETY_H
-#define bitpulse_THREADSAFETY_H
+#ifndef bitpulsed_THREADSAFETY_H
+#define bitpulsed_THREADSAFETY_H
 
 #include <mutex>
 
@@ -74,4 +74,4 @@ public:
     ~StdLockGuard() UNLOCK_FUNCTION() {}
 };
 
-#endif // bitpulse_THREADSAFETY_H
+#endif // bitpulsed_THREADSAFETY_H

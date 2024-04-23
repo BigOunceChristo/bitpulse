@@ -1,1 +1,1 @@
-The list of assets used in the bitpulse source and their attribution can now be found in [contrib/debian/copyright](../contrib/debian/copyright).
+The list of assets used in the bitpulsed source and their attribution can now be found in [contrib/debian/copyright](../contrib/debian/copyright).

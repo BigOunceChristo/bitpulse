@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2022 The Bitpulse Core developers
+// Copyright (c) 2009-2022 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_INIT_H
-#define bitpulse_INIT_H
+#ifndef bitpulsed_INIT_H
+#define bitpulsed_INIT_H
 
 #include <any>
 #include <memory>
@@ -39,7 +39,7 @@ void InitLogging(const ArgsManager& args);
 //!Parameter interaction: change current parameters depending on various rules
 void InitParameterInteraction(ArgsManager& args);
 
-/** Initialize bitpulse core: Basic context setup.
+/** Initialize bitpulsed core: Basic context setup.
  *  @note This can be done before daemonization. Do not call Shutdown() if this function fails.
  *  @pre Parameters should be parsed and config file should be read.
  */
@@ -57,7 +57,7 @@ bool AppInitParameterInteraction(const ArgsManager& args);
  */
 bool AppInitSanityChecks(const kernel::Context& kernel);
 /**
- * Lock bitpulse core data directory.
+ * Lock bitpulsed core data directory.
  * @note This should only be done after daemonization. Do not call Shutdown() if this function fails.
  * @pre Parameters should be parsed and config file should be read, AppInitSanityChecks should have been called.
  */
@@ -67,7 +67,7 @@ bool AppInitLockDataDirectory();
  */
 bool AppInitInterfaces(node::NodeContext& node);
 /**
- * Bitpulse core main initialization.
+ * bitpulsed core main initialization.
  * @note This should only be done after daemonization. Call Shutdown() if this function fails.
  * @pre Parameters should be parsed and config file should be read, AppInitLockDataDirectory should have been called.
  */
@@ -81,4 +81,4 @@ void SetupServerArgs(ArgsManager& argsman);
 /** Validates requirements to run the indexes and spawns each index initial sync thread */
 bool StartIndexBackgroundSync(node::NodeContext& node);
 
-#endif // bitpulse_INIT_H
+#endif // bitpulsed_INIT_H

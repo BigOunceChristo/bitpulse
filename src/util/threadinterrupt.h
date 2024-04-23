@@ -1,9 +1,9 @@
-// Copyright (c) 2016-2022 The Bitpulse Core developers
+// Copyright (c) 2016-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_UTIL_THREADINTERRUPT_H
-#define bitpulse_UTIL_THREADINTERRUPT_H
+#ifndef bitpulsed_UTIL_THREADINTERRUPT_H
+#define bitpulsed_UTIL_THREADINTERRUPT_H
 
 #include <sync.h>
 #include <threadsafety.h>
@@ -39,4 +39,4 @@ private:
     std::atomic<bool> flag;
 };
 
-#endif // bitpulse_UTIL_THREADINTERRUPT_H
+#endif // bitpulsed_UTIL_THREADINTERRUPT_H

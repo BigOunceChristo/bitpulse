@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2022 The Bitpulse Core developers
+// Copyright (c) 2011-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -39,7 +39,7 @@ class QMenu;
 class QItemSelection;
 QT_END_NAMESPACE
 
-/** Local Bitpulse RPC console. */
+/** Local bitpulse RPC console. */
 class RPCConsole: public QWidget
 {
     Q_OBJECT

@@ -1,9 +1,9 @@
 0.19.1 Release Notes
 ===============================
 
-bitpulse Core version 0.19.1 is now available from:
+bitpulsed Core version 0.19.1 is now available from:
 
-  <https://bitpulsecore.org/bin/bitpulse-core-0.19.1/>
+  <https://bitpulsedcore.org/bin/bitpulsed-core-0.19.1/>
 
 This minor release includes various bug fixes and performance
 improvements, as well as updated translations.
@@ -14,33 +14,33 @@ Please report bugs using the issue tracker at GitHub:
 
 To receive security and update notifications, please subscribe to:
 
-  <https://bitpulsecore.org/en/list/announcements/join/>
+  <https://bitpulsedcore.org/en/list/announcements/join/>
 
 How to Upgrade
 ==============
 
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the
-installer (on Windows) or just copy over `/Applications/bitpulse-Qt` (on Mac)
-or `bitpulsed`/`bitpulse-qt` (on Linux).
+installer (on Windows) or just copy over `/Applications/bitpulsed-Qt` (on Mac)
+or `bitpulsed`/`bitpulsed-qt` (on Linux).
 
-Upgrading directly from a version of bitpulse Core that has reached its EOL is
+Upgrading directly from a version of bitpulsed Core that has reached its EOL is
 possible, but it might take some time if the datadir needs to be migrated. Old
-wallet versions of bitpulse Core are generally supported.
+wallet versions of bitpulsed Core are generally supported.
 
 Compatibility
 ==============
 
-bitpulse Core is supported and extensively tested on operating systems using
+bitpulsed Core is supported and extensively tested on operating systems using
 the Linux kernel, macOS 10.10+, and Windows 7 and newer. It is not recommended
-to use bitpulse Core on unsupported systems.
+to use bitpulsed Core on unsupported systems.
 
-bitpulse Core should also work on most other Unix-like systems but is not
+bitpulsed Core should also work on most other Unix-like systems but is not
 as frequently tested on them.
 
-From bitpulse Core 0.17.0 onwards, macOS versions earlier than 10.10 are no
-longer supported, as bitpulse Core is now built using Qt 5.9.x which requires
-macOS 10.10+. Additionally, bitpulse Core does not yet change appearance when
+From bitpulsed Core 0.17.0 onwards, macOS versions earlier than 10.10 are no
+longer supported, as bitpulsed Core is now built using Qt 5.9.x which requires
+macOS 10.10+. Additionally, bitpulsed Core does not yet change appearance when
 macOS "dark mode" is activated.
 
 In addition to previously supported CPU platforms, this release's pre-compiled
@@ -112,4 +112,4 @@ Thanks to everyone who directly contributed to this release:
 - Wladimir J. van der Laan
 
 As well as to everyone that helped with translations on
-[Transifex](https://www.transifex.com/bitpulse/bitpulse/).
+[Transifex](https://www.transifex.com/bitpulsed/bitpulsed/).

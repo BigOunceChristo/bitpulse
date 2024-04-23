@@ -1,9 +1,9 @@
-// Copyright (c) 2012-2022 The Bitpulse Core developers
+// Copyright (c) 2012-2022 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_CHECKQUEUE_H
-#define bitpulse_CHECKQUEUE_H
+#ifndef bitpulsed_CHECKQUEUE_H
+#define bitpulsed_CHECKQUEUE_H
 
 #include <sync.h>
 #include <tinyformat.h>
@@ -233,4 +233,4 @@ public:
     }
 };
 
-#endif // bitpulse_CHECKQUEUE_H
+#endif // bitpulsed_CHECKQUEUE_H

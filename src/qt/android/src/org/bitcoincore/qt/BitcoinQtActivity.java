@@ -13,9 +13,9 @@ public class bitpulseQtActivity extends QtActivity
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
-        final File bitpulseDir = new File(getFilesDir().getAbsolutePath() + "/.bitpulse");
-        if (!bitpulseDir.exists()) {
-            bitpulseDir.mkdir();
+        final File bitpulseir = new File(getFilesDir().getAbsolutePath() + "/.bitpulse");
+        if (!bitpulseir.exists()) {
+            bitpulseir.mkdir();
         }
 
         super.onCreate(savedInstanceState);

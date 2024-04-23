@@ -1,9 +1,9 @@
-// Copyright (c) 2011-2022 The Bitpulse Core developers
+// Copyright (c) 2011-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_WALLET_COINCONTROL_H
-#define bitpulse_WALLET_COINCONTROL_H
+#ifndef bitpulsed_WALLET_COINCONTROL_H
+#define bitpulsed_WALLET_COINCONTROL_H
 
 #include <outputtype.h>
 #include <policy/feerate.h>
@@ -185,4 +185,4 @@ private:
 };
 } // namespace wallet
 
-#endif // bitpulse_WALLET_COINCONTROL_H
+#endif // bitpulsed_WALLET_COINCONTROL_H

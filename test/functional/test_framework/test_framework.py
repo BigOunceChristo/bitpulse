@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2014-2022 The bitpulse Core developers
+# Copyright (c) 2014-2022 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Base class for RPC testing."""
@@ -46,7 +46,7 @@ TEST_EXIT_PASSED = 0
 TEST_EXIT_FAILED = 1
 TEST_EXIT_SKIPPED = 77
 
-TMPDIR_PREFIX = "bitpulse_func_test_"
+TMPDIR_PREFIX = "bitpulsed_func_test_"
 
 
 class SkipTest(Exception):
@@ -56,30 +56,30 @@ class SkipTest(Exception):
         self.message = message
 
 
-class bitpulseTestMetaClass(type):
-    """Metaclass for bitpulseTestFramework.
+class bitpulsedTestMetaClass(type):
+    """Metaclass for bitpulsedTestFramework.
 
-    Ensures that any attempt to register a subclass of `bitpulseTestFramework`
+    Ensures that any attempt to register a subclass of `bitpulsedTestFramework`
     adheres to a standard whereby the subclass overrides `set_test_params` and
     `run_test` but DOES NOT override either `__init__` or `main`. If any of
     those standards are violated, a ``TypeError`` is raised."""
 
     def __new__(cls, clsname, bases, dct):
-        if not clsname == 'bitpulseTestFramework':
+        if not clsname == 'bitpulsedTestFramework':
             if not ('run_test' in dct and 'set_test_params' in dct):
-                raise TypeError("bitpulseTestFramework subclasses must override "
+                raise TypeError("bitpulsedTestFramework subclasses must override "
                                 "'run_test' and 'set_test_params'")
             if '__init__' in dct or 'main' in dct:
-                raise TypeError("bitpulseTestFramework subclasses may not override "
+                raise TypeError("bitpulsedTestFramework subclasses may not override "
                                 "'__init__' or 'main'")
 
         return super().__new__(cls, clsname, bases, dct)
 
 
-class bitpulseTestFramework(metaclass=bitpulseTestMetaClass):
-    """Base class for a bitpulse test script.
+class bitpulsedTestFramework(metaclass=bitpulsedTestMetaClass):
+    """Base class for a bitpulsed test script.
 
-    Individual bitpulse test scripts should subclass this class and override the set_test_params() and run_test() methods.
+    Individual bitpulsed test scripts should subclass this class and override the set_test_params() and run_test() methods.
 
     Individual tests can also override the following methods to customize the test setup:
 
@@ -182,7 +182,7 @@ class bitpulseTestFramework(metaclass=bitpulseTestMetaClass):
         parser.add_argument("--pdbonfailure", dest="pdbonfailure", default=False, action="store_true",
                             help="Attach a python debugger if test fails")
         parser.add_argument("--usecli", dest="usecli", default=False, action="store_true",
-                            help="use bitpulse-cli instead of RPC for all commands")
+                            help="use bitpulsed-cli instead of RPC for all commands")
         parser.add_argument("--perf", dest="perf", default=False, action="store_true",
                             help="profile running nodes with perf for the duration of the test")
         parser.add_argument("--valgrind", dest="valgrind", default=False, action="store_true",
@@ -236,10 +236,10 @@ class bitpulseTestFramework(metaclass=bitpulseTestMetaClass):
         """Update self.options with the paths of all binaries from environment variables or their default values"""
 
         binaries = {
-            "bitpulsed": ("bitpulsed", "bitpulseD"),
-            "bitpulse-cli": ("bitpulsecli", "bitpulseCLI"),
-            "bitpulse-util": ("bitpulseutil", "bitpulseUTIL"),
-            "bitpulse-wallet": ("bitpulsewallet", "bitpulseWALLET"),
+            "bitpulsed": ("bitpulsed", "bitpulsed"),
+            "bitpulsed-cli": ("bitpulsedcli", "bitpulsedCLI"),
+            "bitpulsed-util": ("bitpulsedutil", "bitpulsedUTIL"),
+            "bitpulsed-wallet": ("bitpulsedwallet", "bitpulsedWALLET"),
         }
         for binary, [attribute_name, env_variable_name] in binaries.items():
             default_filename = os.path.join(
@@ -360,7 +360,7 @@ class bitpulseTestFramework(metaclass=bitpulseTestMetaClass):
             h.flush()
             h.close()
             self.log.removeHandler(h)
-        rpc_logger = logging.getLogger("bitpulseRPC")
+        rpc_logger = logging.getLogger("bitpulsedRPC")
         for h in list(rpc_logger.handlers):
             h.flush()
             rpc_logger.removeHandler(h)
@@ -508,7 +508,7 @@ class bitpulseTestFramework(metaclass=bitpulseTestMetaClass):
         if binary is None:
             binary = [get_bin_from_version(v, 'bitpulsed', self.options.bitpulsed) for v in versions]
         if binary_cli is None:
-            binary_cli = [get_bin_from_version(v, 'bitpulse-cli', self.options.bitpulsecli) for v in versions]
+            binary_cli = [get_bin_from_version(v, 'bitpulsed-cli', self.options.bitpulsedcli) for v in versions]
         assert_equal(len(extra_confs), num_nodes)
         assert_equal(len(extra_args), num_nodes)
         assert_equal(len(versions), num_nodes)
@@ -524,7 +524,7 @@ class bitpulseTestFramework(metaclass=bitpulseTestMetaClass):
                 timewait=self.rpc_timeout,
                 timeout_factor=self.options.timeout_factor,
                 bitpulsed=binary[i],
-                bitpulse_cli=binary_cli[i],
+                bitpulsed_cli=binary_cli[i],
                 version=versions[i],
                 coverage_dir=self.options.coveragedir,
                 cwd=self.options.tmpdir,
@@ -803,7 +803,7 @@ class bitpulseTestFramework(metaclass=bitpulseTestMetaClass):
         self.log.addHandler(ch)
 
         if self.options.trace_rpc:
-            rpc_logger = logging.getLogger("bitpulseRPC")
+            rpc_logger = logging.getLogger("bitpulsedRPC")
             rpc_logger.setLevel(logging.DEBUG)
             rpc_handler = logging.StreamHandler(sys.stdout)
             rpc_handler.setLevel(logging.DEBUG)
@@ -834,7 +834,7 @@ class bitpulseTestFramework(metaclass=bitpulseTestMetaClass):
                     timewait=self.rpc_timeout,
                     timeout_factor=self.options.timeout_factor,
                     bitpulsed=self.options.bitpulsed,
-                    bitpulse_cli=self.options.bitpulsecli,
+                    bitpulsed_cli=self.options.bitpulsedcli,
                     coverage_dir=None,
                     cwd=self.options.tmpdir,
                     descriptors=self.options.descriptors,
@@ -881,7 +881,7 @@ class bitpulseTestFramework(metaclass=bitpulseTestMetaClass):
             self.log.debug("Copy cache directory {} to node {}".format(cache_node_dir, i))
             to_dir = get_datadir_path(self.options.tmpdir, i)
             shutil.copytree(cache_node_dir, to_dir)
-            initialize_datadir(self.options.tmpdir, i, self.chain, self.disable_autoconnect)  # Overwrite port/rpcport in bitpulse.conf
+            initialize_datadir(self.options.tmpdir, i, self.chain, self.disable_autoconnect)  # Overwrite port/rpcport in bitpulsed.conf
 
     def _initialize_chain_clean(self):
         """Initialize empty blockchain for use by the test.
@@ -959,19 +959,19 @@ class bitpulseTestFramework(metaclass=bitpulseTestMetaClass):
             raise SkipTest("BDB has not been compiled.")
 
     def skip_if_no_wallet_tool(self):
-        """Skip the running test if bitpulse-wallet has not been compiled."""
+        """Skip the running test if bitpulsed-wallet has not been compiled."""
         if not self.is_wallet_tool_compiled():
-            raise SkipTest("bitpulse-wallet has not been compiled")
+            raise SkipTest("bitpulsed-wallet has not been compiled")
 
-    def skip_if_no_bitpulse_util(self):
-        """Skip the running test if bitpulse-util has not been compiled."""
-        if not self.is_bitpulse_util_compiled():
-            raise SkipTest("bitpulse-util has not been compiled")
+    def skip_if_no_bitpulsed_util(self):
+        """Skip the running test if bitpulsed-util has not been compiled."""
+        if not self.is_bitpulsed_util_compiled():
+            raise SkipTest("bitpulsed-util has not been compiled")
 
     def skip_if_no_cli(self):
-        """Skip the running test if bitpulse-cli has not been compiled."""
+        """Skip the running test if bitpulsed-cli has not been compiled."""
         if not self.is_cli_compiled():
-            raise SkipTest("bitpulse-cli has not been compiled.")
+            raise SkipTest("bitpulsed-cli has not been compiled.")
 
     def skip_if_no_previous_releases(self):
         """Skip the running test if previous releases are not available."""
@@ -992,7 +992,7 @@ class bitpulseTestFramework(metaclass=bitpulseTestMetaClass):
             raise SkipTest("external signer support has not been compiled.")
 
     def is_cli_compiled(self):
-        """Checks whether bitpulse-cli was compiled."""
+        """Checks whether bitpulsed-cli was compiled."""
         return self.config["components"].getboolean("ENABLE_CLI")
 
     def is_external_signer_compiled(self):
@@ -1012,12 +1012,12 @@ class bitpulseTestFramework(metaclass=bitpulseTestMetaClass):
             return self.is_bdb_compiled()
 
     def is_wallet_tool_compiled(self):
-        """Checks whether bitpulse-wallet was compiled."""
+        """Checks whether bitpulsed-wallet was compiled."""
         return self.config["components"].getboolean("ENABLE_WALLET_TOOL")
 
-    def is_bitpulse_util_compiled(self):
-        """Checks whether bitpulse-util was compiled."""
-        return self.config["components"].getboolean("ENABLE_bitpulse_UTIL")
+    def is_bitpulsed_util_compiled(self):
+        """Checks whether bitpulsed-util was compiled."""
+        return self.config["components"].getboolean("ENABLE_bitpulsed_UTIL")
 
     def is_zmq_compiled(self):
         """Checks whether the zmq module was compiled."""

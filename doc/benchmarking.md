@@ -1,23 +1,23 @@
 Benchmarking
 ============
 
-bitpulse Core has an internal benchmarking framework, with benchmarks
+bitpulsed Core has an internal benchmarking framework, with benchmarks
 for cryptographic algorithms (e.g. SHA1, SHA256, SHA512, RIPEMD160, Poly1305, ChaCha20), rolling bloom filter, coins selection,
 thread queue, wallet balance.
 
 Running
 ---------------------
 
-For benchmarking, you only need to compile `bitpulse_bench`.  The bench runner
+For benchmarking, you only need to compile `bitpulsed_bench`.  The bench runner
 warns if you configure with `--enable-debug`, but consider if building without
 it will impact the benchmark(s) you are interested in by unlatching log printers
 and lock analysis.
 
-    make -C src bitpulse_bench
+    make -C src bitpulsed_bench
 
-After compiling bitpulse-core, the benchmarks can be run with:
+After compiling bitpulsed-core, the benchmarks can be run with:
 
-    src/bench/bench_bitpulse
+    src/bench/bench_bitpulsed
 
 The output will look similar to:
 ```
@@ -39,7 +39,7 @@ The output will look similar to:
 Help
 ---------------------
 
-    src/bench/bench_bitpulse -?
+    src/bench/bench_bitpulsed -?
 
 To print the various options, like listing the benchmarks without running them
 or using a regex filter to only run certain benchmarks.
@@ -56,6 +56,6 @@ More benchmarks are needed for, in no particular order:
 Going Further
 --------------------
 
-To monitor bitpulse Core performance more in depth (like reindex or IBD): https://github.com/chaincodelabs/bitpulseperf
+To monitor bitpulsed Core performance more in depth (like reindex or IBD): https://github.com/chaincodelabs/bitpulsedperf
 
-To generate Flame Graphs for bitpulse Core: https://github.com/eklitzke/bitpulse/blob/flamegraphs/doc/flamegraphs.md
+To generate Flame Graphs for bitpulsed Core: https://github.com/eklitzke/bitpulsed/blob/flamegraphs/doc/flamegraphs.md

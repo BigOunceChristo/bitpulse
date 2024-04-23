@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-# Copyright (c) 2016-2022 The bitpulse Core developers
+# Copyright (c) 2016-2022 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test Wallet encryption"""
 
 import time
 
-from test_framework.test_framework import bitpulseTestFramework
+from test_framework.test_framework import bitpulsedTestFramework
 from test_framework.util import (
     assert_raises_rpc_error,
     assert_equal,
@@ -14,7 +14,7 @@ from test_framework.util import (
 from test_framework.wallet_util import WalletUnlock
 
 
-class WalletEncryptionTest(bitpulseTestFramework):
+class WalletEncryptionTest(bitpulsedTestFramework):
     def add_options(self, parser):
         self.add_wallet_options(parser)
 

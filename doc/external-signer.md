@@ -1,14 +1,14 @@
-# Support for signing transactions outside of bitpulse Core
+# Support for signing transactions outside of bitpulsed Core
 
-bitpulse Core can be launched with `-signer=<cmd>` where `<cmd>` is an external tool which can sign transactions and perform other functions. For example, it can be used to communicate with a hardware wallet.
+bitpulsed Core can be launched with `-signer=<cmd>` where `<cmd>` is an external tool which can sign transactions and perform other functions. For example, it can be used to communicate with a hardware wallet.
 
 ## Example usage
 
-The following example is based on the [HWI](https://github.com/bitcoin-core/HWI) tool. Version 2.0 or newer is required. Although this tool is hosted under the bitpulse Core GitHub organization and maintained by bitpulse Core developers, it should be used with caution. It is considered experimental and has far less review than bitpulse Core itself. Be particularly careful when running tools such as these on a computer with private keys on it.
+The following example is based on the [HWI](https://github.com/bitcoin-core/HWI) tool. Version 2.0 or newer is required. Although this tool is hosted under the bitpulsed Core GitHub organization and maintained by bitpulsed Core developers, it should be used with caution. It is considered experimental and has far less review than bitpulsed Core itself. Be particularly careful when running tools such as these on a computer with private keys on it.
 
-When using a hardware wallet, consult the manufacturer website for (alternative) software they recommend. As long as their software conforms to the standard below, it should be able to work with bitpulse Core.
+When using a hardware wallet, consult the manufacturer website for (alternative) software they recommend. As long as their software conforms to the standard below, it should be able to work with bitpulsed Core.
 
-Start bitpulse Core:
+Start bitpulsed Core:
 
 ```sh
 $ bitpulsed -signer=../HWI/hwi.py
@@ -23,7 +23,7 @@ Follow the hardware manufacturers instructions for the initial device setup, as 
 Get a list of signing devices / services:
 
 ```
-$ bitpulse-cli enumeratesigners
+$ bitpulsed-cli enumeratesigners
 {
   "signers": [
     {
@@ -37,7 +37,7 @@ The master key fingerprint is used to identify a device.
 Create a wallet, this automatically imports the public keys:
 
 ```sh
-$ bitpulse-cli createwallet "hww" true true "" true true true
+$ bitpulsed-cli createwallet "hww" true true "" true true true
 ```
 
 ### Verify an address
@@ -45,18 +45,18 @@ $ bitpulse-cli createwallet "hww" true true "" true true true
 Display an address on the device:
 
 ```sh
-$ bitpulse-cli -rpcwallet=<wallet> getnewaddress
-$ bitpulse-cli -rpcwallet=<wallet> walletdisplayaddress <address>
+$ bitpulsed-cli -rpcwallet=<wallet> getnewaddress
+$ bitpulsed-cli -rpcwallet=<wallet> walletdisplayaddress <address>
 ```
 
 Replace `<address>` with the result of `getnewaddress`.
 
 ### Spending
 
-Under the hood this uses a [Partially Signed bitpulse Transaction](psbt.md).
+Under the hood this uses a [Partially Signed bitpulsed Transaction](psbt.md).
 
 ```sh
-$ bitpulse-cli -rpcwallet=<wallet> sendtoaddress <address> <amount>
+$ bitpulsed-cli -rpcwallet=<wallet> sendtoaddress <address> <amount>
 ```
 
 This prompts your hardware wallet to sign, and fail if it's not connected. If successful
@@ -68,11 +68,11 @@ it automatically broadcasts the transaction.
 
 ## Signer API
 
-In order to be compatible with bitpulse Core any signer command should conform to the specification below. This specification is subject to change. Ideally a BIP should propose a standard so that other wallets can also make use of it.
+In order to be compatible with bitpulsed Core any signer command should conform to the specification below. This specification is subject to change. Ideally a BIP should propose a standard so that other wallets can also make use of it.
 
 Prerequisite knowledge:
 * [Output Descriptors](descriptors.md)
-* Partially Signed bitpulse Transaction ([PSBT](psbt.md))
+* Partially Signed bitpulsed Transaction ([PSBT](psbt.md))
 
 ### `enumerate` (required)
 
@@ -156,7 +156,7 @@ If <descriptor> contains an xpub, the command MUST fail if it does not match the
 
 The command MAY complain if `--testnet` is set, but the BIP32 coin type is not `1h` (and vice versa).
 
-## How bitpulse Core uses the Signer API
+## How bitpulsed Core uses the Signer API
 
 The `enumeratesigners` RPC simply calls `<cmd> enumerate`.
 

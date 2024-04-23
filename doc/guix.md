@@ -1,3 +1,3 @@
-# Bootstrappable bitpulse Core Builds
+# Bootstrappable bitpulsed Core Builds
 
 See [contrib/guix/README.md](../contrib/guix/README.md)

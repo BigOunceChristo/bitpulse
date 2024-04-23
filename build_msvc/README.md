@@ -1,13 +1,13 @@
-Building bitpulse Core with Visual Studio
+Building bitpulsed Core with Visual Studio
 ========================================
 
 Introduction
 ---------------------
-Visual Studio 2022 is minimum required to build bitpulse Core.
+Visual Studio 2022 is minimum required to build bitpulsed Core.
 
 Solution and project files to build with `msbuild` or Visual Studio can be found in the `build_msvc` directory.
 
-To build bitpulse Core from the command-line, it is sufficient to only install the [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/) component.
+To build bitpulsed Core from the command-line, it is sufficient to only install the [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/) component.
 
 The "Desktop development with C++" workload must be installed as well.
 
@@ -30,7 +30,7 @@ Add-Content -Path "vcpkg\triplets\x64-windows-static.cmake" -Value "set(VCPKG_BU
 
 Qt
 ---------------------
-To build bitpulse Core with the GUI, a static build of Qt is required.
+To build bitpulsed Core with the GUI, a static build of Qt is required.
 
 1. Download a single ZIP archive of Qt source code from https://download.qt.io/official_releases/qt/ (e.g., [`qt-everywhere-opensource-src-5.15.11.zip`](https://download.qt.io/official_releases/qt/5.15/5.15.11/single/qt-everywhere-opensource-src-5.15.11.zip)), and expand it into a dedicated folder. The following instructions assume that this folder is `C:\dev\qt-source`.
 
@@ -48,7 +48,7 @@ nmake install
 
 One could speed up building with [`jom`](https://wiki.qt.io/Jom), a replacement for `nmake` which makes use of all CPU cores.
 
-To build bitpulse Core without Qt, unload or disable the `bitpulse-qt`, `libbitpulse_qt` and `test_bitpulse-qt` projects.
+To build bitpulsed Core without Qt, unload or disable the `bitpulsed-qt`, `libbitpulsed_qt` and `test_bitpulsed-qt` projects.
 
 
 Building
@@ -64,14 +64,14 @@ python build_msvc\msvc-autogen.py
 3. To build from the command-line with the Visual Studio toolchain use:
 
 ```cmd
-msbuild build_msvc\bitpulse.sln -property:Configuration=Release -maxCpuCount -verbosity:minimal
+msbuild build_msvc\bitpulsed.sln -property:Configuration=Release -maxCpuCount -verbosity:minimal
 ```
 
-Alternatively, open the `build_msvc/bitpulse.sln` file in Visual Studio.
+Alternatively, open the `build_msvc/bitpulsed.sln` file in Visual Studio.
 
 Security
 ---------------------
-[Base address randomization](https://learn.microsoft.com/en-us/cpp/build/reference/dynamicbase-use-address-space-layout-randomization) is used to make bitpulse Core more secure. When building bitpulse using the `build_msvc` process base address randomization can be disabled by editing `common.init.vcproj` to change `RandomizedBaseAddress` from `true` to `false` and then rebuilding the project.
+[Base address randomization](https://learn.microsoft.com/en-us/cpp/build/reference/dynamicbase-use-address-space-layout-randomization) is used to make bitpulsed Core more secure. When building bitpulsed using the `build_msvc` process base address randomization can be disabled by editing `common.init.vcproj` to change `RandomizedBaseAddress` from `true` to `false` and then rebuilding the project.
 
 To check if `bitpulsed` has `RandomizedBaseAddress` enabled or disabled run
 

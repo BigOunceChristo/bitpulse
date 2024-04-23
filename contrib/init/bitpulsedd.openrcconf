@@ -1,0 +1,33 @@
+# /etc/conf.d/bitpulsed: config file for /etc/init.d/bitpulsed
+
+# Config file location
+#bitpulsed_CONFIGFILE="/etc/bitpulsed/bitpulsed.conf"
+
+# What directory to write pidfile to?  (created and owned by $bitpulsed_USER)
+#bitpulsed_PIDDIR="/var/run/bitpulsed"
+
+# What filename to give the pidfile
+#bitpulsed_PIDFILE="${bitpulsed_PIDDIR}/bitpulsed.pid"
+
+# Where to write bitpulsed data (be mindful that the blockchain is large)
+#bitpulsed_DATADIR="/var/lib/bitpulsed"
+
+# User and group to own bitpulsed process
+#bitpulsed_USER="bitpulsed"
+#bitpulsed_GROUP="bitpulsed"
+
+# Path to bitpulsed executable
+#bitpulsed_BIN="/usr/bin/bitpulsed"
+
+# Nice value to run bitpulsed under
+#bitpulsed_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#bitpulsed_OPTS=""
+
+# The timeout in seconds OpenRC will wait for bitpulsed to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+bitpulsed_SIGTERM_TIMEOUT=600

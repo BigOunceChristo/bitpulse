@@ -1,8 +1,8 @@
-// Copyright (c) 2022 The Bitpulse Core developers
+// Copyright (c) 2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef bitpulse_KERNEL_MEMPOOL_OPTIONS_H
-#define bitpulse_KERNEL_MEMPOOL_OPTIONS_H
+#ifndef bitpulsed_KERNEL_MEMPOOL_OPTIONS_H
+#define bitpulsed_KERNEL_MEMPOOL_OPTIONS_H
 
 #include <kernel/mempool_limits.h>
 
@@ -63,4 +63,4 @@ struct MemPoolOptions {
 };
 } // namespace kernel
 
-#endif // bitpulse_KERNEL_MEMPOOL_OPTIONS_H
+#endif // bitpulsed_KERNEL_MEMPOOL_OPTIONS_H

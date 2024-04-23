@@ -1,6 +1,7 @@
-// Copyright (c) 2018-2022 The Bitpulse Core developers
-// Distributed under the MIT software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+// Copyright (c) 2018-2022 The bitpulse Core Developers
+// This project is derived from the Bitcoin Core Project, originally licensed under the MIT license.
+// See the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php for details.
+
 
 #include <qt/bitpulse.h>
 
@@ -8,7 +9,9 @@
 #include <compat/compat.h>
 #include <util/translation.h>
 
+#include <QApplication>
 #include <QCoreApplication>
+#include <QString>
 
 #include <functional>
 #include <string>
@@ -23,5 +26,11 @@ const std::function<std::string()> G_TEST_GET_FULL_NAME{};
 
 MAIN_FUNCTION
 {
+    QApplication app(argc, argv);
+
+    // Apply global stylesheet
+    QString styleSheet = "QPushButton { background-color: blue; color: white; }";
+    app.setStyleSheet(styleSheet);
+
     return GuiMain(argc, argv);
 }

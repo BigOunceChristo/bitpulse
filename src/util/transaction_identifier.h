@@ -1,5 +1,5 @@
-#ifndef bitpulse_UTIL_TRANSACTION_IDENTIFIER_H
-#define bitpulse_UTIL_TRANSACTION_IDENTIFIER_H
+#ifndef bitpulsed_UTIL_TRANSACTION_IDENTIFIER_H
+#define bitpulsed_UTIL_TRANSACTION_IDENTIFIER_H
 
 #include <attributes.h>
 #include <uint256.h>
@@ -71,4 +71,4 @@ inline Txid TxidFromString(std::string_view str)
     return Txid::FromUint256(uint256S(str.data()));
 }
 
-#endif // bitpulse_UTIL_TRANSACTION_IDENTIFIER_H
+#endif // bitpulsed_UTIL_TRANSACTION_IDENTIFIER_H

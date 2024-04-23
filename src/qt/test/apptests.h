@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2020 The Bitpulse Core developers
+// Copyright (c) 2018-2020 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -10,19 +10,19 @@
 #include <string>
 #include <utility>
 
-class BitpulseApplication;
-class BitpulseGUI;
+class bitpulseApplication;
+class bitpulseGUI;
 class RPCConsole;
 
 class AppTests : public QObject
 {
     Q_OBJECT
 public:
-    explicit AppTests(BitpulseApplication& app) : m_app(app) {}
+    explicit AppTests(bitpulseApplication& app) : m_app(app) {}
 
 private Q_SLOTS:
     void appTests();
-    void guiTests(BitpulseGUI* window);
+    void guiTests(bitpulseGUI* window);
     void consoleTests(RPCConsole* console);
 
 private:
@@ -37,8 +37,8 @@ private:
         ~HandleCallback();
     };
 
-    //! Bitpulse application.
-    BitpulseApplication& m_app;
+    //! bitpulse application.
+    bitpulseApplication& m_app;
 
     //! Set of pending callback names. Used to track expected callbacks and shut
     //! down the app after the last callback has been handled and all tests have

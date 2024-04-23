@@ -1,6 +1,7 @@
-// Copyright (c) 2018-2022 The Bitpulse Core developers
-// Distributed under the MIT software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+// Copyright (c) 2018-2022 The bitpulse Core Developers
+// This project is derived from the Bitcoin Core Project, originally licensed under the MIT license.
+// See the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php for details.
+
 
 #include <qt/test/apptests.h>
 
@@ -51,7 +52,7 @@ void TestRpcCommand(RPCConsole* console)
 }
 } // namespace
 
-//! Entry point for BitpulseApplication tests.
+//! Entry point for bitpulseApplication tests.
 void AppTests::appTests()
 {
 #ifdef Q_OS_MACOS
@@ -72,7 +73,7 @@ void AppTests::appTests()
     QScopedPointer<const NetworkStyle> style(NetworkStyle::instantiate(Params().GetChainType()));
     m_app.setupPlatformStyle();
     m_app.createWindow(style.data());
-    connect(&m_app, &BitpulseApplication::windowShown, this, &AppTests::guiTests);
+    connect(&m_app, &bitpulseApplication::windowShown, this, &AppTests::guiTests);
     expectCallback("guiTests");
     m_app.baseInitialize();
     m_app.requestInitialize();
@@ -84,11 +85,11 @@ void AppTests::appTests()
     LogInstance().DisconnectTestLogger();
 }
 
-//! Entry point for BitpulseGUI tests.
-void AppTests::guiTests(BitpulseGUI* window)
+//! Entry point for bitpulseGUI tests.
+void AppTests::guiTests(bitpulseGUI* window)
 {
     HandleCallback callback{"guiTests", *this};
-    connect(window, &BitpulseGUI::consoleShown, this, &AppTests::consoleTests);
+    connect(window, &bitpulseGUI::consoleShown, this, &AppTests::consoleTests);
     expectCallback("consoleTests");
     QAction* action = window->findChild<QAction*>("openRPCConsoleAction");
     action->activate(QAction::Trigger);

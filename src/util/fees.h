@@ -1,9 +1,9 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2020 The Bitpulse Core developers
+// Copyright (c) 2009-2020 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef bitpulse_UTIL_FEES_H
-#define bitpulse_UTIL_FEES_H
+#ifndef bitpulsed_UTIL_FEES_H
+#define bitpulsed_UTIL_FEES_H
 
 #include <string>
 
@@ -15,4 +15,4 @@ std::string StringForFeeReason(FeeReason reason);
 std::string FeeModes(const std::string& delimiter);
 std::string InvalidEstimateModeErrorMessage();
 
-#endif // bitpulse_UTIL_FEES_H
+#endif // bitpulsed_UTIL_FEES_H

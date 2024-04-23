@@ -1,9 +1,9 @@
-// Copyright (c) 2021-2022 The Bitpulse Core developers
+// Copyright (c) 2021-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 //
-#ifndef bitpulse_TEST_UTIL_CHAINSTATE_H
-#define bitpulse_TEST_UTIL_CHAINSTATE_H
+#ifndef bitpulsed_TEST_UTIL_CHAINSTATE_H
+#define bitpulsed_TEST_UTIL_CHAINSTATE_H
 
 #include <clientversion.h>
 #include <logging.h>
@@ -129,4 +129,4 @@ CreateAndActivateUTXOSnapshot(
 }
 
 
-#endif // bitpulse_TEST_UTIL_CHAINSTATE_H
+#endif // bitpulsed_TEST_UTIL_CHAINSTATE_H

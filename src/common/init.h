@@ -1,9 +1,9 @@
-// Copyright (c) 2023 The Bitpulse Core developers
+// Copyright (c) 2023 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_COMMON_INIT_H
-#define bitpulse_COMMON_INIT_H
+#ifndef bitpulsed_COMMON_INIT_H
+#define bitpulsed_COMMON_INIT_H
 
 #include <util/translation.h>
 
@@ -36,4 +36,4 @@ using SettingsAbortFn = std::function<bool(const bilingual_str& message, const s
 std::optional<ConfigError> InitConfig(ArgsManager& args, SettingsAbortFn settings_abort_fn = nullptr);
 } // namespace common
 
-#endif // bitpulse_COMMON_INIT_H
+#endif // bitpulsed_COMMON_INIT_H

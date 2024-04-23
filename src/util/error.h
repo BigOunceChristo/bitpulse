@@ -1,9 +1,9 @@
-// Copyright (c) 2010-2021 The Bitpulse Core developers
+// Copyright (c) 2010-2021 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_UTIL_ERROR_H
-#define bitpulse_UTIL_ERROR_H
+#ifndef bitpulsed_UTIL_ERROR_H
+#define bitpulsed_UTIL_ERROR_H
 
 /**
  * util/error.h is a common place for definitions of simple error types and
@@ -46,4 +46,4 @@ bilingual_str AmountHighWarn(const std::string& optname);
 
 bilingual_str AmountErrMsg(const std::string& optname, const std::string& strValue);
 
-#endif // bitpulse_UTIL_ERROR_H
+#endif // bitpulsed_UTIL_ERROR_H

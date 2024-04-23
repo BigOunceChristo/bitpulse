@@ -1,5 +1,5 @@
 // Copyright 2014 BitPay Inc.
-// Copyright 2015 Bitpulse Core Developers
+// Copyright 2015 bitpulse Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://opensource.org/licenses/mit-license.php.
 

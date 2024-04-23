@@ -1,9 +1,10 @@
-// Copyright (c) 2018-2022 The Bitpulse Core developers
-// Distributed under the MIT software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+// Copyright (c) 2018-2022 The bitpulsed Core Developers
+// This project is derived from the Bitcoin Core Project, originally licensed under the MIT license.
+// See the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php for details.
 
-#ifndef bitpulse_SPAN_H
-#define bitpulse_SPAN_H
+
+#ifndef bitpulsed_SPAN_H
+#define bitpulsed_SPAN_H
 
 #include <algorithm>
 #include <cassert>
@@ -303,4 +304,4 @@ template <typename T> constexpr auto UCharSpanCast(Span<T> s) -> Span<typename s
 /** Like the Span constructor, but for (const) unsigned char member types only. Only works for (un)signed char containers. */
 template <typename V> constexpr auto MakeUCharSpan(V&& v) -> decltype(UCharSpanCast(Span{std::forward<V>(v)})) { return UCharSpanCast(Span{std::forward<V>(v)}); }
 
-#endif // bitpulse_SPAN_H
+#endif // bitpulsed_SPAN_H

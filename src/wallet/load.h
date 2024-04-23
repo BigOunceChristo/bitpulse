@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2021 The Bitpulse Core developers
+// Copyright (c) 2009-2021 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_WALLET_LOAD_H
-#define bitpulse_WALLET_LOAD_H
+#ifndef bitpulsed_WALLET_LOAD_H
+#define bitpulsed_WALLET_LOAD_H
 
 #include <string>
 #include <vector>
@@ -38,4 +38,4 @@ void StopWallets(WalletContext& context);
 void UnloadWallets(WalletContext& context);
 } // namespace wallet
 
-#endif // bitpulse_WALLET_LOAD_H
+#endif // bitpulsed_WALLET_LOAD_H

@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2022 The Bitpulse Core developers
+// Copyright (c) 2009-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_WALLET_BDB_H
-#define bitpulse_WALLET_BDB_H
+#ifndef bitpulsed_WALLET_BDB_H
+#define bitpulsed_WALLET_BDB_H
 
 #include <clientversion.h>
 #include <common/system.h>
@@ -218,4 +218,4 @@ bool BerkeleyDatabaseSanityCheck();
 std::unique_ptr<BerkeleyDatabase> MakeBerkeleyDatabase(const fs::path& path, const DatabaseOptions& options, DatabaseStatus& status, bilingual_str& error);
 } // namespace wallet
 
-#endif // bitpulse_WALLET_BDB_H
+#endif // bitpulsed_WALLET_BDB_H

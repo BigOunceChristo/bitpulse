@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_CUCKOOCACHE_H
-#define bitpulse_CUCKOOCACHE_H
+#ifndef bitpulsed_CUCKOOCACHE_H
+#define bitpulsed_CUCKOOCACHE_H
 
 #include <util/fastrange.h>
 
@@ -487,4 +487,4 @@ public:
 };
 } // namespace CuckooCache
 
-#endif // bitpulse_CUCKOOCACHE_H
+#endif // bitpulsed_CUCKOOCACHE_H

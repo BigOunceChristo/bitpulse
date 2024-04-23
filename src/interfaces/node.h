@@ -1,6 +1,7 @@
-// Copyright (c) 2018-2022 The Bitpulse Core developers
-// Distributed under the MIT software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+// Copyright (c) 2018-2022 The bitpulse Core Developers
+// This project is derived from the Bitcoin Core Project, originally licensed under the MIT license.
+// See the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php for details.
+
 
 #ifndef bitpulse_INTERFACES_NODE_H
 #define bitpulse_INTERFACES_NODE_H
@@ -65,7 +66,7 @@ public:
     virtual std::string getName() = 0;
 };
 
-//! Top-level interface for a bitpulse node (bitpulsed process).
+//! Top-level interface for a bitpulse node (bitpulse process).
 class Node
 {
 public:

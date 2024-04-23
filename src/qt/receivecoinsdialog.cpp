@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2022 The Bitpulse Core developers
+// Copyright (c) 2011-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -14,6 +14,8 @@
 #include <qt/receiverequestdialog.h>
 #include <qt/recentrequeststablemodel.h>
 #include <qt/walletmodel.h>
+#include "qt/bitpulseamountfield.h"
+
 
 #include <QAction>
 #include <QCursor>
@@ -279,7 +281,7 @@ void ReceiveCoinsDialog::copyURI()
     }
 
     const RecentRequestsTableModel * const submodel = model->getRecentRequestsTableModel();
-    const QString uri = GUIUtil::formatBitpulseURI(submodel->entry(sel.row()).recipient);
+    const QString uri = GUIUtil::formatbitpulseURI(submodel->entry(sel.row()).recipient);
     GUIUtil::setClipboard(uri);
 }
 

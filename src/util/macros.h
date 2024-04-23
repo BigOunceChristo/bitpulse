@@ -1,9 +1,9 @@
-// Copyright (c) 2019-2022 The Bitpulse Core developers
+// Copyright (c) 2019-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_UTIL_MACROS_H
-#define bitpulse_UTIL_MACROS_H
+#ifndef bitpulsed_UTIL_MACROS_H
+#define bitpulsed_UTIL_MACROS_H
 
 #define PASTE(x, y) x ## y
 #define PASTE2(x, y) PASTE(x, y)
@@ -17,4 +17,4 @@
 #define STRINGIZE(X) DO_STRINGIZE(X)
 #define DO_STRINGIZE(X) #X
 
-#endif // bitpulse_UTIL_MACROS_H
+#endif // bitpulsed_UTIL_MACROS_H

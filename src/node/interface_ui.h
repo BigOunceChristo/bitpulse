@@ -1,10 +1,10 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2012-2022 The Bitpulse Core developers
+// Copyright (c) 2012-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_NODE_INTERFACE_UI_H
-#define bitpulse_NODE_INTERFACE_UI_H
+#ifndef bitpulsed_NODE_INTERFACE_UI_H
+#define bitpulsed_NODE_INTERFACE_UI_H
 
 #include <functional>
 #include <memory>
@@ -120,4 +120,4 @@ bool InitError(const bilingual_str& str, const std::vector<std::string>& details
 
 extern CClientUIInterface uiInterface;
 
-#endif // bitpulse_NODE_INTERFACE_UI_H
+#endif // bitpulsed_NODE_INTERFACE_UI_H

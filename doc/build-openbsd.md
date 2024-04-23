@@ -17,8 +17,8 @@ pkg_add autoconf automake python
 
 See [dependencies.md](dependencies.md) for a complete overview.
 
-### 2. Clone bitpulse Repo
-Clone the bitpulse Core repository to a directory. All build scripts and commands will run from this directory.
+### 2. Clone bitpulsed Repo
+Clone the bitpulsed Core repository to a directory. All build scripts and commands will run from this directory.
 ``` bash
 git clone https://github.com/bitcoin/bitcoin.git
 ```
@@ -27,7 +27,7 @@ git clone https://github.com/bitcoin/bitcoin.git
 
 #### Wallet Dependencies
 
-It is not necessary to build wallet functionality to run either `bitpulsed` or `bitpulse-qt`.
+It is not necessary to build wallet functionality to run either `bitpulsed` or `bitpulsed-qt`.
 
 ###### Descriptor Wallet Support
 
@@ -48,25 +48,25 @@ Refer to [depends/README.md](/depends/README.md) for detailed instructions.
 ```bash
 gmake -C depends NO_BOOST=1 NO_LIBEVENT=1 NO_QT=1 NO_SQLITE=1 NO_NATPMP=1 NO_UPNP=1 NO_ZMQ=1 NO_USDT=1
 ...
-to: /path/to/bitpulse/depends/x86_64-unknown-openbsd
+to: /path/to/bitpulsed/depends/x86_64-unknown-openbsd
 ```
 
 Then set `BDB_PREFIX`:
 
 ```bash
-export BDB_PREFIX="/path/to/bitpulse/depends/x86_64-unknown-openbsd"
+export BDB_PREFIX="/path/to/bitpulsed/depends/x86_64-unknown-openbsd"
 ```
 
 #### GUI Dependencies
 ###### Qt5
 
-bitpulse Core includes a GUI built with the cross-platform Qt Framework. To compile the GUI, Qt 5 is required.
+bitpulsed Core includes a GUI built with the cross-platform Qt Framework. To compile the GUI, Qt 5 is required.
 
 ```bash
 pkg_add qt5
 ```
 
-## Building bitpulse Core
+## Building bitpulsed Core
 
 **Important**: Use `gmake` (the non-GNU `make` will exit with an error).
 
@@ -82,7 +82,7 @@ export AUTOMAKE_VERSION=1.16
 
 ### 1. Configuration
 
-There are many ways to configure bitpulse Core, here are a few common examples:
+There are many ways to configure bitpulsed Core, here are a few common examples:
 
 ##### Descriptor Wallet and GUI:
 This enables the GUI and descriptor wallet support, assuming `sqlite` and `qt5` are installed.

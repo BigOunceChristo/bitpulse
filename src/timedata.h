@@ -1,9 +1,9 @@
-// Copyright (c) 2014-2022 The Bitpulse Core developers
+// Copyright (c) 2014-2022 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_TIMEDATA_H
-#define bitpulse_TIMEDATA_H
+#ifndef bitpulsed_TIMEDATA_H
+#define bitpulsed_TIMEDATA_H
 
 #include <algorithm>
 #include <cassert>
@@ -79,4 +79,4 @@ void AddTimeData(const CNetAddr& ip, int64_t nTime);
  */
 void TestOnlyResetTimeData();
 
-#endif // bitpulse_TIMEDATA_H
+#endif // bitpulsed_TIMEDATA_H

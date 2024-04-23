@@ -1,5 +1,5 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2009-2022 The Bitpulse Core developers
+// Copyright (c) 2009-2022 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -330,8 +330,8 @@ static RPCHelpMan echoipc()
                 echo = init->makeEcho();
                 ipc->addCleanup(*echo, [init = init.release()] { delete init; });
             } else {
-                // IPC support is not available because this is a bitpulsed
-                // process not a bitpulsed-node process, so just create a local
+                // IPC support is not available because this is a bitpulse
+                // process not a bitpulse-node process, so just create a local
                 // interfaces::Echo object and return it so the `echoipc` RPC
                 // method will work, and the python test calling `echoipc`
                 // can expect the same result.

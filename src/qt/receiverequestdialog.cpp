@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2021 The Bitpulse Core developers
+// Copyright (c) 2011-2021 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -46,7 +46,7 @@ void ReceiveRequestDialog::setInfo(const SendCoinsRecipient &_info)
 {
     this->info = _info;
     setWindowTitle(tr("Request payment to %1").arg(info.label.isEmpty() ? info.address : info.label));
-    QString uri = GUIUtil::formatBitpulseURI(info);
+    QString uri = GUIUtil::formatbitpulseURI(info);
 
 #ifdef USE_QRCODE
     if (ui->qr_code->setQR(uri, info.address)) {
@@ -99,12 +99,12 @@ void ReceiveRequestDialog::setInfo(const SendCoinsRecipient &_info)
 void ReceiveRequestDialog::updateDisplayUnit()
 {
     if (!model) return;
-    ui->amount_content->setText(BitpulseUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), info.amount));
+    ui->amount_content->setText(bitpulseUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), info.amount));
 }
 
 void ReceiveRequestDialog::on_btnCopyURI_clicked()
 {
-    GUIUtil::setClipboard(GUIUtil::formatBitpulseURI(info));
+    GUIUtil::setClipboard(GUIUtil::formatbitpulseURI(info));
 }
 
 void ReceiveRequestDialog::on_btnCopyAddress_clicked()

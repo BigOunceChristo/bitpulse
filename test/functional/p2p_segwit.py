@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2016-2022 The bitpulse Core developers
+# Copyright (c) 2016-2022 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test segwit transactions and blocks on P2P network."""
@@ -81,7 +81,7 @@ from test_framework.script_util import (
     script_to_p2sh_script,
     script_to_p2wsh_script,
 )
-from test_framework.test_framework import bitpulseTestFramework
+from test_framework.test_framework import bitpulsedTestFramework
 from test_framework.util import (
     assert_equal,
     softfork_active,
@@ -209,7 +209,7 @@ class TestP2PConn(P2PInterface):
         self.wait_for_block(blockhash, timeout)
         return self.last_message["block"].block
 
-class SegWitTest(bitpulseTestFramework):
+class SegWitTest(bitpulsedTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 2

@@ -1,9 +1,9 @@
-// Copyright (c) 2009-2021 The Bitpulse Core developers
+// Copyright (c) 2009-2021 The bitcoin Core Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef bitpulse_WALLET_CRYPTER_H
-#define bitpulse_WALLET_CRYPTER_H
+#ifndef bitpulsed_WALLET_CRYPTER_H
+#define bitpulsed_WALLET_CRYPTER_H
 
 #include <serialize.h>
 #include <support/allocators/secure.h>
@@ -108,4 +108,4 @@ bool DecryptSecret(const CKeyingMaterial& vMasterKey, const std::vector<unsigned
 bool DecryptKey(const CKeyingMaterial& vMasterKey, const std::vector<unsigned char>& vchCryptedSecret, const CPubKey& vchPubKey, CKey& key);
 } // namespace wallet
 
-#endif // bitpulse_WALLET_CRYPTER_H
+#endif // bitpulsed_WALLET_CRYPTER_H
